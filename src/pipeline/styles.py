@@ -13,6 +13,10 @@ class StylePreset(BaseModel):
     prefix: str = ""
     suffix: str = ""
     negative: str = ""
+    # Scene-only appearance avoids applying portrait anatomy and portrait framing.
+    # None preserves custom presets by falling back to their general text.
+    scene_prefix: str | None = None
+    scene_suffix: str | None = None
 
 
 # Presets describe rendering style only. Narrative facts stay in the node output.
@@ -63,6 +67,16 @@ BUILTIN_STYLES = {
             "profile, aggressive HDR halos, teal-and-orange cliche grade, heavy vignette, "
             "heavy contour lines, 2D flat cel shading, chibi proportions, watermark, text"
         ),
+        scene_prefix=(
+            "Anime-derived dimensional CG environment with physically believable materials, "
+            "crisp surface detail and natural proportions."
+        ),
+        scene_suffix=(
+            "Keep the established light sources and time of day. Use rich readable shadows, "
+            "restrained bloom and soft highlight rolloff. Warm light, when present in the "
+            "scene, has golden highlights and subtle halation. Keep the environment and its "
+            "depth readable across the requested view."
+        ),
     ),
 }
 
@@ -100,6 +114,36 @@ class StyleConfig(BaseModel):
         if not resolved["prefix"] and not resolved["suffix"]:
             return prompt
         return _join(resolved["prefix"], prompt, resolved["suffix"])
+
+    def resolved_scene(self) -> dict[str, str]:
+        selected = (BUILTIN_STYLES | self.presets)[self.preset]
+        general = self.resolved()
+        return {
+            **general,
+            "prefix": general["prefix"]
+            if selected.scene_prefix is None
+            else selected.scene_prefix.strip(),
+            "suffix": general["suffix"]
+            if selected.scene_suffix is None
+            else selected.scene_suffix.strip(),
+        }
+
+    def compose_scene_image(self, prompt: str, view: str) -> str:
+        """Keep camera edits ahead of appearance and preserve reference identity only."""
+        if view not in {"master", "reverse", "overview", "topdown"}:
+            raise ValueError(f"Unknown scene view: {view}")
+        style = self.resolved_scene()
+        if view == "master":
+            return _join(style["prefix"], prompt, style["suffix"])
+        appearance = _join(style["prefix"], style["suffix"])
+        return _join(
+            prompt,
+            "Appearance treatment only:\n" + appearance if appearance else "",
+            "The camera position, projection, framing and visible surfaces follow the editing "
+            "instruction above. References supply scene identity and world-space layout, "
+            "not their original camera or foreground occlusion. Appearance treatment must "
+            "not override the requested view. Render one new view of the same scene.",
+        )
 
     def compose_video(self, prompt: str, mode: str) -> str:
         """Style the visual section without moving H3's required first-frame line."""

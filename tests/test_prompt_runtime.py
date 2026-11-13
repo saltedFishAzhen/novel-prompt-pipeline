@@ -190,9 +190,18 @@ def test_publication_requires_report_or_explicit_offline_and_preserves_current(
 def test_flat_compiled_outputs_preserve_release_bytes_and_version(tmp_path: Path) -> None:
     root = workspace(tmp_path)
     candidate = stage(root=root)
-    active = json.loads((PROMPTS / "current.json").read_text(encoding="utf-8"))["version"]
-    assert candidate.version == active
     nodes = inventory(root)
+    # Migrate identical prompt bytes from the legacy compiled layout. A source
+    # candidate may intentionally differ from the active publication.
+    for name, entry in nodes.items():
+        filename = Path(candidate.manifest["nodes"][name]["file"]).name
+        legacy = (
+            root / "compiled" / (filename if name.startswith("asset.") else "nodes/" + filename)
+        )
+        legacy.parent.mkdir(parents=True, exist_ok=True)
+        (root / entry["compiled"]).replace(legacy)
+    assert build(root=root) == []
+    assert stage(root=root).version == candidate.version
     expected = {f"{name}.txt" for name in nodes}
     assert {item.name for item in (root / "compiled").iterdir()} == expected
     for name, entry in nodes.items():

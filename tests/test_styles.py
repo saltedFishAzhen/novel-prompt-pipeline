@@ -81,6 +81,37 @@ def test_project_default_style_can_be_customized():
     assert style.compose_image("An object.") == "My style.\n\nAn object."
 
 
+def test_scene_style_prioritizes_camera_without_portrait_constraints():
+    style = StyleConfig()
+    original = style.resolved()
+    request = "Look back toward the entrance, with the window behind the new camera."
+    text = style.compose_scene_image(request, "reverse")
+    assert text.startswith(request + "\n\n")
+    assert "dimensional CG environment" in text
+    assert "halation" in text
+    for portrait_term in ("oval facial plane", "upper lid fold", "cupid's bow", "circular bokeh"):
+        assert portrait_term not in text
+    assert "not their original camera" in text
+    assert style.resolved() == original  # The user's character/global style is unchanged.
+
+
+def test_scene_style_override_and_custom_preset_fallback():
+    custom = StyleConfig(
+        preset="custom",
+        presets={"custom": StylePreset(prefix="Original prefix", suffix="Original suffix")},
+    )
+    assert "Original prefix" in custom.compose_scene_image("Camera instruction", "overview")
+    assert custom.compose_scene_image("Master scene", "master").startswith("Original prefix")
+    custom.presets["custom"].scene_prefix = "Environment appearance"
+    custom.presets["custom"].scene_suffix = "Environment finish"
+    text = custom.compose_scene_image("Camera instruction", "overview")
+    assert text.startswith("Camera instruction\n\n")
+    assert "Environment appearance" in text and "Environment finish" in text
+    assert "Original prefix" not in text
+    with pytest.raises(ValueError, match="Unknown scene view"):
+        custom.compose_scene_image("Scene", "unknown")
+
+
 def test_cinematic_default_preset_targets_reference_face_structure_and_grade():
     style = StyleConfig(preset="cinematic_anime_cg").resolved()
     prefix = style["prefix"].lower()
@@ -335,3 +366,69 @@ def test_default_workflow_identity_includes_negative_binding():
     identity = pipeline._workflow_identity(pipeline.image_template)
     assert "negative_prompt" in identity["profile"]["bindings"]
     assert Path("workflows/workflow_bindings.json").is_file()
+
+
+def test_changed_builtin_scene_style_cannot_silently_resume(tmp_path, monkeypatch):
+    pipeline = Pipeline(Config())
+    monkeypatch.setattr(
+        pipeline, "_infer", lambda source: pipeline.state.update(panels=[], assets=[])
+    )
+    pipeline.run("input text", tmp_path / "run")
+    original = pipeline.config.style.resolved()
+    monkeypatch.setattr(BUILTIN_STYLES["cinematic_anime_cg"], "scene_suffix", "New scene treatment")
+    assert pipeline.config.style.resolved() == original
+    with pytest.raises(ValueError, match="config/workflow changed"):
+        pipeline.run("input text", tmp_path / "run", resume=True)
+
+
+@pytest.mark.parametrize("custom", [False, True])
+def test_old_text_run_can_adopt_scene_policy_without_changing_existing_jobs(
+    tmp_path, monkeypatch, custom
+):
+    style = selected_style() if custom else StyleConfig()
+    pipeline = Pipeline(Config(style=style))
+    monkeypatch.setattr(
+        pipeline,
+        "_infer",
+        lambda source: pipeline.state.update(
+            panels=[], assets=[{"asset_id": "room", "kind": "scene"}]
+        ),
+    )
+    pipeline.run("input text", tmp_path / "run")
+    state_file = tmp_path / "run/state.json"
+    state = json.loads(state_file.read_text("utf-8"))
+    state["identity"].pop("scene_rendering")
+    for preset in state["identity"]["config"]["style"]["presets"].values():
+        preset.pop("scene_prefix", None)
+        preset.pop("scene_suffix", None)
+    state["media"] = {"asset_character": {"prompt_id": "unchanged", "status": "completed"}}
+    original_version = state["prompt_version"]
+    state_file.write_text(json.dumps(state), encoding="utf-8")
+    pipeline.run("input text", tmp_path / "run", resume=True)
+    after = json.loads(state_file.read_text("utf-8"))
+    assert after["identity"]["scene_rendering"]["layout"] == "scene-four-views-v2"
+    assert after["media"] == state["media"]
+    assert after["prompt_version"] == original_version
+
+
+@pytest.mark.parametrize("progress", ["scene_generation", "scene_views", "media", "asset_media"])
+def test_old_scene_work_cannot_adopt_new_policy(tmp_path, monkeypatch, progress):
+    pipeline = Pipeline(Config())
+    monkeypatch.setattr(
+        pipeline,
+        "_infer",
+        lambda source: pipeline.state.update(
+            panels=[], assets=[{"asset_id": "room", "kind": "scene"}]
+        ),
+    )
+    pipeline.run("input text", tmp_path / "run")
+    state_file = tmp_path / "run/state.json"
+    state = json.loads(state_file.read_text("utf-8"))
+    state["identity"].pop("scene_rendering")
+    key = "scene_room_master" if progress == "media" else "room"
+    state[progress] = {key: {"status": "submitting", "prompt_id": "keep-original"}}
+    before = json.dumps(state)
+    state_file.write_text(before, encoding="utf-8")
+    with pytest.raises(ValueError, match="config/workflow changed"):
+        pipeline.run("input text", tmp_path / "run", resume=True)
+    assert state_file.read_text("utf-8") == before

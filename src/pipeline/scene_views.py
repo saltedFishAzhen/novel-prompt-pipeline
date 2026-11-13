@@ -11,13 +11,18 @@ from uuid import uuid4
 from . import protocols
 from .storage import fingerprint
 
-LAYOUT_VERSION = "scene-four-views-v1"
+LAYOUT_VERSION = "scene-four-views-v2"
 VIEW_NAMES = ("master", "reverse", "overview", "topdown")
 NODE_NAMES = {
     "reverse": "scene_reverse_view",
     "overview": "scene_overview",
     "topdown": "scene_topdown",
 }
+
+
+def render_identity(style) -> dict:
+    """Pin scene composition policy and actual appearance text for safe reuse."""
+    return {"layout": LAYOUT_VERSION, "style": style.resolved_scene()}
 
 
 def enabled(pipeline) -> bool:
@@ -79,7 +84,7 @@ def _pinned_reference(pipeline, asset):
 
 
 def _cache_prefix(pipeline, reference) -> str:
-    style = pipeline.config.style.resolved()
+    style = pipeline.config.style.resolved_scene()
     value = {
         "layout": LAYOUT_VERSION,
         "release": pipeline.release.version,
@@ -233,7 +238,7 @@ def generate(pipeline, asset):
         else:
             references = [records[name]["local_path"] for name in VIEW_NAMES[:3]]
         graph = pipeline.image_template.prepare(
-            pipeline.config.style.compose_image(prompts[view]),
+            pipeline.config.style.compose_scene_image(prompts[view], view),
             seed=pipeline.config.media.seed + index,
             width=pipeline.config.media.asset_width,
             height=pipeline.config.media.asset_height,

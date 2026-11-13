@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Prioritize scene camera edits and visible surfaces, use environment-specific
+  appearance text, and version scene cache/run identities to avoid reusing old framing.
+- Serialize content-addressed asset file publication across links and imports
+  to prevent concurrent Windows replacement failures.
+
 ## 0.2.0 — 2026-11-14
 
 - Require patched Pillow 13 and filelock 4.2.10 or newer, and refresh the

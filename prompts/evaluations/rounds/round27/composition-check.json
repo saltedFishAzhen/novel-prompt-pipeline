@@ -1,0 +1,81 @@
+{
+  "submitted": false,
+  "uploads": 0,
+  "comfyui_requests": 0,
+  "reference_name_is_placeholder": true,
+  "note": "Offline preparation only; this does not measure image quality.",
+  "cases": [
+    {
+      "id": "reverse-opposed-entrance-window",
+      "view": "reverse",
+      "before_words": 466,
+      "after_words": 207,
+      "prepared_prompt": "Create an eye-level reverse view from the window end, looking back toward the original camera position, with the entrance wall in the background and the window behind the new camera. Use reference image 1 for scene identity. Keep the stool near the window, now close to the camera; the bench appears along the right wall and the cabinet along the left, with their visible surfaces recalculated from this viewpoint. Keep all objects fixed in world space. Rebuild the perspective rather than mirroring or cropping. Continue established materials on newly exposed plain surfaces without inventing features, and preserve known light-source locations and their current state.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "a68a98b023c5d5a9e70ab092aa009e181acad949ba90fa77cbc0b60884dd8a3f",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "overview-opposed-entrance-window",
+      "view": "overview",
+      "before_words": 464,
+      "after_words": 215,
+      "prepared_prompt": "Show a wide oblique bird’s-eye view looking down at roughly 45 degrees, revealing substantial workshop floor, object tops and sides, and readable perspective depth without an eye-level horizon. Use reference image 1 for scene identity: reveal the bench’s top and footprint along the original left wall, the cabinet’s top against the original right wall, and the stool’s seat near the centered opposite window. Move the virtual camera beyond the entrance obstruction so it no longer blocks the overview, retaining the doorway. Use a roof cutaway solely for viewing. Preserve established positions, counts, materials, states, and light-source locations; extend established materials across newly exposed plain surfaces without inventing openings, objects, or shadow details.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "cc2f5b37b0c046fcf4ea9a757734c8b0e6fa3f074d3c3819d7afb941ca2b3cd7",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "reverse-outdoor-path",
+      "view": "reverse",
+      "before_words": 468,
+      "after_words": 202,
+      "prepared_prompt": "Move to the opposite side beside the wooden footbridge at eye level and look back toward the original camera position beside the stone well, placing the well in the background and leaving the willow beyond the bridge behind the new camera. Let the bridge occupy the near foreground, with its well-facing approach visible, while the red bucket remains on the ground beside the distant well. Keep everything fixed in world space and rebuild perspective rather than mirroring or cropping the original view. Preserve the open sky and established lighting conditions without inventing shadows, walls, openings, fixtures, or additional structures.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "03ce54fd2e69e751a915e10d1b4bb15689bf54fb546fd774c6da577567ea7ae1",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "overview-outdoor-path",
+      "view": "overview",
+      "before_words": 465,
+      "after_words": 217,
+      "prepared_prompt": "Create a wide oblique bird’s-eye view of the outdoor scene in reference image 1, looking down at roughly 45 degrees, with substantial ground visible and object tops, sides, and perspective clearly readable. Show the well’s upper rim and footprint, the wooden bridge’s deck, and the footpath running between them; retain the red bucket beside the well and the willow beyond the bridge. Move the virtual camera past any original foreground obstruction while keeping it in place so it no longer blocks the overview. Preserve established positions, counts, materials, state, and light-source locations, with readable depth and no eye-level horizon. Keep the scene open to the sky; invent no structures, objects, openings, or shadow details.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "efae4a57b824b1a2276d9494ab3be4570110345c1cecf8d9ed38f37d5d39665d",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "reverse-undetermined-relations",
+      "view": "reverse",
+      "before_words": 467,
+      "after_words": 215,
+      "prepared_prompt": "Create an eye-level reverse view of the studio in reference image 1, moving to the opposite side and looking back toward the original camera position, with the original far background behind the new camera. Keep the armchair and round table fixed in world space, showing their opposite-facing surfaces wherever visible; keep the book resting on the tabletop, with its projection updated consistently. Derive their near/far relationships from the reversed viewpoint without forcing every object into frame. Rebuild perspective rather than mirroring, cropping, recoloring, or retaining the original shot. Continue established materials on newly exposed plain surfaces without inventing openings, fixtures, or furniture placements. Preserve established lighting locations and state without inventing shadows.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "e46e1ada4e428202920a48c865e9ebc9085ac7e911b3f3aa72a1073aa64ce2bb",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "overview-undetermined-relations",
+      "view": "overview",
+      "before_words": 464,
+      "after_words": 209,
+      "prepared_prompt": "Create a wide oblique bird’s-eye view looking down at roughly 45 degrees, showing substantial floor area, the armchair’s upper surfaces and footprint, and the round tabletop with its book, alongside visible sides and clear perspective. Use reference image 1 for scene identity, preserving the furniture’s world-space positions, counts, materials, condition and light-source locations. Move the virtual camera beyond any original doorway or foreground obstruction, retaining that structure without letting it block the overview. Maintain readable depth without an eye-level horizon; use a roof cutaway only as a viewing device if needed. Continue established materials across newly exposed plain surfaces without inventing openings, objects or shadow details.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "7ef757e334ee25570b1976cbe0f95b0029ee1eb3ef010570ddf4b8b62e5ad5d3",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "reverse-light-anchor",
+      "view": "reverse",
+      "before_words": 465,
+      "after_words": 205,
+      "prepared_prompt": "Create an eye-level reverse view from the opposite side of the reading room, looking back toward the original camera position with the entrance-side boundary in the background and the original far wall behind the new camera. Use reference image 1 for scene identity. Keep the chair above the rug in their fixed world positions, showing the chair’s opposite-facing surfaces and the rug beneath it. Preserve the window on the wall left of the entrance, its low afternoon sunlight, and the existing chair-shadow state. Rebuild the perspective without mirroring, cropping, or recoloring; continue established plain materials without inventing openings, fixtures, rooms, or furniture.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "71aee43b80a584f51189a1dfe9d52c2061e7d7df37abe8673f562eca1af64896",
+      "graph_change_only_positive_prompt": true
+    },
+    {
+      "id": "overview-light-anchor",
+      "view": "overview",
+      "before_words": 463,
+      "after_words": 209,
+      "prepared_prompt": "Create a wide oblique bird’s-eye view of the reading room, looking down at roughly 45 degrees, with substantial floor area, visible object tops and sides, and readable perspective without an eye-level horizon. Show the chair’s upper surfaces and footprint on the plain rug, and their relationship to the single window on the wall left of the entrance. Use reference image 1 for scene identity. Move the virtual camera beyond the entrance obstruction while retaining the doorway. Use a roof cutaway solely for viewing. Preserve established positions, counts, materials, state, afternoon light source and angled chair shadow; invent no openings, objects, far-wall details or additional shadow details.\n\nAppearance treatment only:\nAnime-derived dimensional CG environment with physically believable materials, crisp surface detail and natural proportions.\n\nKeep the established light sources and time of day. Use rich readable shadows, restrained bloom and soft highlight rolloff. Warm light, when present in the scene, has golden highlights and subtle halation. Keep the environment and its depth readable across the requested view.\n\nThe camera position, projection, framing and visible surfaces follow the editing instruction above. References supply scene identity and world-space layout, not their original camera or foreground occlusion. Appearance treatment must not override the requested view. Render one new view of the same scene.",
+      "prompt_sha256": "5e90d24ec1e723d012a114ded28b2103fda3dca3028ffa36d6ed686ba7ad2d3f",
+      "graph_change_only_positive_prompt": true
+    }
+  ]
+}

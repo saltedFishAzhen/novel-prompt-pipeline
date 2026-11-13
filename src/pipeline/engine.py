@@ -251,6 +251,9 @@ class Pipeline:
                 # Preserve actual resolved content, including built-ins, so a
                 # preset implementation change cannot alter an existing run.
                 identity["style"] = self.config.style.resolved()
+                from .scene_views import render_identity
+
+                identity["scene_rendering"] = render_identity(self.config.style)
             if state_path.exists():
                 if not resume:
                     raise ValueError(
@@ -258,11 +261,17 @@ class Pipeline:
                     )
                 self.state = json.loads(state_path.read_text(encoding="utf-8"))
                 if self.state["identity"] != identity:
-                    if not self._matches_legacy_identity(self.state["identity"], identity):
+                    upgraded = self._upgrade_scene_identity(self.state["identity"], identity)
+                    previous = upgraded if upgraded is not None else self.state["identity"]
+                    if previous == identity:
+                        self.state["identity"] = previous
+                    elif self._matches_legacy_identity(previous, identity):
+                        self._legacy_run = True
+                        self.state["identity"] = previous
+                    else:
                         raise ValueError(
                             "Source/config/workflow changed; create a new run instead of resuming"
                         )
-                    self._legacy_run = True
                 self.release = PromptRelease.from_directory(self.root / "prompts")
                 if self.release.version != self.state["prompt_version"]:
                     raise ValueError("Pinned prompt snapshot does not match this run")
@@ -333,6 +342,34 @@ class Pipeline:
             self._mode_template("ref2va")
         for node in required:
             release.text(node)
+
+    def _upgrade_scene_identity(self, previous, current):
+        """Adopt the new scene policy only before any old scene rendering exists."""
+        upgraded = deepcopy(previous)
+        if "scene_rendering" not in previous and "scene_rendering" in current:
+            scene_ids = {
+                asset["asset_id"]
+                for asset in self.state.get("assets", [])
+                if asset.get("kind") == "scene"
+            }
+            media = self.state.get("media", {})
+            if (
+                self.state.get("scene_generation")
+                or self.state.get("scene_views")
+                or any(key.startswith("scene_") for key in media)
+                or any("asset_" + asset_id in media for asset_id in scene_ids)
+                or scene_ids.intersection(self.state.get("asset_media", {}))
+                or any(key.startswith("scene_") for key in self.state.get("nodes", {}))
+            ):
+                return None
+            upgraded["scene_rendering"] = deepcopy(current["scene_rendering"])
+        # Older custom presets omit the new optional fields. Adding their None
+        # defaults must not be mistaken for a user change to the original style.
+        presets = upgraded.get("config", {}).get("style", {}).get("presets", {})
+        for preset in presets.values():
+            preset.setdefault("scene_prefix", None)
+            preset.setdefault("scene_suffix", None)
+        return upgraded
 
     def _matches_legacy_identity(self, previous, current):
         """Permit pre-hybrid checkpoints to resume in their original Ref2VA mode."""

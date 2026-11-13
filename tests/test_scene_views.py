@@ -110,7 +110,13 @@ def test_four_separate_views_references_and_local_grid(tmp_path):
     }
     graphs = list(comfy.jobs.values())
     assert all(graph["37"]["inputs"]["negative_prompt"] == "BLUR" for graph in graphs)
-    assert all(graph["37"]["inputs"]["prompt"].startswith("PREFIX\n\n") for graph in graphs)
+    assert graphs[0]["37"]["inputs"]["prompt"].startswith("PREFIX\n\nMASTER ROOM")
+    for graph, view in zip(graphs[1:], ("REVERSE", "OVERVIEW", "TOPDOWN"), strict=True):
+        text = graph["37"]["inputs"]["prompt"]
+        assert text.startswith(view + " VIEW\n\n")
+        assert "PREFIX" in text and "SUFFIX" in text
+        assert text.index(view + " VIEW") < text.index("PREFIX")
+        assert "not their original camera" in text
     assert graphs[1]["44"]["inputs"]["image"] == remote["master"]
     assert graphs[2]["44"]["inputs"]["image"] == remote["master"]
     assert [graphs[3][str(44 + index)]["inputs"]["image"] for index in range(3)] == [
@@ -156,6 +162,40 @@ def test_resume_preserves_job_ids_and_original_reference(tmp_path, initial_refer
     assert len(comfy.jobs) == 4 and len(model.calls) == 3
     assert pipeline.state["asset_generation_refs"]["scene_a"] == first_reference
     assert pipeline.state["scene_views"]["scene_a"]["identity_reference"] == first_reference
+    pipeline.close()
+
+
+def test_new_scene_composition_policy_does_not_reuse_old_grid(tmp_path, monkeypatch):
+    from pipeline import scene_views
+
+    monkeypatch.setattr(scene_views, "LAYOUT_VERSION", "scene-four-views-v1")
+    first, asset, _, _ = setup_pipeline(tmp_path)
+    first.generate_scene_asset(asset)
+    original = first.state["scene_views"]["scene_a"]["group"]
+    monkeypatch.setattr(scene_views, "LAYOUT_VERSION", "scene-four-views-v2")
+    second, asset, comfy, model = setup_pipeline(tmp_path, library=first.library)
+    second.root = tmp_path / "new-policy-run"
+    second.root.mkdir()
+    second.generate_scene_asset(asset)
+    assert len(comfy.jobs) == 4 and len(model.calls) == 3
+    assert second.state["scene_views"]["scene_a"]["group"] != original
+    first.close()
+
+
+def test_scene_only_appearance_change_blocks_partial_resume_before_new_jobs(tmp_path):
+    style = StyleConfig(
+        preset="custom", presets={"custom": StylePreset(scene_suffix="First appearance")}
+    )
+    pipeline, asset, comfy, model = setup_pipeline(
+        tmp_path, style=style, comfy=Comfy(fail_reverse_once=True)
+    )
+    with pytest.raises(TimeoutError):
+        pipeline.generate_scene_asset(asset)
+    assert len(comfy.jobs) == 2
+    style.presets["custom"].scene_suffix = "Different environment appearance"
+    with pytest.raises(ValueError, match="Scene generation inputs changed"):
+        pipeline.generate_scene_asset(asset)
+    assert len(comfy.jobs) == 2 and len(model.calls) == 3
     pipeline.close()
 
 
