@@ -24,7 +24,7 @@ classifiers = [
   "Topic :: Multimedia :: Video",
 ]
 dependencies = [
-  "openai>=1.60,<3",
+  "openai>=1.60,<4",
   "httpx>=0.28,<1",
   "pydantic>=2.12,<3",
   "pydantic-settings>=2.10,<3",
