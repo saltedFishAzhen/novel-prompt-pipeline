@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-11-14
 
 - Organize guides, verification records, and prompt evaluations into dedicated
   directories, standardize agent guidance, and move wheel verification to `scripts/`.
