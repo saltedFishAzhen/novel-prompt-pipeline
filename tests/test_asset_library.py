@@ -1,12 +1,15 @@
+import hashlib
 import json
 import os
 import sqlite3
 import tempfile
 import threading
+import time
 import unittest
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import closing
 from pathlib import Path
+from unittest import mock
 
 from pipeline.library import AssetLibrary
 
@@ -191,6 +194,52 @@ class AssetLibraryTests(unittest.TestCase):
             self.assertEqual(
                 connection.execute("SELECT count(*) FROM asset_file_selections").fetchone()[0], 13
             )
+
+    def test_same_content_publication_is_serialized_across_link_and_import(self):
+        self.library.register([asset()])
+        image = self.root / "concurrent.png"
+        content = b"concurrent content"
+        image.write_bytes(content)
+        target = self.library.file_root / (hashlib.sha256(content).hexdigest() + ".png")
+        entry = asset()
+        entry["files"] = [{"local_path": str(image), "role": "reference"}]
+        barrier = threading.Barrier(2)
+        original_mkstemp = tempfile.mkstemp
+        original_replace = os.replace
+        publications = []
+
+        def simultaneous_temporary(*args, **kwargs):
+            handle, name = original_mkstemp(*args, **kwargs)
+            try:
+                barrier.wait(timeout=10)
+            except BaseException:
+                os.close(handle)
+                Path(name).unlink(missing_ok=True)
+                raise
+            return handle, name
+
+        def emulate_windows_replace(src, destination):
+            if Path(destination) == target:
+                time.sleep(0.05)
+                if target.exists():
+                    raise PermissionError("Windows cannot replace a file being read")
+                publications.append(str(destination))
+            return original_replace(src, destination)
+
+        with (
+            mock.patch("pipeline.library.tempfile.mkstemp", side_effect=simultaneous_temporary),
+            mock.patch("pipeline.library.os.replace", side_effect=emulate_windows_replace),
+            ThreadPoolExecutor(max_workers=2) as pool,
+        ):
+            linked = pool.submit(self.library.link_file, "c1", image)
+            imported = pool.submit(self.library.import_data, [entry])
+            self.assertEqual(
+                linked.result(timeout=20)["sha256"], hashlib.sha256(content).hexdigest()
+            )
+            self.assertEqual(imported.result(timeout=20)[0]["asset_id"], "c1")
+        self.assertEqual(publications, [str(target)])
+        self.assertEqual(target.read_bytes(), content)
+        self.assertEqual(len(self.library.files("c1")), 1)
 
     def test_external_managed_directory_is_rejected_for_link_and_import(self):
         self.library.register([asset()])

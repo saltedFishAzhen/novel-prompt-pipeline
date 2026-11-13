@@ -16,6 +16,7 @@ from contextlib import closing
 from pathlib import Path
 from typing import Any
 
+from filelock import FileLock
 from sqlalchemy.exc import IntegrityError
 
 from .database.catalog import create_catalog_engine, migrate_catalog
@@ -120,6 +121,26 @@ class AssetLibrary:
         if path.is_symlink() or path.resolve(strict=False).parent != root:
             raise ValueError("Managed asset filename escapes the managed directory")
         return path
+
+    def _publish_managed(self, temporary: Path, stored_name: str, sha: str) -> Path:
+        """Publish one content-addressed file without replacing another writer's file."""
+        # Keep the marker inode/handle stable across holders and processes. A
+        # persistent marker does not mean that the OS lock is still held.
+        lock_path = self._managed_path(f".{sha}.lock")
+        with FileLock(str(lock_path), timeout=30, preserve_lock_file=True):
+            self._managed_root()
+            destination = self._managed_path(stored_name)
+            if destination.exists():
+                if (
+                    destination.is_symlink()
+                    or not destination.is_file()
+                    or _file_hash(destination) != sha
+                ):
+                    raise ValueError(f"Existing managed file failed integrity check: {destination}")
+            else:
+                self._managed_root()
+                os.replace(temporary, destination)
+            return destination
 
     def _connect(self) -> _CatalogConnection:
         return _CatalogConnection(self.engine.connect())
@@ -362,17 +383,7 @@ class AssetLibrary:
                     out.write(block)
             sha = digest.hexdigest()
             stored = sha + suffix
-            destination = self._managed_path(stored)
-            if destination.exists():
-                if (
-                    destination.is_symlink()
-                    or not destination.is_file()
-                    or _file_hash(destination) != sha
-                ):
-                    raise ValueError(f"Existing managed file failed integrity check: {destination}")
-            else:
-                self._managed_root()
-                os.replace(temp, destination)
+            destination = self._publish_managed(temp, stored, sha)
             with closing(self._connect()) as conn:
                 conn.execute("BEGIN IMMEDIATE")
                 try:
@@ -401,8 +412,7 @@ class AssetLibrary:
                                 ):
                                     for block in iter(lambda: incoming.read(1024 * 1024), b""):
                                         output.write(block)
-                                self._managed_root()
-                                os.replace(name2, linked_path)
+                                self._publish_managed(Path(name2), item["stored_name"], sha)
                             finally:
                                 self._remove_temporary(Path(name2))
                         if linked_path.is_symlink() or _file_hash(linked_path) != sha:
@@ -548,19 +558,7 @@ class AssetLibrary:
                     if media.get("sha256") and sha != media["sha256"]:
                         raise ValueError(f"Asset file hash mismatch: {asset['asset_id']}")
                     stored = sha + suffix
-                    destination = self._managed_path(stored)
-                    if destination.exists():
-                        if (
-                            destination.is_symlink()
-                            or not destination.is_file()
-                            or _file_hash(destination) != sha
-                        ):
-                            raise ValueError(
-                                f"Existing managed file failed integrity check: {destination}"
-                            )
-                    else:
-                        self._managed_root()
-                        os.replace(temporary, destination)
+                    self._publish_managed(temporary, stored, sha)
                     staged[index, media_index] = (
                         role,
                         sha,
