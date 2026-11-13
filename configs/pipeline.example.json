@@ -1,0 +1,48 @@
+{
+  "prompt_project": "../prompts",
+  "asset_library": "../runs/library/assets.sqlite3",
+  "project_id": "my-story",
+  "reuse_existing_assets": true,
+  "prompt_version": null,
+  "batch_size": 4,
+  "first_panel_index": 0,
+  "rewrite": true,
+  "summarize": true,
+  "strict_asset_validation": true,
+  "validation_retries": 1,
+  "min_seconds": 4,
+  "max_seconds": 15,
+  "generation_mode": "auto",
+  "comfyui": null,
+  "style": {
+    "preset": "cinematic_anime_cg",
+    "presets": {},
+    "image_negative": null
+  },
+  "llm": {
+    "model": "",
+    "base_url": "",
+    "api_key_env": "OPENAI_API_KEY",
+    "api": "chat_completions",
+    "timeout": 180,
+    "max_retries": 2,
+    "extra": {}
+  },
+  "media": {
+    "image_profile": "qwen",
+    "video_profile": "ref2va",
+    "i2va_profile": "i2va",
+    "bindings_file": null,
+    "workflows_dir": null,
+    "timeout": 1800,
+    "poll_interval": 2,
+    "seed": 1,
+    "reference_audios": [],
+    "character_face_references": {},
+    "asset_width": 1024,
+    "asset_height": 576,
+    "prop_size": 1024,
+    "frame_width": 576,
+    "frame_height": 1024
+  }
+}

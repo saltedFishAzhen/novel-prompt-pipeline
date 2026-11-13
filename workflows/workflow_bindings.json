@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "qwen": {
+      "workflow": "qwen-image-2.1-ref-t2i-api.json",
+      "bindings": {
+        "prompt": [
+          {
+            "node_id": "37",
+            "input": "prompt",
+            "type": "str"
+          }
+        ],
+        "negative_prompt": [
+          {
+            "node_id": "37",
+            "input": "negative_prompt",
+            "type": "str"
+          }
+        ],
+        "seed": [
+          {
+            "node_id": "23",
+            "input": "seed",
+            "type": "int"
+          }
+        ],
+        "width": [
+          {
+            "node_id": "36",
+            "input": "width",
+            "type": "int"
+          }
+        ],
+        "height": [
+          {
+            "node_id": "36",
+            "input": "height",
+            "type": "int"
+          }
+        ]
+      },
+      "first_frame": null,
+      "reference_slots": [
+        {
+          "load": {
+            "node_id": "44",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_1"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "45",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_2"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "46",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_3"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "47",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_4"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "48",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_5"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "49",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_6"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "50",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_7"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "51",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_8"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "52",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_9"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "53",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_10"
+            }
+          ]
+        }
+      ],
+      "capabilities": {
+        "has_first_frame": false,
+        "reference_capacity": 10,
+        "supports_prompt": true,
+        "supports_seed": true,
+        "supports_width": true,
+        "supports_height": true,
+        "supports_length": false,
+        "supports_reference_images": true
+      }
+    },
+    "qwen-unlock": {
+      "workflow": "qwen-image-2.1-ref-t2i-api-unlock.json",
+      "bindings": {
+        "prompt": [
+          {
+            "node_id": "37",
+            "input": "prompt",
+            "type": "str"
+          }
+        ],
+        "negative_prompt": [
+          {
+            "node_id": "37",
+            "input": "negative_prompt",
+            "type": "str"
+          }
+        ],
+        "seed": [
+          {
+            "node_id": "23",
+            "input": "seed",
+            "type": "int"
+          }
+        ],
+        "width": [
+          {
+            "node_id": "36",
+            "input": "width",
+            "type": "int"
+          }
+        ],
+        "height": [
+          {
+            "node_id": "36",
+            "input": "height",
+            "type": "int"
+          }
+        ]
+      },
+      "first_frame": null,
+      "reference_slots": [
+        {
+          "load": {
+            "node_id": "44",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_1"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "45",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_2"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "46",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_3"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "47",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_4"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "48",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_5"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "49",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_6"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "50",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_7"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "51",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_8"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "52",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_9"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "53",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "37",
+              "input": "images.image_10"
+            }
+          ]
+        }
+      ],
+      "capabilities": {
+        "has_first_frame": false,
+        "reference_capacity": 10,
+        "supports_prompt": true,
+        "supports_seed": true,
+        "supports_width": true,
+        "supports_height": true,
+        "supports_length": false,
+        "supports_reference_images": true
+      }
+    },
+    "ref2va": {
+      "workflow": "h3-ref2va-api.json",
+      "bindings": {
+        "prompt": [
+          {
+            "node_id": "28",
+            "input": "prompt",
+            "type": "str"
+          }
+        ],
+        "seed": [
+          {
+            "node_id": "11",
+            "input": "noise_seed",
+            "type": "int"
+          }
+        ],
+        "length": [
+          {
+            "node_id": "27",
+            "input": "value",
+            "type": "number"
+          }
+        ]
+      },
+      "first_frame": {
+        "node_id": "66",
+        "input": "image",
+        "type": "str"
+      },
+      "reference_slots": [
+        {
+          "load": {
+            "node_id": "901",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_1"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_1"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "902",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_2"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_2"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "903",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_3"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_3"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "904",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_4"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_4"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "905",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_5"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_5"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "906",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_6"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_6"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "907",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_7"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_7"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "908",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_8"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_8"
+            }
+          ]
+        }
+      ],
+      "capabilities": {
+        "has_first_frame": true,
+        "reference_capacity": 8,
+        "supports_prompt": true,
+        "supports_seed": true,
+        "supports_width": false,
+        "supports_height": false,
+        "supports_length": true,
+        "note": "The first-frame image has a separate loader from the eight optional asset image references.",
+        "audio_reference_capacity": 3,
+        "requires_first_frame": true,
+        "supports_reference_images": true,
+        "supports_reference_audios": true
+      },
+      "requires_first_frame": true,
+      "audio_slots": [
+        {
+          "load": {
+            "node_id": "107",
+            "input": "audio",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_audios.ref_audio_0"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_audios.ref_audio_0"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "108",
+            "input": "audio",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_audios.ref_audio_1"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_audios.ref_audio_1"
+            }
+          ]
+        },
+        {
+          "load": {
+            "node_id": "109",
+            "input": "audio",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_audios.ref_audio_2"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_audios.ref_audio_2"
+            }
+          ]
+        }
+      ]
+    },
+    "i2va": {
+      "workflow": "h3-i2va-api.json",
+      "bindings": {
+        "prompt": [
+          {
+            "node_id": "139",
+            "input": "prompt",
+            "type": "str"
+          },
+          {
+            "node_id": "903",
+            "input": "prompt",
+            "type": "str"
+          }
+        ],
+        "seed": [
+          {
+            "node_id": "137",
+            "input": "noise_seed",
+            "type": "int"
+          }
+        ],
+        "width": [
+          {
+            "node_id": "122",
+            "input": "自定义宽",
+            "type": "int"
+          }
+        ],
+        "height": [
+          {
+            "node_id": "122",
+            "input": "自定义高",
+            "type": "int"
+          }
+        ],
+        "length": [
+          {
+            "node_id": "141",
+            "input": "value",
+            "type": "number"
+          }
+        ]
+      },
+      "first_frame": {
+        "node_id": "114",
+        "input": "image",
+        "type": "str"
+      },
+      "reference_slots": [],
+      "capabilities": {
+        "has_first_frame": true,
+        "reference_capacity": 0,
+        "supports_prompt": true,
+        "supports_seed": true,
+        "supports_width": true,
+        "supports_height": true,
+        "supports_length": true,
+        "requires_first_frame": true,
+        "audio_reference_capacity": 0
+      },
+      "requires_first_frame": true
+    }
+  }
+}

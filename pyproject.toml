@@ -1,0 +1,101 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "novel-prompt-pipeline"
+version = "0.2.0"
+description = "Versioned prompts, OpenAI-compatible inference and remote ComfyUI orchestration"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{name = "Novel Prompt Pipeline contributors"}]
+keywords = ["llm", "comfyui", "storyboard", "prompts", "mcp"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Video",
+]
+dependencies = [
+  "openai>=1.60,<3",
+  "httpx>=0.28,<1",
+  "pydantic>=2.12,<3",
+  "pydantic-settings>=2.10,<3",
+  "python-dotenv>=1.2,<2",
+  "filelock>=3.19,<4",
+  "sqlalchemy>=2.0,<3",
+  "alembic>=1.16,<2",
+  "mcp>=1.20,<2",
+  "pillow>=12,<13",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2,<2",
+  "hatchling>=1.27,<2",
+  "editables>=0.5,<1",
+  "pytest>=8,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+  "twine>=6,<7",
+]
+
+[project.scripts]
+novel-pipeline = "pipeline.cli:main"
+prompt-project = "prompt_project.__main__:main"
+comfyui-remote = "comfyui_client.__main__:main"
+
+[tool.hatch.build]
+exclude = ["**/__pycache__", "**/*.pyc", "**/.env", "/.tmp", "/.venv", "/runs", "/prompts/src/styles"]
+
+[tool.hatch.build.targets.wheel]
+core-metadata-version = "2.4"
+packages = ["src/pipeline", "prompts/runtime/prompt_project", "src/comfyui_client", "src/novel_prompt_pipeline", "src/llm"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"prompts/src/common.json" = "novel_prompt_pipeline/_resources/prompts/src/common.json"
+"prompts/src/modes" = "novel_prompt_pipeline/_resources/prompts/src/modes"
+"prompts/src/nodes" = "novel_prompt_pipeline/_resources/prompts/src/nodes"
+"prompts/compiled" = "novel_prompt_pipeline/_resources/prompts/compiled"
+"prompts/releases" = "novel_prompt_pipeline/_resources/prompts/releases"
+"prompts/current.json" = "novel_prompt_pipeline/_resources/prompts/current.json"
+"prompts/tools" = "novel_prompt_pipeline/_resources/prompts/tools"
+"prompts/tests/fixtures" = "novel_prompt_pipeline/_resources/prompts/tests/fixtures"
+"prompts/evaluations/suites" = "novel_prompt_pipeline/_resources/prompts/evaluations/suites"
+"workflows" = "novel_prompt_pipeline/_resources/workflows"
+"configs/pipeline.example.json" = "novel_prompt_pipeline/_resources/configs/pipeline.example.json"
+".env.example" = "novel_prompt_pipeline/_resources/env.example"
+
+[tool.hatch.build.targets.sdist]
+core-metadata-version = "2.4"
+include = ["/src", "/tests", "/scripts", "/prompts/*.md", "/prompts/docs", "/prompts/runtime", "/prompts/src", "/prompts/compiled", "/prompts/releases", "/prompts/current.json", "/prompts/tools", "/prompts/tests/fixtures", "/prompts/evaluations/suites", "/prompts/evaluations/rounds", "/workflows", "/configs/pipeline.example.json", "/docs", "/.github", "/.env.example", "/*.md", "/LICENSE", "/pyproject.toml", "/requirements*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+filterwarnings = ["error", "ignore:datetime.datetime.utcnow.*:DeprecationWarning:alembic.*"]
+
+[tool.coverage.run]
+source = ["pipeline", "prompt_project", "comfyui_client", "llm", "novel_prompt_pipeline"]
+branch = true
+omit = ["*/_resources/*", "*/database/migrations/versions/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "prompts/runtime"]
+extend-exclude = ["prompts/src", "prompts/compiled", "prompts/releases", "prompts/evaluations", "prompts/tests", "prompts/tools", ".tmp", ".venv", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

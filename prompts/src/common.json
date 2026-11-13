@@ -1,0 +1,90 @@
+{
+  "_comment": "三模板共用的结构化数据。改这里 = 三份模板同时改。",
+  "word_limit": 450,
+  "word_limit_warning": 480,
+  "output_format": {
+    "top_level": "只输出合法 JSON 数组。顶层是 []，不是对象，不带 results 包装。",
+    "no_wrapping": "不要 Markdown 代码块、前言、注释或总结；整条回复的第一个字符是 [，最后一个字符是 ]。",
+    "fields": "每个对象且仅有 name、aliases、description 三个字符串字段。",
+    "english": "description 为英文，可直接用于生图。原文缺失且不能确定的视觉属性直接省略。只陈述可见事实、必要版面要求与规定的 Reuses 对应子句，不写资料是否缺失、写作者是否推断、如何遵守约束或避免添加信息的解释性句子及从句，包括含义相同的改写。原文明确的物理否定事实与版面必需的无人句仍如实保留。",
+    "escaping": "所有双引号、反斜杠、换行按 JSON 转义，禁止尾随逗号。",
+    "empty": "没有可提取对象时输出 []，宁可少列不可滥列。"
+  },
+  "input_material": {
+    "header": "输入材料",
+    "novel": "小说原文：",
+    "copy": "推文文案（辅助）：",
+    "plot": "故事情节（辅助）：",
+    "rule": "以小说原文为主要依据，辅助材料仅用于消歧，不得凭空增加小说中不存在的实体。",
+    "empty_slot": "（本次无{}）"
+  },
+  "banned_words": {
+    "human": [
+      "person",
+      "people",
+      "human",
+      "figure",
+      "character",
+      "silhouette",
+      "creature",
+      "humanoid"
+    ],
+    "hand_compounds": {
+      "right-hand wall": "the wall on the right",
+      "hand pump": "lever pump 或 manual pump",
+      "handrail": "stair rail",
+      "hand rail": "stair rail",
+      "door handle": "door lever 或 pull",
+      "nailed": "pinned",
+      "handmade": "made without machinery 或直接省略",
+      "handwritten": "written",
+      "handful": "改写数量",
+      "second-hand": "used",
+      "shorthand": "改写"
+    },
+    "body_scale": [
+      "hand",
+      "fingers",
+      "palm",
+      "forearm",
+      "arm"
+    ],
+    "scale_objects": "打火机、直尺、茶叶罐、书本、口袋大小的手机",
+    "forbidden_generic": [
+      "qwen",
+      "midjourney",
+      "4k",
+      "8k",
+      "masterpiece",
+      "best quality"
+    ]
+  },
+  "state_rules": {
+    "variant_only": "基准记录不像变体那样需要「与基准的差异」状态段，不要为了凑一个结尾编造一句空的 State 句；以一致性尾句收尾即可。若基准记录本身在原文里就带着一个明确状态（如单造型角色末尾被雨淋湿、单状态物件当前处于打开/使用中），把这个状态写进骨架之后、一致性尾句之前的正文里，如实描述，不要丢弃，也不要套用 State: 标签。原文交代的附着物同样处理：缸里插着一支铅笔、刀上缠着布条这类，写在物件本体之后、一致性尾句之前的正文里，不要塞进版面句，也不要当作骨架的固有部件。只有变体记录才需要独立的、位于最后的状态段。",
+    "no_light_tail": "光线描述不得作为全文结尾。",
+    "light_position": "光线说明、Reuses 子句、状态段三者的先后顺序固定为：一致性尾句 → 光线说明 → Reuses 子句 → 状态段。变体记录的光线说明若与状态相关，写进状态段即可，不必单列。注意这条只约束变体记录；基准记录没有状态段，把光线说明写在一致性尾句之前，让一致性尾句仍然收尾。"
+  },
+  "naming": {
+    "base_prefix": "默认的",
+    "state_max_chars": 8,
+    "rule": "只要某{}存在变体，基准记录的名字一律为「默认的+{}」，不得直接用原文名本身；没有任何变体时，name 就是原文名本身，不加任何前缀。本条命名规则优先于「保留原文写法」的保真规则：「默认的」前缀属于命名规则要求的构造，不算改写原文。",
+    "state_form": "变体一律用「状态说明+{}」的形容词修饰式，状态在前、实体在后、不加括号与标点。状态说明连同连接实体的助词合计最多 8 个汉字；同一实体组内选择能区分各条记录的最少必要状态，单一变化已足以区分时不堆叠其他变化，仍无法区分时才增加必要信息；名称在全数组唯一且读起来自然。",
+    "unique": "name 在全数组内唯一。"
+  },
+  "aliases": {
+    "rule": "aliases 一律填不带状态说明的原文{}，同一{}组内的基准记录与所有变体都填同一个值。即使原文没有别名，基准记录也要填这一项——它同时是名称来源检查的依据，为空会导致 name 被判为编造。例如 `默认的<{}名>, 状态说明的<{}名>` 两条的 aliases 都是「<{}名>」。aliases 只承担人工对应与来源校验，不承担区分职责，区分只靠 name。原文另有的其他专名照常追加。",
+    "format": "必须用英文逗号分隔的字符串；没有其他别名时就填这一个原文名，不要写空字符串、不要写成 [] 或 null。",
+    "reuse_exemption": "唯一的例外：变体记录里那句 `Reuses base X: <原文名>` 必须写出原文名，而它正是该组的 aliases。这一句是「description 不得出现 name 或 aliases 字面文字」这条禁令的唯一豁免；除它之外，description 的任何位置都不得出现名称或别名。"
+  },
+  "self_check_common": [
+    "顶层是数组",
+    "name 在全数组唯一",
+    "description 为英文、单张图片，画面比例遵守各模式要求；未知属性直接省略，不解释信息缺失、推断过程或遵守约束，保留有据的物理否定与必要版面要求",
+    "变体名仅保留组内区分所需状态，实体名前状态说明连同助词不超过 8 个汉字",
+    "基准记录与变体记录各自落在自己的词数区间内，都不超过 {word_limit} 词",
+    "变体状态段在最后、基准记录无独立状态段",
+    "Reuses 子句至多出现一次且以句号结束",
+    "场景和物品遵守各自无人用字规则；角色只用符合其身份的人物或非人指代，三模式均不写 character",
+    "不含模型名、参数或对白"
+  ]
+}

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+# Published releases and recorded evaluations are
+# byte-preserved evidence. Normalizing line endings would invalidate hashes.
+prompts/releases/** -text -whitespace
+prompts/evaluations/** -text -whitespace
+*.png binary
+*.jpg binary
+*.mp4 binary
+*.wav binary

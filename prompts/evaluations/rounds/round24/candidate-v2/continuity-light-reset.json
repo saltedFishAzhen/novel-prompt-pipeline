@@ -1,0 +1,16 @@
+{
+  "id": "continuity-light-reset",
+  "node": "continuity",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "28ac2baad77346f6519e726c3879496b97719da12f51dd64ab4e1e47b6c4020c",
+  "request_sha256": "c81bb37b956bbe5e507c28a7070c74fb824b84c9ea0a6b94332b230a21865345",
+  "raw_output": "{\"summary\":\"文本描述的批末状态：同一工作室已转为夜间，窗户昏暗，无日光；亮着的台灯照亮Lina的脸，台灯具体摆放位置未提供。Lina仍站在同一张桌子旁，看着台灯；未描述离开桌边或其他动作完成。她相对桌子的具体方位、身体朝向、服装及物品持有关系未提供/无法从本批文案确认。固定镜头位于窗边、朝向入口，取代此前朝向窗墙的观察方向；镜头变化不代表人物或光源移动。桌子与窗、入口之间的具体布局及其他道具状态未提供。以上仅为文案所述状态，未提供生成视频，无法确认实际成片末帧。\"}",
+  "request_id": "37d0fe22-8a40-47f4-8a00-0a8368e3bd29",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 11.947
+}

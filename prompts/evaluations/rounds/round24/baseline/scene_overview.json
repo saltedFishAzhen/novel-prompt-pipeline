@@ -1,0 +1,16 @@
+{
+  "id": "scene_overview",
+  "node": "scene_overview",
+  "release": "8eb7c1489659a15eea3e75ccd296fa3f21d80ae1e8f80fb4da54050ee23da974",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "471350fd9ef4919668c8b6124e9551cc7e6f7abe84b92c3820b1a7c37541ad37",
+  "request_sha256": "6ca200b7e9de21a68a7e521b3339b4834fcdb5eb97d6781be514676c3b465700",
+  "raw_output": "Raise the camera well above eye level, look down at approximately 45 degrees, and pull back to frame the established single-room space. Use reference image 1 as the scene identity guide, preserving the entrance-to-window orientation and bed-left, table-right relationships. Retain perspective and visible object side surfaces, clearly distinct from a vertical top-down view. Preserve the world-space layout, object counts, proportions, materials, lighting, and current state. Use a roof cutaway only if needed for interior visibility, never as physical destruction. Do not copy the source’s eye-level framing, mirror or rearrange objects, expand the location, or add fixtures, annotations, or collage.",
+  "request_id": "b04416ef-7938-46a2-b0c5-f70ad35fe7d7",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 7.461
+}

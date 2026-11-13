@@ -1,0 +1,281 @@
+{
+  "assets": {
+    "character": {
+      "file": "files/assets/character.txt",
+      "sha256": "a3457a39c7b1b0b3a744bf98d110dc5bd1e2c764e1f4bacde2ecd3a68d8deeeb"
+    },
+    "prop": {
+      "file": "files/assets/prop.txt",
+      "sha256": "23f6dd4db93ad8b0757d6b6eee1d6f2812665ff40d70926317ef8148fd37c60d"
+    },
+    "scene": {
+      "file": "files/assets/scene.txt",
+      "sha256": "a8227773dd59359b86e73e55dfa796e9f49aa487b8e14185790f575c8a8849c3"
+    }
+  },
+  "nodes": {
+    "asset.character": {
+      "file": "files/assets/character.txt",
+      "output_contract": {
+        "description": "JSON array of scene, character, or prop asset cards.",
+        "entry_fields": [
+          "name",
+          "aliases",
+          "description"
+        ],
+        "format": "json_asset_array"
+      },
+      "sha256": "a3457a39c7b1b0b3a744bf98d110dc5bd1e2c764e1f4bacde2ecd3a68d8deeeb",
+      "variables": [
+        "小说原文",
+        "推文文案",
+        "故事情节"
+      ]
+    },
+    "asset.prop": {
+      "file": "files/assets/prop.txt",
+      "output_contract": {
+        "description": "JSON array of scene, character, or prop asset cards.",
+        "entry_fields": [
+          "name",
+          "aliases",
+          "description"
+        ],
+        "format": "json_asset_array",
+        "image_aspect_ratio": "1:1"
+      },
+      "sha256": "23f6dd4db93ad8b0757d6b6eee1d6f2812665ff40d70926317ef8148fd37c60d",
+      "variables": [
+        "小说原文",
+        "推文文案",
+        "故事情节"
+      ]
+    },
+    "asset.scene": {
+      "file": "files/assets/scene.txt",
+      "output_contract": {
+        "description": "JSON array of scene, character, or prop asset cards.",
+        "entry_fields": [
+          "name",
+          "aliases",
+          "description"
+        ],
+        "format": "json_asset_array"
+      },
+      "sha256": "a8227773dd59359b86e73e55dfa796e9f49aa487b8e14185790f575c8a8849c3",
+      "variables": [
+        "小说原文",
+        "推文文案",
+        "故事情节"
+      ]
+    },
+    "asset_binding": {
+      "file": "files/nodes/asset_binding.md",
+      "output_contract": {
+        "description": "JSON arrays: all selected candidate IDs for the video; first_frame_asset_ids is the subset visible in its first frame.",
+        "field_types": {
+          "asset_ids": "array",
+          "first_frame_asset_ids": "array"
+        },
+        "format": "json_object",
+        "required_fields": [
+          "asset_ids",
+          "first_frame_asset_ids"
+        ],
+        "subset_fields": {
+          "first_frame_asset_ids": "asset_ids"
+        }
+      },
+      "sha256": "a43873c3fc1acc3b59ecbd4efb8f4cbde365b080d5a86149c88363d2b7c7a130",
+      "variables": [
+        "当前分镜文案",
+        "候选资产"
+      ]
+    },
+    "context_summary": {
+      "file": "files/nodes/context_summary.md",
+      "output_contract": {
+        "description": "JSON object with story and current-chapter factual summaries.",
+        "format": "json_object",
+        "required_fields": [
+          "story",
+          "chapter"
+        ]
+      },
+      "sha256": "3ed729af3e8cda8b7aa9182ae22c15ee2180ce01707f823d7835220221035642",
+      "variables": [
+        "小说原文",
+        "当前章节原文"
+      ]
+    },
+    "continuity": {
+      "file": "files/nodes/continuity.md",
+      "output_contract": {
+        "description": "Observed-from-script end-state summary for the next prompt batch; not a claim about generated frames.",
+        "format": "json_object",
+        "required_fields": [
+          "summary"
+        ]
+      },
+      "sha256": "c81c482dc87dd875e82f0c6f7912f09f2612a39c35195164d495dea98582680e",
+      "variables": [
+        "前批末镜状态",
+        "本批分镜结果"
+      ]
+    },
+    "novel_to_script": {
+      "file": "files/nodes/novel_to_script.md",
+      "output_contract": {
+        "description": "Chronological Chinese storyboard scripts separated by _::~RECORD::~_; no generated prompt fields.",
+        "format": "record_delimited_text",
+        "record_schema": "text"
+      },
+      "sha256": "d96275f12815489f57bba06905b2fdbe0e8afd2ccdd6acbcbecaabf88cdf6f25",
+      "variables": [
+        "输入文案"
+      ]
+    },
+    "rewrite": {
+      "file": "files/nodes/rewrite.md",
+      "output_contract": {
+        "description": "One rewritten Chinese narration paragraph, no wrapper fields.",
+        "format": "single_line_text"
+      },
+      "sha256": "a891c0268c503ecedffd5fe61849995fce17f936cf4c6b97f14e1fd66a92454b",
+      "variables": [
+        "故事情节",
+        "角色信息",
+        "推文文案",
+        "输入文案"
+      ]
+    },
+    "rewrite_batch": {
+      "file": "files/nodes/rewrite_batch.md",
+      "output_contract": {
+        "description": "results[] preserves each panel_index and contains rewritten text.",
+        "format": "json_object",
+        "required_fields": [
+          "results"
+        ]
+      },
+      "sha256": "6f324c59575596f1a14f08f6e34a6729742c2c8f8e5f1e94654b3bbeab2893b3",
+      "variables": [
+        "故事情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "推文文案",
+        "章节文案"
+      ]
+    },
+    "scene_overview": {
+      "file": "files/nodes/scene_overview.md",
+      "output_contract": {
+        "description": "One English image-generation instruction for an elevated oblique wide overview, conditioned on master reference image 1.",
+        "format": "single_line_text"
+      },
+      "sha256": "b898e894e05a1ac7dd8f8262589c2298656277ab50d3eea783787eb5d69563df",
+      "variables": [
+        "场景描述"
+      ]
+    },
+    "scene_reverse_view": {
+      "file": "files/nodes/scene_reverse_view.md",
+      "output_contract": {
+        "description": "One English image-generation instruction for a reverse eye-level view, conditioned on master reference image 1.",
+        "format": "single_line_text"
+      },
+      "sha256": "5606f8901d9a23b6a3e2ec40f5a4435d61a9fe7abf4de0b66e084a6dbddc9e55",
+      "variables": [
+        "场景描述"
+      ]
+    },
+    "scene_topdown": {
+      "file": "files/nodes/scene_topdown.md",
+      "output_contract": {
+        "description": "One English image-generation instruction for a vertical top-down view, conditioned on master, reverse, and overview references in that order.",
+        "format": "single_line_text"
+      },
+      "sha256": "d20a387e286369bb028a11241b44a8e766919340699697e09f6f864e9c69fd6b",
+      "variables": [
+        "场景描述"
+      ]
+    },
+    "shot_plan": {
+      "file": "files/nodes/shot_plan.md",
+      "output_contract": {
+        "description": "shots[] preserves each panel_index and provides generation_mode (i2va or ref2va) and a short reason.",
+        "field_types": {
+          "shots": "array"
+        },
+        "format": "json_object",
+        "required_fields": [
+          "shots"
+        ]
+      },
+      "sha256": "6da82f58d46a280cb26914d27d0e406a0759e361472d46042b580a77452ae338",
+      "variables": [
+        "章节文案",
+        "运行约束"
+      ]
+    },
+    "storyboard": {
+      "file": "files/nodes/storyboard.md",
+      "output_contract": {
+        "description": "Two fields: English image prompt and one six-section video prompt, separated by === inside output markers.",
+        "format": "single_record_text"
+      },
+      "sha256": "eadca10aff06958193a2409a44a606d213d5f70474c9a947714c322732148921",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "输入文案",
+        "运行约束"
+      ]
+    },
+    "storyboard_batch": {
+      "file": "files/nodes/storyboard_batch.md",
+      "output_contract": {
+        "description": "Exactly one record per supplied panel, preserving panel index; image prompt and video prompt fields.",
+        "format": "record_delimited_text",
+        "record_schema": "storyboard"
+      },
+      "sha256": "8fc1307d57b93fafda5b6f041d865d87da34b86a76abc1bafc35af86cf4e08a3",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "章节文案",
+        "运行约束"
+      ]
+    },
+    "storyboard_i2va_batch": {
+      "file": "files/nodes/storyboard_i2va_batch.md",
+      "output_contract": {
+        "description": "Exactly one I2VA record per supplied panel, preserving panel index; image prompt and three-section video prompt fields.",
+        "format": "record_delimited_text",
+        "record_schema": "storyboard_i2va"
+      },
+      "sha256": "d156bef70b43bcf23956f07aae2819b2dd8ffa8cc3e7d088fdeb11f784e109b7",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "章节文案",
+        "运行约束"
+      ]
+    }
+  },
+  "schema_version": 1,
+  "version": "ba85ad15e074c2e62c60cba8544c271ba260d3deaf297bdc7d8ef63960d36ac5"
+}

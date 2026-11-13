@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "nodes": {
+    "novel_to_script": {
+      "file": "novel_to_script.md",
+      "variables": [
+        "输入文案"
+      ],
+      "output_contract": {
+        "format": "record_delimited_text",
+        "description": "Chronological Chinese storyboard scripts separated by _::~RECORD::~_; no generated prompt fields.",
+        "record_schema": "text"
+      }
+    },
+    "rewrite": {
+      "file": "rewrite.md",
+      "variables": [
+        "故事情节",
+        "角色信息",
+        "推文文案",
+        "输入文案"
+      ],
+      "output_contract": {
+        "format": "single_line_text",
+        "description": "One rewritten Chinese narration paragraph, no wrapper fields."
+      }
+    },
+    "rewrite_batch": {
+      "file": "rewrite_batch.md",
+      "variables": [
+        "故事情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "推文文案",
+        "章节文案"
+      ],
+      "output_contract": {
+        "format": "json_object",
+        "required_fields": [
+          "results"
+        ],
+        "description": "results[] preserves each panel_index and contains rewritten text."
+      }
+    },
+    "storyboard": {
+      "file": "storyboard.md",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "输入文案",
+        "运行约束"
+      ],
+      "output_contract": {
+        "format": "single_record_text",
+        "description": "Two fields: English image prompt and one six-section video prompt, separated by === inside output markers."
+      }
+    },
+    "storyboard_batch": {
+      "file": "storyboard_batch.md",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "章节文案",
+        "运行约束"
+      ],
+      "output_contract": {
+        "format": "record_delimited_text",
+        "description": "Exactly one record per supplied panel, preserving panel index; image prompt and video prompt fields.",
+        "record_schema": "storyboard"
+      }
+    },
+    "storyboard_i2va_batch": {
+      "file": "storyboard_i2va_batch.md",
+      "variables": [
+        "故事情节",
+        "章节情节",
+        "角色信息",
+        "场景信息",
+        "物品信息",
+        "前面分镜:2",
+        "章节文案",
+        "运行约束"
+      ],
+      "output_contract": {
+        "format": "record_delimited_text",
+        "description": "Exactly one I2VA record per supplied panel, preserving panel index; image prompt and three-section video prompt fields.",
+        "record_schema": "storyboard_i2va"
+      }
+    },
+    "shot_plan": {
+      "file": "shot_plan.md",
+      "variables": [
+        "章节文案",
+        "运行约束"
+      ],
+      "output_contract": {
+        "format": "json_object",
+        "required_fields": [
+          "shots"
+        ],
+        "field_types": {
+          "shots": "array"
+        },
+        "description": "shots[] preserves each panel_index and provides generation_mode (i2va or ref2va) and a short reason."
+      }
+    },
+    "context_summary": {
+      "file": "context_summary.md",
+      "variables": [
+        "小说原文",
+        "当前章节原文"
+      ],
+      "output_contract": {
+        "format": "json_object",
+        "required_fields": [
+          "story",
+          "chapter"
+        ],
+        "description": "JSON object with story and current-chapter factual summaries."
+      }
+    },
+    "asset_binding": {
+      "file": "asset_binding.md",
+      "variables": [
+        "当前分镜文案",
+        "候选资产"
+      ],
+      "output_contract": {
+        "format": "json_object",
+        "required_fields": [
+          "asset_ids",
+          "first_frame_asset_ids"
+        ],
+        "field_types": {
+          "asset_ids": "array",
+          "first_frame_asset_ids": "array"
+        },
+        "subset_fields": {
+          "first_frame_asset_ids": "asset_ids"
+        },
+        "description": "JSON arrays: all selected candidate IDs for the video; first_frame_asset_ids is the subset visible in its first frame."
+      }
+    },
+    "scene_reverse_view": {
+      "file": "scene_reverse_view.md",
+      "variables": ["场景描述"],
+      "output_contract": {
+        "format": "single_line_text",
+        "description": "One English image-generation instruction for a reverse eye-level view, conditioned on master reference image 1."
+      }
+    },
+    "scene_overview": {
+      "file": "scene_overview.md",
+      "variables": ["场景描述"],
+      "output_contract": {
+        "format": "single_line_text",
+        "description": "One English image-generation instruction for an elevated oblique wide overview, conditioned on master reference image 1."
+      }
+    },
+    "scene_topdown": {
+      "file": "scene_topdown.md",
+      "variables": ["场景描述"],
+      "output_contract": {
+        "format": "single_line_text",
+        "description": "One English image-generation instruction for a vertical top-down view, conditioned on master, reverse, and overview references in that order."
+      }
+    },
+    "continuity": {
+      "file": "continuity.md",
+      "variables": [
+        "前批末镜状态",
+        "本批分镜结果"
+      ],
+      "output_contract": {
+        "format": "json_object",
+        "required_fields": [
+          "summary"
+        ],
+        "description": "Observed-from-script end-state summary for the next prompt batch; not a claim about generated frames."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "first-person-empty-i2va",
+  "node": "storyboard_i2va_batch",
+  "release": "8eb7c1489659a15eea3e75ccd296fa3f21d80ae1e8f80fb4da54050ee23da974",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "fc2a89bf9745a748615712281c7cd1b0ed3bac57eeb811471a69fd5b6430e8f1",
+  "request_sha256": "620ac217a7be33321e1f17e3a6adc4b809da7f69b0007fbd669b2c8c7812d755",
+  "raw_output": "0_::~FIELD::~_A medium-close first-person view from Lina at eye height, looking down at her own anatomical right hand already resting on the lever of the closed wooden Workshop door. The lower edge of a navy cardigan sleeve is visible at the wrist. The hand, lever, and point of contact are clearly readable in the foreground; the Workshop interior is visible beyond the door with the centered far-wall window and daylight, while the table remains to the right of the window. Lina's face is outside the field of view. Static composition, no camera movement._::~FIELD::~_For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous static first-person medium-close view from Lina at eye height looks down at her anatomical right hand already resting on the lever of the closed wooden Workshop door. The navy cardigan sleeve remains visible at the wrist, and the hand, lever, and contact point stay clearly framed in the foreground. Immediately, Lina presses the lever down once with the same right hand; the lever moves under pressure, but the Workshop door remains closed. She then releases the lever naturally and the lever returns to its resting position. The hand remains near the lever without changing hands or leaving the contact area. The camera does not move and there is no cut; the Workshop interior, centered far-wall window, daylight, and table to the right of the window remain fixed spatial anchors. Subtle hand and sleeve movement accompanies a quiet lever click and release.\noverall_soundscape: Quiet Workshop room tone with a single subdued lever press and release sound; no dialogue and no other voices.\nnon_diegetic_music: N/A\n时长：6秒",
+  "request_id": "9477c0d9-3d47-4faf-b45c-11aa8b3dfa5e",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 21.6
+}

@@ -1,0 +1,17 @@
+{
+  "id": "binding-voice-only",
+  "node": "asset_binding",
+  "release": "ba85ad15e074c2e62c60cba8544c271ba260d3deaf297bdc7d8ef63960d36ac5",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "20d0fd04c4dddcf7fe3b2ec9512bafc662866d8ee79ad12ec095f9f44edcb6d6",
+  "request_sha256": "5d8c5ae8914f39b2de8e790588e018e2f816b0e1dfd03e10f7b78b761dda67a5",
+  "raw_output": "{\"asset_ids\":[\"corridor\"],\"first_frame_asset_ids\":[\"corridor\"]}",
+  "request_id": "acc8366b-54d8-400b-83e1-094a7028d1b6",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 4.452,
+  "expected_selection_match": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "summary-reader-vs-character",
+  "node": "context_summary",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "ed6cdb4c5314b2df622984257a8345031d54843e7a90c45db75e3f11814cd7b6",
+  "request_sha256": "be14618e37754a50eb1c9f3474b310179e9dfbf58bca191f31e2bbf3e022464d",
+  "raw_output": "{\n  \"story\": \"林知与弟弟多年未见。雨夜，弟弟开车来接她，叙述者向读者揭示了司机的身份，但林知此时并不知道。车内昏暗，使她看不清司机的脸。司机催她上车避雨，她仍站在车外，打算先问对方姓名，尚未开口。其他世界设定及后续发展原文未说明。\",\n  \"chapter\": \"场景为雨夜的车辆内外，出场角色为林知和作为司机的弟弟。叙述者先揭示司机是林知多年未见的弟弟，同时说明林知尚不知情。车内很暗，林知看不清司机的脸。司机说“上车，雨大”，林知仍站在车外，准备先询问对方姓名，但尚未开口。\"\n}",
+  "request_id": "00a32145-7b7b-4eba-a1a9-4d6663566771",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 24.184
+}

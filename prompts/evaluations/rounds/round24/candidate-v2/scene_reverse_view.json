@@ -1,0 +1,16 @@
+{
+  "id": "scene_reverse_view",
+  "node": "scene_reverse_view",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "09a57867c091f89a5a10a4f91ae19389877d0dd377b51900b58e89af114d41cb",
+  "request_sha256": "8b62119f63954b97151fb4cfc08ff20a2bc25125b6533204366176eae31e6610",
+  "raw_output": "Move the camera across the room to the far side, turn its viewing direction 180 degrees, and look back toward the original camera location at eye level. Use reference image 1 as the scene identity guide. The entrance-side wall and doorway now form the background; the window wall is behind the new camera. Create a distinct reverse shot, not the original framing, a mirror, or a slight lateral shift. Keep the world-space arrangement fixed, allowing viewpoint-relative left and right to change. Preserve the established room state, materials, window daylight, and known shadows from this viewpoint. Add no architecture, objects, light sources, invented shadow details, collage, or captions.",
+  "request_id": "ba039c84-22fd-4056-8d0f-4691911fde62",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 8.297
+}
