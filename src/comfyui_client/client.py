@@ -279,7 +279,7 @@ class ComfyUIClient:
                     prompt_id=prompt_id,
                 )
             try:
-                entry = self.history(prompt_id, timeout=min(self.timeout, remaining))
+                entry = self.history(prompt_id, timeout=min(self.timeout, wait_limit, remaining))
             except ComfyUIError:
                 if time.monotonic() >= deadline:
                     raise WorkflowExecutionError(

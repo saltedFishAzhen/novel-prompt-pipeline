@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import tempfile
-import time
 import traceback
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import httpx
 
@@ -159,13 +159,19 @@ class HttpxClientTests(unittest.TestCase):
 
     def test_wait_bounds_history_request_timeout_by_remaining_time(self):
         seen_timeouts = []
+        clock = [1_000_000.0]
+
+        def advance(seconds):
+            clock[0] += seconds
 
         def handler(request):
             seen_timeouts.append(request.extensions["timeout"])
-            time.sleep(0.01)
+            advance(0.01)
             return httpx.Response(200, json={})
 
         with (
+            patch("comfyui_client.client.time.monotonic", side_effect=lambda: clock[0]),
+            patch("comfyui_client.client.time.sleep", side_effect=advance),
             ComfyUIClient(
                 "http://comfy.invalid",
                 timeout=10,

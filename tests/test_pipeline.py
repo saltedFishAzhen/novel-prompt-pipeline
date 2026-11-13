@@ -789,7 +789,9 @@ class PipelineIntegrationTests(unittest.TestCase):
         pipeline.root.mkdir()
         pipeline.state = {"media": {}}
         paths = pipeline._job("asset_../../outside", {"type": "qwen", "prompt": "test"})
-        self.assertTrue(all(Path(path).is_relative_to(pipeline.root) for path in paths))
+        self.assertTrue(
+            all(Path(path).resolve().is_relative_to(pipeline.root.resolve()) for path in paths)
+        )
         self.assertFalse((self.root / "outside").exists())
 
 
