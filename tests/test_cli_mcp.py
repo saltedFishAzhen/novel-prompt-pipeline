@@ -193,15 +193,16 @@ class UnifiedCLITests(unittest.TestCase):
         loader.assert_not_called()
 
     def test_mcp_rejects_managed_files_symlink_outside_workspace(self):
-        data = self.workspace / "data"
-        data.mkdir()
+        service = AppService(self.workspace, restricted=True)
+        managed_files = Path(service.config().asset_library).parent / "files"
+        managed_files.parent.mkdir(parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory() as outside:
             try:
-                (data / "files").symlink_to(Path(outside), target_is_directory=True)
+                managed_files.symlink_to(Path(outside), target_is_directory=True)
             except OSError:
                 self.skipTest("Host does not permit directory symlinks")
             with self.assertRaises(WorkspacePathError):
-                AppService(self.workspace, restricted=True).config()
+                service.config()
 
     def test_selected_workspace_uses_its_own_workflow_bindings(self):
         path = self.workspace / "workflows/workflow_bindings.json"
