@@ -36,6 +36,13 @@ dependencies = [
   "pillow>=12,<13",
 ]
 
+[project.urls]
+Homepage = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
+Documentation = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/blob/main/docs/README.md"
+Repository = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
+Issues = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/issues"
+Changelog = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/blob/main/CHANGELOG.md"
+
 [project.optional-dependencies]
 dev = [
   "build>=1.2,<2",

@@ -5,9 +5,8 @@ exploitable details in a public issue. Use the repository host's private
 vulnerability-reporting feature if the maintainers have enabled it, or use a
 private contact channel explicitly published by the maintainers.
 
-No private security contact is published in this repository yet. Maintainers
-should establish one before opening the project to public vulnerability
-reports. Do not assume a public issue is private.
+Report vulnerabilities through [GitHub private vulnerability reporting](https://github.com/saltedFishAzhen/novel-prompt-pipeline/security/advisories/new).
+This channel is enabled for the repository. Do not assume a public issue is private.
 
 The MCP server uses stdio for local integration. Treat a configured MCP client
 and its workspace as trusted: the exposed tools can read project data, update
