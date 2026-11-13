@@ -1,0 +1,22 @@
+[
+  {
+    "name": "默认的铜钥匙",
+    "aliases": "铜钥匙",
+    "description": "A single copper key, longer than an ordinary key, with a flattened round ring at its head and a clearly visible central opening. A ring of fine engraved ornament on the head is worn almost illegible. A single view shows the entire object in a 1:1 square image on a white background, no people, no hands, no fingers. A frayed red cord is tied to the key's handle, with a tight knot at the cord's end."
+  },
+  {
+    "name": "断裂的铜钥匙",
+    "aliases": "铜钥匙",
+    "description": "A single close-up view of a fracture and the surrounding copper surface in a 1:1 square image on a white background, no people, no hands, no fingers. The adjacent copper extends beyond the frame. Reuses base item: 铜钥匙. The fresh fracture exposes a bright surface at the break."
+  },
+  {
+    "name": "菜刀",
+    "aliases": "菜刀",
+    "description": "A kitchen cleaver with a black iron blade, a worn depression in its middle, and two small nicks in its spine. The wooden handle is wrapped with two turns of iron wire, and a layer of glossy black grease coats the wood. A single view shows the entire object in a 1:1 square image on a white background, no people, no hands, no fingers."
+  },
+  {
+    "name": "搪瓷缸",
+    "aliases": "搪瓷缸,缸子",
+    "description": "An enamel mug with a white body and a blue rim. Three chipped areas along the edge expose the black iron underneath. A single view shows the entire mug and its open, hollow interior in a 1:1 square image on a white background, no people, no hands, no fingers. One pencil stands inside the mug."
+  }
+]

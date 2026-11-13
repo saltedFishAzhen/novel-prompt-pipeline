@@ -1,0 +1,22 @@
+[
+  {
+    "name": "默认的房间",
+    "aliases": "房间,屋里,屋子",
+    "description": "A single horizontal 16:9 panoramic scene viewed from one fixed interior viewpoint. A thin wooden entrance door has a sheet metal patch at the lock. A single bed stands beside a small window, with its head facing the window. The wall of another building is visible outside the window. A wooden table with peeling paint stands against a wall. A sheet metal clothes rack is fixed to the wall by the doorway. The floor is concrete, and a corner of the wall bears yellow water stains. An old laptop rests on the table, and a plastic box is tucked beneath it. Several work garments faded by washing hang from the rack. The small window admits little daylight because of the building wall outside. The walls, doorway, window, bed, and table retain stable geometry and consistent proportions."
+  },
+  {
+    "name": "积水的房间",
+    "aliases": "房间,屋里,屋子",
+    "description": "A single horizontal 16:9 panoramic scene viewed from one fixed interior viewpoint. A thin wooden entrance door has a sheet metal patch at the lock. A single bed stands beside a small window, with its head facing the window. The wall of another building is visible outside the window. A wooden table with peeling paint stands against a wall. A sheet metal clothes rack is fixed to the wall by the doorway. The floor is concrete, and a corner of the wall bears yellow water stains. The walls, doorway, window, bed, and table retain stable geometry and consistent proportions. Reuses base location: 房间. During the rainstorm at night, low contrast preserves discernible surfaces, and a layer of water covers the concrete floor, continuous with water beneath the door. A curtain torn down by the wind rests across the table and covers half the old laptop; the plastic box remains beneath the table. The wall-mounted rack is crooked, the faded work garments lie scattered on the floor, and the quilt lies in the water at the foot of the bed."
+  },
+  {
+    "name": "退水的房间",
+    "aliases": "房间,屋里,屋子",
+    "description": "A single horizontal 16:9 panoramic scene viewed from one fixed interior viewpoint. A thin wooden entrance door has a sheet metal patch at the lock. A single bed stands beside a small window, with its head facing the window. The wall of another building is visible outside the window. A wooden table with peeling paint stands against a wall. A sheet metal clothes rack is fixed to the wall by the doorway. The floor is concrete, and a corner of the wall bears yellow water stains. The walls, doorway, window, bed, and table retain stable geometry and consistent proportions. Reuses base location: 房间. In the subdued morning daylight, most of the floor water has receded, and the yellow stains in the wall corner are more conspicuous. The fallen curtain remains on the table, the plastic box remains beneath it, the rack is still crooked, and the faded work garments remain on the floor. The quilt has been moved outside for drying, leaving the bed boards exposed, with the old laptop now resting on those boards inside a plastic bag."
+  },
+  {
+    "name": "院子",
+    "aliases": "院子",
+    "description": "A single horizontal 16:9 panoramic scene viewed from one fixed viewpoint across a concrete enclosure. A manual lever pump stands in the middle. Red brick boundary walls have grass growing along their tops, and the entrance gate is made from welded sheet metal. A wire mesh chicken cage stands at the base of a boundary wall. Two blue plastic buckets sit beside the pump, and three yellow hens are inside the cage. A quilt brought outside from the upstairs room is set out to dry within the enclosure. The sheet metal gate is open during the day, with daylight across the concrete ground. The brick walls, gate opening, central pump, and cage retain stable proportions and physically supported geometry."
+  }
+]

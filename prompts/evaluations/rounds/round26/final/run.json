@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "run_id": "20261113T171530.612307Z",
+  "release": "4b69280b41d64b25e9f4662477a094edc482c9d64f012a6568e0f7347b9e6f2e",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_count": 16,
+  "structural_pass_count": 16,
+  "first_attempt_pass_count": 16,
+  "validation_retries": 1,
+  "selected_nodes": [
+    "asset.character",
+    "asset.prop",
+    "asset.scene",
+    "asset_binding",
+    "context_summary",
+    "continuity",
+    "novel_to_script",
+    "rewrite",
+    "rewrite_batch",
+    "scene_overview",
+    "scene_reverse_view",
+    "scene_topdown",
+    "shot_plan",
+    "storyboard",
+    "storyboard_batch",
+    "storyboard_i2va_batch"
+  ],
+  "evaluated_nodes": [
+    "asset.character",
+    "asset.prop",
+    "asset.scene",
+    "asset_binding",
+    "context_summary",
+    "continuity",
+    "novel_to_script",
+    "rewrite",
+    "rewrite_batch",
+    "scene_overview",
+    "scene_reverse_view",
+    "scene_topdown",
+    "shot_plan",
+    "storyboard",
+    "storyboard_batch",
+    "storyboard_i2va_batch"
+  ],
+  "missing_nodes": [],
+  "coverage_complete": true,
+  "nodes": {
+    "asset.character": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "7c95c485e97410a27c86fe9007b8366161c8f1ffed268342c4450e0397bdd6b8"
+    },
+    "asset.prop": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "23f6dd4db93ad8b0757d6b6eee1d6f2812665ff40d70926317ef8148fd37c60d"
+    },
+    "asset.scene": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "a8227773dd59359b86e73e55dfa796e9f49aa487b8e14185790f575c8a8849c3"
+    },
+    "asset_binding": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "a43873c3fc1acc3b59ecbd4efb8f4cbde365b080d5a86149c88363d2b7c7a130"
+    },
+    "context_summary": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "ef0f4143f8e2c3c450fdc97449b2c3b2a265d3c62ae6b98febe8c78cda4d2044"
+    },
+    "continuity": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "c81c482dc87dd875e82f0c6f7912f09f2612a39c35195164d495dea98582680e"
+    },
+    "novel_to_script": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "b174b61c0889a48aa804cb479746f264b0cafeb6eff4623747f55a2e1e89ddde"
+    },
+    "rewrite": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "a891c0268c503ecedffd5fe61849995fce17f936cf4c6b97f14e1fd66a92454b"
+    },
+    "rewrite_batch": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "6f324c59575596f1a14f08f6e34a6729742c2c8f8e5f1e94654b3bbeab2893b3"
+    },
+    "scene_overview": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "b898e894e05a1ac7dd8f8262589c2298656277ab50d3eea783787eb5d69563df"
+    },
+    "scene_reverse_view": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "5606f8901d9a23b6a3e2ec40f5a4435d61a9fe7abf4de0b66e084a6dbddc9e55"
+    },
+    "scene_topdown": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "d20a387e286369bb028a11241b44a8e766919340699697e09f6f864e9c69fd6b"
+    },
+    "shot_plan": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "6da82f58d46a280cb26914d27d0e406a0759e361472d46042b580a77452ae338"
+    },
+    "storyboard": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "eadca10aff06958193a2409a44a606d213d5f70474c9a947714c322732148921"
+    },
+    "storyboard_batch": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "8fc1307d57b93fafda5b6f041d865d87da34b86a76abc1bafc35af86cf4e08a3"
+    },
+    "storyboard_i2va_batch": {
+      "case_count": 1,
+      "structural_pass_count": 1,
+      "source_sha256": "d156bef70b43bcf23956f07aae2819b2dd8ffa8cc3e7d088fdeb11f784e109b7"
+    }
+  },
+  "cases_sha256": "b3ca25868afbd8fb01512dbe11d34dcc912a6b8cbbc99aa24aecf73262b39168",
+  "results_sha256": "e2f0b95b0b866f01e4794e73868ce6379d210f4c726a63506826faa822e46d40",
+  "assessment": "Structural checks only; semantic and media quality require review."
+}

@@ -1,0 +1,10 @@
+{
+  "baseline": {
+    "cases": 8,
+    "structural_passes": 8
+  },
+  "candidate": {
+    "cases": 8,
+    "structural_passes": 8
+  }
+}

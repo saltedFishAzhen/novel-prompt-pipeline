@@ -1,0 +1,13 @@
+{
+  "model": "gpt-6.1-sol",
+  "phases": {
+    "baseline": {
+      "cases": 7,
+      "structural_passes": 6
+    },
+    "candidate": {
+      "cases": 7,
+      "structural_passes": 7
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Credentials and machine-local configuration
+.env
+.env.*
+!.env.example
+configs/*.local.json
+
+# Private inputs, generated assets, execution records and scratch work
+runs/
+.tmp/
+# Local creative works and writing records are not published.
+/novels/
+# User-provided visual reference and approval records; text defaults are code.
+/prompts/src/styles/
+
+# Distribution and test output
+build/
+dist/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Operating system metadata
+.DS_Store
+Thumbs.db

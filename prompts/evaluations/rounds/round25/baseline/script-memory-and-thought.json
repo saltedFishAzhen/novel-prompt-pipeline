@@ -1,0 +1,16 @@
+{
+  "id": "script-memory-and-thought",
+  "node": "novel_to_script",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "90bc4aa665b2242e0f7d4688191c11d389922c29e7beb5b046e5422ece03e773",
+  "request_sha256": "10d67c70e3e38fe60a516e793a8d35db45c9e62b2b7b159af01cbb03afac1032",
+  "raw_output": "_::~OUTPUT_START::~_\n傍晚，许禾把封好的信放进抽屉。她心想，明天再告诉沈砚。\n_::~RECORD::~_\n沈砚仍在门外等，没有听见许禾心里的话。门外传来阿姨的声音：“雨停了。”\n_::~RECORD::~_\n许禾想起昨天父亲说过的“别急”。她没有把抽屉打开，也没有说出信的内容。\n_::~OUTPUT_END::~_",
+  "request_id": "7821262d-5ba0-4e6a-b19f-2c190d1e1301",
+  "structural_check": {
+    "passed": true,
+    "note": "Production script validation passed"
+  },
+  "elapsed_seconds": 30.921
+}

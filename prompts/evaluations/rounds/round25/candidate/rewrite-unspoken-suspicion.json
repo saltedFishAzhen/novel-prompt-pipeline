@@ -1,0 +1,16 @@
+{
+  "id": "rewrite-unspoken-suspicion",
+  "node": "rewrite",
+  "release": "ba85ad15e074c2e62c60cba8544c271ba260d3deaf297bdc7d8ef63960d36ac5",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "28e6689d268ee458f596e24ccdc0b550f725870291bee643a2d5c9e4ffe6a7bc",
+  "request_sha256": "781a50e6a5c334ca7bedde641580efbaf5454d579d06b7105d4c50fb8d0d2833",
+  "raw_output": "林珂怀疑包裹拿错了，却没有说出自己的疑虑。她对阿远说：“先放这里。”阿远还不知道她在怀疑什么。",
+  "request_id": "27995434-9121-4236-910e-76ed1ebc463b",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 15.934
+}

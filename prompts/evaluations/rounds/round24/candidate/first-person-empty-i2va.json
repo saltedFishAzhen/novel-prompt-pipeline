@@ -1,0 +1,16 @@
+{
+  "id": "first-person-empty-i2va",
+  "node": "storyboard_i2va_batch",
+  "release": "3bcab0a12495e80b9adc0f1421ae5ac6c4c848c20b8eff348dad7a3a78fe0a8a",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "fc2a89bf9745a748615712281c7cd1b0ed3bac57eeb811471a69fd5b6430e8f1",
+  "request_sha256": "642ce3f864198ea385ba80bc97d0b3a0c9680dc58b845e7824a30b320b23e080",
+  "raw_output": "0_::~FIELD::~_A stationary first-person view through Lina’s eyes at her standing eye height, angled downward toward her own anatomical right hand resting on the lever of the closed wooden entrance door of Workshop. The close framing clearly shows her right hand, the navy cardigan cuff around her wrist, the lever at its neutral position, and the surrounding wooden door surface. Her hand rests naturally on the lever before pressing, with the contact point unobstructed. The door remains fully seated in its frame. Soft daylight comes from Workshop’s established window outside the crop. Lina’s face and hair are outside her own field of view; the framing contains no view of her from outside._::~FIELD::~_For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] A continuous, stationary first-person view through Lina’s eyes at her standing eye height, angled down at her anatomical right hand already resting on the neutral lever of Workshop’s closed wooden entrance door. Her navy cardigan cuff, the hand-to-lever contact, and the door surface remain clearly visible under daylight from the established window outside the crop. She immediately presses the lever downward once with that same right hand, maintaining natural contact throughout the press. She then releases it, easing her hand just clear as the lever returns to its neutral position with a quiet mechanical click and a faint sleeve rustle. The door stays fully closed, and the remaining moment shows the returned lever and her relaxed right hand nearby. The viewpoint and framing remain fixed throughout, with no cut; her face stays outside her field of view.\n\noverall_soundscape:\nQuiet indoor room tone, a subdued lever mechanism sound during the single press and return, and a faint cardigan sleeve rustle. No dialogue.\n\nnon_diegetic_music:\nN/A\n时长：6秒",
+  "request_id": "2cd25396-5e8c-403c-bd46-cc45cd8399f7",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 17.283
+}

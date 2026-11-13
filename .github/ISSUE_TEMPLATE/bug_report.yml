@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible problem without credentials or private inputs.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected and observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Include the command, package/Python version, OS and a minimal anonymized input.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove API keys, credentials, private endpoints and copyrighted inputs before posting.

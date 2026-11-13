@@ -1,0 +1,16 @@
+{
+  "id": "continuity-unrevealed-intent",
+  "node": "continuity",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "ff916d284b964e6b626aaf885f6e42140155a3adbf2693c5af318469aaab04c8",
+  "request_sha256": "06ef3a7b4af66d33f4eacc1141f70005a77e10b1d16af2a77ba4948db1b03322",
+  "raw_output": "{\"summary\":\"乔宁与陆川站在仍合着的盒子旁，文案未描述二人移动；具体相对方位、朝向、服装及盒子的承托位置未提供/无法从本批文案确认。乔宁知道盒内是旧纽扣，陆川仍不知道。乔宁已说“晚点再说”，此前稍后开盒的打算尚未执行；陆川等待，未触碰盒子，盒子未被打开，未确认任何人持有盒子。画外传来“我在这里”，说话者身份及位置均未确立，不能据此确认有第三人在场。场景具体环境、时段、光源及其位置、镜头观察方向和视点角色未提供/无法从本批文案确认。\"}",
+  "request_id": "07cc3d4d-0bbf-40d6-ad16-b031adb8d286",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 8.328
+}

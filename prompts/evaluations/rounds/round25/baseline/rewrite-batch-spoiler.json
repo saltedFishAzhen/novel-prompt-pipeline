@@ -1,0 +1,16 @@
+{
+  "id": "rewrite-batch-spoiler",
+  "node": "rewrite_batch",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "228cc6541aefcf972b29996ad976702cfb695303e5d11e60f3b8543c65a9380f",
+  "request_sha256": "eb5d0c1e6089ee9c2fb4279b247cf527a8a4c9fae4768768cf9e89859e9b4150",
+  "raw_output": "{\"results\":[{\"panel_index\":9,\"text\":\"小夏看着尚未拆开的信封，没有认出信封上的字迹。\"},{\"panel_index\":2,\"text\":\"小夏没有拆开信封，也没有说话。\"},{\"panel_index\":17,\"text\":\"小夏想等到明天再问。现在，她只是把信封收进书包。\"}]}",
+  "request_id": "4de16e1f-a595-45ad-bf2e-b96b80ca3fbd",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 22.035
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "phase": "baseline",
+    "node": "scene_reverse_view",
+    "words": 105
+  },
+  {
+    "phase": "candidate-v2",
+    "node": "scene_reverse_view",
+    "words": 107
+  },
+  {
+    "phase": "candidate-v2",
+    "node": "scene_overview",
+    "words": 112
+  },
+  {
+    "phase": "baseline",
+    "node": "scene_overview",
+    "words": 100
+  },
+  {
+    "phase": "baseline",
+    "node": "scene_topdown",
+    "words": 128
+  },
+  {
+    "phase": "candidate-v2",
+    "node": "scene_topdown",
+    "words": 122
+  }
+]

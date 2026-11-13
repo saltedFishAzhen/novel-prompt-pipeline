@@ -1,0 +1,16 @@
+{
+  "id": "scene_overview",
+  "node": "scene_overview",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "471350fd9ef4919668c8b6124e9551cc7e6f7abe84b92c3820b1a7c37541ad37",
+  "request_sha256": "880679620555481456e514a4abfef4c6a0d41093d0dc0eb19443d516bb3a0dad",
+  "raw_output": "Raise the camera well above eye level, look down at approximately 45 degrees, and pull back to frame the established room in one wide oblique bird’s-eye view. Use reference image 1 as the scene identity guide. Retain perspective and visible object side surfaces, clearly distinct from a vertical top-down view. Preserve world-space layout, counts, proportions, materials, and current condition; reproject screen-relative directions for the new viewpoint. Keep the window in its established location and carry its diffuse daylight and existing shadows into this view without inventing lighting details. Use a roof cutaway solely for visibility, without damage. Do not retain eye-level framing, mirror, rearrange, expand, or add fixtures, annotations, or collage.",
+  "request_id": "0da8687a-99f6-4868-ad3b-04f9c39280f3",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 10.12
+}

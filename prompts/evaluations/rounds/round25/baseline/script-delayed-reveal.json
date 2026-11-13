@@ -1,0 +1,16 @@
+{
+  "id": "script-delayed-reveal",
+  "node": "novel_to_script",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "15ed8f6b9f27b10a6ecfa40fa1671c69cd0bfb50926f0e2dddc20351721c8b15",
+  "request_sha256": "06b493e5f7f855ce19e0918e2180f005c8d554a7d45deb75283552c14176fa33",
+  "raw_output": "_::~OUTPUT_START::~_\n盒子还合着。乔宁知道里面是一枚旧纽扣，陆川不知道。\n_::~RECORD::~_\n乔宁说：“先别开。”陆川收回了手，盒子仍合着。\n_::~RECORD::~_\n过了一会儿，乔宁打开盒子，陆川这才看清里面那枚旧纽扣的缺角。\n_::~OUTPUT_END::~_",
+  "request_id": "1b19aed8-7070-44e1-9eb1-88f3a13528f9",
+  "structural_check": {
+    "passed": true,
+    "note": "Production script validation passed"
+  },
+  "elapsed_seconds": 24.906
+}

@@ -1,0 +1,16 @@
+{
+  "id": "first-person-empty-i2va",
+  "node": "storyboard_i2va_batch",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "fc2a89bf9745a748615712281c7cd1b0ed3bac57eeb811471a69fd5b6430e8f1",
+  "request_sha256": "642ce3f864198ea385ba80bc97d0b3a0c9680dc58b845e7824a30b320b23e080",
+  "raw_output": "0_::~FIELD::~_A first-person view through Lina's eyes at her standing eye height, angled downward toward her own anatomical right hand already resting on the lever of the closed wooden entrance door of Workshop. Her right forearm extends naturally from the lower right of the frame, with a navy cardigan cuff visible at her wrist. The lever is in its neutral resting position beneath her relaxed hand. The close framing clearly shows her hand, the entire lever, their contact point, and the surrounding wooden door surface. The contact area and lever remain sharply readable. Daylight from Workshop's single established window provides natural illumination; the window and furniture lie outside the downward framing. Lina's face, head, and the rest of her body are outside her own field of view. The composition is stationary._::~FIELD::~_For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] A continuous first-person view through Lina's eyes at her standing eye height, angled downward in a close framing of her anatomical right hand already resting on the neutral lever of Workshop's closed wooden entrance door. Her navy cardigan cuff is visible, and the hand, lever, contact point, and surrounding door surface match the first frame under the same window daylight. She immediately presses the lever downward once with that same right hand, maintaining clear contact through the downward movement. She then eases off the pressure, allowing the lever to return naturally to its neutral position beneath her hand, and releases contact with her hand remaining nearby. The door stays fully closed throughout. A soft mechanical click accompanies the press and a quiet return sound accompanies the lever settling. The eye-height viewpoint and downward framing remain fixed for the entire six-second shot, with no cut or camera movement; her face stays outside the frame.\n\noverall_soundscape:\nQuiet indoor room tone, a subdued lever click and return sound, and faint cardigan fabric movement during the single hand action. No dialogue.\n\nnon_diegetic_music:\nN/A\n时长：6秒",
+  "request_id": "d95252b3-6f0a-403d-8b57-2a8e47d50302",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 22.433
+}

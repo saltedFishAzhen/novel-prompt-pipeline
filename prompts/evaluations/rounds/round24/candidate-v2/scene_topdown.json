@@ -1,0 +1,16 @@
+{
+  "id": "scene_topdown",
+  "node": "scene_topdown",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "01725dd0887a8503f882f7195c9c2f9752d05be7e2eaaae11e447ec207860ac1",
+  "request_sha256": "7cd396eef2608ca74a4fb2a5c534313ad404bc114988a68f42ef29b0028af817",
+  "raw_output": "Optical axis exactly perpendicular to the floor, straight down from overhead: no tilt, horizon, vanishing point, visible tall wall facades, or perspective convergence. Furniture tops dominate; walls appear only as thin boundary edges. Use references in order: image 1 master and primary identity guide, image 2 reverse eye-level, image 3 oblique overview. Preserve their common layout, identical object counts, world-space placements, proportions, materials, and current state, including rumpled bedding and bagged device. Do not copy reference camera angles. Keep window daylight fixed in scene space, carrying known lighting and shadows overhead without inventing sources, directions, or shadow details. Reproject screen-relative directions for this view. Roof removal is presentation cutaway only. Add no fixtures, rooms, plan symbols, labels, arrows, measurements, borders, or collage.",
+  "request_id": "11783c32-4491-4bca-8d9a-5db3f5de12ca",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 13.153
+}

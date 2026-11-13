@@ -1,0 +1,17 @@
+{
+  "id": "binding-hidden-key",
+  "node": "asset_binding",
+  "release": "a79352b63853197163a9e54eda2232f16385020db3c93f84c3f9640f72135fef",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "298cccb463716b3da2c85b3d30b9e0d67f9f4f0d8c909367cd6c424b5d7f5ae8",
+  "request_sha256": "108bd1ae27a7a6dd1796b44066e1eb31a208d0c25760aff5f5ac4e21e7b70bf0",
+  "raw_output": "{\"asset_ids\":[\"box\",\"zhou\",\"key\"],\"first_frame_asset_ids\":[\"box\"]}",
+  "request_id": "9eff2cdb-d648-43e1-8d19-eb889c70d119",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 11.674,
+  "expected_selection_match": true
+}

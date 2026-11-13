@@ -1,0 +1,16 @@
+{
+  "id": "continuity-light-reset",
+  "node": "continuity",
+  "release": "8eb7c1489659a15eea3e75ccd296fa3f21d80ae1e8f80fb4da54050ee23da974",
+  "model": "gpt-6.1-sol",
+  "api": "chat_completions",
+  "case_sha256": "28ac2baad77346f6519e726c3879496b97719da12f51dd64ab4e1e47b6c4020c",
+  "request_sha256": "7f255057b0635525b2d77c8f1ace5404b267590fa169967b89c935938be4ffb9",
+  "raw_output": "{\"summary\":\"批末为夜间的同一工作室，固定窗墙处窗外黑暗，无日光；桌上亮着的台灯照亮Lina的脸，未描述开灯动作。Lina仍站在同一张桌旁，目光朝向台灯；她相对窗墙及入口的具体位置、身体朝向、服装、手部姿态与物品持有关系均未提供/无法从本批文案确认。未描述移动或其他动作完成。当前固定机位位于窗边，朝入口方向拍摄，替代此前朝窗墙的视角。桌子仍在，台灯为本批明确新增陈述的道具，其他场景及道具变化未提供/无法从本批文案确认。以上状态依据分镜及视频提示词正文，未提供生成视频，实际末帧无法确认。\"}",
+  "request_id": "7237ba8f-1383-47b7-a77f-618671eb18ce",
+  "structural_check": {
+    "passed": true,
+    "note": "Production output validation passed"
+  },
+  "elapsed_seconds": 10.689
+}
