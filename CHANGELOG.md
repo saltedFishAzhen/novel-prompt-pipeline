@@ -2,6 +2,8 @@
 
 ## 0.2.0 — 2026-11-14
 
+- Require patched Pillow 13 and filelock 4.2.10 or newer, and refresh the
+  hashed dependency lock for the first public release.
 - Organize guides, verification records, and prompt evaluations into dedicated
   directories, standardize agent guidance, and move wheel verification to `scripts/`.
 - Keep creative works and writing records under the Git-ignored local `novels/`
