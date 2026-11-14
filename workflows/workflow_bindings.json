@@ -184,10 +184,8 @@
         "supports_height": true,
         "supports_length": true,
         "note": "The first-frame image has a separate loader from the eight optional asset image references.",
-        "audio_reference_capacity": 3,
         "requires_first_frame": true,
-        "supports_reference_images": true,
-        "supports_reference_audios": true
+        "supports_reference_images": true
       },
       "shuohao_aspect_ratio": {"node_id": "29", "input": "aspect_ratio"},
       "shuohao_scale_output": true,
@@ -202,60 +200,7 @@
         "16:9": "16:9 (Widescreen)",
         "21:9": "21:9 (Ultrawide)"
       },
-      "requires_first_frame": true,
-      "audio_slots": [
-        {
-          "load": {
-            "node_id": "107",
-            "input": "audio",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "95",
-              "input": "ref_audios.ref_audio_0"
-            },
-            {
-              "node_id": "96",
-              "input": "ref_audios.ref_audio_0"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "108",
-            "input": "audio",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "95",
-              "input": "ref_audios.ref_audio_1"
-            },
-            {
-              "node_id": "96",
-              "input": "ref_audios.ref_audio_1"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "109",
-            "input": "audio",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "95",
-              "input": "ref_audios.ref_audio_2"
-            },
-            {
-              "node_id": "96",
-              "input": "ref_audios.ref_audio_2"
-            }
-          ]
-        }
-      ]
+      "requires_first_frame": true
     },
     "i2va": {
       "workflow": "h3-i2va-api.json",

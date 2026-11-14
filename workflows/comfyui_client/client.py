@@ -2,17 +2,28 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import mimetypes
 import os
 import re
 import tempfile
 import time
+from collections.abc import Mapping, Sequence
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 from urllib.parse import urlencode
 
 import httpx
+
+PACKAGE_DATA_DIR = Path(__file__).resolve().parent / "_data"
+DEFAULT_BINDINGS_FILE = Path(__file__).resolve().parents[1] / "workflow_bindings.json"
+
+
+def _default_bindings_file() -> Path:
+    """Prefer the wheel-bundled copies, fall back to the source checkout."""
+    packaged = PACKAGE_DATA_DIR / "workflow_bindings.json"
+    return packaged if packaged.is_file() else DEFAULT_BINDINGS_FILE
 
 
 class ComfyUIError(RuntimeError):
@@ -43,6 +54,10 @@ class ComfyUIError(RuntimeError):
 
 class WorkflowExecutionError(ComfyUIError):
     """A prompt was accepted but ComfyUI reported that its execution failed."""
+
+
+class BindingError(ValueError):
+    """A requested runtime value cannot be applied to this graph/profile."""
 
 
 class ComfyUIClient:
@@ -458,6 +473,41 @@ class ComfyUIClient:
         return {"prompt_id": prompt_id, "history": history, "files": files}
 
 
+def bind_graph(
+    graph: dict[str, Any],
+    profile: str | Mapping[str, Any],
+    values: Mapping[str, Any] | None = None,
+    *,
+    bindings_file: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Return a copy of ``graph`` with ``values`` applied through a profile.
+
+    ``values`` accepts ``prompt`` (required string), ``seed``, ``width``,
+    ``height``, ``length``, ``first_frame``, ``negative_prompt``,
+    ``reference_images`` and ``reference_audios``. Media entries are
+    ComfyUI input-relative names, normally returned by
+    :meth:`ComfyUIClient.upload_file`. Unused reference slots are dropped so
+    their loader nodes never reach the server. The source graph is not
+    mutated.
+    """
+    if not isinstance(graph, dict) or not graph:
+        raise BindingError("workflow graph must be a non-empty object")
+    name, selected = _resolve_profile(profile, bindings_file)
+    return _apply_values(graph, selected, name, values)
+
+
+def build_graph(
+    profile: str | Mapping[str, Any],
+    values: Mapping[str, Any] | None = None,
+    *,
+    bindings_file: str | os.PathLike[str] | None = None,
+    workflows_dir: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Load the profile's API graph and return it with ``values`` bound."""
+    name, selected = _resolve_profile(profile, bindings_file)
+    return _apply_values(_load_workflow(selected, workflows_dir), selected, name, values)
+
+
 def _api_graph(graph: dict[str, Any]) -> dict[str, Any]:
     """Remove UI-only metadata and validate API-format graph nodes."""
     clean: dict[str, Any] = {}
@@ -525,3 +575,287 @@ def _is_relative_to(path: Path, root: Path) -> bool:
         return True
     except ValueError:
         return False
+
+
+_VALUE_FIELDS = frozenset(
+    {
+        "prompt",
+        "seed",
+        "width",
+        "height",
+        "length",
+        "first_frame",
+        "negative_prompt",
+        "reference_images",
+        "reference_audios",
+    }
+)
+
+
+def _load_bindings(bindings_file: str | os.PathLike[str] | None) -> dict[str, Any]:
+    path = Path(bindings_file) if bindings_file is not None else _default_bindings_file()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise BindingError(f"cannot load binding profiles {path}: {exc}") from exc
+    profiles = data.get("profiles") if isinstance(data, dict) else None
+    if not isinstance(profiles, dict) or not profiles:
+        raise BindingError(f"binding file {path} declares no profiles")
+    return profiles
+
+
+def _resolve_profile(
+    profile: str | Mapping[str, Any], bindings_file: str | os.PathLike[str] | None
+) -> tuple[str, dict[str, Any]]:
+    if isinstance(profile, Mapping):
+        return "custom", dict(profile)
+    if not isinstance(profile, str) or not profile:
+        raise BindingError("profile must be a profile name or object")
+    profiles = _load_bindings(bindings_file)
+    selected = profiles.get(profile)
+    if not isinstance(selected, dict):
+        known = ", ".join(sorted(profiles))
+        raise BindingError(f"unknown workflow profile: {profile} (known: {known})")
+    return profile, selected
+
+
+def _load_workflow(
+    profile: Mapping[str, Any], workflows_dir: str | os.PathLike[str] | None
+) -> dict[str, Any]:
+    workflow_name = profile.get("workflow")
+    if not isinstance(workflow_name, str) or not workflow_name:
+        raise BindingError("profile does not declare a workflow")
+    windows, posix = PureWindowsPath(workflow_name), PurePosixPath(workflow_name)
+    if (
+        windows.drive
+        or windows.is_absolute()
+        or posix.is_absolute()
+        or ".." in windows.parts
+        or ".." in posix.parts
+    ):
+        raise BindingError("profile workflow must be a relative path")
+    root = (
+        Path(workflows_dir).expanduser().resolve()
+        if workflows_dir is not None
+        else _default_bindings_file().parent
+    )
+    target = (root / workflow_name).resolve()
+    if not _is_relative_to(target, root):
+        raise BindingError(f"profile workflow escapes {root}")
+    try:
+        graph = json.loads(target.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise BindingError(f"cannot load workflow JSON {target}: {exc}") from exc
+    if not isinstance(graph, dict) or not graph:
+        raise BindingError(f"workflow {target} must contain a non-empty JSON object")
+    return graph
+
+
+def _remote_names(value: Any, field: str) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
+        raise BindingError(f"{field} must be a list of ComfyUI-relative names")
+    names = list(value)
+    for index, name in enumerate(names):
+        _validate_remote_name(name, f"{field}[{index}]")
+    return names
+
+
+def _apply_values(
+    graph: dict[str, Any],
+    profile: Mapping[str, Any],
+    name: str,
+    values: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    raw = dict(values or {})
+    unknown = set(raw) - _VALUE_FIELDS
+    if unknown:
+        raise BindingError("unsupported workflow value(s): " + ", ".join(sorted(unknown)))
+    prompt = raw.get("prompt")
+    if not isinstance(prompt, str):
+        raise BindingError("prompt must be a string")
+    for field in ("width", "height", "length"):
+        value = raw.get(field)
+        if value is not None and (
+            not isinstance(value, int) or isinstance(value, bool) or value <= 0
+        ):
+            raise BindingError(f"{field} must be a positive integer")
+    first_frame = raw.get("first_frame")
+    if first_frame is not None:
+        _validate_remote_name(first_frame, "first_frame")
+    reference_images = _remote_names(raw.get("reference_images"), "reference_images")
+    reference_audios = _remote_names(raw.get("reference_audios"), "reference_audios")
+
+    bound = copy.deepcopy(graph)
+    if profile.get("requires_first_frame") and not first_frame:
+        raise BindingError(f"profile {name!r} requires first_frame")
+    for field in ("prompt", "seed", "width", "height", "length", "negative_prompt"):
+        value = raw.get(field)
+        if value is not None:
+            _bind_scalar(bound, profile, name, field, value)
+    if first_frame is not None and profile.get("first_frame") is not None:
+        _bind_scalar(bound, profile, name, "first_frame", first_frame)
+
+    explicit_size_mode = profile.get("explicit_size_mode")
+    width, height = raw.get("width"), raw.get("height")
+    if explicit_size_mode is not None and (width is not None or height is not None):
+        _bind_explicit_size(bound, profile, name, explicit_size_mode, width, height)
+
+    _bind_slots(bound, profile.get("reference_slots", []), reference_images, kind="reference image")
+    _bind_slots(bound, profile.get("audio_slots", []), reference_audios, kind="reference audio")
+    return bound
+
+
+def _bind_scalar(
+    graph: dict[str, Any], profile: Mapping[str, Any], name: str, field: str, value: Any
+) -> None:
+    if field == "first_frame":
+        mappings: Any = [profile.get("first_frame")]
+    else:
+        bindings = profile.get("bindings", {})
+        if not isinstance(bindings, dict):
+            raise BindingError("profile bindings must be an object")
+        mappings = bindings.get(field)
+    if mappings is None:
+        raise BindingError(f"profile {name!r} does not support {field!r}")
+    if not isinstance(mappings, list) or not mappings:
+        raise BindingError(f"profile binding {field!r} must be a non-empty list")
+    for mapping in mappings:
+        if not isinstance(mapping, dict):
+            raise BindingError(f"invalid mapping for {field!r}")
+        expected = mapping.get("type", "any")
+        if not _matches_type(value, expected):
+            raise BindingError(f"{field} must have type {expected}, got {type(value).__name__}")
+        _set_input(graph, mapping, value, field=field)
+
+
+def _bind_explicit_size(
+    graph: dict[str, Any],
+    profile: Mapping[str, Any],
+    name: str,
+    mode: Any,
+    width: int | None,
+    height: int | None,
+) -> None:
+    if not isinstance(mode, dict) or not isinstance(mode.get("value"), str):
+        raise BindingError("explicit_size_mode must declare a target mode")
+    _set_input(graph, mode, mode["value"], field="explicit_size_mode")
+    size_node = graph.get(str(mode.get("node_id", "")), {})
+    size_inputs = size_node.get("inputs", {}) if isinstance(size_node, dict) else {}
+    effective_width = size_inputs.get("target_width")
+    effective_height = size_inputs.get("target_height")
+    if not all(
+        isinstance(value, int) and not isinstance(value, bool) and value > 0
+        for value in (effective_width, effective_height)
+    ):
+        raise BindingError("explicit target dimensions must be positive integers")
+    # A single explicit dimension keeps the other target dimension and its
+    # mirrored LOW-size bindings from the workflow.
+    if width is None:
+        _bind_scalar(graph, profile, name, "width", effective_width)
+    if height is None:
+        _bind_scalar(graph, profile, name, "height", effective_height)
+    ratios = profile.get("explicit_aspect_ratios")
+    if ratios is None:
+        return
+    if not isinstance(ratios, dict) or not ratios:
+        raise BindingError("explicit_aspect_ratios must be a non-empty mapping")
+    requested = effective_width / effective_height
+    candidates: list[tuple[float, str]] = []
+    for ratio, label in ratios.items():
+        try:
+            horizontal, vertical = str(ratio).split(":")
+            reference = int(horizontal) / int(vertical)
+        except (TypeError, ValueError, ZeroDivisionError) as exc:
+            raise BindingError("invalid explicit aspect ratio") from exc
+        if reference <= 0 or not isinstance(label, str) or not label:
+            raise BindingError("invalid explicit aspect ratio")
+        candidates.append((max(requested / reference, reference / requested), label))
+    distance, label = min(candidates)
+    if distance > 1.03:
+        raise BindingError("explicit dimensions do not match a supported aspect ratio")
+    _set_input(graph, profile.get("shuohao_aspect_ratio"), label, field="explicit_aspect_ratio")
+
+
+def _bind_slots(graph: dict[str, Any], slots: Any, names: list[str], *, kind: str) -> None:
+    if not isinstance(slots, list):
+        raise BindingError(f"{kind} slots must be a list")
+    if len(names) > len(slots):
+        raise BindingError(f"profile supports {len(slots)} {kind}(s); received {len(names)}")
+    for index, remote_name in enumerate(names):
+        slot = slots[index]
+        if not isinstance(slot, dict) or not isinstance(slot.get("load"), dict):
+            raise BindingError(f"{kind} slot {index} needs a load mapping")
+        _set_input(graph, slot["load"], remote_name, field=f"{kind}[{index}]")
+        targets = slot.get("conditioning", [])
+        if not isinstance(targets, list):
+            raise BindingError(f"{kind} slot {index} conditioning must be a list")
+        for target in targets:
+            # Confirm each pass already exposes the socket; profiles never
+            # invent ComfyUI inputs at runtime.
+            _check_input(graph, target, field=f"{kind} slot {index}")
+    for slot in slots[len(names) :]:
+        if not isinstance(slot, dict):
+            continue
+        targets = slot.get("conditioning", [])
+        for target in targets if isinstance(targets, list) else []:
+            if not isinstance(target, dict):
+                continue
+            node = graph.get(str(target.get("node_id", "")))
+            if isinstance(node, dict) and isinstance(node.get("inputs"), dict):
+                node["inputs"].pop(target.get("input"), None)
+        load = slot.get("load")
+        if isinstance(load, dict) and str(load.get("node_id", "")):
+            graph.pop(str(load["node_id"]), None)
+
+
+def _set_input(graph: dict[str, Any], mapping: Any, value: Any, *, field: str) -> None:
+    if not isinstance(mapping, dict):
+        raise BindingError(f"invalid mapping for {field!r}")
+    node_id = str(mapping.get("node_id", ""))
+    input_name = mapping.get("input")
+    if not node_id or not isinstance(input_name, str) or not input_name:
+        raise BindingError(f"mapping for {field!r} requires node_id and input")
+    node = graph.get(node_id)
+    if not isinstance(node, dict) or not isinstance(node.get("inputs"), dict):
+        raise BindingError(f"mapping for {field!r} targets missing node {node_id!r}")
+    if input_name not in node["inputs"]:
+        raise BindingError(f"mapping for {field!r} targets missing input {node_id}.{input_name}")
+    if not _matches_type(value, mapping.get("type", "any")):
+        raise BindingError(f"mapped value for {field!r} has an unexpected type")
+    node["inputs"][input_name] = value
+
+
+def _check_input(graph: dict[str, Any], mapping: Any, *, field: str) -> None:
+    if not isinstance(mapping, dict):
+        raise BindingError(f"invalid mapping for {field!r}")
+    node_id = str(mapping.get("node_id", ""))
+    input_name = mapping.get("input")
+    node = graph.get(node_id)
+    if not isinstance(node, dict) or not isinstance(node.get("inputs"), dict):
+        raise BindingError(f"mapping for {field!r} targets missing node {node_id!r}")
+    if not isinstance(input_name, str) or input_name not in node["inputs"]:
+        raise BindingError(f"mapping for {field!r} targets missing input {node_id}.{input_name}")
+
+
+def _matches_type(value: Any, type_name: Any) -> bool:
+    checks: dict[str, Any] = {
+        "any": lambda _: True,
+        "str": lambda v: isinstance(v, str),
+        "int": lambda v: isinstance(v, int) and not isinstance(v, bool),
+        "number": lambda v: isinstance(v, (int, float)) and not isinstance(v, bool),
+        "bool": lambda v: isinstance(v, bool),
+    }
+    if not isinstance(type_name, str) or type_name not in checks:
+        raise BindingError(f"unsupported binding type: {type_name!r}")
+    return bool(checks[type_name](value))
+
+
+def _validate_remote_name(value: Any, field: str) -> None:
+    if not isinstance(value, str) or not value.strip():
+        raise BindingError(f"{field} must be a non-empty ComfyUI-relative name")
+    normalized = value.replace("\\", "/")
+    path = Path(normalized)
+    if path.is_absolute() or ".." in path.parts or ":" in value:
+        raise BindingError(f"{field} must be a safe ComfyUI-relative name")

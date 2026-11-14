@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from .client import ComfyUIClient, ComfyUIError
+from .client import BindingError, ComfyUIClient, ComfyUIError, build_graph
 
 
 def _client(args: argparse.Namespace) -> ComfyUIClient:
@@ -31,6 +31,32 @@ def _read_json(path: str) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise ValueError(f"expected a JSON object in {path}")
     return data
+
+
+def _add_graph_arguments(parser: argparse.ArgumentParser) -> None:
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--graph", help="path to a ready API-format workflow JSON")
+    source.add_argument(
+        "--profile",
+        help="workflow profile from workflow_bindings.json (for example ref2va or i2va)",
+    )
+    parser.add_argument(
+        "--values",
+        help="JSON object with profile values: prompt, seed, width, height, length, "
+        "first_frame, reference_images, reference_audios",
+    )
+
+
+def _graph_from_args(args: argparse.Namespace) -> tuple[dict[str, Any], str]:
+    values_path = getattr(args, "values", None)
+    if args.graph:
+        if values_path:
+            raise ValueError("--values can only be used with --profile")
+        return _read_json(args.graph), str(Path(args.graph).resolve())
+    if not args.profile:
+        raise ValueError("pass --graph or --profile")
+    values = _read_json(values_path) if values_path else {}
+    return build_graph(args.profile, values), f"profile:{args.profile}"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -54,15 +80,17 @@ def build_parser() -> argparse.ArgumentParser:
     upload.add_argument("path")
     upload.add_argument("--subfolder", default="codex")
 
-    submit = commands.add_parser("submit", help="queue an API-format graph JSON file")
-    submit.add_argument("--graph", required=True, help="path to an API-format workflow JSON")
+    submit = commands.add_parser(
+        "submit", help="queue a bound profile graph or a ready API-format graph JSON"
+    )
+    _add_graph_arguments(submit)
     submit.add_argument("--output-dir", default="runs/comfyui")
     submit.add_argument("--client-id")
 
     run = commands.add_parser(
         "run", help="submit a graph, wait for completion and download its outputs"
     )
-    run.add_argument("--graph", required=True, help="path to an API-format workflow JSON")
+    _add_graph_arguments(run)
     run.add_argument("--output-dir", default="runs/comfyui")
     run.add_argument("--client-id")
     run.add_argument("--timeout", type=float, default=3600.0)
@@ -94,13 +122,15 @@ def _upload(client: ComfyUIClient, path: str, subfolder: str) -> int:
     return 0
 
 
-def _submit(client: ComfyUIClient, graph_path: str, output_dir: str, client_id: str | None) -> int:
-    prompt_id = client.submit(_read_json(graph_path), client_id=client_id)
-    record = {
-        "prompt_id": prompt_id,
-        "graph": str(Path(graph_path).resolve()),
-        "status": "queued",
-    }
+def _submit(
+    client: ComfyUIClient,
+    graph: dict[str, Any],
+    source: str,
+    output_dir: str,
+    client_id: str | None,
+) -> int:
+    prompt_id = client.submit(graph, client_id=client_id)
+    record = {"prompt_id": prompt_id, "workflow": source, "status": "queued"}
     _write_run_record(Path(output_dir).expanduser().resolve(), prompt_id, record)
     print(json.dumps(record, ensure_ascii=False, indent=2))
     return 0
@@ -108,25 +138,22 @@ def _submit(client: ComfyUIClient, graph_path: str, output_dir: str, client_id: 
 
 def _run(
     client: ComfyUIClient,
-    graph_path: str,
+    graph: dict[str, Any],
+    source: str,
     output_dir: str,
     client_id: str | None,
     timeout: float,
 ) -> int:
-    result = client.run(
-        _read_json(graph_path),
-        Path(output_dir).expanduser().resolve(),
-        client_id=client_id,
-        timeout=timeout,
-    )
+    output_root = Path(output_dir).expanduser().resolve()
+    result = client.run(graph, output_root, client_id=client_id, timeout=timeout)
     prompt_id = result["prompt_id"]
     record = {
         "prompt_id": prompt_id,
-        "graph": str(Path(graph_path).resolve()),
+        "workflow": source,
         "status": "completed",
         "files": result["files"],
     }
-    _write_run_record(Path(output_dir).expanduser().resolve(), prompt_id, record)
+    _write_run_record(output_root, prompt_id, record)
     print(json.dumps(record, ensure_ascii=False, indent=2))
     return 0
 
@@ -155,13 +182,15 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "upload":
             return _upload(client, args.path, args.subfolder)
         if args.command == "submit":
-            return _submit(client, args.graph, args.output_dir, args.client_id)
+            graph, source = _graph_from_args(args)
+            return _submit(client, graph, source, args.output_dir, args.client_id)
         if args.command == "run":
-            return _run(client, args.graph, args.output_dir, args.client_id, args.timeout)
+            graph, source = _graph_from_args(args)
+            return _run(client, graph, source, args.output_dir, args.client_id, args.timeout)
         if args.command == "wait":
             return _wait(client, args.prompt_id, args.output_dir, args.timeout)
         parser.error(f"unknown command: {args.command}")
-    except (ComfyUIError, ValueError, OSError, json.JSONDecodeError) as exc:
+    except (ComfyUIError, BindingError, ValueError, OSError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         prompt_id = getattr(exc, "prompt_id", None)
         if isinstance(prompt_id, str) and prompt_id:

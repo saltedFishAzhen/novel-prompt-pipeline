@@ -5,13 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "novel-prompt-pipeline"
 version = "0.2.0"
-description = "Six-stage story production, Codex image tasks, remote video and character voices"
-readme = "README.md"
+description = "Remote ComfyUI API client with MiniMax H3 workflow profile bindings"
 requires-python = ">=3.11"
 license = "MIT"
-license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+license-files = ["LICENSE"]
 authors = [{name = "Novel Prompt Pipeline contributors"}]
-keywords = ["comfyui", "storyboard", "prompts", "mcp"]
+keywords = ["comfyui", "video", "workflow"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console",
@@ -25,36 +24,23 @@ classifiers = [
 ]
 dependencies = [
   "httpx>=0.28,<1",
-  "pydantic>=2.12,<3",
-  "pydantic-settings>=2.10,<3",
-  "python-dotenv>=1.2,<2",
-  "filelock>=4.2.10,<5",
-  "sqlalchemy>=2.0,<3",
-  "alembic>=1.16,<2",
-  "mcp>=1.20,<2",
-  "pillow>=13,<14",
 ]
 
 [project.urls]
 Homepage = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
-Documentation = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/blob/main/docs/README.md"
 Repository = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
 Issues = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/issues"
-Changelog = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
   "build>=1.2,<2",
   "hatchling>=1.27,<2",
   "editables>=0.5,<1",
-  "pytest>=8,<10",
-  "pytest-cov>=6,<8",
   "ruff>=0.12,<1",
   "twine>=6,<7",
 ]
 
 [project.scripts]
-novel-pipeline = "pipeline.cli:main"
 comfyui-remote = "comfyui_client.__main__:main"
 
 [tool.hatch.build]
@@ -62,35 +48,21 @@ exclude = ["**/__pycache__", "**/*.pyc", "**/.env", "/.tmp", "/.venv", "/runs"]
 
 [tool.hatch.build.targets.wheel]
 core-metadata-version = "2.4"
-packages = ["src/pipeline", "src/comfyui_client", "src/novel_prompt_pipeline", "src/tts"]
+packages = ["workflows/comfyui_client"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"workflows" = "novel_prompt_pipeline/_resources/workflows"
-"configs/pipeline.example.json" = "novel_prompt_pipeline/_resources/configs/pipeline.example.json"
-".env.example" = "novel_prompt_pipeline/_resources/env.example"
+"workflows/workflow_bindings.json" = "comfyui_client/_data/workflow_bindings.json"
+"workflows/h3-ref2va-api.json" = "comfyui_client/_data/h3-ref2va-api.json"
+"workflows/h3-i2va-api.json" = "comfyui_client/_data/h3-i2va-api.json"
 
 [tool.hatch.build.targets.sdist]
 core-metadata-version = "2.4"
-include = ["/src", "/tests", "/scripts", "/workflows", "/configs/pipeline.example.json", "/docs", "/.github", "/.env.example", "/*.md", "/LICENSE", "/pyproject.toml", "/requirements*.txt"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-ra --strict-markers"
-filterwarnings = ["error", "ignore:datetime.datetime.utcnow.*:DeprecationWarning:alembic.*"]
-
-[tool.coverage.run]
-source = ["pipeline", "comfyui_client", "tts", "novel_prompt_pipeline"]
-branch = true
-omit = ["*/_resources/*", "*/database/migrations/versions/*"]
-
-[tool.coverage.report]
-show_missing = true
-skip_covered = true
+include = ["/workflows", "/.github", "/.env.example", "/LICENSE", "/pyproject.toml", "/requirements*.txt"]
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-src = ["src"]
+src = ["workflows"]
 extend-exclude = [".tmp", ".venv", "dist"]
 
 [tool.ruff.lint]
