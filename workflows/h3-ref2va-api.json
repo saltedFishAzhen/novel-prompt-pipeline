@@ -144,7 +144,7 @@
   "13": {
     "inputs": {
       "model_name": "minimax_h3_latent_upscaler_3d_fp16.safetensors",
-      "size_mode": "target_dimensions",
+      "size_mode": "scale_by",
       "scale_by": [
         "54",
         0
@@ -163,7 +163,7 @@
     },
     "class_type": "MiniMaxH3LearnedLatentUpscaleT8Advanced",
     "_meta": {
-      "title": "Upstream-default learned 3D latent upscale · 2x"
+      "title": "Learned 3D latent upscale · 1.5x"
     }
   },
   "15": {
@@ -642,7 +642,7 @@
     },
     "class_type": "MiniMaxH3AudioConditioningT8",
     "_meta": {
-      "title": "LOW Conditioning 736x416"
+      "title": "LOW Conditioning · dynamic aspect and resolution"
     }
   },
   "96": {

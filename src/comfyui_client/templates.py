@@ -154,6 +154,7 @@ class WorkflowTemplate:
         """Bind supported values to existing node inputs and return a fresh graph."""
         if not isinstance(prompt, str):
             raise BindingError("prompt must be a string")
+        explicit_size_mode = self._profile.get("explicit_size_mode")
         values: dict[str, Any] = {"prompt": prompt}
         optional = {
             "seed": seed,
@@ -188,6 +189,58 @@ class WorkflowTemplate:
                 continue
             if field != "first_frame" or self._profile.get("first_frame") is not None:
                 self._bind_scalar(graph, field, value)
+        if explicit_size_mode is not None and (width is not None or height is not None):
+            if not isinstance(explicit_size_mode, dict) or not isinstance(
+                explicit_size_mode.get("value"), str
+            ):
+                raise BindingError("explicit_size_mode must declare a target mode")
+            _set_input(
+                graph,
+                explicit_size_mode,
+                explicit_size_mode["value"],
+                field="explicit_size_mode",
+            )
+            # A single explicit dimension keeps the other target dimension
+            # from the workflow, including its other LOW-size bindings.
+            size_node = graph.get(str(explicit_size_mode.get("node_id", "")), {})
+            size_inputs = size_node.get("inputs", {})
+            effective_width = size_inputs.get("target_width")
+            effective_height = size_inputs.get("target_height")
+            if not all(
+                isinstance(value, int) and not isinstance(value, bool) and value > 0
+                for value in (effective_width, effective_height)
+            ):
+                raise BindingError("Explicit target dimensions must be positive integers")
+            if width is None:
+                self._bind_scalar(graph, "width", effective_width)
+            if height is None:
+                self._bind_scalar(graph, "height", effective_height)
+            ratios = self._profile.get("explicit_aspect_ratios")
+            if ratios is not None:
+                if not isinstance(ratios, dict) or not ratios:
+                    raise BindingError("explicit_aspect_ratios must be a non-empty mapping")
+                requested = effective_width / effective_height
+                candidates = []
+                for ratio, label in ratios.items():
+                    try:
+                        horizontal, vertical = ratio.split(":")
+                        reference = int(horizontal) / int(vertical)
+                    except (AttributeError, TypeError, ValueError, ZeroDivisionError) as exc:
+                        raise BindingError("Invalid explicit aspect ratio") from exc
+                    if reference <= 0 or not isinstance(label, str) or not label:
+                        raise BindingError("Invalid explicit aspect ratio")
+                    candidates.append((max(requested / reference, reference / requested), label))
+                distance, label = min(candidates)
+                if distance > 1.03:
+                    raise BindingError(
+                        "Explicit dimensions do not match a supported LOW aspect ratio"
+                    )
+                _set_input(
+                    graph,
+                    self._profile.get("shuohao_aspect_ratio"),
+                    label,
+                    field="explicit_aspect_ratio",
+                )
         self._bind_references(graph, values.get("reference_images", []))
         self._bind_audios(graph, reference_audios or [])
         return graph

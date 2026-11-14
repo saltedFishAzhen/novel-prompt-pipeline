@@ -190,6 +190,18 @@
         "supports_reference_audios": true
       },
       "shuohao_aspect_ratio": {"node_id": "29", "input": "aspect_ratio"},
+      "shuohao_scale_output": true,
+      "explicit_size_mode": {"node_id": "13", "input": "size_mode", "value": "target_dimensions"},
+      "explicit_aspect_ratios": {
+        "1:1": "1:1 (Square)",
+        "2:3": "2:3 (Portrait Photo)",
+        "3:2": "3:2 (Photo)",
+        "3:4": "3:4 (Portrait Standard)",
+        "4:3": "4:3 (Standard)",
+        "9:16": "9:16 (Portrait Widescreen)",
+        "16:9": "16:9 (Widescreen)",
+        "21:9": "21:9 (Ultrawide)"
+      },
       "requires_first_frame": true,
       "audio_slots": [
         {
@@ -273,7 +285,6 @@
             "input": "自定义宽",
             "type": "int"
           },
-          {"node_id": "902", "input": "自定义宽", "type": "int"},
           {"node_id": "908", "input": "target_width", "type": "int"}
         ],
         "height": [
@@ -282,7 +293,6 @@
             "input": "自定义高",
             "type": "int"
           },
-          {"node_id": "902", "input": "自定义高", "type": "int"},
           {"node_id": "908", "input": "target_height", "type": "int"}
         ],
         "length": [
@@ -310,6 +320,9 @@
         "requires_first_frame": true,
         "audio_reference_capacity": 0
       },
+      "shuohao_scale_output": true,
+      "shuohao_low_preset": {"node_id": "122", "width_input": "自定义宽", "height_input": "自定义高"},
+      "explicit_size_mode": {"node_id": "908", "input": "size_mode", "value": "target_dimensions"},
       "requires_first_frame": true
     }
   }

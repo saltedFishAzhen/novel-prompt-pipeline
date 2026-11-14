@@ -264,26 +264,15 @@
     },
     "class_type": "LoraLoaderModelOnly"
   },
-  "902": {
-    "inputs": {
-      "预设分辨率": "自定义",
-      "横竖对调": false,
-      "批量大小": 1,
-      "自定义宽": 896,
-      "自定义高": 1600,
-      "缩放倍数": "32"
-    },
-    "class_type": "WJILatentPreset"
-  },
   "903": {
     "inputs": {
       "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] The camera holds a static shot of the person in <Picture 1> as they gently turn their head.\n\noverall_soundscape: Soft clothing movement and a gentle breeze.\n\nnon_diegetic_music: N/A",
       "width": [
-        "902",
+        "908",
         1
       ],
       "height": [
-        "902",
+        "908",
         2
       ],
       "length": [
@@ -379,8 +368,8 @@
   "908": {
     "inputs": {
       "model_name": "minimax_h3_latent_upscaler_3d_fp16.safetensors",
-      "size_mode": "target_dimensions",
-      "scale_by": 2.0,
+      "size_mode": "scale_by",
+      "scale_by": 1.5,
       "target_megapixels": 1.43,
       "target_width": 896,
       "target_height": 1600,
