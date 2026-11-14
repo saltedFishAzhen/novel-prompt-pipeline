@@ -2,11 +2,18 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
+import re
+import tempfile
+import wave
 from pathlib import Path, PurePosixPath, PureWindowsPath
-from typing import Any
+from typing import Any, Literal
 from uuid import uuid4
+
+from filelock import FileLock, Timeout
 
 from .config import Config
 from .storage import RunLock, write_json
@@ -14,6 +21,85 @@ from .storage import RunLock, write_json
 
 class WorkspacePathError(ValueError):
     """An MCP request attempted to access a path outside its workspace."""
+
+
+def _tts_unlinked_path(path: Path) -> Path:
+    """Keep output and reference paths from traversing links or junctions."""
+    path = path.expanduser().absolute()
+    for component in (path, *path.parents):
+        if component.is_symlink() or getattr(component, "is_junction", lambda: False)():
+            raise ValueError("TTS paths cannot contain symbolic links or junctions")
+    return path
+
+
+def _publish_tts_file(source: Path, destination: Path) -> None:
+    """Publish a staged file atomically without replacing an existing file."""
+    _tts_unlinked_path(destination)
+    if os.name == "nt":
+        os.rename(source, destination)
+    else:
+        os.link(source, destination)
+        source.unlink()
+
+
+def _tts_model_summary(info: Any) -> dict[str, Any]:
+    if not isinstance(info, dict):
+        raise ValueError("Invalid TTS model information")
+    digest = info.get("model_digest")
+    if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+        raise ValueError("Invalid TTS model identity")
+    result = {"model_digest": digest}
+    for key in ("frame_rate", "max_new_tokens", "max_batch_texts"):
+        if key in info:
+            value = info[key]
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, (int, float))
+                or not math.isfinite(value)
+                or value <= 0
+            ):
+                raise ValueError("Invalid TTS model information")
+            result[key] = value
+    return result
+
+
+def _tts_wav_summary(path: Path, max_bytes: int) -> dict[str, Any]:
+    _tts_unlinked_path(path)
+    if not path.is_file() or path.stat().st_size > max_bytes + 1024 * 1024:
+        raise ValueError("TTS WAV is missing or exceeds the size limit")
+    try:
+        with wave.open(str(path), "rb") as source:
+            channels, rate, width, frames = (
+                source.getnchannels(),
+                source.getframerate(),
+                source.getsampwidth(),
+                source.getnframes(),
+            )
+            if (channels, rate, width, source.getcomptype()) != (
+                1,
+                24000,
+                2,
+                "NONE",
+            ) or frames <= 0:
+                raise ValueError("TTS output must be mono 24 kHz 16-bit PCM WAV")
+            remaining = frames * channels * width
+            if remaining > max_bytes:
+                raise ValueError("TTS WAV exceeds the size limit")
+            while remaining:
+                part = source.readframes(min(remaining // width, 32768))
+                if not part:
+                    raise ValueError("TTS WAV is truncated")
+                remaining -= len(part)
+    except (OSError, EOFError, wave.Error) as exc:
+        raise ValueError("TTS output is not a readable PCM WAV") from exc
+    with path.open("rb") as source:
+        digest = hashlib.file_digest(source, "sha256").hexdigest()
+    return {
+        "sha256": digest,
+        "sample_rate": rate,
+        "channels": channels,
+        "duration_seconds": frames / rate,
+    }
 
 
 class AppService:
@@ -73,7 +159,7 @@ class AppService:
         return self._ensure_inside(self.workspace / Path(raw))
 
     def config(self) -> Config:
-        from novel_prompt_pipeline.resources import prompt_root, workflow_root
+        from novel_prompt_pipeline.resources import workflow_root
 
         config_path = self.config_path
         if config_path is None:
@@ -84,14 +170,11 @@ class AppService:
             self._ensure_inside(config_path)
         config = Config.load(config_path)
         supplied = json.loads(config_path.read_text(encoding="utf-8-sig")) if config_path else {}
-        if "prompt_project" not in supplied:
-            config.prompt_project = str(prompt_root(self.workspace))
         if "asset_library" not in supplied:
             config.asset_library = str(self.workspace / "runs" / "library" / "assets.sqlite3")
         if self.restricted:
-            # A local project configuration cannot grant the model access to
+            # A local project configuration cannot grant access to
             # paths outside the workspace, including SQLite and media inputs.
-            self._ensure_inside(config.prompt_project)
             self._ensure_inside(config.asset_library)
             # AssetLibrary stores managed media next to the catalog in files/.
             # A directory symlink must not redirect MCP uploads outside root.
@@ -115,6 +198,8 @@ class AppService:
                     self._ensure_inside(audio["path"])
             for portrait in config.media.character_face_references.values():
                 self._ensure_inside(portrait)
+            for reverse in config.media.scene_reverse_references.values():
+                self._ensure_inside(reverse)
         if not config.media.workflows_dir:
             workflow_dir = workflow_root(self.workspace)
             # In an initialized workspace, bind its own workflow files. In a
@@ -129,123 +214,15 @@ class AppService:
                     self._ensure_inside(config.media.bindings_file)
         return config
 
-    def _prompts_root(self) -> Path:
-        return Path(self.config().prompt_project).resolve()
-
     def workspace_info(self) -> dict[str, Any]:
-        from prompt_project import PromptRelease
-
         config = self.config()
-        current = PromptRelease.load(config.prompt_project, config.prompt_version)
         return {
             "workspace": str(self.workspace),
             "project_id": config.project_id,
-            "prompt_version": current.version,
+            "workflow": "shuohao-v1",
             "asset_library": str(Path(config.asset_library).resolve()),
             "asset_library_exists": Path(config.asset_library).is_file(),
-            "llm_model_configured": bool(config.llm.model),
-            "llm_key_configured": bool(os.getenv(config.llm.api_key_env)),
             "comfyui_url_configured": self._comfy_configured(config),
-        }
-
-    def prompts_list(self, version: str | None = None) -> dict[str, Any]:
-        from prompt_project import PromptRelease
-        from prompt_project.inventory import coverage
-
-        current = PromptRelease.load(self._prompts_root(), version)
-        training = coverage(self._prompts_root())
-        return {
-            "version": current.version,
-            "node_count": len(current.manifest["nodes"]),
-            "default_suite": training["default_suite"],
-            "missing_default_cases": training["missing_default_cases"],
-            "missing_contract_cases": training["missing_contract_cases"],
-            "nodes": {
-                name: {
-                    **training["nodes"].get(name, {}),
-                    "variables": entry.get("variables", []),
-                    "output_contract": entry.get("output_contract", {}),
-                    "release_sha256": entry["sha256"],
-                }
-                for name, entry in current.manifest["nodes"].items()
-            },
-        }
-
-    def prompts_build(self, *, check: bool = False) -> dict[str, Any]:
-        from prompt_project.compiler import build
-        from prompt_project.inventory import coverage
-
-        root = self._prompts_root()
-        errors = build(check=check, root=root)
-        if errors:
-            raise ValueError("Prompt check failed: " + "\n".join(errors))
-        report = coverage(root)
-        return {
-            "status": "checked" if check else "built",
-            "prompt_root": self._present_path(root),
-            "node_count": report["node_count"],
-            "missing_default_cases": report["missing_default_cases"],
-            "missing_contract_cases": report["missing_contract_cases"],
-        }
-
-    def prompts_stage(self) -> dict[str, Any]:
-        from prompt_project.compiler import stage
-
-        release = stage(root=self._prompts_root())
-        return {
-            "version": release.version,
-            "directory": self._present_path(release.root),
-            "activated": False,
-        }
-
-    def prompts_publish(
-        self, evaluation: str | Path | None = None, *, offline: bool = False
-    ) -> dict[str, Any]:
-        from prompt_project.compiler import publish
-
-        report = self.path(evaluation) if evaluation is not None else None
-        release = publish(root=self._prompts_root(), evaluation=report, offline=offline)
-        return {"version": release.version, "directory": self._present_path(release.root)}
-
-    def prompts_evaluate(
-        self,
-        cases: str | Path | None = None,
-        version: str | None = None,
-        output_root: str | Path | None = None,
-        *,
-        candidate: bool = False,
-        nodes: list[str] | None = None,
-        require_coverage: bool = False,
-    ) -> dict[str, Any]:
-        from prompt_project import PromptRelease
-        from prompt_project.evaluate import run_evaluation
-
-        if candidate and version is not None:
-            raise ValueError("Choose a candidate or a released version, not both")
-        if candidate:
-            from prompt_project.compiler import stage
-
-            current = stage(root=self._prompts_root())
-        else:
-            current = PromptRelease.load(self._prompts_root(), version)
-        target = (
-            self.path(output_root)
-            if output_root is not None
-            else self.path("runs/prompt-evaluations")
-        )
-        path = run_evaluation(
-            current,
-            self.path(cases) if cases is not None else None,
-            target,
-            llm_config=self.config().llm,
-            nodes=nodes,
-            require_coverage=require_coverage,
-            validation_retries=self.config().validation_retries,
-        )
-        return {
-            "output": self._present_path(path),
-            "prompt_version": current.version,
-            "candidate": candidate,
         }
 
     def library(self):
@@ -339,6 +316,603 @@ class AppService:
         (library.archive if archived else library.restore)(asset_id)
         return {"asset_id": asset_id, "operation": "archive" if archived else "restore"}
 
+    def _text_tasks_root(self, run: str | Path) -> Path:
+        root = self.path(run)
+        if self.restricted:
+            for path in (root / "state.json", root / ".run.lock", root / "text_tasks"):
+                self._ensure_inside(path)
+            tasks = root / "text_tasks"
+            if tasks.is_dir():
+                for path in tasks.rglob("*"):
+                    if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
+                        self._ensure_inside(path)
+        return root
+
+    def _present_text_task(self, task: dict[str, Any]) -> dict[str, Any]:
+        result = dict(task)
+        if self.restricted:
+            for metadata in (result.get("request"), result.get("response")):
+                if not isinstance(metadata, dict):
+                    continue
+                for key, value in metadata.items():
+                    if key == "path" or key.endswith(("_path", "_file", "_directory")):
+                        if isinstance(value, str):
+                            posix, windows = PurePosixPath(value), PureWindowsPath(value)
+                            if (
+                                posix.is_absolute()
+                                or windows.is_absolute()
+                                or windows.drive
+                                or ".." in posix.parts
+                                or ".." in windows.parts
+                            ):
+                                raise WorkspacePathError(
+                                    "Text task metadata paths must be task-relative"
+                                )
+            for name in ("task_directory", "prompt_file", "response_file"):
+                if result.get(name) is not None:
+                    result[name] = self._present_path(result[name])
+        return result
+
+    def text_tasks_list(self, run: str | Path) -> list[dict[str, Any]]:
+        """List text tasks waiting for Codex native subagents."""
+        from .shuohao.tasks import list_text_tasks
+
+        return [
+            self._present_text_task(task) for task in list_text_tasks(self._text_tasks_root(run))
+        ]
+
+    def text_task_get(self, run: str | Path, task_id: str) -> dict[str, Any]:
+        """Read a text task request."""
+        from .shuohao.tasks import get_text_task
+
+        return self._present_text_task(get_text_task(self._text_tasks_root(run), task_id))
+
+    def text_task_complete(
+        self, run: str | Path, task_id: str, file: str | Path, agent_id: str, notes: str = ""
+    ) -> dict[str, Any]:
+        """Submit a subagent response for subsequent engine validation."""
+        from .shuohao.tasks import complete_text_task, get_text_task
+
+        root = self._text_tasks_root(run)
+        source = Path(file).expanduser()
+        source = source if source.is_absolute() else self.workspace / source
+        if source.is_symlink() or getattr(source, "is_junction", lambda: False)():
+            raise ValueError("Text result cannot be a symbolic link")
+        response = self.path(file)
+        if self.restricted:
+            self._present_text_task(get_text_task(root, task_id))
+        return self._present_text_task(
+            complete_text_task(root, task_id, response, agent_id=agent_id, notes=notes)
+        )
+
+    def _image_tasks_root(self, run: str | Path) -> Path:
+        """Resolve a run before the task store can read or write its artifacts."""
+        root = self.path(run)
+        if self.restricted:
+            for path in (root / "state.json", root / ".run.lock", root / "image_tasks"):
+                self._ensure_inside(path)
+            tasks = root / "image_tasks"
+            if tasks.is_dir():
+                for path in tasks.rglob("*"):
+                    if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
+                        self._ensure_inside(path)
+        return root
+
+    def _present_image_task(self, task: dict[str, Any]) -> dict[str, Any]:
+        result = dict(task)
+        if self.restricted:
+            # The request/result metadata participates in the task fingerprint.
+            # Keep its paths task-relative instead of rewriting signed content.
+            def check_relative_paths(value: Any, *, path_value: bool = False) -> None:
+                if isinstance(value, str) and path_value:
+                    posix, windows = PurePosixPath(value), PureWindowsPath(value)
+                    if (
+                        posix.is_absolute()
+                        or windows.is_absolute()
+                        or windows.drive
+                        or ".." in posix.parts
+                        or ".." in windows.parts
+                    ):
+                        raise WorkspacePathError("Image task metadata paths must be task-relative")
+                if isinstance(value, list):
+                    for item in value:
+                        check_relative_paths(item, path_value=path_value)
+                elif isinstance(value, dict):
+                    for key, item in value.items():
+                        is_path = key in {"path", "paths", "file", "files", "directory"} or (
+                            key.endswith(("_path", "_paths", "_file", "_files", "_directory"))
+                        )
+                        check_relative_paths(item, path_value=is_path or path_value)
+
+            check_relative_paths(result.get("request"))
+            check_relative_paths(result.get("result"))
+            request = result.get("request")
+            if isinstance(request, dict):
+                # Context is free-form metadata, not prompt text. No nested
+                # value may smuggle an absolute path under an arbitrary key.
+                check_relative_paths(request.get("context"), path_value=True)
+            for name in ("task_directory", "prompt_file", "result_file"):
+                if result.get(name) is not None:
+                    result[name] = self._present_path(result[name])
+            if isinstance(result.get("reference_files"), list):
+                result["reference_files"] = [
+                    self._present_path(path) for path in result["reference_files"]
+                ]
+        return result
+
+    def image_tasks_list(self, run: str | Path) -> list[dict[str, Any]]:
+        """List local image-generation checkpoints for a run."""
+        from .images.tasks import list_image_tasks
+
+        root = self._image_tasks_root(run)
+        return [self._present_image_task(task) for task in list_image_tasks(root)]
+
+    def image_plan_get(self, run: str | Path) -> dict[str, Any]:
+        """Read the complete asset prompt plan from this run without following a plan link."""
+        from .protocols import json_value
+
+        root = self.path(run)
+        path = root / "asset_image_plan.json"
+        if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
+            raise WorkspacePathError("Image plan must be a regular file in the run directory")
+        if not path.resolve().is_relative_to(root):
+            raise WorkspacePathError("Image plan must remain in the run directory")
+        if self.restricted:
+            self._ensure_inside(path)
+        plan = json_value(path.read_text(encoding="utf-8"))
+        if (
+            not isinstance(plan, dict)
+            or set(plan) != {"schema_version", "prompt_version", "assets"}
+            or type(plan["schema_version"]) is not int
+            or plan["schema_version"] != 1
+            or not isinstance(plan["prompt_version"], str)
+            or not plan["prompt_version"].strip()
+            or not isinstance(plan["assets"], list)
+            or any(not isinstance(item, dict) for item in plan["assets"])
+        ):
+            raise ValueError("Invalid asset image plan")
+        state_path = root / "state.json"
+        if state_path.is_symlink() or getattr(state_path, "is_junction", lambda: False)():
+            raise WorkspacePathError("Run state must be a regular file in the run directory")
+        if state_path.exists():
+            state = json_value(state_path.read_text(encoding="utf-8"))
+            if not isinstance(state, dict) or state.get("prompt_version") != plan["prompt_version"]:
+                raise ValueError("Image plan prompt version does not match this run")
+        if self.restricted:
+
+            def check_metadata_paths(value: Any, *, path_value: bool = False) -> None:
+                if isinstance(value, str) and path_value:
+                    posix, windows = PurePosixPath(value), PureWindowsPath(value)
+                    if (
+                        posix.is_absolute()
+                        or windows.is_absolute()
+                        or windows.drive
+                        or ".." in posix.parts
+                        or ".." in windows.parts
+                    ):
+                        raise WorkspacePathError("Image plan metadata paths must be relative")
+                elif isinstance(value, list):
+                    for item in value:
+                        check_metadata_paths(item, path_value=path_value)
+                elif isinstance(value, dict):
+                    for key, item in value.items():
+                        is_path = key in {
+                            "path",
+                            "paths",
+                            "file",
+                            "files",
+                            "directory",
+                        } or key.endswith(("_path", "_paths", "_file", "_files", "_directory"))
+                        check_metadata_paths(
+                            item,
+                            path_value=path_value or is_path or key in {"metadata", "context"},
+                        )
+
+            check_metadata_paths(plan)
+        return plan
+
+    def image_task_get(self, run: str | Path, task_id: str) -> dict[str, Any]:
+        """Show an image request and its fixed reference files."""
+        from .images.tasks import get_image_task
+
+        root = self._image_tasks_root(run)
+        return self._present_image_task(get_image_task(root, task_id))
+
+    def image_task_complete(
+        self,
+        run: str | Path,
+        task_id: str,
+        file: str | Path,
+        notes: str,
+        accepted: bool = False,
+        main_region: list[int] | None = None,
+    ) -> dict[str, Any]:
+        """Attach an inspected result to a pending image-generation checkpoint."""
+        from .images.tasks import complete_image_task, get_image_task
+
+        root = self._image_tasks_root(run)
+        source = Path(file).expanduser()
+        source = source if source.is_absolute() else self.workspace / source
+        if source.is_symlink() or getattr(source, "is_junction", lambda: False)():
+            raise ValueError("Image result cannot be a symbolic link")
+        image = self.path(file)
+        if self.restricted:
+            # Check untrusted metadata before writing, so a rejected response
+            # cannot have already completed a task as a hidden side effect.
+            self._present_image_task(get_image_task(root, task_id))
+        return self._present_image_task(
+            complete_image_task(
+                root, task_id, image, notes=notes, accepted=accepted, main_region=main_region
+            )
+        )
+
+    def tts_check(self) -> dict[str, Any]:
+        """Check only the separately configured Breeze TTS endpoint."""
+        from tts import BreezeTTSClient, TTSConfig
+
+        config = self.config().tts or TTSConfig()
+        if not os.getenv(config.url_env, "").strip():
+            return {"configured": False, "status": "not_configured"}
+        with BreezeTTSClient.from_config(config) as client:
+            health = client.health()
+            if health.get("status") != "ok" or health.get("sample_rate") != 24000:
+                raise ValueError("Invalid TTS health information")
+            model = _tts_model_summary(client.model_info())
+        return {
+            "configured": True,
+            "health": {"status": "ok", "sample_rate": 24000},
+            "model": model,
+        }
+
+    def _postproduction_path(self, value: str | Path) -> Path:
+        raw = Path(value).expanduser()
+        if not raw.is_absolute():
+            raw = self.workspace / raw
+        _tts_unlinked_path(raw)
+        return self.path(value)
+
+    def postproduction_check(
+        self, run: str | Path | None = None, plan: str | Path | None = None
+    ) -> dict[str, Any]:
+        from .postproduction import check_environment, check_plan
+        from .postproduction.plan import load_json
+
+        result = check_environment()
+        if bool(run) != bool(plan):
+            raise ValueError("Run and plan must be provided together")
+        if run and plan:
+            data = load_json(self._postproduction_path(plan))
+            refs = {
+                key: self._postproduction_path(voice["reference_audio"])
+                for key, voice in data.get("voices", {}).items()
+                if voice.get("reference_audio")
+            }
+            checked = check_plan(self._postproduction_path(run), data, reference_paths=refs)
+            result["plan_id"] = checked["plan_id"]
+            result["cue_count"] = len(checked["plan"]["cues"])
+        return result
+
+    def postproduction_prepare(
+        self, run: str | Path, plan: str | Path, retry_uncertain: bool = False
+    ) -> dict[str, Any]:
+        from .postproduction import prepare_dialogue
+        from .postproduction.plan import load_json
+
+        data = load_json(self._postproduction_path(plan))
+        refs = {
+            key: self._postproduction_path(voice["reference_audio"])
+            for key, voice in data.get("voices", {}).items()
+            if voice.get("reference_audio")
+        }
+        return prepare_dialogue(
+            self._postproduction_path(run),
+            data,
+            reference_paths=refs,
+            synthesize=lambda values, output: self.tts_synthesize(
+                self._present_path(values), self._present_path(output)
+            ),
+            retry_uncertain=retry_uncertain,
+        )
+
+    def postproduction_render(
+        self, run: str | Path, plan_id: str, panel_index: int, video: str | Path, model: str | Path
+    ) -> dict[str, Any]:
+        from .postproduction import render_shot
+        from .postproduction.plan import load_json
+
+        config = load_json(self._postproduction_path(model))
+        if (
+            not isinstance(config, dict)
+            or set(config) != {"model_file", "sha256", "license", "companions"}
+            or not isinstance(config["companions"], list)
+        ):
+            raise ValueError("Invalid local separator model manifest")
+        config["model_file"] = self._postproduction_path(config["model_file"])
+        for item in config["companions"]:
+            if not isinstance(item, dict) or set(item) != {"file", "sha256"}:
+                raise ValueError("Invalid separator companion file")
+            item["file"] = self._postproduction_path(item["file"])
+        return render_shot(
+            self._postproduction_path(run),
+            plan_id,
+            panel_index,
+            self._postproduction_path(video),
+            config,
+        )
+
+    def tts_synthesize(
+        self, values: str | Path, output: str | Path, asset_id: str | None = None
+    ) -> dict[str, Any]:
+        """Generate and preserve a voice sample, optionally linking it to a character."""
+        from tts import BreezeTTSClient, TTSConfig
+
+        values_path = self.path(values)
+        try:
+            with values_path.open("rb") as source:
+                raw = source.read(1024 * 1024 + 1)
+            if len(raw) > 1024 * 1024:
+                raise ValueError("TTS values file exceeds the size limit")
+            data = json.loads(raw.decode("utf-8-sig"))
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            raise ValueError("TTS values must be a readable JSON object") from exc
+        allowed = {"text", "instruction", "reference_audio", "reference_text", "cfg_scale", "seed"}
+        if not isinstance(data, dict) or set(data) - allowed:
+            raise ValueError("TTS values contain unsupported fields")
+        text = data.get("text")
+        instruction = data.get("instruction", "")
+        transcript = data.get("reference_text", "")
+        ref = data.get("reference_audio")
+        scale = data.get("cfg_scale", 1.0)
+        seed = data.get("seed", 42)
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("TTS text must be nonempty")
+        if not isinstance(instruction, str) or not isinstance(transcript, str):
+            raise ValueError("TTS instruction and reference text must be strings")
+        if ref is not None and (not isinstance(ref, str) or not ref.strip() or "\x00" in ref):
+            raise ValueError("TTS reference audio must be a local path")
+        if bool(ref) != bool(transcript.strip()):
+            raise ValueError("Reference audio and its transcript must be supplied together")
+        if not instruction.strip() and not ref:
+            raise ValueError("Provide a voice instruction or reference audio and transcript")
+        if (
+            isinstance(scale, bool)
+            or not isinstance(scale, (int, float))
+            or not math.isfinite(scale)
+            or scale <= 0
+        ):
+            raise ValueError("TTS cfg_scale must be a positive finite number")
+        if isinstance(seed, bool) or not isinstance(seed, int) or not 0 <= seed <= 2**32 - 1:
+            raise ValueError("TTS seed is outside the supported range")
+
+        reference = None
+        if ref:
+            posix, windows = PurePosixPath(ref), PureWindowsPath(ref)
+            if self.restricted and (
+                posix.is_absolute()
+                or windows.is_absolute()
+                or windows.drive
+                or ".." in posix.parts
+                or ".." in windows.parts
+            ):
+                raise WorkspacePathError("Use a relative reference path inside the workspace")
+            reference = Path(ref).expanduser()
+            if not reference.is_absolute():
+                reference = values_path.parent / reference
+            _tts_unlinked_path(reference)
+            if self.restricted:
+                self._ensure_inside(reference)
+            if reference.suffix.lower() != ".wav" or not reference.is_file():
+                raise ValueError("TTS reference must be an existing local WAV file")
+
+        raw_output = Path(output).expanduser()
+        if not raw_output.is_absolute():
+            raw_output = self.workspace / raw_output
+        _tts_unlinked_path(raw_output)
+        target = self.path(output)
+        if target.suffix.lower() != ".wav":
+            raise ValueError("TTS output must use the .wav extension")
+        metadata_path = target.with_suffix(".voice.json")
+        lock_path = target.with_suffix(".voice.lock")
+        recovery_audio = target.with_suffix(".voice.stage.wav")
+        for path in (target, metadata_path, lock_path, recovery_audio):
+            _tts_unlinked_path(path)
+            if self.restricted:
+                self._ensure_inside(path)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        _tts_unlinked_path(target)
+        config = self.config()
+        tts_config = config.tts or TTSConfig()
+        library = self.library() if asset_id is not None else None
+        try:
+            asset = None
+            if library is not None:
+                asset = library.get(asset_id)
+                if asset["kind"] != "character":
+                    raise ValueError("Voice references can only be linked to character assets")
+            asset_identity = (
+                {"asset_id": asset["asset_id"], "asset_version": asset["asset_version"]}
+                if asset
+                else None
+            )
+            try:
+                with FileLock(str(lock_path), timeout=0):
+                    _tts_unlinked_path(lock_path)
+                    with tempfile.TemporaryDirectory(
+                        prefix=".tts-stage-", dir=target.parent
+                    ) as temp:
+                        stage = Path(temp)
+                        ref_copy = None
+                        ref_hash = None
+                        if reference is not None:
+                            ref_copy = stage / "reference.wav"
+                            size, digest = 0, hashlib.sha256()
+                            with reference.open("rb") as incoming, ref_copy.open("xb") as outgoing:
+                                for part in iter(lambda: incoming.read(65536), b""):
+                                    size += len(part)
+                                    if size > tts_config.max_audio_bytes:
+                                        raise ValueError("TTS reference WAV exceeds the size limit")
+                                    digest.update(part)
+                                    outgoing.write(part)
+                            ref_hash = digest.hexdigest()
+                        request = {
+                            "text": text,
+                            "instruction": instruction,
+                            "reference_text": transcript,
+                            "reference_audio_sha256": ref_hash,
+                            "mode": (
+                                "direction"
+                                if ref_hash and instruction.strip()
+                                else "clone"
+                                if ref_hash
+                                else "design"
+                            ),
+                            "cfg_scale": scale,
+                            "seed": seed,
+                        }
+                        if target.exists() or metadata_path.exists():
+                            audio_to_verify = target if target.exists() else recovery_audio
+                            if not audio_to_verify.is_file() or not metadata_path.is_file():
+                                raise FileExistsError(
+                                    "TTS output or metadata already exists; choose a new output"
+                                )
+                            with metadata_path.open("rb") as incoming:
+                                saved = incoming.read(1024 * 1024 + 1)
+                            if len(saved) > 1024 * 1024:
+                                raise ValueError("TTS metadata exceeds the size limit")
+                            try:
+                                metadata = json.loads(saved)
+                            except (json.JSONDecodeError, UnicodeError) as exc:
+                                raise ValueError("Existing TTS metadata is invalid") from exc
+                            if (
+                                not isinstance(metadata, dict)
+                                or set(metadata)
+                                != {
+                                    "schema_version",
+                                    "provider",
+                                    "request",
+                                    "model",
+                                    "audio",
+                                    "asset",
+                                }
+                                or metadata["schema_version"] != 1
+                                or metadata["provider"] != "breeze-tts2"
+                                or metadata["request"] != request
+                                or metadata["asset"] != asset_identity
+                                or metadata["audio"]
+                                != _tts_wav_summary(audio_to_verify, tts_config.max_audio_bytes)
+                                or metadata["model"] != _tts_model_summary(metadata["model"])
+                            ):
+                                raise FileExistsError(
+                                    "Existing TTS output does not match this request"
+                                )
+                            if audio_to_verify == recovery_audio:
+                                _publish_tts_file(recovery_audio, target)
+                            reused = True
+                        else:
+                            if recovery_audio.exists():
+                                raise FileExistsError(
+                                    "TTS recovery audio exists without metadata; choose a new output"
+                                )
+                            if not os.getenv(tts_config.url_env, "").strip():
+                                raise ValueError(
+                                    f"Set {tts_config.url_env} to the Breeze TTS service URL"
+                                )
+                            candidate = stage / "sample.wav"
+                            with BreezeTTSClient.from_config(tts_config) as client:
+                                model = _tts_model_summary(client.model_info())
+                                generated = client.synthesize(
+                                    text,
+                                    candidate,
+                                    instruction=instruction,
+                                    reference_audio=ref_copy,
+                                    reference_text=transcript,
+                                    cfg_scale=scale,
+                                    seed=seed,
+                                )
+                            audio = _tts_wav_summary(candidate, tts_config.max_audio_bytes)
+                            if generated.get("sha256") != audio["sha256"]:
+                                raise ValueError(
+                                    "TTS output fingerprint does not match the returned audio"
+                                )
+                            metadata = {
+                                "schema_version": 1,
+                                "provider": "breeze-tts2",
+                                "request": request,
+                                "model": model,
+                                "audio": audio,
+                                "asset": asset_identity,
+                            }
+                            staged_metadata = stage / "sample.voice.json"
+                            write_json(staged_metadata, metadata)
+                            if target.exists() or metadata_path.exists():
+                                raise FileExistsError(
+                                    "TTS output appeared during generation; choose a new output"
+                                )
+                            _publish_tts_file(candidate, recovery_audio)
+                            _publish_tts_file(staged_metadata, metadata_path)
+                            _publish_tts_file(recovery_audio, target)
+                            reused = False
+                        linked = None
+                        if library is not None:
+
+                            def link_once(path: Path, role: str, sha: str) -> dict:
+                                existing = library.files(
+                                    asset_id,
+                                    asset_version=asset_identity["asset_version"],
+                                    role=role,
+                                )
+                                match = next(
+                                    (item for item in reversed(existing) if item["sha256"] == sha),
+                                    None,
+                                )
+                                if match is not None:
+                                    managed = Path(match["local_path"])
+                                    if managed.exists():
+                                        _tts_unlinked_path(managed)
+                                        with managed.open("rb") as source:
+                                            actual = hashlib.file_digest(
+                                                source, "sha256"
+                                            ).hexdigest()
+                                        if actual != sha:
+                                            raise ValueError(
+                                                "Managed TTS asset failed integrity check"
+                                            )
+                                        return match
+                                return library.link_file(
+                                    asset_id,
+                                    path,
+                                    role=role,
+                                    asset_version=asset_identity["asset_version"],
+                                )
+
+                            with metadata_path.open("rb") as incoming:
+                                metadata_sha = hashlib.file_digest(incoming, "sha256").hexdigest()
+                            linked = {
+                                "voice": self._present_file(
+                                    link_once(
+                                        target, "voice_reference", metadata["audio"]["sha256"]
+                                    )
+                                ),
+                                "metadata": self._present_file(
+                                    link_once(
+                                        metadata_path, "voice_reference_metadata", metadata_sha
+                                    )
+                                ),
+                            }
+            except Timeout as exc:
+                raise RuntimeError("Another TTS task is writing this output") from exc
+        finally:
+            if library is not None:
+                library.close()
+        return {
+            "output": self._present_path(target),
+            "metadata_file": self._present_path(metadata_path),
+            "audio": metadata["audio"],
+            "model": metadata["model"],
+            "asset": linked,
+            "reused": reused,
+        }
+
     def database_info(self) -> dict[str, Any]:
         library = self.library()
         return {
@@ -359,9 +933,25 @@ class AppService:
         resume: bool = False,
         render: bool = False,
         dry_run: bool = False,
+        stop_after: Literal[
+            "outline", "characters", "art", "script", "staging", "prompts", "assets", "frames"
+        ]
+        | None = None,
     ) -> dict[str, Any]:
-        from .engine import Pipeline
+        from .shuohao.engine import ProductionPipeline
 
+        stages = (
+            "outline",
+            "characters",
+            "art",
+            "script",
+            "staging",
+            "prompts",
+            "assets",
+            "frames",
+        )
+        if stop_after is not None and stop_after not in stages:
+            raise ValueError("stop_after must be one of: " + ", ".join(stages))
         source = self.path(input_path).read_text(encoding="utf-8-sig")
         output = self.path(output_path)
         if self.restricted and not dry_run and output.exists() and output.is_dir():
@@ -370,7 +960,9 @@ class AppService:
             for path in output.rglob("*"):
                 if path.is_symlink() or getattr(path, "is_junction", lambda: False)():
                     self._ensure_inside(path)
-        if not resume and not dry_run and output.exists() and not (output / "state.json").exists():
+        if not resume and not dry_run and (output / "state.json").exists():
+            raise ValueError("Output directory already contains a run; use a new output directory")
+        if not resume and not dry_run and output.exists():
             for item in output.iterdir():
                 # Native filelock leaves an empty marker when it is released.
                 # The engine still acquires the OS lock and rejects live owners.
@@ -384,12 +976,24 @@ class AppService:
                 raise ValueError(
                     "Output directory is not empty; choose a new directory for the run"
                 )
-        pipeline = Pipeline(self.config())
+        if resume:
+            state_path = output / "state.json"
+            if self.restricted:
+                self._ensure_inside(state_path)
+            if not state_path.is_file():
+                raise ValueError("Cannot resume without state.json; start a run in a new directory")
+            state = json.loads(state_path.read_text(encoding="utf-8-sig"))
+            if state.get("workflow") != "shuohao-v1":
+                raise ValueError("Unsupported run format; use a new output directory")
+        pipeline = ProductionPipeline(self.config())
         try:
+            options = {}
+            if stop_after is not None:
+                options["stop_after"] = stop_after
             result = (
-                pipeline.dry_run(source)
+                pipeline.dry_run(source, **options)
                 if dry_run
-                else pipeline.run(source, output, resume=resume, render=render)
+                else pipeline.run(source, output, resume=resume, render=render, **options)
             )
             if self.restricted and "output" in result:
                 result["output"] = self._present_path(result["output"])
@@ -402,51 +1006,104 @@ class AppService:
         if self.restricted:
             self._ensure_inside(root / "state.json")
         state = json.loads((root / "state.json").read_text(encoding="utf-8"))
+        if state.get("workflow") == "shuohao-v1":
+            result = {
+                key: state[key]
+                for key in (
+                    "workflow",
+                    "status",
+                    "stage",
+                    "stages",
+                    "artifacts",
+                    "prompt_version",
+                    "last_error",
+                    "pending_image_task",
+                    "pending_image_tasks",
+                    "pending_text_tasks",
+                    "media",
+                    "shot_count",
+                    "frame_count",
+                    "shots",
+                    "frames",
+                )
+                if key in state
+            }
+            # Paths in production state are run-relative; resolve and check each
+            # before exposing them to a restricted MCP client.
+            if self.restricted:
+
+                def present_artifact(value: str) -> str:
+                    path = Path(value)
+                    return self._present_path(path if path.is_absolute() else root / path)
+
+                if isinstance(result.get("artifacts"), dict):
+                    result["artifacts"] = {
+                        key: present_artifact(value) if isinstance(value, str) else value
+                        for key, value in result["artifacts"].items()
+                    }
+                if isinstance(result.get("stages"), dict):
+                    result["stages"] = {
+                        key: {
+                            **value,
+                            **(
+                                {"artifact": present_artifact(value["artifact"])}
+                                if isinstance(value.get("artifact"), str)
+                                else {}
+                            ),
+                        }
+                        if isinstance(value, dict)
+                        else value
+                        for key, value in result["stages"].items()
+                    }
+                if isinstance(result.get("media"), dict):
+                    for job in result["media"].values():
+                        if isinstance(job, dict) and isinstance(job.get("files"), list):
+                            job["files"] = [present_artifact(path) for path in job["files"]]
+            return result
         result = {key: state.get(key) for key in ("status", "prompt_version", "last_error")}
+        for key in (
+            "pending_image_task",
+            "pending_image_tasks",
+            "blocked_image_assets",
+            "asset_prompt_preparation",
+        ):
+            if key in state:
+                result[key] = state[key]
+        if state.get("status") == "awaiting_character_design":
+            result.update(
+                pending_character_design=state.get("pending_character_design"),
+                character_design_reason=state.get("character_design_reason"),
+            )
+        if isinstance(state.get("first_frame_media"), dict):
+            # Only expose a count: individual records include managed local
+            # paths, while image_tasks_list handles workspace-safe detail.
+            result["first_frames_completed"] = len(state["first_frame_media"])
+        chapter_review = state.get("chapter_prompt_review")
+        if isinstance(chapter_review, dict):
+            # Return only bounded status metadata. Source excerpts, findings,
+            # and local audit paths remain in the run's review artifacts.
+            summary = {}
+            for key in ("status", "verdict"):
+                value = chapter_review.get(key)
+                if isinstance(value, str) and re.fullmatch(r"[A-Za-z_]{1,64}", value):
+                    summary[key] = value
+            digest = chapter_review.get("panels_sha256")
+            if isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest):
+                summary["panels_sha256"] = digest
+            count = chapter_review.get("findings_count")
+            if type(count) is int and count >= 0:
+                summary["findings_count"] = count
+            result["chapter_prompt_review"] = summary
         result.update(
-            nodes_completed=len(state["nodes"]),
+            nodes_completed=len(state.get("nodes", {})),
             panels=len(state.get("panels", [])),
-            media=state["media"],
+            media=state.get("media", {}),
         )
         if self.restricted:
             for job in result["media"].values():
                 if isinstance(job, dict) and isinstance(job.get("files"), list):
                     job["files"] = [self._present_path(path) for path in job["files"]]
         return result
-
-    def shots_list(self, run: str | Path) -> list[dict[str, Any]]:
-        from .shots import RunShots
-
-        root = self.path(run)
-        if self.restricted:
-            self._ensure_inside(root / "state.json")
-        return RunShots(root).list()
-
-    def shot_get(self, run: str | Path, panel_index: int) -> dict[str, Any]:
-        from .shots import RunShots
-
-        root = self.path(run)
-        if self.restricted:
-            self._ensure_inside(root / "state.json")
-        return RunShots(root).get(panel_index)
-
-    def shot_set_mode(self, run: str | Path, panel_index: int, mode: str) -> dict[str, Any]:
-        from .shots import RunShots
-
-        root = self.path(run)
-        if self.restricted:
-            for name in (
-                "state.json",
-                ".run.lock",
-                "panels.json",
-                "continuity.json",
-                "shot_modes.json",
-                "prompts",
-                "history",
-                "history/mode-changes",
-            ):
-                self._ensure_inside(root / name)
-        return RunShots(root).set_mode(panel_index, mode)
 
     def attach_job(self, run: str | Path, key: str, prompt_id: str) -> dict[str, str]:
         from .comfy_servers import ComfyRouter
@@ -515,8 +1172,6 @@ class AppService:
 
     @staticmethod
     def _comfy_stage(profile: str, config: Config, template: Any) -> str:
-        if profile == config.media.image_profile or profile in {"qwen", "qwen-unlock"}:
-            return "image"
         if profile == config.media.i2va_profile or profile == "i2va":
             return "i2va"
         return "ref2va" if getattr(template, "has_first_frame", False) else "image"

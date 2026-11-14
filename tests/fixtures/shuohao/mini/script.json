@@ -1,0 +1,104 @@
+{
+  "source": "渡口",
+  "params": {
+    "maxLineChars": 22
+  },
+  "episodes": [
+    {
+      "ep": 1,
+      "targetSeconds": 12,
+      "hook": "旧皮箱引人注意",
+      "cliff": "两人能否渡河",
+      "beatsClaimed": [
+        "悬念钩"
+      ],
+      "hookBeat": [
+        1,
+        1
+      ],
+      "scenes": [
+        {
+          "sceneId": "S02",
+          "lighting": "浓雾清晨",
+          "characters": [
+            "C01",
+            "C03"
+          ],
+          "props": [
+            "P01"
+          ],
+          "flow": [
+            {
+              "action": "沈知微抱紧旧皮箱。"
+            },
+            {
+              "action": "老周在船头抬起头。"
+            },
+            {
+              "speaker": "C03",
+              "line": "上船吧。"
+            },
+            {
+              "action": "沈知微走向渡船。"
+            },
+            {
+              "speaker": "C01",
+              "line": "谢谢你。"
+            },
+            {
+              "action": "老周扶稳跳板。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ep": 2,
+      "targetSeconds": 12,
+      "hook": "旧皮箱引人注意",
+      "cliff": "两人能否渡河",
+      "beatsClaimed": [
+        "收束"
+      ],
+      "hookBeat": [
+        1,
+        1
+      ],
+      "scenes": [
+        {
+          "sceneId": "S02",
+          "lighting": "浓雾清晨",
+          "characters": [
+            "C01",
+            "C03"
+          ],
+          "props": [
+            "P01"
+          ],
+          "flow": [
+            {
+              "action": "沈知微抱紧旧皮箱。"
+            },
+            {
+              "action": "老周在船头抬起头。"
+            },
+            {
+              "speaker": "C03",
+              "line": "上船吧。"
+            },
+            {
+              "action": "沈知微走向渡船。"
+            },
+            {
+              "speaker": "C01",
+              "line": "谢谢你。"
+            },
+            {
+              "action": "老周扶稳跳板。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

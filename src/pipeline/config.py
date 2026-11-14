@@ -7,8 +7,8 @@ from typing import Any, Literal
 from dotenv import load_dotenv as _load_dotenv
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from llm.config import LLMConfig
-from novel_prompt_pipeline.resources import default_workspace, prompt_root
+from novel_prompt_pipeline.resources import default_workspace
+from tts import TTSConfig
 
 from .styles import StyleConfig
 
@@ -73,22 +73,37 @@ class ComfyUIConfig(_StrictModel):
 
 
 class MediaConfig(_StrictModel):
-    image_profile: str = "qwen"
+    image_backend: Literal["codex", "comfyui"] = "codex"
+    # Retained only for reading older Codex configurations; not an active backend.
+    image_profile: str | None = None
     video_profile: str = "ref2va"
     i2va_profile: str = "i2va"
     bindings_file: str | None = None
     workflows_dir: str | None = None
     # Keep dictionaries as the public interface; the engine indexes each item.
     reference_audios: list[dict[str, Any]] = Field(default_factory=list, max_length=3)
-    asset_width: int = 1024
-    asset_height: int = 576
+    asset_width: int = 1536
+    asset_height: int = 864
     prop_size: int = 1024
     character_face_references: dict[str, str] = Field(default_factory=dict)
+    character_face_reference_scopes: dict[str, list[Literal["hair", "face_shape", "full_face"]]] = (
+        Field(default_factory=dict)
+    )
+    scene_reverse_references: dict[str, str] = Field(default_factory=dict)
     frame_width: int = 576
     frame_height: int = 1024
     timeout: float = Field(default=1800, gt=0, allow_inf_nan=False)
     poll_interval: float = Field(default=2, gt=0, allow_inf_nan=False)
     seed: int = Field(default=1, ge=0)
+
+    @field_validator("image_backend")
+    @classmethod
+    def image_backend_is_codex(cls, value: str) -> str:
+        if value != "codex":
+            raise ValueError(
+                "ComfyUI image generation has been retired; use the Codex image backend"
+            )
+        return value
 
     @field_validator("asset_width", "asset_height", "frame_width", "frame_height")
     @classmethod
@@ -111,6 +126,28 @@ class MediaConfig(_StrictModel):
             raise ValueError("Character reference names and paths must be nonempty")
         return values
 
+    @field_validator("character_face_reference_scopes")
+    @classmethod
+    def validate_character_face_scopes(cls, values: dict[str, list[str]]) -> dict[str, list[str]]:
+        for name, scope in values.items():
+            if (
+                not name.strip()
+                or not scope
+                or len(scope) != len(set(scope))
+                or ("full_face" in scope and "face_shape" in scope)
+            ):
+                raise ValueError(
+                    "Character reference scope must be nonempty, distinct and unambiguous"
+                )
+        return values
+
+    @field_validator("scene_reverse_references")
+    @classmethod
+    def validate_scene_reverse_references(cls, values: dict[str, str]) -> dict[str, str]:
+        if any(not key.strip() or not value.strip() for key, value in values.items()):
+            raise ValueError("Scene reverse reference names and paths must be nonempty")
+        return values
+
     @field_validator("reference_audios")
     @classmethod
     def validate_audio(cls, values: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -120,54 +157,50 @@ class MediaConfig(_StrictModel):
         ]
 
 
+class ProductionConfig(_StrictModel):
+    episodes: int | None = Field(default=None, ge=1, le=1000)
+    workers: int = Field(default=3, ge=1, le=8)
+    max_repairs: int = Field(default=2, ge=0, le=5)
+    episodes_per_batch: int = Field(default=3, ge=1, le=3)
+    aspect_ratio: Literal["16:9", "9:16"] = "9:16"
+    minutes_per_episode: float = Field(default=3.0, gt=0, le=60)
+
+
 class Config(_StrictModel):
-    prompt_project: str = Field(default_factory=lambda: str(prompt_root()))
+    production: ProductionConfig = Field(default_factory=ProductionConfig)
     asset_library: str = Field(
         default_factory=lambda: str(default_workspace() / "runs" / "library" / "assets.sqlite3")
     )
     project_id: str = "default"
-    reuse_existing_assets: bool = True
-    prompt_version: str | None = None
-    batch_size: int = Field(default=4, ge=1)
-    first_panel_index: int = Field(default=0, ge=0)
-    rewrite: bool = True
-    summarize: bool = True
-    strict_asset_validation: bool = True
-    validation_retries: int = Field(default=1, ge=0)
-    generation_mode: Literal["auto", "i2va", "ref2va"] = "auto"
-    min_seconds: int = Field(default=4, ge=1)
-    max_seconds: int = Field(default=15, ge=1)
-    llm: LLMConfig = Field(default_factory=LLMConfig)
+    character_design_briefs: dict[str, str] = Field(default_factory=dict)
     media: MediaConfig = Field(default_factory=MediaConfig)
     style: StyleConfig = Field(default_factory=StyleConfig)
     comfyui: ComfyUIConfig | None = None
+    tts: TTSConfig | None = None
 
-    @field_validator("project_id", "prompt_project", "asset_library")
+    @field_validator("project_id", "asset_library")
     @classmethod
     def require_value(cls, value: str) -> str:
         if not value.strip():
             raise ValueError("Value must not be empty")
         return value
 
-    @model_validator(mode="after")
-    def validate_durations(self) -> Config:
-        if self.max_seconds < self.min_seconds:
-            raise ValueError("Invalid duration range")
-        return self
+    @field_validator("character_design_briefs")
+    @classmethod
+    def validate_character_design_briefs(cls, values: dict[str, str]) -> dict[str, str]:
+        if any(not key.strip() or not value.strip() for key, value in values.items()):
+            raise ValueError("Character design brief names and instructions must not be empty")
+        return values
 
     @classmethod
     def load(cls, path: str | Path | None = None) -> Config:
         data = json.loads(Path(path).read_text(encoding="utf-8-sig")) if path else {}
         if not isinstance(data, dict):
             raise ValueError("Configuration root must be an object")
-        llm = data.get("llm", {})
-        if not isinstance(llm, dict):
-            raise ValueError("llm configuration must be an object")
-        data["llm"] = LLMConfig.from_env(llm)
         config = cls.model_validate(data)
         if path:
             directory = Path(path).resolve().parent
-            for name in ("prompt_project", "asset_library"):
+            for name in ("asset_library",):
                 value = getattr(config, name)
                 if not Path(value).is_absolute():
                     setattr(config, name, str((directory / value).resolve()))
@@ -183,20 +216,33 @@ class Config(_StrictModel):
                     config.media.character_face_references[name] = str(
                         (directory / value).resolve()
                     )
+            for name, value in config.media.scene_reverse_references.items():
+                if not Path(value).is_absolute():
+                    config.media.scene_reverse_references[name] = str((directory / value).resolve())
         return config
 
     def public_dict(self) -> dict:
         # Lists can be mutated in place after initialization; revalidate them.
         # Secrets are only in environment variables and never become fields.
         result = self.__class__.model_validate(self.model_dump()).model_dump(mode="json")
+        if not result["character_design_briefs"]:
+            result.pop("character_design_briefs")
         # Even the default style affects media generation and must remain in
         # the run identity, including the resolved text stored by the pipeline.
         if result["media"]["prop_size"] == 1024:
             result["media"].pop("prop_size")
+        if result["media"]["image_backend"] == "codex":
+            result["media"].pop("image_profile", None)
         if not result["media"]["character_face_references"]:
             result["media"].pop("character_face_references")
+        if not result["media"]["character_face_reference_scopes"]:
+            result["media"].pop("character_face_reference_scopes")
+        if not result["media"]["scene_reverse_references"]:
+            result["media"].pop("scene_reverse_references")
         if result["comfyui"] is None:
             result.pop("comfyui")
+        if result["tts"] is None:
+            result.pop("tts")
         return result
 
 

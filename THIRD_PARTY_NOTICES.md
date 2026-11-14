@@ -6,8 +6,6 @@ ComfyUI software, custom nodes, and model weights from their respective
 providers. Those components are not included as part of the project's MIT
 license; obtain and use each under its own terms.
 
-The image-reference inputs were checked against the documentation for the
-[ComfyUI Qwen Image 2.1 text-encoding node](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextEncodeQwenImage21/en.md).
 The Ref2VA input layout was adapted with reference to a public example from
 [comfyui-minimax-h3-audio-T8](https://github.com/T8mars/comfyui-minimax-h3-audio-T8).
 The target server's installed node version must still be checked before use.
@@ -20,41 +18,10 @@ provenance and terms of any material before redistributing it.
 Python dependencies are installed separately and retain their own licenses.
 See the dependency metadata in the installed environment for their notices.
 
-## Video direction research
+## shuohao-skills
 
-The project's prompt design was informed by a review of
-[skill-for-video](https://github.com/Yganna-c/skill-for-video-/tree/9d2524bbd39ccc6cacaea19280dd9da15d834570)
-at commit `9d2524bbd39ccc6cacaea19280dd9da15d834570`. The reviewed source
-contained no license file. The project does not redistribute its templates,
-tables, or examples; its prompt instructions use independently written
-expressions of general ideas about scene-space lighting, viewpoint, continuity,
-and adapting shot instructions to the available inputs. The upstream skill's
-specific confirmation flow, fixed lighting coordinates, style presets, and
-model capability claims were not adopted. An operator seeking to reuse the
-upstream material itself must determine the applicable permission separately.
+This project redistributes six skills from [shuohao-skills](https://github.com/eternityspring/shuohao-skills/tree/8af10e0ea1a550e4575666884f4deef780bf38ff), commit `8af10e0ea1a550e4575666884f4deef780bf38ff`. The included files retain their original content and are licensed under Apache-2.0. The upstream license and copyright notice are included in `src/pipeline/shuohao/vendor/LICENSE` and `src/pipeline/shuohao/vendor/NOTICE`.
 
-## drama-skills
+## Breeze TTS 2
 
-The project's prompt research reviewed [drama-skills](https://github.com/zenstory-ai/drama-skills/tree/8cf7404981b7095b498e061832bb3c9ffd6a42be) at commit `8cf7404981b7095b498e061832bb3c9ffd6a42be`. The upstream project is distributed under the MIT License. The project uses independently written instructions informed by concepts such as knowledge boundaries, reveal order, and separating off-screen audio from visible assets; it does not copy the upstream templates or prescribe its workflow.
-
-MIT License
-
-Copyright (c) 2026 drama-skills contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The independently implemented HTTP adapter follows the API in [Breeze TTS 2](https://github.com/breezeblue-ai/breeze-tts/tree/daa6cb2efe5471f09369229f322d20bb956cb3c3). The upstream inference code is Apache-2.0; the project states that model weights, derivative checkpoints and self-hosted outputs are subject to a separate research and non-commercial license. Consult the [upstream license information](https://github.com/breezeblue-ai/breeze-tts/blob/daa6cb2efe5471f09369229f322d20bb956cb3c3/README.md#license-and-responsible-use) and [model license](https://huggingface.co/BreezeBlue/Breeze-TTS-2/blob/main/LICENSE) for the applicable terms. No upstream TTS code or model weights are included here.

@@ -13,6 +13,7 @@ from typing import Any, Literal
 
 from mcp.server.fastmcp import FastMCP
 from mcp.types import ToolAnnotations
+from pydantic import StrictBool, StrictInt
 
 from .config import load_dotenv
 from .service import AppService
@@ -32,7 +33,11 @@ def create_server(
             "Operate only on paths relative to the configured workspace. "
             "pipeline_run may take a long time. Cancelling a tool request does not "
             "guarantee that an already-submitted remote job has stopped; inspect "
-            "the run and resume it before attempting another submission."
+            "the run and resume it before attempting another submission. If a run "
+            "awaits an image, inspect its task and reference files, use the active "
+            "Codex image-generation capability, copy the generated result into the "
+            "workspace, inspect it, complete the task with accepted=true and observation "
+            "notes only when it is acceptable, and resume the run."
         ),
     )
     read_only = ToolAnnotations(
@@ -44,50 +49,8 @@ def create_server(
 
     @server.tool(annotations=read_only)
     async def workspace_info() -> dict[str, Any]:
-        """Return current workspace, active prompt version, and configured service availability."""
+        """Return current workspace, workflow, and configured service availability."""
         return await asyncio.to_thread(app.workspace_info)
-
-    @server.tool(annotations=read_only)
-    async def prompts_list(version: str | None = None) -> dict[str, Any]:
-        """List prompt nodes and their variable/output contracts for a release."""
-        return await asyncio.to_thread(app.prompts_list, version)
-
-    @server.tool(annotations=read_only)
-    async def prompts_check() -> dict[str, Any]:
-        """Check whether prompt sources and compiled files agree."""
-        return await asyncio.to_thread(app.prompts_build, check=True)
-
-    @server.tool(annotations=write)
-    async def prompts_stage() -> dict[str, Any]:
-        """Build a contract-checked candidate without activating it."""
-        return await asyncio.to_thread(app.prompts_stage)
-
-    @server.tool(annotations=write)
-    async def prompts_publish(
-        evaluation: str | None = None, offline: bool = False
-    ) -> dict[str, Any]:
-        """Publish with a complete evaluation, or explicitly choose offline publication."""
-        return await asyncio.to_thread(app.prompts_publish, evaluation, offline=offline)
-
-    @server.tool(annotations=remote)
-    async def prompts_evaluate(
-        cases: str | None = None,
-        version: str | None = None,
-        output_root: str | None = None,
-        candidate: bool = False,
-        nodes: list[str] | None = None,
-        require_coverage: bool = False,
-    ) -> dict[str, Any]:
-        """Evaluate the default full suite or custom JSONL through the shared configured LLM."""
-        return await asyncio.to_thread(
-            app.prompts_evaluate,
-            cases,
-            version,
-            output_root,
-            candidate=candidate,
-            nodes=nodes,
-            require_coverage=require_coverage,
-        )
 
     # Opening an older asset catalog can perform its first schema migration.
     @server.tool(annotations=write)
@@ -153,14 +116,27 @@ def create_server(
         resume: bool = False,
         render: bool = False,
         dry_run: bool = False,
+        stop_after: Literal[
+            "outline", "characters", "art", "script", "staging", "prompts", "assets", "frames"
+        ]
+        | None = None,
     ) -> dict[str, Any]:
         """Run or resume the pipeline and wait for completion. Paths are workspace-relative.
 
-        Rendering submits jobs to ComfyUI. Cancelling this request does not ensure
-        a submitted job stops. Inspect the run before resuming after a disconnect.
+        stop_after selects a production stage (outline, characters, art, script,
+        staging, prompts) or media checkpoint (assets, frames).
+        Rendering can pause for a Codex image task and can submit video jobs to
+        ComfyUI. Cancelling does not ensure a remote job stops; inspect the run
+        before resuming after a disconnect.
         """
         return await asyncio.to_thread(
-            app.run, input_path, output_path, resume=resume, render=render, dry_run=dry_run
+            app.run,
+            input_path,
+            output_path,
+            resume=resume,
+            render=render,
+            dry_run=dry_run,
+            stop_after=stop_after,
         )
 
     @server.tool(annotations=read_only)
@@ -169,24 +145,91 @@ def create_server(
         return await asyncio.to_thread(app.run_status, run)
 
     @server.tool(annotations=read_only)
-    async def shots_list(run: str) -> list[dict[str, Any]]:
-        """List saved shots and their generation modes in a workspace-relative run."""
-        return await asyncio.to_thread(app.shots_list, run)
+    async def text_tasks_list(run: str) -> list[dict[str, Any]]:
+        """List text tasks waiting for Codex native subagents in a workspace-relative run."""
+        return await asyncio.to_thread(app.text_tasks_list, run)
 
     @server.tool(annotations=read_only)
-    async def shot_get(run: str, panel_index: int) -> dict[str, Any]:
-        """Inspect one shot by its panel index."""
-        return await asyncio.to_thread(app.shot_get, run, panel_index)
+    async def text_task_get(run: str, task_id: str) -> dict[str, Any]:
+        """Read a text task request for a Codex native subagent."""
+        return await asyncio.to_thread(app.text_task_get, run, task_id)
 
     @server.tool(annotations=write)
-    async def shot_set_mode(
-        run: str, panel_index: int, mode: Literal["i2va", "ref2va"]
+    async def text_task_complete(
+        run: str, task_id: str, file: str, agent_id: str, notes: str = ""
     ) -> dict[str, Any]:
-        """Switch a shot between i2va and ref2va and mark affected prompts for recomputation.
+        """Submit a subagent response file for subsequent engine validation."""
+        return await asyncio.to_thread(app.text_task_complete, run, task_id, file, agent_id, notes)
 
-        Submitted media prevents changes to affected shots; resume the run after a change.
-        """
-        return await asyncio.to_thread(app.shot_set_mode, run, panel_index, mode)
+    @server.tool(annotations=read_only)
+    async def image_tasks_list(run: str) -> list[dict[str, Any]]:
+        """List image-generation checkpoints for a workspace-relative run."""
+        return await asyncio.to_thread(app.image_tasks_list, run)
+
+    @server.tool(annotations=read_only)
+    async def image_plan_get(run: str) -> dict[str, Any]:
+        """Read the completed asset prompt plan for a workspace-relative run."""
+        return await asyncio.to_thread(app.image_plan_get, run)
+
+    @server.tool(annotations=read_only)
+    async def image_task_get(run: str, task_id: str) -> dict[str, Any]:
+        """Show a task prompt and its fixed workspace-relative reference images."""
+        return await asyncio.to_thread(app.image_task_get, run, task_id)
+
+    @server.tool(annotations=write)
+    async def image_task_complete(
+        run: str,
+        task_id: str,
+        file: str,
+        notes: str,
+        accepted: StrictBool = False,
+        main_region: list[StrictInt] | None = None,
+    ) -> dict[str, Any]:
+        """Accept an image; optional main_region is [left, top, right, bottom] in display pixels."""
+        return await asyncio.to_thread(
+            app.image_task_complete,
+            run,
+            task_id,
+            file,
+            notes,
+            accepted=accepted,
+            main_region=main_region,
+        )
+
+    @server.tool(annotations=remote_read)
+    async def tts_check() -> dict[str, Any]:
+        """Check the separately configured Breeze TTS endpoint and its model identity."""
+        return await asyncio.to_thread(app.tts_check)
+
+    @server.tool(annotations=remote)
+    async def tts_synthesize(
+        values: str, output: str, asset_id: str | None = None
+    ) -> dict[str, Any]:
+        """Create a WAV and provenance from workspace-relative inputs; optionally link a character."""
+        return await asyncio.to_thread(app.tts_synthesize, values, output, asset_id)
+
+    @server.tool(annotations=read_only)
+    async def postproduction_check(
+        run: str | None = None, plan: str | None = None
+    ) -> dict[str, Any]:
+        """Check offline dependencies and optionally validate a workspace dialogue plan."""
+        return await asyncio.to_thread(app.postproduction_check, run, plan)
+
+    @server.tool(annotations=remote)
+    async def postproduction_prepare(
+        run: str, plan: str, retry_uncertain: StrictBool = False
+    ) -> dict[str, Any]:
+        """Prepare pinned Breeze dialogue takes; interrupted requests need explicit retry."""
+        return await asyncio.to_thread(app.postproduction_prepare, run, plan, retry_uncertain)
+
+    @server.tool(annotations=write)
+    async def postproduction_render(
+        run: str, plan_id: str, panel_index: StrictInt, video: str, model: str
+    ) -> dict[str, Any]:
+        """Separate and redub an existing workspace video with local model files."""
+        return await asyncio.to_thread(
+            app.postproduction_render, run, plan_id, panel_index, video, model
+        )
 
     @server.tool(annotations=write)
     async def attach_job(run: str, key: str, prompt_id: str) -> dict[str, str]:

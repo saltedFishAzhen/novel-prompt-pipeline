@@ -1,0 +1,174 @@
+{
+  "source": "渡口",
+  "lang": "zh",
+  "locations": [
+    {
+      "sceneId": "S02",
+      "name": "渡口栈桥",
+      "readFrom": "prompt",
+      "items": [
+        {
+          "name": "靠岸的渡船",
+          "alt": "moored ferry",
+          "plan": [
+            0.12,
+            0.02,
+            0.38,
+            0.3
+          ],
+          "on": true
+        },
+        {
+          "name": "栈桥水端",
+          "alt": "water end of the pier",
+          "plan": [
+            0.42,
+            0.04,
+            0.58,
+            0.36
+          ],
+          "on": true
+        },
+        {
+          "name": "断裂的第七块桥板",
+          "alt": "broken seventh plank",
+          "plan": [
+            0.42,
+            0.38,
+            0.58,
+            0.44
+          ],
+          "on": true
+        },
+        {
+          "name": "栈桥岸端",
+          "alt": "shore end of the pier",
+          "plan": [
+            0.42,
+            0.46,
+            0.58,
+            0.8
+          ],
+          "on": true
+        },
+        {
+          "name": "挑灯木杆",
+          "alt": "lantern pole",
+          "plan": [
+            0.62,
+            0.5,
+            0.66,
+            0.56
+          ],
+          "on": false
+        },
+        {
+          "name": "系缆石桩",
+          "alt": "mooring stone",
+          "plan": [
+            0.62,
+            0.74,
+            0.68,
+            0.8
+          ],
+          "on": false
+        },
+        {
+          "name": "岸端土坡",
+          "alt": "earth bank at the shore",
+          "plan": [
+            0.1,
+            0.84,
+            0.9,
+            0.98
+          ],
+          "on": true
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "ep": 1,
+      "scene": 1,
+      "sceneId": "S02",
+      "lighting": "浓雾清晨",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "沈知微"
+        },
+        {
+          "id": "C03",
+          "name": "老周"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "沈知微",
+          "present": true,
+          "item": "岸端土坡",
+          "side": "on",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "north"
+        },
+        {
+          "id": "C03",
+          "name": "老周",
+          "present": true,
+          "item": "靠岸的渡船",
+          "side": "on",
+          "along": 0.5,
+          "posture": "sit",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "沈知微在岸边，老周在船上。"
+    },
+    {
+      "ep": 2,
+      "scene": 1,
+      "sceneId": "S02",
+      "lighting": "浓雾清晨",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "沈知微"
+        },
+        {
+          "id": "C03",
+          "name": "老周"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "沈知微",
+          "present": true,
+          "item": "岸端土坡",
+          "side": "on",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "north"
+        },
+        {
+          "id": "C03",
+          "name": "老周",
+          "present": true,
+          "item": "靠岸的渡船",
+          "side": "on",
+          "along": 0.5,
+          "posture": "sit",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "沈知微在岸边，老周在船上。"
+    }
+  ]
+}

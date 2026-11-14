@@ -2,13 +2,14 @@
 
 工作区根目录的 [`src/comfyui_client/`](../../src/comfyui_client/) 提供远端 ComfyUI 的 Python 客户端。它使用 [`workflows/`](../../workflows/) 中的 API 工作流和 [`workflow_bindings.json`](../../workflows/workflow_bindings.json)，负责上传素材、提交任务、查询历史和下载结果。管线会调用该客户端；也可以单独使用。
 
-| 工作流配置 | 首帧 | 额外图片参考 | 音频参考 |
+| 工作流配置 | 第一张图（首帧意图） | 额外图片参考 | 音频参考 |
 | --- | ---: | ---: | ---: |
-| `qwen`、`qwen-unlock` | 不需要 | 最多 10 张 | 0 |
-| `ref2va` | 必需 | 最多 8 张 | 最多 3 个 |
+| `ref2va` | 必需 | 最多 8 张 | 不传 |
 | `i2va` | 必需 | 0 | 0 |
 
-`i2va` 的分镜图片使用专用首帧输入。`ref2va` 将分镜图片作为第一张参考图，另外的 8 张图片用于资产参考；它是视频的参考，并不保证与生成视频的第一帧像素完全一致。生成提交图时，未配置的可选图片和音频输入会被移除。管线为两种模式分别使用对应的提示词协议，也可以逐镜选择模式，见[管线与资产库](pipeline.md#逐分镜选择视频模式)。
+`i2va` 仅用于单 cut，其分镜图通过专用首帧输入传入。`ref2va` 每段最多使用九张图：slot 0 为 cut 1 的关键帧，slot 1 起按顺序放入 cut 2 等后续关键帧，H3 的 Picture n 对应 slot n-1。时间信息写在 H3 描述中。静态检查可核对图片顺序与描述的对齐，实际成片仍须验证；第一张参考图表达首帧意图，不保证生成视频第一帧与其像素一致。
+
+管线不向视频传参考音或负面提示词；`media.reference_audios` 非空会提前拒绝。H3 原生环境声、音效和音乐可供后期保留。音频后期模块已实现，真实 Breeze 服务、人声分离和音画效果仍待验证，详见[音频后期](../architecture/audio-postproduction.md)。视频输入约定见[管线与资产库](pipeline.md)。
 
 ## 连接和命令
 
@@ -22,7 +23,6 @@ COMFYUI_GPU_A_API_KEY=
 COMFYUI_GPU_B_API_KEY=
 COMFYUI_BALANCE=round_robin
 # 按实际安装的模型和节点分配服务器池；省略时使用全部服务器。
-COMFYUI_IMAGE_SERVERS=gpu_a,gpu_b
 COMFYUI_REF2VA_SERVERS=gpu_b
 COMFYUI_I2VA_SERVERS=gpu_a,gpu_b
 ```
@@ -40,7 +40,6 @@ COMFYUI_I2VA_SERVERS=gpu_a,gpu_b
       "gpu_a": {"url_env": "COMFYUI_GPU_A_URL", "api_key_env": "COMFYUI_GPU_A_API_KEY"},
       "gpu_b": {"url_env": "COMFYUI_GPU_B_URL", "api_key_env": "COMFYUI_GPU_B_API_KEY"}
     },
-    "image_servers": ["gpu_a", "gpu_b"],
     "ref2va_servers": ["gpu_b"],
     "i2va_servers": ["gpu_a", "gpu_b"],
     "balance": "round_robin"
@@ -68,7 +67,7 @@ novel-pipeline comfy wait '<prompt_id>' --output-dir .\runs --timeout 1800
 
 多服务器下先查看配置和候选池：`novel-pipeline comfy servers`。上传后使用返回的 `server` 名称，在后续 `submit --server gpu_a` 和 `wait --server gpu_a` 中选择相同服务器。存在多个服务器且提交包含远端首帧、图片或音频名称时，必须显式指定服务器；若该文件由统一 CLI/MCP 上传过，程序还会拒绝已知属于另一服务器的名称。手动准备的远端文件由调用者确认存在于所选服务器；如果同名上传记录只属于其他服务器，请在目标服务器重新上传以登记归属。
 
-每个任务提交记录保存服务器名称及地址哈希；资产库同目录的 `comfyui-job-locations.json` 保存任务 ID 哈希及归属，使 `wait` 在更换输出目录后也能确定唯一的服务器。请保留该文件以及运行记录；旧任务或外部任务没有归属记录时，多服务器下必须通过 `--server` 明确指定。修改服务器地址后，旧记录不会被默默改发到新地址。使用 `comfy check --profile qwen --remote` 检查多服务器池时会检查该池各服务器；也可加 `--server gpu_a` 只检查一台。
+每个任务提交记录保存服务器名称及地址哈希；资产库同目录的 `comfyui-job-locations.json` 保存任务 ID 哈希及归属，使 `wait` 在更换输出目录后也能确定唯一的服务器。请保留该文件以及运行记录；旧任务或外部任务没有归属记录时，多服务器下必须通过 `--server` 明确指定。修改服务器地址后，旧记录不会被默默改发到新地址。使用 `comfy check --profile ref2va --remote` 检查多服务器池时会检查该池各服务器；也可加 `--server gpu_a` 只检查一台。
 
 `inputs.json` 的字段对应 `WorkflowTemplate.prepare` 的参数。图片和音频引用应填写上传后得到的远端文件名，例如：
 
@@ -77,13 +76,12 @@ novel-pipeline comfy wait '<prompt_id>' --output-dir .\runs --timeout 1800
   "prompt": "subject_definitions: ...",
   "first_frame": "codex/first-frame.png",
   "reference_images": ["codex/character.png"],
-  "reference_audios": ["codex/voice.wav"],
   "length": 6,
   "seed": 0
 }
 ```
 
-独立提交会先写入 `submitting` 记录，成功后保存返回的 `prompt_id` 和所选服务器；之后可在同一服务器等待和下载，无须再次提交。如果提交响应丢失，记录标为 `unknown`，客户端不会自动重试或切换服务器；先检查记录指定的远端队列，避免重复运行。完整管线的恢复步骤见[管线与资产库](pipeline.md#远端任务与恢复)。
+独立提交会先写入 `submitting` 记录，成功后保存返回的 `prompt_id` 和所选服务器；之后可在同一服务器等待和下载，无须再次提交。如果提交响应丢失，记录标为 `unknown`，客户端不会自动重试或切换服务器；先检查记录指定的远端队列，避免重复运行。完整管线的恢复步骤见[管线与资产库](pipeline.md)。
 
 ## Python 调用
 
@@ -94,13 +92,11 @@ template = get_default_template("ref2va")
 with ComfyUIClient("http://comfyui.example:8188") as client:
     first_frame = client.upload_file("first-frame.png")
     asset_image = client.upload_file("character.png")
-    voice = client.upload_file("voice.wav")
 
     graph = template.prepare(
         video_prompt,  # 已生成的 Ref2VA 视频提示词
         first_frame=first_frame,
         reference_images=[asset_image],
-        reference_audios=[voice],
         length=6,
         seed=0,
     )
@@ -114,7 +110,9 @@ with ComfyUIClient("http://comfyui.example:8188") as client:
 
 ## 工作流映射
 
-Qwen 的参考图连接到 `TextEncodeQwenImage21` 的 `images.image_1` 至 `images.image_10`。Ref2VA 的首帧和参考图输入分别连接到工作流的两次条件编码，音频使用三个音频输入。
+Ref2VA 的第一张图和后续参考图分别连接到工作流的条件编码。工作流节点图保留音频输入端子，管线不向其传参考音。
+
+Codex 图片后端通过本地任务与内置生图技能交接，图片完成后才送入视频工作流。场景资产使用单机位 L 形板，详情见 [Codex 图片任务](codex-images.md)。
 
 若自定义工作流或调整容量，需要同时修改真实工作流节点和绑定配置。仅修改提示词里的 `<Picture N>` 或 `<Audio N>` 不会增加工作流输入。现有 Ref2VA 映射依据公开的 T8 节点示例；目标服务器的自定义节点版本可能不同，请接入后查询其 `/object_info` 并核对输入，再实际运行验证。
 

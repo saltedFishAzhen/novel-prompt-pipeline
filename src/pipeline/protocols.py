@@ -90,6 +90,34 @@ def shot_plan(text: str, panels: list[dict]) -> list[dict]:
     return choices
 
 
+def _unquoted_spans(text: str):
+    """Yield reference-bearing text outside paired in-image text quotation marks."""
+    quote_ends = {'"': '"', "“": "”", "‘": "’", "「": "」", "『": "』"}
+    start = index = 0
+    while index < len(text):
+        if text[index] == "\\":
+            index += 2
+            continue
+        closing = quote_ends.get(text[index])
+        if closing is None:
+            index += 1
+            continue
+        end = index + 1
+        while end < len(text):
+            if text[end] == "\\":
+                end += 2
+            elif text[end] == closing:
+                break
+            else:
+                end += 1
+        if end >= len(text):
+            # An unmatched opener is not evidence that the rest is in-image text.
+            break
+        yield text[start:index]
+        start = index = end + 1
+    yield text[start:]
+
+
 def _video(
     text: str,
     min_seconds: int,
@@ -154,7 +182,19 @@ def storyboards(
         index, prompt, video = int(parts[0]), parts[1].strip(), parts[2].strip()
         if not prompt or any(x in prompt + video for x in (START, END, FIELD, RECORD, "===")):
             raise ValueError("Empty image prompt or mixed/colliding output protocols")
-        images = {int(x) for x in re.findall(r"\bimage (\d+)\b", prompt, re.I)}
+        # Chinese prose may put a reference immediately next to Han characters,
+        # where a Unicode word boundary before "image" would not match.
+        images = {
+            int(match.group(1) or match.group(2) or match.group(3))
+            for span in _unquoted_spans(prompt)
+            for match in re.finditer(
+                r"(?<![A-Za-z0-9_])image\s+(\d+)(?!\d)"
+                r"|参考图\s*[#＃]?\s*(\d+)(?!\d)"
+                r"|第\s*(\d+)\s*张参考图",
+                span,
+                re.I,
+            )
+        }
         panel_image_capacity, panel_video_capacity = image_capacity, video_capacity
         if selected is not None:
             group = selected[index]

@@ -1,372 +1,6 @@
 {
   "schema_version": 1,
   "profiles": {
-    "qwen": {
-      "workflow": "qwen-image-2.1-ref-t2i-api.json",
-      "bindings": {
-        "prompt": [
-          {
-            "node_id": "37",
-            "input": "prompt",
-            "type": "str"
-          }
-        ],
-        "negative_prompt": [
-          {
-            "node_id": "37",
-            "input": "negative_prompt",
-            "type": "str"
-          }
-        ],
-        "seed": [
-          {
-            "node_id": "23",
-            "input": "seed",
-            "type": "int"
-          }
-        ],
-        "width": [
-          {
-            "node_id": "36",
-            "input": "width",
-            "type": "int"
-          }
-        ],
-        "height": [
-          {
-            "node_id": "36",
-            "input": "height",
-            "type": "int"
-          }
-        ]
-      },
-      "first_frame": null,
-      "reference_slots": [
-        {
-          "load": {
-            "node_id": "44",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_1"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "45",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_2"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "46",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_3"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "47",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_4"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "48",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_5"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "49",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_6"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "50",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_7"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "51",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_8"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "52",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_9"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "53",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_10"
-            }
-          ]
-        }
-      ],
-      "capabilities": {
-        "has_first_frame": false,
-        "reference_capacity": 10,
-        "supports_prompt": true,
-        "supports_seed": true,
-        "supports_width": true,
-        "supports_height": true,
-        "supports_length": false,
-        "supports_reference_images": true
-      }
-    },
-    "qwen-unlock": {
-      "workflow": "qwen-image-2.1-ref-t2i-api-unlock.json",
-      "bindings": {
-        "prompt": [
-          {
-            "node_id": "37",
-            "input": "prompt",
-            "type": "str"
-          }
-        ],
-        "negative_prompt": [
-          {
-            "node_id": "37",
-            "input": "negative_prompt",
-            "type": "str"
-          }
-        ],
-        "seed": [
-          {
-            "node_id": "23",
-            "input": "seed",
-            "type": "int"
-          }
-        ],
-        "width": [
-          {
-            "node_id": "36",
-            "input": "width",
-            "type": "int"
-          }
-        ],
-        "height": [
-          {
-            "node_id": "36",
-            "input": "height",
-            "type": "int"
-          }
-        ]
-      },
-      "first_frame": null,
-      "reference_slots": [
-        {
-          "load": {
-            "node_id": "44",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_1"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "45",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_2"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "46",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_3"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "47",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_4"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "48",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_5"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "49",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_6"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "50",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_7"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "51",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_8"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "52",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_9"
-            }
-          ]
-        },
-        {
-          "load": {
-            "node_id": "53",
-            "input": "image",
-            "type": "str"
-          },
-          "conditioning": [
-            {
-              "node_id": "37",
-              "input": "images.image_10"
-            }
-          ]
-        }
-      ],
-      "capabilities": {
-        "has_first_frame": false,
-        "reference_capacity": 10,
-        "supports_prompt": true,
-        "supports_seed": true,
-        "supports_width": true,
-        "supports_height": true,
-        "supports_length": false,
-        "supports_reference_images": true
-      }
-    },
     "ref2va": {
       "workflow": "h3-ref2va-api.json",
       "bindings": {
@@ -383,6 +17,12 @@
             "input": "noise_seed",
             "type": "int"
           }
+        ],
+        "width": [
+          {"node_id": "13", "input": "target_width", "type": "int"}
+        ],
+        "height": [
+          {"node_id": "13", "input": "target_height", "type": "int"}
         ],
         "length": [
           {
@@ -540,8 +180,8 @@
         "reference_capacity": 8,
         "supports_prompt": true,
         "supports_seed": true,
-        "supports_width": false,
-        "supports_height": false,
+        "supports_width": true,
+        "supports_height": true,
         "supports_length": true,
         "note": "The first-frame image has a separate loader from the eight optional asset image references.",
         "audio_reference_capacity": 3,
@@ -549,6 +189,7 @@
         "supports_reference_images": true,
         "supports_reference_audios": true
       },
+      "shuohao_aspect_ratio": {"node_id": "29", "input": "aspect_ratio"},
       "requires_first_frame": true,
       "audio_slots": [
         {
@@ -631,14 +272,18 @@
             "node_id": "122",
             "input": "自定义宽",
             "type": "int"
-          }
+          },
+          {"node_id": "902", "input": "自定义宽", "type": "int"},
+          {"node_id": "908", "input": "target_width", "type": "int"}
         ],
         "height": [
           {
             "node_id": "122",
             "input": "自定义高",
             "type": "int"
-          }
+          },
+          {"node_id": "902", "input": "自定义高", "type": "int"},
+          {"node_id": "908", "input": "target_height", "type": "int"}
         ],
         "length": [
           {

@@ -1,8 +1,7 @@
-"""Install the built wheel and exercise it outside the source checkout.
+"""Install the wheel and exercise packaged production resources outside the checkout.
 
-The child environment inherits only already-installed dependencies. Project
-modules must come from the wheel, verified by their resolved module paths.
-No LLM or ComfyUI network request is made.
+No image or video network request is made. Node.js is required for the
+six bundled upstream validators.
 """
 
 from __future__ import annotations
@@ -16,41 +15,47 @@ import venv
 import zipfile
 from pathlib import Path
 
+STAGES = ("outline", "characters", "art", "script", "staging", "storyboard")
+REPO = Path(__file__).resolve().parents[1]
+VENDOR = REPO / "src" / "pipeline" / "shuohao" / "vendor"
 
-def main():
+
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--wheel-dir", type=Path, default=Path("dist"))
     args = parser.parse_args()
     wheel = max(
         args.wheel_dir.resolve().glob("novel_prompt_pipeline-*.whl"),
-        key=lambda p: p.stat().st_mtime,
+        key=lambda path: path.stat().st_mtime,
     )
+    vendor_files = {
+        path.relative_to(VENDOR).as_posix(): path.read_bytes()
+        for path in VENDOR.rglob("*")
+        if path.is_file()
+    }
+    assert {"LICENSE", "NOTICE", "UPSTREAM_COMMIT"} <= vendor_files.keys()
+    for stage in STAGES:
+        assert f"novel-{stage}/SKILL.md" in vendor_files
+        assert f"novel-{stage}/scripts/novel-{stage}.mjs" in vendor_files
+        assert f"novel-{stage}/references/schema.md" in vendor_files
+    with zipfile.ZipFile(wheel) as archive:
+        names = set(archive.namelist())
+        for name, content in vendor_files.items():
+            assert archive.read(f"pipeline/shuohao/vendor/{name}") == content
+        assert "pipeline/shuohao/engine.py" in names
+        assert not any(name.endswith("/.env") or "pipeline.local.json" in name for name in names)
+        assert not any(
+            name.startswith(("prompt_project/", "novel_prompt_pipeline/_resources/prompts/"))
+            for name in names
+        )
     sdists = list(args.wheel_dir.resolve().glob("novel_prompt_pipeline-*.tar.gz"))
     if sdists:
-        with tarfile.open(max(sdists, key=lambda p: p.stat().st_mtime)) as source:
-            paths = {name.partition("/")[2] for name in source.getnames()}
-            for required in (
-                "prompts/README.md",
-                "prompts/AGENTS.md",
-                "prompts/docs/director-round24.md",
-                "prompts/docs/drama-round25.md",
-                "prompts/docs/unified-node-review.md",
-                "prompts/evaluations/rounds/round24/cases.jsonl",
-                "prompts/evaluations/rounds/round25/cases.jsonl",
-                "prompts/evaluations/rounds/round26/final/run.json",
-            ):
-                assert required in paths, (
-                    f"Source distribution is missing linked evidence: {required}"
-                )
-            assert not any(name.startswith("prompts/src/styles/") for name in paths)
-    with zipfile.ZipFile(wheel) as archive:
-        names = archive.namelist()
-        assert "novel_prompt_pipeline/_resources/prompts/current.json" in names
-        assert "prompt_project/evaluate.py" in names
-        assert "novel_prompt_pipeline/_resources/prompts/evaluations/suites/default.jsonl" in names
-        assert "pipeline/database/migrations/versions/0002_file_selections.py" in names
-        assert not any(name.endswith("/.env") or "pipeline.local.json" in name for name in names)
-        assert not any("/prompts/src/styles/" in name for name in names)
+        with tarfile.open(max(sdists, key=lambda path: path.stat().st_mtime)) as source:
+            members = {name.partition("/")[2]: name for name in source.getnames()}
+            for name, content in vendor_files.items():
+                member = source.extractfile(members[f"src/pipeline/shuohao/vendor/{name}"])
+                assert member is not None and member.read() == content
+            assert not any(name.startswith("prompts/") for name in members)
     with tempfile.TemporaryDirectory() as folder:
         base = Path(folder)
         env = base / "venv"
@@ -65,39 +70,58 @@ def main():
             env=variables,
             check=True,
         )
-        code = (
-            "import sys, pathlib, pipeline, llm, comfyui_client, prompt_project; "
-            "assert all(pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.prefix).resolve()) "
-            "for m in (pipeline,llm,comfyui_client,prompt_project)); print('Wheel modules verified')"
-        )
-        subprocess.run([str(python), "-c", code], cwd=base, env=variables, check=True)
         workspace = base / "workspace"
-        commands = [
-            ["init", str(workspace)],
-            ["--workspace", str(workspace), "prompts", "check"],
-            ["--workspace", str(workspace), "prompts", "publish", "--offline"],
-            ["--workspace", str(workspace), "comfy", "check", "--profile", "qwen"],
-            ["--workspace", str(workspace), "comfy", "check", "--profile", "ref2va"],
-            ["--workspace", str(workspace), "comfy", "check", "--profile", "i2va"],
-            ["--workspace", str(workspace), "db", "info"],
-            [
-                "--workspace",
-                str(workspace),
-                "run",
-                "--input",
-                "prompts/tests/fixtures/scene_src.txt",
-                "--output",
-                "runs/dry",
-                "--dry-run",
-            ],
-        ]
-        for command in commands:
+        subprocess.run(
+            [str(python), "-m", "pipeline", "init", str(workspace)],
+            cwd=base,
+            env=variables,
+            check=True,
+        )
+        assert not (workspace / "prompts").exists()
+        assert not (workspace / "runs").exists()
+        assert (workspace / "workflows" / "workflow_bindings.json").is_file()
+        assert (workspace / "configs" / "pipeline.local.json").is_file()
+        (workspace / "source.txt").write_text("A short story.", encoding="utf-8")
+        for stage in ("outline", "characters", "art", "script", "staging", "prompts"):
             subprocess.run(
-                [str(python), "-m", "pipeline", *command], cwd=base, env=variables, check=True
+                [
+                    str(python),
+                    "-m",
+                    "pipeline",
+                    "--workspace",
+                    str(workspace),
+                    "run",
+                    "--input",
+                    "source.txt",
+                    "--output",
+                    "runs/dry",
+                    "--dry-run",
+                    "--stop-after",
+                    stage,
+                ],
+                cwd=base,
+                env=variables,
+                check=True,
             )
-        assert not (workspace / "prompts/src/styles").exists()
-        assert not (workspace / "runs" / "dry").exists()
-    print("Wheel installation and external workspace smoke checks passed")
+        assert not (workspace / "runs").exists()
+        code = """
+import pathlib, sys
+import pipeline
+from pipeline.shuohao import upstream
+assert pathlib.Path(pipeline.__file__).resolve().is_relative_to(pathlib.Path(sys.prefix).resolve())
+for stage in ("outline", "characters", "art", "script", "staging", "storyboard"):
+    assert f"novel-{stage}.mjs" in upstream.tool(stage, ["--help"], cwd=pathlib.Path.cwd())
+    assert "references/schema.md" in upstream.instructions(stage)
+pathlib.Path("bad.json").write_text("{", encoding="utf-8")
+try:
+    upstream.validate("outline", pathlib.Path("bad.json"), {}, cwd=pathlib.Path.cwd())
+except upstream.UpstreamValidationError as exc:
+    assert exc.stderr
+else:
+    raise AssertionError("Invalid JSON passed validation")
+"""
+        subprocess.run([str(python), "-c", code], cwd=base, env=variables, check=True)
+    print("Wheel installation, six upstream tools and external workspace smoke checks passed")
 
 
 if __name__ == "__main__":

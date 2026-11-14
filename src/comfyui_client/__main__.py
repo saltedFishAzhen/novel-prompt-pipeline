@@ -50,7 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
     check = commands.add_parser(
         "check", help="check local workflow profile and optionally remote service"
     )
-    check.add_argument("--profile", choices=("qwen", "qwen-unlock", "ref2va", "i2va"))
+    check.add_argument("--profile", choices=("ref2va", "i2va"))
 
     upload = commands.add_parser(
         "upload", help="upload an image, audio or other file to ComfyUI input storage"

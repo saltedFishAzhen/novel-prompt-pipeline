@@ -274,7 +274,7 @@ def get_default_template(
     bindings_file: str | Path | None = None,
     workflows_dir: str | Path | None = None,
 ) -> WorkflowTemplate:
-    """Load one of the checked-in ``qwen``, ``ref2va`` or ``i2va`` profiles."""
+    """Load one of the checked-in ``ref2va`` or ``i2va`` video profiles."""
     return WorkflowTemplate.from_profile(
         profile, bindings_file=bindings_file, workflows_dir=workflows_dir
     )

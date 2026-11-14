@@ -11,7 +11,7 @@ from pathlib import Path
 def repository_root() -> Path | None:
     candidate = Path(__file__).resolve().parents[2]
     if (candidate / "pyproject.toml").is_file() and (
-        candidate / "prompts" / "current.json"
+        candidate / "workflows" / "workflow_bindings.json"
     ).is_file():
         return candidate
     return None
@@ -29,17 +29,6 @@ def _bundle_root() -> Path:
     if repo:
         return repo
     raise FileNotFoundError("Bundled resources are missing; reinstall the project wheel")
-
-
-def prompt_root(workspace: Path | str | None = None) -> Path:
-    active = Path(workspace).expanduser().resolve() if workspace else default_workspace()
-    candidate = active / "prompts"
-    if (candidate / "current.json").is_file():
-        return candidate
-    repo = repository_root()
-    if repo:
-        return repo / "prompts"
-    return _bundle_root() / "prompts"
 
 
 def workflow_root(workspace: Path | str | None = None) -> Path:
@@ -62,15 +51,6 @@ def initialize_workspace(path: str | Path) -> dict:
     destination = Path(path).expanduser().resolve()
     source = _bundle_root()
     selections = [
-        ("prompts/src/common.json", "prompts/src/common.json"),
-        ("prompts/src/modes", "prompts/src/modes"),
-        ("prompts/src/nodes", "prompts/src/nodes"),
-        ("prompts/compiled", "prompts/compiled"),
-        ("prompts/releases", "prompts/releases"),
-        ("prompts/current.json", "prompts/current.json"),
-        ("prompts/tools", "prompts/tools"),
-        ("prompts/tests/fixtures", "prompts/tests/fixtures"),
-        ("prompts/evaluations/suites", "prompts/evaluations/suites"),
         ("workflows", "workflows"),
         ("configs/pipeline.example.json", "configs/pipeline.local.json"),
         ("env.example" if (source / "env.example").is_file() else ".env.example", ".env.example"),

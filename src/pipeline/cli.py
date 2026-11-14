@@ -14,7 +14,8 @@ from .storage import json_text
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="novel-pipeline", description="Novel prompts, assets, inference, and ComfyUI"
+        prog="novel-pipeline",
+        description="Six-stage story production, assets, Codex images, ComfyUI video, and voices",
     )
     parser.add_argument(
         "--workspace", type=Path, default=None, help="workspace root (default: current directory)"
@@ -29,27 +30,93 @@ def build_parser() -> argparse.ArgumentParser:
         "path", nargs="?", type=Path, help="workspace directory (default: --workspace)"
     )
 
-    run = sub.add_parser("run", help="infer prompts and optionally generate media")
+    run = sub.add_parser("run", help="run six-stage production and optionally generate media")
     run.add_argument("--input", required=True, type=Path)
     run.add_argument("--output", required=True, type=Path)
+    run.add_argument(
+        "--stop-after",
+        choices=[
+            "outline",
+            "characters",
+            "art",
+            "script",
+            "staging",
+            "prompts",
+            "assets",
+            "frames",
+        ],
+        help="stop after the named production or media stage",
+    )
     run.add_argument("--config", type=Path)
     run.add_argument("--resume", action="store_true")
     run.add_argument("--render", action="store_true")
-    run.add_argument("--dry-run", action="store_true", help="check inputs without LLM or GPU calls")
+    run.add_argument("--dry-run", action="store_true", help="check inputs without generating media")
 
     inspect = sub.add_parser("inspect", help="inspect a run")
     inspect.add_argument("run", type=Path)
-    shots = sub.add_parser("shots", help="inspect or change per-shot generation mode")
-    shot_ops = shots.add_subparsers(dest="operation", required=True)
-    shot_list = shot_ops.add_parser("list")
-    shot_list.add_argument("run", type=Path)
-    shot_show = shot_ops.add_parser("show")
-    shot_show.add_argument("run", type=Path)
-    shot_show.add_argument("panel_index", type=int)
-    shot_mode = shot_ops.add_parser("set-mode")
-    shot_mode.add_argument("run", type=Path)
-    shot_mode.add_argument("panel_index", type=int)
-    shot_mode.add_argument("mode", choices=("i2va", "ref2va"))
+    text = sub.add_parser("text", help="inspect or submit Codex native subagent text tasks")
+    text_ops = text.add_subparsers(dest="operation", required=True)
+    text_list = text_ops.add_parser("list", help="list text tasks awaiting Codex subagents")
+    text_list.add_argument("run", type=Path)
+    text_show = text_ops.add_parser("show", help="show a text task request")
+    text_show.add_argument("run", type=Path)
+    text_show.add_argument("task_id")
+    text_complete = text_ops.add_parser("complete", help="submit a response for engine validation")
+    text_complete.add_argument("run", type=Path)
+    text_complete.add_argument("task_id")
+    text_complete.add_argument("--file", required=True, type=Path)
+    text_complete.add_argument("--agent-id", required=True)
+    text_complete.add_argument("--notes", default="")
+    images = sub.add_parser("images", help="inspect or complete Codex image tasks")
+    image_ops = images.add_subparsers(dest="operation", required=True)
+    image_list = image_ops.add_parser("list", help="list image tasks in a run")
+    image_list.add_argument("run", type=Path)
+    image_plan = image_ops.add_parser("plan", help="show the prepared asset image prompts")
+    image_plan.add_argument("run", type=Path)
+    image_show = image_ops.add_parser("show", help="show one image task and its references")
+    image_show.add_argument("run", type=Path)
+    image_show.add_argument("task_id")
+    image_complete = image_ops.add_parser("complete", help="attach an inspected image result")
+    image_complete.add_argument("run", type=Path)
+    image_complete.add_argument("task_id")
+    image_complete.add_argument("--file", required=True, type=Path)
+    image_complete.add_argument("--notes", required=True, help="observed visual evidence")
+    image_complete.add_argument(
+        "--main-region",
+        type=int,
+        nargs=4,
+        metavar=("LEFT", "TOP", "RIGHT", "BOTTOM"),
+        help="observed main-panel pixel bounds in displayed orientation (scene/prop)",
+    )
+    image_complete.add_argument(
+        "--accept",
+        action="store_true",
+        required=True,
+        help="confirm the image has been visually inspected and accepted",
+    )
+    tts = sub.add_parser("tts", help="check Breeze TTS or create a voice reference WAV")
+    tts.add_argument("--config", type=Path, help="project configuration")
+    tts_ops = tts.add_subparsers(dest="operation", required=True)
+    tts_ops.add_parser("check", help="check the configured TTS service")
+    tts_synthesize = tts_ops.add_parser("synthesize", help="create a WAV from a values JSON file")
+    tts_synthesize.add_argument("--values", required=True, type=Path)
+    tts_synthesize.add_argument("--output", required=True, type=Path)
+    tts_synthesize.add_argument("--asset-id", help="character asset to link the sample to")
+    post = sub.add_parser("postproduction", help="prepare dialogue and replace video voices")
+    post_ops = post.add_subparsers(dest="operation", required=True)
+    post_check = post_ops.add_parser("check", help="offline dependency and optional plan check")
+    post_check.add_argument("--run", type=Path)
+    post_check.add_argument("--plan", type=Path)
+    post_prepare = post_ops.add_parser("prepare", help="synthesize frozen dialogue takes")
+    post_prepare.add_argument("--run", required=True, type=Path)
+    post_prepare.add_argument("--plan", required=True, type=Path)
+    post_prepare.add_argument("--retry-uncertain", action="store_true")
+    post_render = post_ops.add_parser("render", help="separate and redub an existing video")
+    post_render.add_argument("--run", required=True, type=Path)
+    post_render.add_argument("--plan-id", required=True)
+    post_render.add_argument("--panel-index", required=True, type=int)
+    post_render.add_argument("--video", required=True, type=Path)
+    post_render.add_argument("--model", required=True, type=Path)
     attach = sub.add_parser(
         "attach-job", help="attach a known remote job after an uncertain submission"
     )
@@ -78,29 +145,6 @@ def build_parser() -> argparse.ArgumentParser:
         link = operations.add_parser(operation)
         link.add_argument("asset_id")
         link.add_argument("file", type=Path)
-
-    prompts = sub.add_parser("prompts", help="build, check, publish or evaluate prompt releases")
-    prompts.add_argument(
-        "--config", type=Path, help="project configuration; uses the same LLM settings as run"
-    )
-    prompt_operations = prompts.add_subparsers(dest="operation", required=True)
-    for operation in ("list", "build", "check", "stage", "publish"):
-        item = prompt_operations.add_parser(operation)
-        if operation == "list":
-            item.add_argument("--version")
-        elif operation == "publish":
-            publication_mode = item.add_mutually_exclusive_group()
-            publication_mode.add_argument("--evaluation", type=Path)
-            publication_mode.add_argument("--offline", action="store_true")
-    evaluation = prompt_operations.add_parser("evaluate")
-    evaluation.add_argument("cases", type=Path, nargs="?")
-    target = evaluation.add_mutually_exclusive_group()
-    target.add_argument("--version")
-    target.add_argument("--candidate", action="store_true")
-    evaluation.add_argument("--node", dest="nodes", action="append")
-    evaluation.add_argument("--require-coverage", action="store_true")
-    evaluation.add_argument("--output-root", type=Path)
-
     db = sub.add_parser("db", help="inspect or migrate the asset database")
     db.add_argument("--config", type=Path)
     db_operations = db.add_subparsers(dest="operation", required=True)
@@ -168,27 +212,6 @@ def _assets(service: AppService, args: argparse.Namespace):
     return service.asset_set_archived(args.asset_id, archived=(op == "archive"))
 
 
-def _prompts(service: AppService, args: argparse.Namespace):
-    if args.operation == "list":
-        return service.prompts_list(args.version)
-    if args.operation == "build":
-        return service.prompts_build()
-    if args.operation == "check":
-        return service.prompts_build(check=True)
-    if args.operation == "stage":
-        return service.prompts_stage()
-    if args.operation == "publish":
-        return service.prompts_publish(args.evaluation, offline=args.offline)
-    return service.prompts_evaluate(
-        args.cases,
-        args.version,
-        args.output_root,
-        candidate=args.candidate,
-        nodes=args.nodes,
-        require_coverage=args.require_coverage,
-    )
-
-
 def _comfy(service: AppService, args: argparse.Namespace):
     if args.operation == "servers":
         return service.comfy_servers()
@@ -239,22 +262,56 @@ def main(argv=None) -> int:
                     resume=args.resume,
                     render=args.render,
                     dry_run=args.dry_run,
+                    stop_after=args.stop_after,
                 )
             elif args.command == "inspect":
                 result = service.run_status(args.run)
-            elif args.command == "shots":
+            elif args.command == "text":
                 if args.operation == "list":
-                    result = service.shots_list(args.run)
+                    result = service.text_tasks_list(args.run)
                 elif args.operation == "show":
-                    result = service.shot_get(args.run, args.panel_index)
+                    result = service.text_task_get(args.run, args.task_id)
                 else:
-                    result = service.shot_set_mode(args.run, args.panel_index, args.mode)
+                    result = service.text_task_complete(
+                        args.run, args.task_id, args.file, args.agent_id, args.notes
+                    )
+            elif args.command == "images":
+                if args.operation == "list":
+                    result = service.image_tasks_list(args.run)
+                elif args.operation == "plan":
+                    result = service.image_plan_get(args.run)
+                elif args.operation == "show":
+                    result = service.image_task_get(args.run, args.task_id)
+                else:
+                    result = service.image_task_complete(
+                        args.run,
+                        args.task_id,
+                        args.file,
+                        args.notes,
+                        accepted=args.accept,
+                        main_region=args.main_region,
+                    )
+            elif args.command == "tts":
+                result = (
+                    service.tts_check()
+                    if args.operation == "check"
+                    else service.tts_synthesize(args.values, args.output, args.asset_id)
+                )
+            elif args.command == "postproduction":
+                if args.operation == "check":
+                    result = service.postproduction_check(args.run, args.plan)
+                elif args.operation == "prepare":
+                    result = service.postproduction_prepare(
+                        args.run, args.plan, args.retry_uncertain
+                    )
+                else:
+                    result = service.postproduction_render(
+                        args.run, args.plan_id, args.panel_index, args.video, args.model
+                    )
             elif args.command == "attach-job":
                 result = service.attach_job(args.run, args.key, args.prompt_id)
             elif args.command == "assets":
                 result = _assets(service, args)
-            elif args.command == "prompts":
-                result = _prompts(service, args)
             elif args.command == "db":
                 result = (
                     service.database_info()

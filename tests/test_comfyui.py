@@ -105,22 +105,20 @@ class ComfyClientTests(unittest.TestCase):
         self.client.close()
 
     def test_profiles_bind_existing_nodes_without_mutating_source(self):
-        template = get_default_template("qwen")
-        before = template._graph["37"]["inputs"]["prompt"]
-        graph = template.prepare("a castle", seed=17, width=768, height=512)
-        self.assertEqual(graph["37"]["inputs"]["prompt"], "a castle")
-        self.assertEqual(graph["23"]["inputs"]["seed"], 17)
-        self.assertEqual(graph["36"]["inputs"]["width"], 768)
-        self.assertEqual(graph["36"]["inputs"]["height"], 512)
-        self.assertEqual(template._graph["37"]["inputs"]["prompt"], before)
-        self.assertEqual(template.reference_capacity, 10)
-        self.assertFalse(template.has_first_frame)
-        with self.assertRaisesRegex(BindingError, "supports 10"):
-            template.prepare("a castle", reference_images=[f"input/{i}.png" for i in range(11)])
-        one_ref = template.prepare("a castle", reference_images=["input/ref.png"])
-        self.assertEqual(one_ref["37"]["inputs"]["images.image_1"], ["44", 0])
-        self.assertNotIn("images.image_2", one_ref["37"]["inputs"])
-        self.assertNotIn("45", one_ref)
+        template = get_default_template("i2va")
+        before = template._graph["139"]["inputs"]["prompt"]
+        graph = template.prepare(
+            "a castle", seed=17, width=768, height=512, first_frame="frame.png"
+        )
+        self.assertEqual(graph["139"]["inputs"]["prompt"], "a castle")
+        self.assertEqual(graph["137"]["inputs"]["noise_seed"], 17)
+        self.assertEqual(graph["122"]["inputs"]["自定义宽"], 768)
+        self.assertEqual(graph["122"]["inputs"]["自定义高"], 512)
+        self.assertEqual(template._graph["139"]["inputs"]["prompt"], before)
+        self.assertEqual(template.reference_capacity, 0)
+        self.assertTrue(template.has_first_frame)
+        with self.assertRaisesRegex(BindingError, "supports 0"):
+            template.prepare("a castle", first_frame="frame.png", reference_images=["ref.png"])
 
     def test_video_profiles_declare_first_frame_and_zero_extra_references(self):
         for profile in ("ref2va", "i2va"):
@@ -158,9 +156,6 @@ class ComfyClientTests(unittest.TestCase):
         self.assertEqual(i2v["903"]["inputs"]["prompt"], "video")
 
     def test_optional_loaders_are_removed_until_media_is_configured(self):
-        qwen = get_default_template("qwen").prepare("portrait")
-        self.assertFalse(any(str(node_id) in qwen for node_id in range(44, 54)))
-        self.assertFalse(any(key.startswith("images.image_") for key in qwen["37"]["inputs"]))
         ref2va = get_default_template("ref2va").prepare("video", first_frame="frames/first.png")
         self.assertEqual(ref2va["66"]["inputs"]["image"], "frames/first.png")
         for node_id in (*map(str, range(901, 909)), "107", "108", "109"):
@@ -197,20 +192,25 @@ class ComfyClientTests(unittest.TestCase):
             template.prepare("video", reference_images=["a.png", "b.png"])
 
     def test_binding_checks_node_input_and_type(self):
-        template = get_default_template("qwen")
+        template = get_default_template("i2va")
         with self.assertRaises(BindingError):
-            template.prepare("prompt", seed="not-an-int")
-        self.assertEqual(template.prepare("prompt", seed=0)["23"]["inputs"]["seed"], 0)
+            template.prepare("prompt", first_frame="first.png", seed="not-an-int")
+        self.assertEqual(
+            template.prepare("prompt", first_frame="first.png", seed=0)["137"]["inputs"][
+                "noise_seed"
+            ],
+            0,
+        )
         with self.assertRaises(BindingError):
             WorkflowTemplate({"1": {"inputs": {}}}, {"bindings": {}}).prepare("prompt")
 
     def test_submission_strips_ui_metadata_and_never_retries(self):
-        template = get_default_template("qwen")
-        graph = template.prepare("one request", seed=2)
+        template = get_default_template("i2va")
+        graph = template.prepare("one request", first_frame="first.png", seed=2)
         prompt_id = self.client.submit(graph, client_id="test-client")
         self.assertEqual(prompt_id, "job-1")
         self.assertNotIn("_api_config", FakeComfyHandler.submitted_graph)
-        self.assertEqual(FakeComfyHandler.submitted_graph["37"]["inputs"]["prompt"], "one request")
+        self.assertEqual(FakeComfyHandler.submitted_graph["139"]["inputs"]["prompt"], "one request")
 
     def test_submit_error_is_reported_without_retry(self):
         with patch.object(

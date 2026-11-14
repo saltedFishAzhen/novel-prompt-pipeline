@@ -15,10 +15,11 @@ configs/*.local.json
 # Private inputs, generated assets, execution records and scratch work
 runs/
 .tmp/
+/.gates.jsonl
 # Local creative works and writing records are not published.
 /novels/
 # User-provided visual reference and approval records; text defaults are code.
-/prompts/src/styles/
+/runs/style-references/
 
 # Distribution and test output
 build/

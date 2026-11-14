@@ -6,7 +6,7 @@ migrations, or workflow bindings before making a large incompatible change.
 
 ## Development setup
 
-Use Python 3.11 or later and a virtual environment. From a source checkout,
+Use Python 3.11 or later, Node.js 18 or later, and a virtual environment. From a source checkout,
 install the locked development dependencies, then the editable project:
 
 ```console
@@ -20,13 +20,12 @@ automated test suite uses local mocks and does not need an API key or GPU.
 
 ## Changes and validation
 
-- Keep prompt source in `prompts/src/`; regenerate and publish through the
-  prompt tooling rather than editing `prompts/compiled/` or a release.
-  The Python implementation lives in `prompts/runtime/prompt_project/` and
-  remains importable as `prompt_project`.
-  Default publication requires a passing evaluation report covering all 16
-  nodes (`prompts publish --evaluation <run.json>`). A contract-only release
-  requires explicit `prompts publish --offline`; it is not an LLM evaluation.
+- Keep production orchestration in `src/pipeline/shuohao/`. The bundled upstream
+  resources retain their pinned bytes and license. Change application behavior
+  in the Python adapter and verify the original Node quality gates.
+- Assign creative JSON to native `writer` subagents. The host imports drafts
+  through `novel-pipeline text complete` and resumes the pipeline for validation.
+  Preserve frozen requests, accepted artifacts, and their hashes.
 - Preserve exact asset identity, run snapshots, and safe retry semantics when
   changing the pipeline or ComfyUI client.
 - Add a database migration for a schema change and cover upgrade from an
@@ -40,16 +39,15 @@ Run the checks configured for the project before proposing a change:
 
 ```console
 python -m pytest
-python -m ruff check src prompts/runtime tests scripts
-python -m ruff format --check src prompts/runtime tests scripts
-novel-pipeline prompts check
+python -m ruff check src tests scripts
+python -m ruff format --check src tests scripts
 python -m build
 python -m twine check dist/*
 python scripts/wheel_smoke.py --wheel-dir dist
 ```
 
-Also run the relevant prompt checks when editing prompt sources. A passing
-mock test does not establish real LLM quality, ComfyUI node compatibility, or
+Run the relevant document quality gates when changing production instructions. A passing
+mock test does not establish story fidelity, ComfyUI node compatibility, or
 generated-image and video quality. Describe the checks actually run and any
 remaining limitations in the contribution.
 

@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import re
+import time
 from pathlib import Path
 from uuid import uuid4
 
@@ -18,12 +19,25 @@ def fingerprint(value) -> str:
     return hashlib.sha256(json_text(value).encode("utf-8")).hexdigest()
 
 
+def atomic_publish(source: Path, destination: Path, *, replace: bool = True) -> None:
+    """Publish atomically, allowing transient Windows file sharing conflicts to clear."""
+    operation = os.replace if replace else os.rename
+    delays = (0.05, 0.1, 0.2, 0.4, 0.5)
+    for delay in delays:
+        try:
+            operation(source, destination)
+            return
+        except PermissionError:
+            time.sleep(delay)
+    operation(source, destination)
+
+
 def write_json(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_name(path.name + "." + uuid4().hex + ".tmp")
     try:
         temp.write_text(json_text(data) + "\n", encoding="utf-8")
-        os.replace(temp, path)
+        atomic_publish(temp, path)
     finally:
         temp.unlink(missing_ok=True)
 
