@@ -3,6 +3,7 @@
   "profiles": {
     "ref2va": {
       "workflow": "h3-ref2va-api.json",
+      "requires_reference_images": true,
       "bindings": {
         "prompt": [
           {
@@ -32,12 +33,24 @@
           }
         ]
       },
-      "first_frame": {
-        "node_id": "66",
-        "input": "image",
-        "type": "str"
-      },
       "reference_slots": [
+        {
+          "load": {
+            "node_id": "66",
+            "input": "image",
+            "type": "str"
+          },
+          "conditioning": [
+            {
+              "node_id": "95",
+              "input": "ref_images.ref_image_0"
+            },
+            {
+              "node_id": "96",
+              "input": "ref_images.ref_image_0"
+            }
+          ]
+        },
         {
           "load": {
             "node_id": "901",
@@ -175,21 +188,52 @@
           ]
         }
       ],
+      "audio_slots": [
+        {
+          "load": {"node_id": "107", "input": "audio", "type": "str"},
+          "conditioning": [
+            {"node_id": "95", "input": "ref_audios.ref_audio_0"},
+            {"node_id": "96", "input": "ref_audios.ref_audio_0"}
+          ]
+        },
+        {
+          "load": {"node_id": "108", "input": "audio", "type": "str"},
+          "conditioning": [
+            {"node_id": "95", "input": "ref_audios.ref_audio_1"},
+            {"node_id": "96", "input": "ref_audios.ref_audio_1"}
+          ]
+        },
+        {
+          "load": {"node_id": "109", "input": "audio", "type": "str"},
+          "conditioning": [
+            {"node_id": "95", "input": "ref_audios.ref_audio_2"},
+            {"node_id": "96", "input": "ref_audios.ref_audio_2"}
+          ]
+        }
+      ],
       "capabilities": {
-        "has_first_frame": true,
-        "reference_capacity": 8,
+        "has_first_frame": false,
+        "requires_reference_images": true,
+        "reference_capacity": 9,
+        "audio_reference_capacity": 3,
         "supports_prompt": true,
         "supports_seed": true,
         "supports_width": true,
         "supports_height": true,
         "supports_length": true,
-        "note": "The first-frame image has a separate loader from the eight optional asset image references.",
-        "requires_first_frame": true,
-        "supports_reference_images": true
+        "supports_reference_images": true,
+        "supports_reference_audios": true,
+        "note": "reference_images fills Pictures 1-9 (ref_image_0..8); at least one is required."
       },
-      "shuohao_aspect_ratio": {"node_id": "29", "input": "aspect_ratio"},
-      "shuohao_scale_output": true,
-      "explicit_size_mode": {"node_id": "13", "input": "size_mode", "value": "target_dimensions"},
+      "aspect_ratio_input": {"node_id": "29", "input": "aspect_ratio"},
+      "explicit_size_mode": {
+        "node_id": "13",
+        "input": "size_mode",
+        "value": "target_dimensions",
+        "width_input": "target_width",
+        "height_input": "target_height"
+      },
+      "aspect_ratio_tolerance": 1.03,
       "explicit_aspect_ratios": {
         "1:1": "1:1 (Square)",
         "2:3": "2:3 (Portrait Photo)",
@@ -199,8 +243,7 @@
         "9:16": "9:16 (Portrait Widescreen)",
         "16:9": "16:9 (Widescreen)",
         "21:9": "21:9 (Ultrawide)"
-      },
-      "requires_first_frame": true
+      }
     },
     "i2va": {
       "workflow": "h3-i2va-api.json",
@@ -257,17 +300,20 @@
       "capabilities": {
         "has_first_frame": true,
         "reference_capacity": 0,
+        "audio_reference_capacity": 0,
         "supports_prompt": true,
         "supports_seed": true,
         "supports_width": true,
         "supports_height": true,
-        "supports_length": true,
-        "requires_first_frame": true,
-        "audio_reference_capacity": 0
+        "supports_length": true
       },
-      "shuohao_scale_output": true,
-      "shuohao_low_preset": {"node_id": "122", "width_input": "自定义宽", "height_input": "自定义高"},
-      "explicit_size_mode": {"node_id": "908", "input": "size_mode", "value": "target_dimensions"},
+      "explicit_size_mode": {
+        "node_id": "908",
+        "input": "size_mode",
+        "value": "target_dimensions",
+        "width_input": "target_width",
+        "height_input": "target_height"
+      },
       "requires_first_frame": true
     }
   }

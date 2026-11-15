@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "novel-prompt-pipeline"
 version = "0.2.0"
-description = "Remote ComfyUI API client with MiniMax H3 workflow profile bindings"
+description = "Director tables, local shot processing, MiniMax H3 compilation and remote ComfyUI"
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -24,6 +24,9 @@ classifiers = [
 ]
 dependencies = [
   "httpx>=0.28,<1",
+  "openai>=1.109,<3",
+  "python-dotenv>=1,<2",
+  "pydantic>=2.8,<3",
 ]
 
 [project.urls]
@@ -42,13 +45,16 @@ dev = [
 
 [project.scripts]
 comfyui-remote = "comfyui_client.__main__:main"
+h3-compile = "h3_client.__main__:main"
+shot-plan = "shot_client.__main__:main"
+director-plan = "director_client.__main__:main"
 
 [tool.hatch.build]
 exclude = ["**/__pycache__", "**/*.pyc", "**/.env", "/.tmp", "/.venv", "/runs"]
 
 [tool.hatch.build.targets.wheel]
 core-metadata-version = "2.4"
-packages = ["workflows/comfyui_client"]
+packages = ["workflows/comfyui_client", "workflows/h3_client", "workflows/shot_client", "workflows/director_client"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "workflows/workflow_bindings.json" = "comfyui_client/_data/workflow_bindings.json"
