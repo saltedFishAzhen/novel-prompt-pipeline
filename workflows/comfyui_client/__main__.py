@@ -1,4 +1,4 @@
-"""Command line entry point: python -m comfyui_client."""
+"""Command line entry point: python -m comfyui_client / comfyui-remote."""
 
 from __future__ import annotations
 
@@ -8,16 +8,18 @@ import os
 import re
 import sys
 import tempfile
+import uuid
 from pathlib import Path
 from typing import Any
 
 from .bindings import build_graph
 from .errors import BindingError, ComfyUIError, ComfyUITimeoutError
+from .storyboard import load_storyboard_bundle
 from .transport import ComfyUIClient, OutputFile
 
 
 def _client(args: argparse.Namespace) -> ComfyUIClient:
-    base_url = args.base_url or os.environ.get("COMFYUI_URL") or os.environ.get("COMFYUI_BASE_URL")
+    base_url = args.base_url or os.environ.get("COMFYUI_URL")
     if not base_url:
         raise ValueError("Set COMFYUI_URL or pass --base-url")
     api_key = args.api_key or os.environ.get("COMFYUI_API_KEY")
@@ -30,82 +32,13 @@ def _client(args: argparse.Namespace) -> ComfyUIClient:
     )
 
 
-def _read_json(path: str) -> dict[str, Any]:
-    data = json.loads(Path(path).read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise ValueError(f"expected a JSON object in {path}")
-    return data
-
-
-def _add_graph_arguments(parser: argparse.ArgumentParser) -> None:
-    source = parser.add_mutually_exclusive_group(required=True)
-    source.add_argument("--graph", help="path to a ready API-format workflow JSON")
-    source.add_argument(
-        "--profile",
-        help="workflow profile from workflow_bindings.json (for example ref2va or i2va)",
-    )
-    parser.add_argument(
-        "--values",
-        help="JSON object with profile values: prompt, seed, width, height, length, "
-        "first_frame, reference_images, reference_audios",
-    )
-    parser.add_argument(
-        "--bindings-file",
-        help="workflow_bindings.json to read profiles from (default: the bundled copy)",
-    )
-    parser.add_argument(
-        "--workflows-dir",
-        help="directory holding the profile workflow JSON files (default: next to the bindings)",
-    )
-
-
-def _add_output_arguments(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--output-dir", default="runs/comfyui")
-    parser.add_argument(
-        "--no-run-subdir",
-        dest="run_subdir",
-        action="store_false",
-        help="write outputs straight into --output-dir instead of a per-prompt subdirectory",
-    )
-    parser.add_argument(
-        "--job-timeout",
-        "--timeout",
-        dest="job_timeout",
-        type=float,
-        default=3600.0,
-        help="seconds to wait for the prompt to finish (not the HTTP timeout)",
-    )
-
-
-def _graph_from_args(args: argparse.Namespace) -> tuple[dict[str, Any], str]:
-    values_path = getattr(args, "values", None)
-    if args.graph:
-        if values_path:
-            raise ValueError("--values can only be used with --profile")
-        return _read_json(args.graph), str(Path(args.graph).resolve())
-    if not args.profile:
-        raise ValueError("pass --graph or --profile")
-    values = _read_json(values_path) if values_path else {}
-    return (
-        build_graph(
-            args.profile,
-            values,
-            bindings_file=args.bindings_file,
-            workflows_dir=args.workflows_dir,
-        ),
-        f"profile:{args.profile}",
-    )
-
-
 def _add_connection_arguments(parser: argparse.ArgumentParser, *, inherited: bool = False) -> None:
     """Connection options, accepted before or after the subcommand."""
     # ``SUPPRESS`` on the subcommand copy keeps a value parsed before the
     # subcommand from being overwritten by the subparser default.
     missing: Any = argparse.SUPPRESS if inherited else None
     parser.add_argument(
-        "--base-url",
-        default=missing,
-        help="remote ComfyUI base URL (or COMFYUI_URL; COMFYUI_BASE_URL is also accepted)",
+        "--base-url", default=missing, help="remote ComfyUI base URL (or COMFYUI_URL)"
     )
     parser.add_argument(
         "--api-key", default=missing, help="optional bearer token (or COMFYUI_API_KEY)"
@@ -126,58 +59,48 @@ def _add_connection_arguments(parser: argparse.ArgumentParser, *, inherited: boo
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="python -m comfyui_client", description="Remote ComfyUI API client"
+        prog="comfyui-remote",
+        description="Run a novel-storyboard H3 production package on a remote ComfyUI server",
     )
     _add_connection_arguments(parser)
     commands = parser.add_subparsers(dest="command", required=True)
 
-    subparsers = [
-        commands.add_parser("check", help="check the remote service and queue status"),
-        commands.add_parser("queue", help="show running and pending prompts"),
-    ]
-
-    upload = commands.add_parser(
-        "upload", help="upload an image, audio or other file to ComfyUI input storage"
+    storyboard = commands.add_parser(
+        "storyboard", help="upload, generate and download every segment of an H3 package"
     )
-    upload.add_argument("path")
-    upload.add_argument("--subfolder", default="")
-    upload.add_argument("--overwrite", action="store_true")
-    subparsers.append(upload)
-
-    submit = commands.add_parser(
-        "submit", help="queue a bound profile graph or a ready API-format graph JSON"
+    storyboard.add_argument("--manifest", required=True, help="path to the package manifest.json")
+    storyboard.add_argument(
+        "--output-dir", default="runs/storyboard", help="directory for the videos and run records"
     )
-    _add_graph_arguments(submit)
-    submit.add_argument("--output-dir", default="runs/comfyui")
-    submit.add_argument("--client-id")
-    subparsers.append(submit)
-
-    run = commands.add_parser(
-        "run", help="submit a graph, wait for completion and download its outputs"
+    storyboard.add_argument(
+        "--job-timeout", type=float, default=3600.0, help="seconds allowed per segment"
     )
-    _add_graph_arguments(run)
-    _add_output_arguments(run)
-    run.add_argument("--client-id")
-    subparsers.append(run)
+    storyboard.add_argument(
+        "--submit-only", action="store_true", help="queue every segment without waiting"
+    )
+    storyboard.add_argument(
+        "--dry-run", action="store_true", help="validate the package locally, without a server"
+    )
+
+    commands.add_parser("check", help="check the remote service")
+    commands.add_parser("queue", help="show running and pending prompts")
 
     wait = commands.add_parser("wait", help="wait for an existing prompt and download results")
     wait.add_argument("prompt_id")
-    _add_output_arguments(wait)
-    subparsers.append(wait)
+    wait.add_argument("--output-dir", default="runs/storyboard")
+    wait.add_argument("--job-timeout", type=float, default=3600.0)
 
     cancel = commands.add_parser("cancel", help="cancel a running or pending prompt")
     cancel.add_argument("prompt_id")
-    subparsers.append(cancel)
 
-    for command in subparsers:
+    for command in commands.choices.values():
         _add_connection_arguments(command, inherited=True)
 
     return parser
 
 
 def _check(client: ComfyUIClient) -> int:
-    remote = client.health()
-    print(json.dumps({"remote": "ok", "status": remote}, ensure_ascii=False, indent=2))
+    print(json.dumps({"remote": "ok", "status": client.health()}, ensure_ascii=False, indent=2))
     return 0
 
 
@@ -186,74 +109,18 @@ def _queue(client: ComfyUIClient) -> int:
     return 0
 
 
-def _upload(client: ComfyUIClient, path: str, subfolder: str, overwrite: bool) -> int:
-    print(
-        json.dumps(
-            {
-                "remote_name": client.upload_file(path, subfolder=subfolder, overwrite=overwrite),
-                "source": str(Path(path).resolve()),
-            },
-            ensure_ascii=False,
-        )
-    )
-    return 0
-
-
-def _submit(
-    client: ComfyUIClient,
-    graph: dict[str, Any],
-    source: str,
-    output_dir: str,
-    client_id: str | None,
-) -> int:
-    prompt_id = client.submit(graph, client_id=client_id)
-    record = {"prompt_id": prompt_id, "workflow": source, "status": "queued"}
-    _write_run_record(Path(output_dir).expanduser().resolve(), prompt_id, record)
-    print(json.dumps(record, ensure_ascii=False, indent=2))
-    return 0
-
-
-def _run(
-    client: ComfyUIClient,
-    graph: dict[str, Any],
-    source: str,
-    output_dir: str,
-    client_id: str | None,
-    job_timeout: float,
-    run_subdir: bool,
-) -> int:
-    output_root = Path(output_dir).expanduser().resolve()
-    result = client.run(
-        graph,
-        output_root,
-        client_id=client_id,
-        timeout=job_timeout,
-        subdir=None if run_subdir else "",
-    )
-    record = {"workflow": source, "status": "completed", **result.to_dict()}
-    _write_run_record(output_root, result.prompt_id, record)
-    print(json.dumps(record, ensure_ascii=False, indent=2))
-    return 0
-
-
 def _wait(
     client: ComfyUIClient,
     prompt_id: str,
     output_dir: str,
     job_timeout: float,
-    run_subdir: bool,
 ) -> int:
     output_root = Path(output_dir).expanduser().resolve()
     history = client.wait(prompt_id, timeout=job_timeout)
     outputs = client.download_outputs(
-        history,
-        output_root,
-        prompt_id=prompt_id,
-        subdir=prompt_id if run_subdir else "",
+        history, output_root, prompt_id=prompt_id, subdir=prompt_id
     )
-    # Same keys as `run` so both commands write one record schema.
-    record = {"prompt_id": prompt_id, "workflow": None, "status": "completed"}
-    record.update(_outputs_record(outputs))
+    record = {"prompt_id": prompt_id, "status": "completed", **_outputs_record(outputs)}
     _write_run_record(output_root, prompt_id, record)
     print(json.dumps(record, ensure_ascii=False, indent=2))
     return 0
@@ -261,6 +128,68 @@ def _wait(
 
 def _cancel(client: ComfyUIClient, prompt_id: str) -> int:
     print(json.dumps(client.cancel(prompt_id), ensure_ascii=False, indent=2))
+    return 0
+
+
+def _storyboard(args: argparse.Namespace, client: ComfyUIClient | None = None) -> int:
+    segments = load_storyboard_bundle(args.manifest)
+    if args.dry_run:
+        print(
+            json.dumps(
+                {
+                    "status": "valid",
+                    "segments": [
+                        {
+                            "segment": item.name,
+                            "seconds": item.seconds,
+                            "aspect_ratio": item.aspect_ratio,
+                            "pictures": len(item.pictures),
+                        }
+                        for item in segments
+                    ],
+                    "total_seconds": round(sum(item.seconds for item in segments), 3),
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
+    if client is None:
+        raise ValueError("storyboard command requires a ComfyUI client")
+    output_root = Path(args.output_dir).expanduser().resolve()
+    batch_id = uuid.uuid4().hex
+    for item in segments:
+        remote_names = [
+            client.upload_file(path, subfolder=f"storyboard/{batch_id}/{item.name}")
+            for path in item.pictures
+        ]
+        graph = build_graph(
+            {
+                "prompt": item.prompt,
+                "length": item.seconds,
+                "aspect_ratio": item.aspect_ratio,
+                "reference_images": remote_names,
+            }
+        )
+        prompt_id = client.submit(graph)
+        record: dict[str, Any] = {
+            "batch_id": batch_id,
+            "segment": item.name,
+            "seconds": item.seconds,
+            "aspect_ratio": item.aspect_ratio,
+            "reference_images": remote_names,
+            "prompt_id": prompt_id,
+            "status": "queued",
+        }
+        _write_run_record(output_root, prompt_id, record)
+        if not args.submit_only:
+            history = client.wait(prompt_id, timeout=args.job_timeout)
+            outputs = client.download_outputs(
+                history, output_root, prompt_id=prompt_id, subdir=item.name
+            )
+            record.update({"status": "completed", **_outputs_record(outputs)})
+            _write_run_record(output_root, prompt_id, record)
+        print(json.dumps(record, ensure_ascii=False))
     return 0
 
 
@@ -274,6 +203,12 @@ def _outputs_record(outputs: list[OutputFile]) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "storyboard" and args.dry_run:
+        try:
+            return _storyboard(args)
+        except (BindingError, ValueError, OSError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
     try:
         client = _client(args)
     except (ValueError, OSError) as exc:
@@ -284,35 +219,18 @@ def main(argv: list[str] | None = None) -> int:
             return _check(client)
         if args.command == "queue":
             return _queue(client)
-        if args.command == "upload":
-            return _upload(client, args.path, args.subfolder, args.overwrite)
-        if args.command == "submit":
-            graph, source = _graph_from_args(args)
-            return _submit(client, graph, source, args.output_dir, args.client_id)
-        if args.command == "run":
-            graph, source = _graph_from_args(args)
-            return _run(
-                client,
-                graph,
-                source,
-                args.output_dir,
-                args.client_id,
-                args.job_timeout,
-                args.run_subdir,
-            )
         if args.command == "wait":
-            return _wait(client, args.prompt_id, args.output_dir, args.job_timeout, args.run_subdir)
+            return _wait(client, args.prompt_id, args.output_dir, args.job_timeout)
         if args.command == "cancel":
             return _cancel(client, args.prompt_id)
-        parser.error(f"unknown command: {args.command}")
-        return 2
+        return _storyboard(args, client)
     except ComfyUITimeoutError as exc:
         print(f"error: {exc}", file=sys.stderr)
         if exc.prompt_id:
             print(f"prompt_id: {exc.prompt_id}", file=sys.stderr)
             print(
                 f"hint: the prompt is still queued; rerun with a larger --job-timeout or "
-                f"`cancel {exc.prompt_id}`",
+                f"`wait {exc.prompt_id}`",
                 file=sys.stderr,
             )
         return 1

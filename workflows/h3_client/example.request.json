@@ -1,9 +1,0 @@
-{
-  "type": "ref2va",
-  "storyboard": "单镜头，固定机位，中景。女子参考<Picture 1>的人物外观，门参考<Picture 2>。女子用左手推开门，保持左手接触门板，跨过门槛后松开左手。只保留脚步声和门轴声，无对白，无配乐。",
-  "reference_images": [
-    {"path": "woman.png", "name": "女子", "remote_name": "codex/woman.png"},
-    {"path": "door.png", "name": "门", "remote_name": "codex/door.png"}
-  ],
-  "values": {"seed": 42, "length": 5, "width": 1280, "height": 720}
-}

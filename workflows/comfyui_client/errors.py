@@ -59,4 +59,4 @@ class WorkflowExecutionError(ComfyUIError):
 
 
 class BindingError(ValueError):
-    """A requested runtime value cannot be applied to this graph/profile."""
+    """A storyboard value cannot be written into the H3 workflow."""

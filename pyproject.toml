@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "novel-prompt-pipeline"
-version = "0.2.0"
-description = "Director tables, local shot processing, MiniMax H3 compilation and remote ComfyUI"
+version = "0.3.0"
+description = "ComfyUI client that runs novel-storyboard H3 production packages"
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{name = "Novel Prompt Pipeline contributors"}]
-keywords = ["comfyui", "video", "workflow"]
+keywords = ["comfyui", "video", "storyboard"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console",
@@ -24,9 +24,6 @@ classifiers = [
 ]
 dependencies = [
   "httpx>=0.28,<1",
-  "openai>=1.109,<3",
-  "python-dotenv>=1,<2",
-  "pydantic>=2.8,<3",
 ]
 
 [project.urls]
@@ -45,25 +42,23 @@ dev = [
 
 [project.scripts]
 comfyui-remote = "comfyui_client.__main__:main"
-h3-compile = "h3_client.__main__:main"
-shot-plan = "shot_client.__main__:main"
-director-plan = "director_client.__main__:main"
 
 [tool.hatch.build]
-exclude = ["**/__pycache__", "**/*.pyc", "**/.env", "/.tmp", "/.venv", "/runs"]
+exclude = ["**/__pycache__", "**/*.pyc", "/runs"]
 
 [tool.hatch.build.targets.wheel]
 core-metadata-version = "2.4"
-packages = ["workflows/comfyui_client", "workflows/h3_client", "workflows/shot_client", "workflows/director_client"]
+packages = ["workflows/comfyui_client"]
 
+# The declaration and the workflow stay outside the package in the source tree,
+# so they are installed next to it and resolved relative to the package's parent.
 [tool.hatch.build.targets.wheel.force-include]
-"workflows/workflow_bindings.json" = "comfyui_client/_data/workflow_bindings.json"
-"workflows/h3-ref2va-api.json" = "comfyui_client/_data/h3-ref2va-api.json"
-"workflows/h3-i2va-api.json" = "comfyui_client/_data/h3-i2va-api.json"
+"workflows/workflow_bindings.json" = "workflow_bindings.json"
+"workflows/h3-ref2va-api.json" = "h3-ref2va-api.json"
 
 [tool.hatch.build.targets.sdist]
 core-metadata-version = "2.4"
-include = ["/workflows", "/.github", "/.env.example", "/LICENSE", "/pyproject.toml", "/requirements*.txt"]
+include = ["/workflows", "/LICENSE", "/pyproject.toml"]
 
 [tool.ruff]
 target-version = "py311"

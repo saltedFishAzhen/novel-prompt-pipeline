@@ -1,4 +1,4 @@
-"""Unit tests for the ComfyUI transport and workflow binding layers."""
+"""Unit tests for the ComfyUI transport, graph binding and CLI layers."""
 
 from __future__ import annotations
 
@@ -22,7 +22,6 @@ from comfyui_client import (  # noqa: E402
     ComfyUITimeoutError,
     WorkflowExecutionError,
     api_graph,
-    bind_graph,
     build_graph,
 )
 from comfyui_client.__main__ import build_parser  # noqa: E402
@@ -36,6 +35,7 @@ Handler = Callable[[httpx.Request], httpx.Response]
 
 RUNNING = {"status": {"status_str": "running", "completed": False}}
 SUCCESS = {"status": {"status_str": "success", "completed": True}, "outputs": {}}
+PICTURES = ["p1.png", "p2.png"]
 
 
 class TransportTestCase(unittest.TestCase):
@@ -151,7 +151,6 @@ class TransportTestCase(unittest.TestCase):
         self.assertAlmostEqual(caught.exception.budget_seconds, 0.05)
         self.assertGreaterEqual(caught.exception.wait_seconds, 0.04)
         self.assertEqual(caught.exception.prompt_id, "hang")
-        self.assertIsInstance(caught.exception, ComfyUIError)
         self.assertNotIsInstance(caught.exception, WorkflowExecutionError)
         self.assertLess(time.monotonic() - started, 2.0)
 
@@ -200,25 +199,11 @@ class TransportTestCase(unittest.TestCase):
             client.wait("hang")
         self.assertIn("503", str(caught.exception))
 
-    def test_history_accepts_a_direct_record_from_compatible_servers(self) -> None:
-        entry = {"status": {"status_str": "success", "completed": True}}
-        client = self.make_client(
-            {("GET", "/history/p-1"): lambda request: httpx.Response(200, json=entry)}
-        )
-        self.assertEqual(client.history("p-1"), entry)
-
     def test_history_returns_none_before_the_record_exists(self) -> None:
         client = self.make_client(
             {("GET", "/history/p-1"): lambda request: httpx.Response(200, json={})}
         )
         self.assertIsNone(client.history("p-1"))
-
-    def test_completed_job_without_status_is_treated_as_done(self) -> None:
-        entry = {"outputs": {"1": {"images": []}}}
-        client = self.make_client(
-            {("GET", "/history/p-1"): lambda request: httpx.Response(200, json={"p-1": entry})}
-        )
-        self.assertEqual(client.wait("p-1", timeout=1), entry)
 
     # -------------------------------------------------------------- failures
 
@@ -299,19 +284,12 @@ class TransportTestCase(unittest.TestCase):
 
     # --------------------------------------------------------------- health
 
-    def test_health_prefers_system_stats(self) -> None:
+    def test_health_returns_system_stats(self) -> None:
         stats = {"system": {"os": "posix"}}
         client = self.make_client(
             {("GET", "/system_stats"): lambda request: httpx.Response(200, json=stats)}
         )
-        self.assertEqual(client.health(), {"system_stats": stats})
-
-    def test_health_falls_back_to_the_legacy_prompt_probe(self) -> None:
-        legacy = {"exec_info": {"queue_remaining": 0}}
-        client = self.make_client(
-            {("GET", "/prompt"): lambda request: httpx.Response(200, json=legacy)}
-        )
-        self.assertEqual(client.health(), {"prompt": legacy})
+        self.assertEqual(client.health(), stats)
 
     def test_health_does_not_swallow_auth_errors(self) -> None:
         client = self.make_client(
@@ -641,8 +619,6 @@ class TransportTestCase(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = client.download_outputs(history, directory, prompt_id="p-1", subdir="p-1")[0]
             self.assertEqual(output.path.parent, Path(directory).resolve() / "p-1")
-            flat = client.download_outputs(history, directory, subdir="")[0]
-            self.assertEqual(flat.path.parent, Path(directory).resolve())
 
     def test_download_rejects_a_traversing_subdirectory(self) -> None:
         client = self.make_client({})
@@ -650,49 +626,6 @@ class TransportTestCase(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(ValueError):
                 client.download_outputs(history, directory, subdir="../elsewhere")
-
-    # ------------------------------------------------------------------ run
-
-    def test_run_isolates_outputs_by_prompt_id(self) -> None:
-        entry = {
-            "status": {"status_str": "success", "completed": True},
-            "outputs": {"9": {"videos": [{"filename": "out.mp4", "type": "output"}]}},
-        }
-        client = self.make_client(
-            {
-                ("POST", "/prompt"): lambda request: httpx.Response(200, json={"prompt_id": "p-9"}),
-                ("GET", "/history/p-9"): lambda request: httpx.Response(200, json={"p-9": entry}),
-                ("GET", "/view"): lambda request: httpx.Response(200, content=b"video"),
-            }
-        )
-        with tempfile.TemporaryDirectory() as directory:
-            result = client.run({"1": {"class_type": "X", "inputs": {}}}, directory, timeout=5)
-            self.assertEqual(result.outputs[0].path.parent.name, "p-9")
-            flat = client.run(
-                {"1": {"class_type": "X", "inputs": {}}}, directory, timeout=5, subdir=""
-            )
-            self.assertEqual(flat.outputs[0].path.parent, Path(directory).resolve())
-
-    def test_run_submits_waits_and_downloads(self) -> None:
-        def view(request: httpx.Request) -> httpx.Response:
-            return httpx.Response(200, content=b"video")
-
-        entry = {
-            "status": {"status_str": "success", "completed": True},
-            "outputs": {"9": {"videos": [{"filename": "out.mp4", "type": "output"}]}},
-        }
-        client = self.make_client(
-            {
-                ("POST", "/prompt"): lambda request: httpx.Response(200, json={"prompt_id": "p-9"}),
-                ("GET", "/history/p-9"): lambda request: httpx.Response(200, json={"p-9": entry}),
-                ("GET", "/view"): view,
-            }
-        )
-        with tempfile.TemporaryDirectory() as directory:
-            result = client.run({"1": {"class_type": "X", "inputs": {}}}, directory, timeout=5)
-            self.assertEqual(result.prompt_id, "p-9")
-            self.assertEqual(len(result.files), 1)
-            self.assertEqual(result.to_dict()["outputs"][0]["filename"], "out.mp4")
 
 
 class BindingTestCase(unittest.TestCase):
@@ -718,189 +651,82 @@ class BindingTestCase(unittest.TestCase):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 validate_prompt_id(value)
 
-    def test_binding_rejects_a_name_that_upload_validation_would_reject(self) -> None:
-        with self.assertRaises(BindingError):
-            build_graph("i2va", {"prompt": "p", "first_frame": "a?b.png"})
-
     def test_binding_rejects_a_traversing_reference_image(self) -> None:
         with self.assertRaises(BindingError):
-            build_graph(
-                "ref2va",
-                {"prompt": "p", "first_frame": "a.png", "reference_images": ["../b.png"]},
-            )
+            build_graph({"prompt": "p", "reference_images": ["../b.png"]})
 
-    def test_binding_does_not_mutate_the_source_graph(self) -> None:
-        graph = {"3": {"class_type": "X", "inputs": {"prompt": ""}}}
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt", "type": "str"}]},
-        }
-        bound = bind_graph(graph, profile, {"prompt": "hello"})
-        self.assertEqual(bound["3"]["inputs"]["prompt"], "hello")
-        self.assertEqual(graph["3"]["inputs"]["prompt"], "")
+    def test_build_graph_writes_the_prompt_duration_and_seed(self) -> None:
+        graph = build_graph(
+            {"prompt": "p", "length": 9.5, "seed": 7, "reference_images": PICTURES}
+        )
+        self.assertEqual(graph["28"]["inputs"]["prompt"], "p")
+        self.assertEqual(graph["27"]["inputs"]["value"], 9.5)
+        self.assertEqual(graph["11"]["inputs"]["noise_seed"], 7)
 
-    def test_pruning_an_unused_slot_reports_dangling_links(self) -> None:
-        graph = {
-            "1": {"class_type": "LoadImage", "inputs": {"image": ""}},
-            "2": {"class_type": "Node", "inputs": {"image": ["1", 0]}},
-            "3": {"class_type": "Node", "inputs": {"prompt": ""}},
-        }
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
-            "reference_slots": [
-                {"load": {"node_id": "1", "input": "image"}, "conditioning": []},
-            ],
-        }
+    def test_build_graph_keeps_the_workflow_defaults_it_is_given(self) -> None:
+        graph = build_graph({"prompt": "p", "reference_images": PICTURES})
+        self.assertEqual(graph["13"]["inputs"]["size_mode"], "scale_by")
+        self.assertEqual(graph["11"]["inputs"]["noise_seed"], 683072603085674)
+        self.assertEqual(graph["29"]["inputs"]["aspect_ratio"], "9:16 (Portrait Widescreen)")
+
+    def test_build_graph_maps_the_aspect_ratio_label(self) -> None:
+        graph = build_graph(
+            {"prompt": "p", "aspect_ratio": "16:9", "reference_images": PICTURES}
+        )
+        self.assertEqual(graph["29"]["inputs"]["aspect_ratio"], "16:9 (Widescreen)")
+
+    def test_unsupported_aspect_ratio_is_rejected(self) -> None:
         with self.assertRaises(BindingError) as caught:
-            bind_graph(graph, profile, {"prompt": "p"})
-        self.assertIn("1", str(caught.exception))
+            build_graph({"prompt": "p", "aspect_ratio": "5:4", "reference_images": PICTURES})
+        self.assertIn("supported", str(caught.exception))
 
-    def test_capability_drift_against_slots_is_rejected(self) -> None:
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
-            "capabilities": {"reference_capacity": 3},
-        }
-        with self.assertRaises(BindingError) as caught:
-            bind_graph(
-                {"3": {"class_type": "X", "inputs": {"prompt": ""}}}, profile, {"prompt": "p"}
-            )
-        self.assertIn("reference_capacity", str(caught.exception))
-
-    def test_capability_claim_without_a_binding_is_rejected(self) -> None:
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
-            "capabilities": {"supports_seed": True},
-        }
-        with self.assertRaises(BindingError) as caught:
-            bind_graph(
-                {"3": {"class_type": "X", "inputs": {"prompt": ""}}}, profile, {"prompt": "p"}
-            )
-        self.assertIn("supports_seed", str(caught.exception))
-
-    def test_misspelled_size_input_is_rejected(self) -> None:
-        graph = {
-            "3": {"class_type": "X", "inputs": {"w": 0, "h": 0, "mode": ""}},
-            "4": {"class_type": "X", "inputs": {"prompt": ""}},
-        }
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {
-                "prompt": [{"node_id": "4", "input": "prompt"}],
-                "width": [{"node_id": "3", "input": "w"}],
-                "height": [{"node_id": "3", "input": "h"}],
-            },
-            "explicit_size_mode": {
-                "node_id": "3",
-                "input": "mode",
-                "value": "target_dimensions",
-                "width_input": "widht",
-                "height_input": "h",
-            },
-        }
-        with self.assertRaises(BindingError) as caught:
-            bind_graph(graph, profile, {"prompt": "p", "width": 100, "height": 100})
-        self.assertIn("widht", str(caught.exception))
-
-    def test_capability_false_with_a_binding_is_rejected(self) -> None:
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
-            "capabilities": {"supports_prompt": False},
-        }
-        with self.assertRaises(BindingError):
-            bind_graph(
-                {"3": {"class_type": "X", "inputs": {"prompt": ""}}}, profile, {"prompt": "p"}
-            )
-
-    def test_unsupported_schema_version_is_rejected(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "bindings.json"
-            path.write_text(json.dumps({"schema_version": 2, "profiles": {}}), encoding="utf-8")
-            with self.assertRaises(BindingError):
-                bind_graph(
-                    {"3": {"class_type": "X", "inputs": {"prompt": ""}}},
-                    "custom",
-                    {"prompt": "p"},
-                    bindings_file=path,
-                )
-
-    def test_unknown_profile_key_is_rejected(self) -> None:
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
-            "refrence_slots": [],
-        }
-        with self.assertRaises(BindingError):
-            bind_graph(
-                {"3": {"class_type": "X", "inputs": {"prompt": ""}}}, profile, {"prompt": "p"}
-            )
-
-    def test_unsupported_value_is_rejected(self) -> None:
-        with self.assertRaises(BindingError):
-            build_graph("i2va", {"prompt": "p", "first_frame": "a.png", "cfg": 7})
-
-    def test_length_accepts_fractional_seconds_but_dimensions_do_not(self) -> None:
-        graph = build_graph("i2va", {"prompt": "p", "first_frame": "a.png", "length": 2.5})
-        self.assertEqual(graph["141"]["inputs"]["value"], 2.5)
-        for field, value in (("length", "5"), ("length", 0), ("width", 100.5), ("height", True)):
-            with self.subTest(field=field, value=value), self.assertRaises(BindingError):
-                build_graph("i2va", {"prompt": "p", "first_frame": "a.png", field: value})
-
-    def test_missing_reference_images_are_reported(self) -> None:
-        with self.assertRaises(BindingError) as caught:
-            build_graph("ref2va", {"prompt": "p"})
-        self.assertIn("at least one reference image", str(caught.exception))
-
-    def test_ref2va_rejects_first_frame(self) -> None:
-        with self.assertRaises(BindingError) as caught:
-            build_graph("ref2va", {"prompt": "p", "first_frame": "a.png"})
-        self.assertIn("does not support first_frame", str(caught.exception))
-
-    def test_ref2va_binds_nine_reference_slots(self) -> None:
+    def test_build_graph_binds_nine_reference_slots(self) -> None:
         names = [f"r{index}.png" for index in range(1, 10)]
-        graph = build_graph("ref2va", {"prompt": "p", "reference_images": names})
+        graph = build_graph({"prompt": "p", "reference_images": names})
         self.assertEqual(graph["66"]["inputs"]["image"], "r1.png")
         self.assertEqual(graph["908"]["inputs"]["image"], "r9.png")
         self.assertEqual(graph["95"]["inputs"]["ref_images.ref_image_0"], ["66", 0])
         self.assertEqual(graph["95"]["inputs"]["ref_images.ref_image_8"], ["908", 0])
+
+    def test_more_pictures_than_slots_is_rejected(self) -> None:
+        names = [f"r{index}.png" for index in range(1, 11)]
         with self.assertRaises(BindingError) as caught:
-            build_graph("ref2va", {"prompt": "p", "reference_images": names + ["r10.png"]})
-        self.assertIn("supports 9 reference image", str(caught.exception))
+            build_graph({"prompt": "p", "reference_images": names})
+        self.assertIn("9 reference image slots", str(caught.exception))
 
-    def test_unsupported_ratio_is_rejected_for_explicit_dimensions(self) -> None:
+    def test_unused_picture_slots_and_audio_placeholders_are_removed(self) -> None:
+        graph = build_graph({"prompt": "p", "reference_images": PICTURES})
+        for node_id in ("902", "903", "904", "905", "906", "907", "908", "107", "108", "109"):
+            self.assertNotIn(node_id, graph)
+        for input_name in (
+            "ref_images.ref_image_2",
+            "ref_images.ref_image_8",
+            "ref_audios.ref_audio_0",
+            "ref_audios.ref_audio_2",
+        ):
+            self.assertNotIn(input_name, graph["95"]["inputs"])
+            self.assertNotIn(input_name, graph["96"]["inputs"])
+
+    def test_missing_reference_images_are_rejected(self) -> None:
         with self.assertRaises(BindingError) as caught:
-            build_graph(
-                "ref2va",
-                {"prompt": "p", "reference_images": ["a.png"], "width": 100, "height": 999},
-            )
-        self.assertIn("aspect", str(caught.exception))
+            build_graph({"prompt": "p"})
+        self.assertIn("at least one reference image", str(caught.exception))
 
-    def test_single_dimension_reuses_the_workflow_default(self) -> None:
-        base = build_graph("i2va", {"prompt": "p", "first_frame": "a.png"})
-        sized = build_graph("i2va", {"prompt": "p", "first_frame": "a.png", "width": 1024})
-        default_height = base["908"]["inputs"]["target_height"]
-        self.assertEqual(sized["908"]["inputs"]["target_width"], 1024)
-        self.assertEqual(sized["908"]["inputs"]["target_height"], default_height)
-        self.assertEqual(sized["122"]["inputs"]["自定义高"], default_height)
-        self.assertEqual(sized["122"]["inputs"]["自定义宽"], 1024)
-
-    def test_explicit_size_binds_the_aspect_ratio_label(self) -> None:
-        graph = build_graph(
-            "ref2va",
-            {"prompt": "p", "reference_images": ["a.png"], "width": 1920, "height": 1080},
-        )
-        self.assertEqual(graph["29"]["inputs"]["aspect_ratio"], "16:9 (Widescreen)")
-        self.assertEqual(graph["13"]["inputs"]["size_mode"], "target_dimensions")
-
-    def test_partial_dimensions_explain_the_workflow_default(self) -> None:
+    def test_missing_prompt_is_rejected(self) -> None:
         with self.assertRaises(BindingError) as caught:
-            build_graph(
-                "ref2va", {"prompt": "p", "reference_images": ["a.png"], "width": 1024}
-            )
-        self.assertIn("pass both width and height", str(caught.exception))
+            build_graph({"reference_images": PICTURES})
+        self.assertIn("prompt", str(caught.exception))
+
+    def test_unsupported_value_is_rejected(self) -> None:
+        with self.assertRaises(BindingError):
+            build_graph({"prompt": "p", "reference_images": PICTURES, "cfg": 7})
+
+    def test_length_accepts_fractional_seconds_but_not_zero(self) -> None:
+        graph = build_graph({"prompt": "p", "length": 2.5, "reference_images": PICTURES})
+        self.assertEqual(graph["27"]["inputs"]["value"], 2.5)
+        for value in ("5", 0, -1):
+            with self.subTest(value=value), self.assertRaises(BindingError):
+                build_graph({"prompt": "p", "length": value, "reference_images": PICTURES})
 
     def test_api_graph_returns_a_detached_copy(self) -> None:
         graph = {"1": {"class_type": "X", "inputs": {"image": "a.png"}}}
@@ -916,19 +742,58 @@ class BindingTestCase(unittest.TestCase):
         }
         self.assertEqual(set(api_graph(graph)), {"1"})
 
-    def test_prompt_is_optional_when_the_profile_binds_no_prompt(self) -> None:
-        graph = {"3": {"class_type": "X", "inputs": {"noise_seed": 1}}}
-        profile = {
-            "workflow": "wf.json",
-            "bindings": {"seed": [{"node_id": "3", "input": "noise_seed", "type": "int"}]},
-        }
-        bound = bind_graph(graph, profile, {"seed": 7})
-        self.assertEqual(bound["3"]["inputs"]["noise_seed"], 7)
+    def test_binding_file_with_an_unknown_key_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bindings.json"
+            path.write_text(json.dumps({"schema_version": 1, "profiles": {}}), encoding="utf-8")
+            with self.assertRaises(BindingError) as caught:
+                build_graph({"prompt": "p"}, bindings_file=path)
+        self.assertIn("unsupported keys", str(caught.exception))
 
-    def test_prompt_stays_required_when_the_profile_binds_it(self) -> None:
-        with self.assertRaises(BindingError) as caught:
-            build_graph("i2va", {"first_frame": "a.png"})
-        self.assertIn("prompt", str(caught.exception))
+    def test_binding_file_requires_schema_version_1(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bindings.json"
+            path.write_text(json.dumps({"schema_version": 2}), encoding="utf-8")
+            with self.assertRaises(BindingError) as caught:
+                build_graph({"prompt": "p"}, bindings_file=path)
+        self.assertIn("schema_version", str(caught.exception))
+
+    def test_removing_a_referenced_node_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "wf.json").write_text(
+                json.dumps(
+                    {
+                        "1": {"class_type": "LoadImage", "inputs": {"image": ""}},
+                        "2": {"class_type": "Node", "inputs": {"image": ["1", 0]}},
+                        "3": {"class_type": "Node", "inputs": {"prompt": "", "ratio": ""}},
+                        "4": {"class_type": "LoadImage", "inputs": {"image": ""}},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "bindings.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "workflow": "wf.json",
+                        "bindings": {"prompt": [{"node_id": "3", "input": "prompt"}]},
+                        "reference_slots": [
+                            {"load": {"node_id": "4", "input": "image"}, "conditioning": []}
+                        ],
+                        "prune": [{"node_id": "1"}],
+                        "aspect_ratio_input": {"node_id": "3", "input": "ratio"},
+                        "aspect_ratios": {"1:1": "1:1 (Square)"},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaises(BindingError) as caught:
+                build_graph(
+                    {"prompt": "p", "aspect_ratio": "1:1", "reference_images": ["a.png"]},
+                    bindings_file=root / "bindings.json",
+                )
+        self.assertIn("still referenced", str(caught.exception))
 
     def test_safe_filename_is_length_bounded(self) -> None:
         name = safe_filename("A" * 400 + ".png")
@@ -938,61 +803,46 @@ class BindingTestCase(unittest.TestCase):
 
 
 class CommandLineTestCase(unittest.TestCase):
-    def test_request_and_job_timeouts_are_separate(self) -> None:
-        args = build_parser().parse_args(["run", "--graph", "graph.json"])
+    def test_storyboard_is_the_only_generation_command(self) -> None:
+        args = build_parser().parse_args(
+            ["storyboard", "--manifest", "m.json", "--dry-run", "--submit-only"]
+        )
+        self.assertEqual((args.command, args.manifest), ("storyboard", "m.json"))
+        self.assertTrue(args.dry_run)
+        self.assertTrue(args.submit_only)
+        for removed in ("run", "submit", "upload"):
+            with self.subTest(command=removed), self.assertRaises(SystemExit):
+                build_parser().parse_args([removed])
+
+    def test_job_timeouts_are_separate_from_the_request_timeout(self) -> None:
+        args = build_parser().parse_args(["storyboard", "--manifest", "m.json"])
         self.assertEqual(args.request_timeout, 30.0)
         self.assertEqual(args.job_timeout, 3600.0)
 
-    def test_timeout_is_an_alias_for_the_job_budget(self) -> None:
-        args = build_parser().parse_args(["run", "--graph", "graph.json", "--timeout", "120"])
-        self.assertEqual(args.job_timeout, 120.0)
+    def test_connection_options_work_after_the_subcommand(self) -> None:
+        args = build_parser().parse_args(
+            ["storyboard", "--manifest", "m.json", "--base-url", "http://x:8188"]
+        )
+        self.assertEqual(args.base_url, "http://x:8188")
 
-    def test_upload_defaults_to_no_subfolder(self) -> None:
-        args = build_parser().parse_args(["upload", "a.png"])
-        self.assertEqual(args.subfolder, "")
-        self.assertFalse(args.overwrite)
+    def test_connection_options_work_before_the_subcommand(self) -> None:
+        args = build_parser().parse_args(
+            ["--base-url", "http://x:8188", "storyboard", "--manifest", "m.json"]
+        )
+        self.assertEqual(args.base_url, "http://x:8188")
+
+    def test_connection_defaults_survive_an_omitting_subcommand(self) -> None:
+        args = build_parser().parse_args(["storyboard", "--manifest", "m.json"])
+        self.assertIsNone(args.base_url)
+        self.assertEqual(args.poll_interval, 1.0)
 
     def test_cancel_takes_a_prompt_id(self) -> None:
         args = build_parser().parse_args(["cancel", "p-1"])
         self.assertEqual((args.command, args.prompt_id), ("cancel", "p-1"))
 
-    def test_connection_options_work_after_the_subcommand(self) -> None:
-        args = build_parser().parse_args(
-            ["run", "--graph", "g.json", "--base-url", "http://x:8188", "--request-timeout", "5"]
-        )
-        self.assertEqual(args.base_url, "http://x:8188")
-        self.assertEqual(args.request_timeout, 5.0)
-
-    def test_connection_options_work_before_the_subcommand(self) -> None:
-        args = build_parser().parse_args(
-            ["--base-url", "http://x:8188", "run", "--graph", "g.json"]
-        )
-        self.assertEqual(args.base_url, "http://x:8188")
-
-    def test_connection_defaults_survive_an_omitting_subcommand(self) -> None:
-        args = build_parser().parse_args(["run", "--graph", "g.json"])
-        self.assertIsNone(args.base_url)
-        self.assertEqual(args.request_timeout, 30.0)
-        self.assertEqual(args.poll_interval, 1.0)
-
-    def test_profile_commands_accept_bindings_and_workflow_paths(self) -> None:
-        args = build_parser().parse_args(
-            [
-                "run",
-                "--profile",
-                "ref2va",
-                "--bindings-file",
-                "b.json",
-                "--workflows-dir",
-                "wf",
-            ]
-        )
-        self.assertEqual((args.bindings_file, args.workflows_dir), ("b.json", "wf"))
-
-    def test_run_isolates_by_prompt_id_unless_disabled(self) -> None:
-        self.assertTrue(build_parser().parse_args(["run", "--graph", "g.json"]).run_subdir)
-        flat = build_parser().parse_args(["run", "--graph", "g.json", "--no-run-subdir"])
-        self.assertFalse(flat.run_subdir)
+    def test_wait_defaults_to_the_storyboard_output_dir(self) -> None:
+        args = build_parser().parse_args(["wait", "p-1"])
+        self.assertEqual((args.output_dir, args.job_timeout), ("runs/storyboard", 3600.0))
 
 
 if __name__ == "__main__":

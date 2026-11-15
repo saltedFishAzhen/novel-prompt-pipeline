@@ -1,8 +1,9 @@
-"""Standalone HTTP client for a remote ComfyUI server."""
+"""HTTP client for one remote ComfyUI server, driven by H3 storyboard packages."""
 
-from .bindings import api_graph, bind_graph, build_graph
+from .bindings import api_graph, build_graph
 from .errors import BindingError, ComfyUIError, ComfyUITimeoutError, WorkflowExecutionError
-from .transport import ComfyUIClient, OutputFile, RunResult
+from .storyboard import StoryboardSegment, load_storyboard_bundle
+from .transport import ComfyUIClient, OutputFile
 
 __all__ = [
     "BindingError",
@@ -10,9 +11,9 @@ __all__ = [
     "ComfyUIError",
     "ComfyUITimeoutError",
     "OutputFile",
-    "RunResult",
+    "StoryboardSegment",
     "WorkflowExecutionError",
     "api_graph",
-    "bind_graph",
     "build_graph",
+    "load_storyboard_bundle",
 ]

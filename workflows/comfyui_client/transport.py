@@ -14,7 +14,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote, urlencode, urlsplit
+from urllib.parse import urlencode, urlsplit
 
 import httpx
 
@@ -78,26 +78,6 @@ class OutputFile:
         }
 
 
-@dataclass(frozen=True)
-class RunResult:
-    """Submitted prompt, history record and downloaded outputs of one run."""
-
-    prompt_id: str
-    history: dict[str, Any]
-    outputs: tuple[OutputFile, ...]
-
-    @property
-    def files(self) -> list[str]:
-        return [str(output.path) for output in self.outputs]
-
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "prompt_id": self.prompt_id,
-            "files": self.files,
-            "outputs": [output.to_dict() for output in self.outputs],
-        }
-
-
 class _RejectedOutput(ComfyUIError):
     """A downloaded output the client refused locally; retrying cannot help."""
 
@@ -121,9 +101,9 @@ class ComfyUIClient:
     bearer authentication.
 
     ``timeout`` bounds one HTTP request. ``job_timeout`` bounds how long
-    :meth:`wait` and :meth:`run` wait for a submitted prompt to finish; keep it
-    well above the expected generation time. Prompt submission is never
-    automatically retried, so a network error cannot queue the same job twice.
+    :meth:`wait` waits for a submitted prompt to finish; keep it well above the
+    expected generation time. Prompt submission is never automatically retried,
+    so a network error cannot queue the same job twice.
 
     ``download_retries`` retries a failed ``/view`` download (network errors and
     5xx only). ``max_output_bytes`` refuses a single output larger than that and
@@ -331,21 +311,13 @@ class ComfyUIClient:
     # ------------------------------------------------------------- inspection
 
     def health(self) -> dict[str, Any]:
-        """Probe the server with ``/system_stats``, falling back to legacy ``/prompt``."""
-        try:
-            stats = self._request("GET", "/system_stats")
-        except ComfyUIError as exc:
-            if exc.status not in {404, 405}:
-                raise
-        else:
-            if isinstance(stats, dict):
-                return {"system_stats": stats}
-        legacy = self._request("GET", "/prompt")
-        if not isinstance(legacy, dict):
+        """Probe the server with ``/system_stats``."""
+        stats = self._request("GET", "/system_stats")
+        if not isinstance(stats, dict):
             raise ComfyUIError(
-                "Unexpected health response", endpoint="/prompt", payload=self._redact(legacy)
+                "Unexpected health response", endpoint="/system_stats", payload=self._redact(stats)
             )
-        return {"prompt": legacy}
+        return stats
 
     def queue(self) -> dict[str, Any]:
         """Return the server's running and pending queue entries."""
@@ -353,18 +325,6 @@ class ComfyUIClient:
         if not isinstance(result, dict):
             raise ComfyUIError(
                 "Unexpected queue response", endpoint="/queue", payload=self._redact(result)
-            )
-        return result
-
-    def object_info(self, node_class: str | None = None) -> dict[str, Any]:
-        """Return installed node definitions, optionally for one node class."""
-        path = "/object_info"
-        if node_class:
-            path += "/" + quote(node_class, safe="")
-        result = self._request("GET", path)
-        if not isinstance(result, dict):
-            raise ComfyUIError(
-                "Unexpected object_info response", endpoint=path, payload=self._redact(result)
             )
         return result
 
@@ -420,9 +380,6 @@ class ComfyUIClient:
                 prompt_id=prompt_id,
             )
         entry = response.get(prompt_id)
-        if entry is None:
-            # Some compatible servers return the history record directly.
-            entry = response if "status" in response or "outputs" in response else None
         if entry is not None and not isinstance(entry, dict):
             raise ComfyUIError(
                 "Malformed history record",
@@ -488,9 +445,6 @@ class ComfyUIClient:
 
     def _execution_state(self, entry: Mapping[str, Any], endpoint: str, prompt_id: str) -> str:
         status = entry.get("status")
-        if status is None:
-            # Compatible servers may return only outputs once the job is done.
-            return "done" if entry.get("outputs") is not None else "running"
         if not isinstance(status, Mapping):
             raise WorkflowExecutionError(
                 "Malformed execution status",
@@ -507,8 +461,7 @@ class ComfyUIClient:
                 prompt_id=prompt_id,
                 payload=self._redact(messages or dict(status)),
             )
-        completed = status.get("completed")
-        if completed is True or (completed is not False and name in _SUCCESS_STATES):
+        if status.get("completed") is True or name in _SUCCESS_STATES:
             return "done"
         return "running"
 
@@ -574,13 +527,12 @@ class ComfyUIClient:
         subfolder: str = "",
         overwrite: bool = False,
     ) -> str:
-        """Upload an image, audio file or other media into ComfyUI input storage.
+        """Upload one reference picture into ComfyUI input storage.
 
-        ComfyUI currently accepts multipart uploads at ``/upload/image`` using
-        the form field named ``image``. The server stores bytes under ``input``;
-        loaders such as the video/audio node pack consume the returned filename.
-        The returned name is input-relative and safe to pass back as
-        ``first_frame``/``reference_images``.
+        ComfyUI accepts multipart uploads at ``/upload/image`` using the form
+        field named ``image`` and stores the bytes under ``input``. The returned
+        name is input-relative and is what the workflow's ``LoadImage`` slots
+        take as ``reference_images``.
         """
         source_path = Path(path).expanduser().resolve(strict=True)
         if not source_path.is_file():
@@ -770,33 +722,6 @@ class ComfyUIClient:
             except FileNotFoundError:
                 pass
             raise
-
-    # -------------------------------------------------------------------- run
-
-    def run(
-        self,
-        graph: dict[str, Any],
-        output_dir: str | os.PathLike[str],
-        *,
-        client_id: str | None = None,
-        timeout: float | None = None,
-        subdir: str | None = None,
-    ) -> RunResult:
-        """Submit a graph, wait for completion and download its outputs.
-
-        Outputs go to ``output_dir/<prompt_id>/`` unless ``subdir`` overrides
-        that; pass ``subdir=""`` to write straight into ``output_dir``.
-        """
-        prompt_id = self.submit(graph, client_id=client_id)
-        history = self.wait(prompt_id, timeout=timeout)
-        outputs = self.download_outputs(
-            history,
-            output_dir,
-            prompt_id=prompt_id,
-            subdir=prompt_id if subdir is None else subdir,
-        )
-        return RunResult(prompt_id=prompt_id, history=history, outputs=tuple(outputs))
-
 
 def _clean_text(value: str) -> str:
     """Strip terminal control and bidirectional formatting from server text."""

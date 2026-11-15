@@ -26,9 +26,9 @@ def validate_remote_path(
 ) -> str:
     """Return a normalized ComfyUI input-relative name, or raise ``ValueError``.
 
-    One rule set covers both caller-supplied names (profile values) and
-    server-supplied names (upload/history responses), so a value accepted in
-    one place cannot be rejected in another. Accepted names are relative, free
+    One rule set covers both the names we send (upload subfolders, reference
+    pictures) and server-supplied names (upload/history responses), so a value
+    accepted in one place cannot be rejected in another. Accepted names are relative, free
     of control characters, ``?``, ``#`` and drive letters, and contain no
     empty, ``.`` or ``..`` segment.
     """
