@@ -38,7 +38,24 @@ _ALIASES = {
     "director_notes": ("导演备注", "导演说明", "备注", "导演提示"),
 }
 _NONE = frozenset(
-    {"无", "无对白", "无台词", "无对话", "静音", "—", "-", "/", "n/a", "none", "无声"}
+    {
+        "无",
+        "无对白",
+        "无台词",
+        "无对话",
+        "静音",
+        "—",
+        "-",
+        "/",
+        "n/a",
+        "none",
+        "无声",
+        "no dialogue",
+        "no speech",
+        "silent",
+        "not applicable",
+        "no reference",
+    }
 )
 
 
@@ -49,7 +66,8 @@ def _is_none(value: str) -> bool:
 
 
 _NUMBER = r"\d+(?::\d{1,2}(?:\.\d+)?|\.\d+)?"
-_TIME_RANGE = rf"{_NUMBER}\s*(?:秒|s)?\s*[-–—~～至到]\s*{_NUMBER}\s*(?:秒|s)?"
+_SECONDS_UNIT = r"(?:seconds|second|secs|sec|秒|s)"
+_TIME_RANGE = rf"{_NUMBER}\s*{_SECONDS_UNIT}?\s*[-–—~～至到]\s*{_NUMBER}\s*{_SECONDS_UNIT}?"
 _QUOTE = r'(?P<quote>“[^”]*”|‘[^’]*’|「[^」]*」|『[^』]*』|"[^"]*")'
 _DIALOGUE = re.compile(
     rf"(?:(?P<group>D[\w-]+)\s+(?P<part>\d+)\s*/\s*(?P<total>\d+)\s+)?"
@@ -122,7 +140,7 @@ def _table_rows(text: str) -> list[dict[str, str]]:
 
 
 def _milliseconds(value: str) -> int:
-    value = re.sub(r"(?:秒|s)\s*$", "", value.strip(), flags=re.I).strip()
+    value = re.sub(rf"{_SECONDS_UNIT}\s*$", "", value.strip(), flags=re.I).strip()
     if value.startswith(("从", "第")):
         value = value[1:].strip()
     parts = value.split(":")
@@ -258,13 +276,17 @@ def _source_dialogue(source: str) -> list[str]:
     """Extract clearly introduced quoted speech; not a general semantic parser."""
     pattern = re.compile(
         r"(?:(?:台词|对白|旁白|对话)(?=\s*(?:是|为|[：:“‘「『\"]))|"
-        r"说|问|回答|喊|叫道|叫喊|说道|答道|唱|念|低声道|轻声道|大声道|告诉|答复|回应)"
-        r"[^“‘「『\"\n]{0,18}(?:“([^”]+)”|‘([^’]+)’|「([^」]+)」|『([^』]+)』|\"([^\"]+)\")"
+        r"说|问|回答|喊|叫道|叫喊|说道|答道|唱|念|低声道|轻声道|大声道|告诉|答复|回应|"
+        r"\b(?:says|said|say|asks|asked|replies|replied|answers|answered|whispers|shouts|narrates|sings|speaks)\b)"
+        r"[^“‘「『\"\n]{0,48}(?:“([^”]+)”|‘([^’]+)’|「([^」]+)」|『([^』]+)』|\"([^\"]+)\")",
+        re.IGNORECASE,
     )
     matches = []
     for match in pattern.finditer(source):
-        before = source[max(0, match.start() - 4) : match.start()]
-        if re.search(r"(?:无|没|没有|不含|不新增|没有任何|不|未|别|并未|从未)$", before):
+        before = source[max(0, match.start() - 24) : match.start()]
+        if re.search(
+            r"(?:无|没|没有|不含|不新增|没有任何|不|未|别|并未|从未)$", before
+        ) or re.search(r"\b(?:not|never|without|doesn't|didn't|don't)\s+$", before, re.IGNORECASE):
             continue
         words = next(part for part in match.groups() if part is not None)
         fragment = bool(re.search(r"前半句|后半句|前半段|后半段|第一部分|第二部分", match.group(0)))
@@ -397,7 +419,9 @@ def _transition(
         explicit_opening = bool(re.search(r"开场|起始|首镜|opening|first\s+shot", lower))
         if selected or hard and not explicit_opening:
             raise TableValidationError("first shot must start as opening, not a cut or transition")
-        amount = r"(\d+(?:\.\d+)?)\s*(?:毫秒|ms|秒|s)"
+        amount = (
+            r"(\d+(?:\.\d+)?)\s*(?:milliseconds|millisecond|毫秒|ms|seconds|second|secs|sec|秒|s)"
+        )
         # A shot's end time or total duration is not a transition duration.
         # Only reject a nonzero amount explicitly attached to the entry cut.
         duration_patterns = (
@@ -446,12 +470,25 @@ def _transition(
         raise TableValidationError(
             f"shot {number}: soft transition needs positive source or preference authorization"
         )
-    amount_pattern = r"(\d+(?:\.\d+)?)\s*(毫秒|ms|秒|s)"
+    amount_pattern = (
+        r"(\d+(?:\.\d+)?)\s*(milliseconds|millisecond|毫秒|ms|seconds|second|secs|sec|秒|s)"
+    )
     soft_names = "|".join(re.escape(name) for name in kinds[kind])
     # Prefer a marked duration or the amount directly attached to the
     # transition. A cut-time such as "5秒开始叠化" is not its duration.
     match = (
-        re.search(rf"(?:持续|时长|历时|用时|duration)\s*[:：]?\s*{amount_pattern}", lower)
+        re.search(
+            rf"(?:{soft_names})[^;\n]{{0,100}}?(?:持续|时长|历时|用时|duration)\s*[:：]?\s*{amount_pattern}",
+            lower,
+        )
+        or re.search(
+            rf"(?:{soft_names})[^;\n]{{0,80}}\b(?:lasting|lasts)\s*(?:for\s+)?{amount_pattern}",
+            lower,
+        )
+        or re.search(
+            rf"(?:{soft_names})(?:\s+(?:begins?|starts?)(?:\s+at\s+{_NUMBER}\s*{_SECONDS_UNIT})?)?\s+for\s+{amount_pattern}",
+            lower,
+        )
         or re.search(rf"{amount_pattern}\s*(?:的|进行)?\s*(?:交叉)?(?:{soft_names})", lower)
         or re.search(rf"(?:{soft_names})\s*(?:持续|时长|为)?\s*[:：]?\s*{amount_pattern}", lower)
     )
@@ -465,7 +502,9 @@ def _transition(
         raise TableValidationError(
             f"shot {number}: soft transition needs an explicit duration such as 0.5秒"
         )
-    amount = Decimal(match.group(1)) * (1 if match.group(2) in {"毫秒", "ms"} else 1000)
+    amount = Decimal(match.group(1)) * (
+        1 if match.group(2) in {"毫秒", "ms", "milliseconds", "millisecond"} else 1000
+    )
     if amount != amount.to_integral_value() or not 0 < amount <= shot_length_ms:
         raise TableValidationError(f"shot {number}: invalid soft transition duration")
     _check_transition_times(lower, number, shot_start_ms, int(amount))
@@ -474,12 +513,15 @@ def _transition(
 
 def _check_transition_times(value: str, number: int, start_ms: int, duration_ms: int) -> None:
     """Reject unambiguous absolute transition anchors that disagree with the row."""
-    unit_time = rf"({_NUMBER}\s*(?:秒|s))"
+    unit_time = rf"({_NUMBER}\s*{_SECONDS_UNIT})"
     start_patterns = (
         rf"{unit_time}\s*(?:整)?\s*(?:硬切|直接切|直切|切入|切至|切换)",
         rf"{unit_time}\s*(?:整)?\s*(?:开始|起始)\s*(?:\d+(?:\.\d+)?\s*(?:毫秒|ms|秒|s)\s*)?(?:交叉)?(?:叠化|溶解|淡入|淡出|渐入|渐出|划像|擦除|转场|过渡|dissolve|fade|wipe|transition)",
         rf"(?:切点|转场起点|切换时间|起始时间)\s*[:：]?\s*{unit_time}",
         rf"\b(?:cut\s+at|start\s+at)\s*{unit_time}",
+        rf"\b(?:cross[ -]?dissolve|fade|wipe|transition|hard[ -]?cut|cut)\s+(?:starts?|begins?)\s+at\s*{unit_time}",
+        rf"\bat\s*{unit_time}\s*,?\s*(?:(?:the|a)\s+)?(?:(?:camera\s+)?(?:hard[ -]?cuts?|cuts?)|(?:begin|begins|start|starts)\s+(?:a\s+|the\s+)?(?:cross[ -]?dissolve|fade|wipe|transition)|(?:cross[ -]?dissolve|fade|wipe|transition)\s+(?:begins?|starts?))\b",
+        rf"{unit_time}\s*(?:,\s*)?(?:a\s+)?(?:hard[ -]?cuts?|cuts?)\b",
     )
     for pattern in start_patterns:
         for match in re.finditer(pattern, value, re.I):
@@ -494,6 +536,7 @@ def _check_transition_times(value: str, number: int, start_ms: int, duration_ms:
     end_patterns = (
         rf"{unit_time}\s*(?:整)?\s*(?:结束|完成)",
         rf"(?:结束于|完成于|end\s+at)\s*{unit_time}",
+        rf"\b(?:end(?:s|ing)?|finish(?:es|ing)?|complet(?:e|es|ing))\s+at\s*{unit_time}",
     )
     for pattern in end_patterns:
         for match in re.finditer(pattern, value, re.I):
@@ -514,16 +557,28 @@ def _check_transition_times(value: str, number: int, start_ms: int, duration_ms:
             after = value[match.end() :]
             if re.search(
                 r"前镜|上一镜|上镜|本镜|该镜|后镜|人物|台词|对白|说话|讲话|动作|转身|表情|视线"
-                r"|previous\s+shot",
+                r"|(?:previous|first|current|this|the|new|next)\s+shot|\b(?:actor|character|girl|boy|person|speaker|line|dialogue|action|movement|turn|voice)\b",
                 current_clause,
                 re.I,
-            ) or re.match(r"\s*(?:动作|讲话|说话|对白|表演|台词|转身|表情|视线)", after):
+            ) or re.match(
+                r"\s*(?:动作|讲话|说话|对白|表演|台词|转身|表情|视线|speaking|talking|dialogue|action|turning)",
+                after,
+                re.I,
+            ):
                 continue
             # An end time is only the transition's own end when the cell binds it
             # to the transition, either with a duration word or as "结束于X".
             bound = bool(
-                re.match(r"(?:结束于|完成于|end\s+at)", match.group(0), re.I)
-                or re.search(r"持续|时长|历时|用时|duration", since_marker, re.I)
+                re.match(
+                    r"(?:结束于|完成于|end(?:s|ing)?\s+at|finish(?:es|ing)?\s+at|complet(?:e|es|ing)\s+at)",
+                    match.group(0),
+                    re.I,
+                )
+                or re.search(
+                    r"持续|时长|历时|用时|duration|\blasting\b|\blast(?:ing|s)\b|\bfor\b",
+                    since_marker,
+                    re.I,
+                )
             )
             if not bound:
                 continue
@@ -536,7 +591,7 @@ def _check_transition_times(value: str, number: int, start_ms: int, duration_ms:
 def _check_source_cut_claims(source: str, rows: list[ShotRow]) -> None:
     """Check only narrow, explicit absolute transition statements in source."""
     pattern = re.compile(
-        rf"(?<![每过后距])({_NUMBER}\s*(?:秒|s))\s*(?:整)?\s*"
+        rf"(?<![每过后距])({_NUMBER}\s*{_SECONDS_UNIT})\s*(?:整)?\s*"
         # "切入画面" describes a subject entering the frame, not a cut.
         r"(硬切|直接切到|直接切至|切至|切入(?!画面)|开始交叉叠化|开始叠化)",
         re.I,
@@ -557,6 +612,31 @@ def _check_source_cut_claims(source: str, rows: list[ShotRow]) -> None:
         if row.transition != expected:
             raise TableValidationError("shot transition type conflicts with an explicit source cut")
 
+    english = re.compile(
+        rf"\b(?P<kind>hard[ -]?cut|cross[ -]?dissolve|fade|wipe)\s+"
+        rf"(?:(?:starts?|begins?)\s+)?at\s*(?P<time>{_NUMBER}\s*{_SECONDS_UNIT})\b",
+        re.I,
+    )
+    for match in english.finditer(source):
+        prefix = source[max(0, match.start() - 32) : match.start()]
+        if re.search(
+            r"\b(?:no|not|never|without|avoid|prohibit|forbid|disallow)\s+"
+            r"(?:(?:use|using|a|an|any|the)\s+){0,4}$",
+            prefix,
+            re.I,
+        ):
+            continue
+        moment = _milliseconds(match.group("time"))
+        if moment >= rows[-1].end_ms:
+            continue
+        row = indexed.get(moment)
+        if row is None:
+            raise TableValidationError("an explicit source cut time is missing from the shot table")
+        kind = match.group("kind").lower()
+        expected = "cut" if "cut" in kind else "cross_dissolve" if "dissolve" in kind else kind
+        if row.transition != expected:
+            raise TableValidationError("shot transition type conflicts with an explicit source cut")
+
 
 def _camera_conflict(value: str, number: int) -> None:
     spec = value.casefold()
@@ -565,8 +645,13 @@ def _camera_conflict(value: str, number: int) -> None:
         "",
         spec,
     )
+    motion = r"(?:push|pull|pan|tilt|truck|zoom|track|orbit|roll|dolly|pedestal|handheld|movement|motion)\w*\b"
+    # A negation extends across a simple comma/and/or list, but not across
+    # contrast, sequencing, or an explicit positive permission.
+    negated_item = rf"{motion}(?!\s+(?:is\s+)?(?:allowed|permitted|enabled)\b)"
     spec = re.sub(
-        r"\b(?:no|without|not)\s+(?:camera\s+)?(?:push|pull|pan|tilt|truck|zoom|tracking|orbit|roll|movement|motion)\w*",
+        rf"\b(?:no|without|not)\s+(?:camera\s+)?{negated_item}"
+        rf"(?:(?:\s*,\s*(?!(?:but|then)\b)|\s+(?:and|or)\s+(?!(?:but|then)\b)){negated_item})*",
         "",
         spec,
     )

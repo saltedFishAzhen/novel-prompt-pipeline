@@ -249,6 +249,23 @@ class ShotClientTests(unittest.TestCase):
         )
         self.assertEqual(result.status, "invalid")
 
+    def test_static_camera_negated_motion_list_stops_at_positive_motion(self) -> None:
+        still = (
+            "None. Static frame for the whole 8 seconds — no pan, tilt, dolly, zoom or handheld."
+        )
+        for movement, expected in (
+            (still, "ready"),
+            ("Static frame; no pan, but tilt allowed.", "invalid"),
+            ("Static frame; no pan, zoom allowed.", "invalid"),
+            ("Static frame; no pan, then dolly.", "invalid"),
+            ("Static frame; no pan, tilt, but zoom.", "invalid"),
+        ):
+            with self.subTest(movement=movement):
+                result = self.process(
+                    TABLE.replace("| 平视正面 | 固定 |", f"| 平视正面 | {movement} |", 1)
+                )
+                self.assertEqual(result.status, expected, result.issues)
+
     def test_schema_rejects_inconsistent_rows_and_events(self) -> None:
         result = self.process()
         self.assertEqual(result.status, "ready", result.issues)
@@ -261,3 +278,57 @@ class ShotClientTests(unittest.TestCase):
             DialogueEvent(speaker="女孩", text="今天不打开。", start_ms=100)
         with self.assertRaises(ValidationError):
             DialogueEvent(speaker="女孩", text="今天不打开。", part_index=1)
+
+    def test_english_three_shot_table_preserves_chinese_dialogue(self) -> None:
+        rows = (
+            "| 1 | 0–2.6s | <Picture 1>, <Picture 2> | Medium shot | Eye level | Static | Girl keeps her arms down. | Calm | No dialogue | No speech. | Girl left; bottle right. | Opening | No extra action. |",
+            "| 2 | 2.6–5s | <Picture 1>, <Picture 2> | Medium close-up | Eye level | Static | Girl raises her left arm. | Quiet resolve | 3s–4s Girl (Mandarin): “今天不打开。” | Holds her arm during speech. | Bottle stays on table. | Hard cut at 2.6s. | No added lines. |",
+            "| 3 | 5–8s | <Picture 1>, <Picture 2> | Medium | Eye level | Static | Girl lowers her arm. | Calm | None | No dialogue. | Opening composition. | At 5s, begin a cross-dissolve lasting 0.5s; the transition ends at 5.5s. | No extra action. |",
+        )
+        source = "The girl says in a calm voice: “今天不打开。” Use a cross-dissolve at 5s."
+
+        def process(table_rows: tuple[str, ...], text: str = source):
+            return ShotClient().process(
+                "\n".join((HEADER, SEPARATOR, *table_rows)),
+                type="ref2va",
+                source_text=text,
+                reference_images=self.images,
+                duration_seconds=8,
+                preferences={"shot_count": 3},
+            )
+
+        result = process(rows)
+        self.assertEqual(result.status, "ready", result.issues)
+        shots = result.table.rows
+        self.assertEqual(
+            [(s.start_ms, s.end_ms) for s in shots], [(0, 2600), (2600, 5000), (5000, 8000)]
+        )
+        self.assertEqual([s.reference_images for s in shots], [[1, 2], [1, 2], [1, 2]])
+        self.assertEqual(
+            (shots[2].transition, shots[2].transition_duration_ms), ("cross_dissolve", 500)
+        )
+        event = shots[1].dialogue_events[0]
+        self.assertEqual(
+            (event.speaker, event.language, event.text), ("Girl", "mandarin", "今天不打开。")
+        )
+        storyboard = result.to_h3_request()["storyboard"]
+        self.assertIn("Girl raises her left arm", storyboard)
+        self.assertEqual(storyboard.count("今天不打开。"), 1)
+
+        for old, new in (
+            ("Hard cut at 2.6s", "Hard cut at 2.7s"),
+            ("At 5s, begin", "At 6s, begin"),
+            ("ends at 5.5s", "ends at 5.6s"),
+        ):
+            with self.subTest(old=old, new=new):
+                changed = tuple(row.replace(old, new) for row in rows)
+                self.assertEqual(process(changed).status, "invalid")
+        self.assertEqual(process(rows, source.replace("at 5s", "at 6s")).status, "invalid")
+        self.assertEqual(process(rows, source.replace("says", "does not say")).status, "invalid")
+
+        # A preceding shot duration must not be mistaken for the dissolve duration.
+        prior_duration = tuple(
+            row.replace("At 5s, begin", "Previous shot duration 2s; at 5s, begin") for row in rows
+        )
+        prior_result = process(prior_duration)
+        self.assertEqual(prior_result.status, "ready", prior_result.issues)

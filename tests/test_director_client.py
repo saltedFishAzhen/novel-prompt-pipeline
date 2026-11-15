@@ -112,6 +112,11 @@ class DirectorClientTests(unittest.TestCase):
         ):
             self.assertNotIn(forbidden, system)
         content = request["messages"][1]["content"]
+        manifest = json.loads(content[0]["text"])
+        self.assertEqual(manifest["output_language"], "English")
+        self.assertEqual(
+            manifest["verbatim_source_language"], ["dialogue", "lyrics", "visible_text"]
+        )
         urls = [item["image_url"]["url"] for item in content if item["type"] == "image_url"]
         self.assertEqual(
             urls,

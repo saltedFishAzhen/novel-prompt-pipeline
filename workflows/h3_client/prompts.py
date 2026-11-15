@@ -31,15 +31,33 @@ FIDELITY (takes precedence over generic prompt-writing recommendations):
 - Preserve every existing action, action order, timing, shot boundary, camera
   movement, framing, reference role, spatial relation, handedness, contact and
   release, negative constraint, dialogue, delivery and audio instruction.
+  Translate each source clause with ALL its qualifiers: object type, number,
+  size, shape, color, material, position, orientation, speed and duration.
+  A property remains mandatory when mentioned in only one source clause. Carry
+  it into the actual shot description, not only the summary or retention notes.
+  For example, 'a small red round table' must not become merely 'a red table'.
 - Do not improve, embellish, simplify, shorten, redesign, add cuts, invent action
-  beats, infer motivations, or pad to a word count. Translate descriptive prose
-  into English without changing its meaning. Dialogue, lyrics and visible text
+  beats, infer motivations, or pad to a word count. When descriptive prose is
+  already English, reuse its sentences and qualifiers without retranslating,
+  paraphrasing or polishing; only insert H3 bindings, markers and field placement.
+  For a supplied shot table/labelled shot export, retain EVERY English cell in
+  that shot: framing, angle, movement, blocking, emotion/subtext, dialogue-body
+  relationship, scene layers, continuity and director notes. Copy these English
+  clauses verbatim, with only H3 reference/speaker/shot tags substituted. Keep
+  emotion/subtext as labelled performance intent and director notes as execution
+  notes; do not discard them or turn them into spoken words or new events.
+  Translate non-English descriptive prose into English without changing its meaning.
+  Dialogue, lyrics and visible text
   keep their original language and exact words and punctuation.
-- Inspect attached images only to resolve the explicitly referenced identity,
-  appearance, composition or scene anchors. Do not invent plot from an image or
-  promote an appearance-only reference to a keyframe.
-  When the source lists selected reference attributes, describe those attributes
-  only; leave other visible details unselected rather than expanding the role.
+- Inspect attached images to resolve which supplied reference the source means.
+  Bind the requested attributes to that Picture; do not turn visible pixels
+  into additional written descriptions. A role such as 'appearance', 'shape'
+  or 'pattern' is a reference instruction, NOT permission to enumerate its visual
+  contents. Write 'pattern from <Picture N>', not the motifs you see in it.
+  Only visual details explicitly named in the storyboard may be written out.
+  For example, a requested fabric pattern does not authorize adding roses seen
+  in the image. Preserve any explicitly supplied details, including exclusions.
+  Do not promote an appearance-only reference to a keyframe.
 - Keep screen coordinates separate from anatomical handedness. Translate frame
   left/right as screen-left/screen-right, never as the character's own left/right.
   Preserve an actor's own left/right arm or hand as anatomical instructions.
@@ -73,6 +91,11 @@ SHARED H3 RULES (official base guide):
   At EVERY spoken event write the speaker ID outside and before its <d> block,
   including single-speaker scenes. In REF2VA write <Subject N> (Sx) for a
   referenced subject speaking; never emit an unnumbered speaker.
+- Preserve BOTH endpoints of every supplied dialogue time range. Write the
+  complete range directly beside that speaker's <d> event, e.g. 'From 2.0 to
+  3.5 seconds, <Subject 1> (S1) says: <d>...</d>'. A start-only 'At 2.0' is not
+  equivalent; mentioning 3.5 beside an arm movement does not preserve the spoken
+  end time. Do not change or invent a time range when the source supplies none.
 - For explicit voiceover use 'says in an off-screen voiceover' and preserve the
   separation from on-screen speech. Use <scenetrans> for supplied dialogue spanning
   a cut and <cutoff> for dialogue explicitly truncated by the ending.
@@ -126,6 +149,10 @@ non_diegetic_music:
   Only content actually sourced from a numbered reference receives a Subject
   definition. New scene elements supplied by the storyboard stay as ordinary
   prose; do not invent Subject labels for them.
+  Use a binding definition: source subject name, Picture, requested attributes,
+  and exclusions. If the source says appearance/style only, write that role
+  directly instead of cataloguing face, hair, clothing or texture from the image.
+  Translate concrete appearance details only when the SOURCE TEXT names them.
 - summary: concise English overview beginning with task types in square brackets.
   Use [reference generation] for identity/scene/style guidance, [keyframe completion]
   for concrete frame anchors, or [keyframe completion + reference generation] if
@@ -139,6 +166,11 @@ non_diegetic_music:
   Do not expand a short storyboard to the guide's suggested 350-500 words.
 
 OUTPUT CHECK BEFORE RETURNING:
+- Compare the complete source with the actual shot descriptions clause by clause.
+  Restore any omitted qualifier or constraint in its original shot. Check every
+  newly written concrete visual detail against SOURCE TEXT; remove it if it
+  comes only from looking at an image. A Picture binding already conveys the
+  selected visual attributes; duplicating imagined details is not compilation.
 - Copy the literal schema keys. The fourth REF2VA heading is exactly
   detailed_description: . Never rename it to 'hyper-detailed description',
   translate it, add modifiers, or use spaces instead of underscores.

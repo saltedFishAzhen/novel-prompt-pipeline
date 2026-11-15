@@ -546,9 +546,7 @@ class H3ClientTests(unittest.TestCase):
             self.client.compile("ref2va", "女子推门。", [self.first, self.second])
 
     def test_invalid_cut_times_and_empty_sections_are_rejected(self) -> None:
-        description = (
-            "[Shot 1] One.\n[Shot 2] At 00:02.000, two.\n[Shot 3] At 00:03.000, three."
-        )
+        description = "[Shot 1] One.\n[Shot 2] At 00:02.000, two.\n[Shot 3] At 00:03.000, three."
         cases = (
             I2VA.replace(
                 "[Shot 1] The woman opens the door with her left hand.",
@@ -674,6 +672,38 @@ class H3ClientTests(unittest.TestCase):
         graph = build_graph(result.profile, values)
         self.assertEqual(graph["139"]["inputs"]["prompt"], prompt)
 
+    def test_only_empty_consecutive_duplicate_headings_are_collapsed(self) -> None:
+        duplicated = REF2VA.replace(
+            "detailed_description:", "Detailed_description:\n\ndetailed_description:"
+        )
+        self.response_content = json.dumps({"prompt": duplicated})
+        compiled = self.client.compile("ref2va", "女子推门。", [self.first, self.second])
+        self.assertEqual(compiled.prompt, REF2VA)
+
+        with_content = REF2VA.replace(
+            "detailed_description:",
+            "detailed_description: An additional scene.\ndetailed_description:",
+        )
+        self.response_content = json.dumps({"prompt": with_content})
+        with self.assertRaises(H3Error):
+            self.client.compile("ref2va", "女子推门。", [self.first, self.second])
+
+    def test_compile_rejects_a_dropped_structured_dialogue_end_time(self) -> None:
+        source = "台词（仅此栏为实际对白，保持原话与标点）：3.0–4.6s Woman (Mandarin):「请稍等。」"
+        line = (
+            "The woman holds her position. "
+            "From 3.0 to 4.6 seconds, <Subject 1> (S1) says: <d>[Mandarin] 请稍等。</d>"
+        )
+        valid = REF2VA.replace("<Subject 1> opens <Subject 2> with her left hand.", line)
+        self.response_content = json.dumps({"prompt": valid}, ensure_ascii=False)
+        self.assertEqual(
+            self.client.compile("ref2va", source, [self.first, self.second]).prompt, valid
+        )
+        missing_end = valid.replace("From 3.0 to 4.6 seconds", "At 3.0 seconds")
+        self.response_content = json.dumps({"prompt": missing_end}, ensure_ascii=False)
+        with self.assertRaisesRegex(H3Error, "original time range"):
+            self.client.compile("ref2va", source, [self.first, self.second])
+
     def test_ref2va_dialogue_can_continue_across_a_cut(self) -> None:
         description = (
             "[Shot 1] <Subject 1> (S1) says, <d>[Chinese] 你来了，<scenetrans></d>\n"
@@ -777,9 +807,7 @@ class H3ClientTests(unittest.TestCase):
                         choices=[
                             SimpleNamespace(
                                 finish_reason="stop",
-                                message=SimpleNamespace(
-                                    content=[{"type": "text"}], refusal=None
-                                ),
+                                message=SimpleNamespace(content=[{"type": "text"}], refusal=None),
                             )
                         ]
                     )

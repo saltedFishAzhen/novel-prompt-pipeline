@@ -27,7 +27,7 @@ retention_analysis:
 <Subject 1>: fully_preserved - preserve the girl.
 <Subject 2>: fully_preserved - preserve the door.
 detailed_description:
-[Shot 1] <Subject 1> opens <Subject 2> with her left hand and (S1) says, <d>[Chinese] 今天不打开。</d>
+[Shot 1] <Subject 1> opens <Subject 2> with her left hand and, from 1 to 2 seconds, (S1) says, <d>[Chinese] 今天不打开。</d>
 [Shot 2] At 00:03.000, she holds her position.
 overall_soundscape:
 Not specified in the source storyboard.

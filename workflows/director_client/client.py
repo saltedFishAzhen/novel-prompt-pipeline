@@ -233,6 +233,8 @@ class DirectorClient:
                     raise DirectorError("reference role must state what to use")
                 roles.append(role)
         request = {
+            "output_language": "English",
+            "verbatim_source_language": ["dialogue", "lyrics", "visible_text"],
             "type": type,
             "source_text": source_text,
             "duration_seconds": duration_seconds,

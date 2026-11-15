@@ -16,6 +16,7 @@ from openai import OpenAI, OpenAIError
 from comfyui_client import BindingError, ComfyUIClient, ComfyUIError, build_graph
 from comfyui_client.validation import validate_remote_path
 
+from .fidelity import validate_dialogue_windows
 from .prompts import I2VA_FIELDS, I2VA_HEADER, REF2VA_FIELDS, SYSTEM_PROMPT
 
 PROFILES = ("i2va", "ref2va")
@@ -47,6 +48,14 @@ def _canonical_prompt(value: Any) -> str:
     prompt = re.sub(
         rf"(?im)^({field_pattern})(?=:[ \t]*)", lambda match: match.group(0).lower(), prompt
     )
+    # An immediately repeated empty heading carries no body content. Collapse
+    # only that representation error; duplicate sections with content still fail.
+    empty_repeat = re.compile(rf"(?m)^({field_pattern}):[ \t]*\n(?:[ \t]*\n)*\1:[ \t]*")
+    while True:
+        normalized = empty_repeat.sub(r"\1:", prompt)
+        if normalized == prompt:
+            break
+        prompt = normalized
     # Zero-padding is representation only; one spelling keeps the prompt and the
     # picture slots from drifting apart.
     return re.sub(r"<(Picture|Subject)\s+0*(\d+)>", r"<\1 \2>", prompt)
@@ -350,7 +359,12 @@ class H3Client:
             raise H3Error(f"LLM could not compile faithfully: {payload['error']}")
         if not isinstance(payload, dict) or set(payload) != {"prompt"}:
             raise H3Error("LLM must return exactly one prompt field")
-        return H3Compilation(type, payload["prompt"], images)
+        compilation = H3Compilation(type, payload["prompt"], images)
+        try:
+            validate_dialogue_windows(storyboard, compilation.prompt)
+        except ValueError as exc:
+            raise H3Error(str(exc)) from None
+        return compilation
 
 
 def _validate_prompt(profile: str, prompt: Any, image_count: int) -> None:
