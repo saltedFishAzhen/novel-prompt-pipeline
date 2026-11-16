@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "totalChapters": 17,
+    "targetWords": 103000,
+    "chapterWords": 6000,
+    "volumeCount": 1,
+    "note": "17章保留；本轮按用户要求恢复原著重要剧情、信息、台词，必要篇幅不再机械受6000字目标限制。Git版本记录，不新增原稿备份。"
+  },
+  "volumes": [
+    {
+      "volumeNumber": 1,
+      "volumeName": "第一世界：横港市",
+      "chapterStart": 1,
+      "chapterEnd": 17,
+      "coreConflict": "在原著事件中寻找通关真相并努力生存"
+    }
+  ]
+}
