@@ -32,7 +32,7 @@ Repository = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
 Issues = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/issues"
 
 [project.optional-dependencies]
-images = ["openai>=2.54,<3"]
+images = ["openai>=2.54,<3", "Pillow>=10,<14"]
 dev = [
   "build>=1.2,<2",
   "hatchling>=1.27,<2",

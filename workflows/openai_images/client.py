@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from .errors import ImageError
+from .errors import ImageError, RequestFailure, request_failure
 
 BASE_URL = "https://api.openai.com/v1"
 DEFAULT_MODEL = "gpt-image-2.6-sunburst"
@@ -178,9 +178,13 @@ class OpenAIImagesClient:
             with ExitStack() as stack:
                 if request.operation == "edit":
                     kwargs["image"] = [stack.enter_context(p.open("rb")) for p in request.images]
-                    response = client.images.edit(**kwargs)
-                else:
-                    response = client.images.generate(**kwargs)
+                try:
+                    if request.operation == "edit":
+                        response = client.images.edit(**kwargs)
+                    else:
+                        response = client.images.generate(**kwargs)
+                except Exception as exc:
+                    raise request_failure(exc) from None
             data = getattr(response, "data", None)
             if not data or len(data) != request.n:
                 raise ImageError("API returned an unexpected image count; no automatic retry.")
@@ -222,6 +226,8 @@ class OpenAIImagesClient:
                     self._record(run_dir, record)
                 except OSError:
                     pass
+            if isinstance(exc, RequestFailure):
+                raise exc from None
             raise ImageError(message) from None
         finally:
             try:
