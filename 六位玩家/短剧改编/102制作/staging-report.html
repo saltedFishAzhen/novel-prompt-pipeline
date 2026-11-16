@@ -177,7 +177,7 @@ table.items tr.lit td{background:var(--seal-soft)}
 
 <div class="kpis">
   <div class="kpi accent"><div class="l">场次</div><div class="v">1</div><div class="d">1 场有人不在场</div></div>
-  <div class="kpi"><div class="l">地点</div><div class="v">1</div><div class="d">0 个按图认的</div></div>
+  <div class="kpi"><div class="l">地点</div><div class="v">1</div><div class="d">1 个按图认的</div></div>
   <div class="kpi"><div class="l">开场在场</div><div class="v">1</div><div class="d">人次</div></div>
   <div class="kpi"><div class="l">群演</div><div class="v">0</div><div class="d">名，只作背景</div></div>
 </div>
@@ -199,7 +199,7 @@ table.items tr.lit td{background:var(--seal-soft)}
       <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
     </div>
     <div class="side">
-      <div class="plate plate-empty mini"><span>咖啡厅 · 没有图<br><em>把场景图放到 images/咖啡厅-sheet.png 再 render，就能对着图核对</em></span></div>
+      <figure class="plate mini"><div class="pic"><img src="images/咖啡厅-sheet.png" alt="咖啡厅" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="临窗双人方桌" style="left:20.50%;top:56.50%;width:34.20%;height:13.50%"><span>临窗双人方桌</span></i><i class="pbox" data-item="西侧固定窗" style="left:0.00%;top:0.00%;width:37.00%;height:60.00%"><span>西侧固定窗</span></i><i class="pbox" data-item="东侧玻璃出口" style="left:74.20%;top:0.70%;width:17.00%;height:65.30%"><span>东侧玻璃出口</span></i><i class="pbox" data-item="门外铺地区" style="left:77.20%;top:38.50%;width:11.60%;height:23.10%"><span>门外铺地区</span></i><i class="pbox" data-item="桌北侧椅" style="left:36.00%;top:49.40%;width:18.40%;height:45.70%"><span>桌北侧椅</span></i><i class="pbox" data-item="桌南侧椅" style="left:13.60%;top:66.50%;width:29.10%;height:33.30%"><span>桌南侧椅</span></i></div></figure>
       <div class="pick"></div>
       <div class="extras">
         <span class="lbl">群演</span>
@@ -220,15 +220,17 @@ table.items tr.lit td{background:var(--seal-soft)}
   <div class="cards">
 <article class="card loc" data-loc="S10">
   <header class="sc-h"><span class="sc-id">S10</span><h3>咖啡厅</h3>
-    <span class="badge soft">没有图，按设定提示词推算</span></header>
+    <span class="badge">按图认的</span></header>
   
   
-  <div class="plate plate-empty "><span>咖啡厅 · 没有图<br><em>把场景图放到 images/咖啡厅-sheet.png 再 render，就能对着图核对</em></span></div>
+  <figure class="plate "><div class="pic"><img src="images/咖啡厅-sheet.png" alt="咖啡厅" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="临窗双人方桌" style="left:20.50%;top:56.50%;width:34.20%;height:13.50%"><span>临窗双人方桌</span></i><i class="pbox" data-item="西侧固定窗" style="left:0.00%;top:0.00%;width:37.00%;height:60.00%"><span>西侧固定窗</span></i><i class="pbox" data-item="东侧玻璃出口" style="left:74.20%;top:0.70%;width:17.00%;height:65.30%"><span>东侧玻璃出口</span></i><i class="pbox" data-item="门外铺地区" style="left:77.20%;top:38.50%;width:11.60%;height:23.10%"><span>门外铺地区</span></i><i class="pbox" data-item="桌北侧椅" style="left:36.00%;top:49.40%;width:18.40%;height:45.70%"><span>桌北侧椅</span></i><i class="pbox" data-item="桌南侧椅" style="left:13.60%;top:66.50%;width:29.10%;height:33.30%"><span>桌南侧椅</span></i></div></figure>
   <table class="items"><thead><tr><th>东西</th><th>另一种语言</th><th>能坐能站</th><th>圆的</th></tr></thead><tbody>
   <tr data-item="临窗双人方桌"><td>临窗双人方桌</td><td>window-side rectangular table</td><td></td><td></td></tr>
   <tr data-item="西侧固定窗"><td>西侧固定窗</td><td>west fixed window</td><td></td><td></td></tr>
   <tr data-item="东侧玻璃出口"><td>东侧玻璃出口</td><td>east glass exit</td><td></td><td></td></tr>
   <tr data-item="门外铺地区"><td>门外铺地区</td><td>exterior paved area</td><td>✓</td><td></td></tr>
+  <tr data-item="桌北侧椅"><td>桌北侧椅</td><td>chair north of the table</td><td>✓</td><td></td></tr>
+  <tr data-item="桌南侧椅"><td>桌南侧椅</td><td>chair south of the table</td><td>✓</td><td></td></tr>
   </tbody></table>
 </article>
   </div>
@@ -250,7 +252,7 @@ table.items tr.lit td{background:var(--seal-soft)}
 <p class="foot">novel-staging · 开场站位。平面上的位置由「东西 + 哪一侧 + 沿着多远」算出来，跟走位句永远是一回事。</p>
 </div>
 
-<script type="application/json" id="staging-data">{"source":"《六位玩家》第一世界","lang":"zh","locations":[{"sceneId":"S10","name":"咖啡厅","readFrom":"prompt","items":[{"name":"临窗双人方桌","alt":"window-side rectangular table","plan":[0.18,0.28,0.43,0.48],"on":false,"round":false},{"name":"西侧固定窗","alt":"west fixed window","plan":[0.02,0.18,0.07,0.53],"on":false,"round":false},{"name":"东侧玻璃出口","alt":"east glass exit","plan":[0.78,0.67,0.84,0.82],"on":false,"round":false},{"name":"门外铺地区","alt":"exterior paved area","plan":[0.87,0.62,0.99,0.95],"on":true,"round":false}]}],"scenes":[{"ep":1,"scene":1,"sceneId":"S10","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C23","name":"神秘女人"}],"places":[{"id":"C01","name":"本群最帅之人","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C23","name":"神秘女人","present":true,"item":"临窗双人方桌","side":"north","along":0.5,"posture":"sit","facing":"south"}],"extras":0,"extrasWhere":null,"why":"依正式presentAtStart仅红发女人在桌边；主角第1拍拉椅坐下进入桌边会谈场域，不新增推门进店动作。"}],"status":"按提示词推算草案，未认图；无referenceImage或box，实际图未完成。"}</script>
+<script type="application/json" id="staging-data">{"source":"《六位玩家》第一世界","lang":"zh","locations":[{"sceneId":"S10","name":"咖啡厅","readFrom":"picture","items":[{"name":"临窗双人方桌","alt":"window-side rectangular table","plan":[0.18,0.28,0.43,0.48],"on":false,"round":false,"box":[0.205,0.565,0.547,0.7]},{"name":"西侧固定窗","alt":"west fixed window","plan":[0.02,0.18,0.07,0.53],"on":false,"round":false,"box":[0,0,0.37,0.6]},{"name":"东侧玻璃出口","alt":"east glass exit","plan":[0.78,0.67,0.84,0.82],"on":false,"round":false,"box":[0.742,0.007,0.912,0.66]},{"name":"门外铺地区","alt":"exterior paved area","plan":[0.87,0.62,0.99,0.95],"on":true,"round":false,"box":[0.772,0.385,0.888,0.616]},{"name":"桌北侧椅","alt":"chair north of the table","box":[0.36,0.494,0.544,0.951],"plan":[0.24,0.19,0.37,0.27],"on":true,"round":false},{"name":"桌南侧椅","alt":"chair south of the table","box":[0.136,0.665,0.427,0.998],"plan":[0.24,0.49,0.37,0.58],"on":true,"round":false}],"referenceImage":{"path":"D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\images\\咖啡厅-sheet.png","width":1536,"height":864,"aspectRatio":"16:9","sha256":"368beddc8ea0e469c9e99108b6f215f45e48c5a3f2df360e88bd96ae2c196607","mainViewBox":[0,0,1,1],"boxBasis":"full-image"}}],"scenes":[{"ep":1,"scene":1,"sceneId":"S10","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C23","name":"神秘女人"}],"places":[{"id":"C01","name":"本群最帅之人","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C23","name":"神秘女人","present":true,"item":"临窗双人方桌","side":"north","along":0.5,"posture":"sit","facing":"south"}],"extras":0,"extrasWhere":null,"why":"依正式presentAtStart仅红发女人在桌边；主角第1拍拉椅坐下进入桌边会谈场域，不新增推门进店动作。"}],"status":"已依据实际咖啡厅单视角图识别六件物体；平面方位为制作约定，box以完整原图为基准。C23开场坐北侧，C01首拍进入桌边；无人群演。"}</script>
 <script>
 function stagingCore() {
   const SIDES = ['north', 'east', 'south', 'west', 'on'];

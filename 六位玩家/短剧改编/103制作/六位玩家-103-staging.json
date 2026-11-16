@@ -1,0 +1,170 @@
+{
+  "source": "《六位玩家》第一世界",
+  "lang": "zh",
+  "locations": [
+    {
+      "sceneId": "S01",
+      "name": "黎汐家",
+      "readFrom": "picture",
+      "items": [
+        {
+          "name": "桌后厨房门",
+          "alt": "north kitchen doorway",
+          "plan": [
+            0.5,
+            0.04,
+            0.65,
+            0.11
+          ],
+          "on": false,
+          "box": [
+            0.446,
+            0.143,
+            0.591,
+            0.56
+          ]
+        },
+        {
+          "name": "中央生日桌",
+          "alt": "central birthday table",
+          "plan": [
+            0.35,
+            0.37,
+            0.67,
+            0.61
+          ],
+          "on": false,
+          "box": [
+            0.375,
+            0.539,
+            0.687,
+            0.718
+          ]
+        },
+        {
+          "name": "西侧玄关门",
+          "alt": "west entrance doorway",
+          "plan": [
+            0.03,
+            0.36,
+            0.1,
+            0.55
+          ],
+          "on": false,
+          "box": [
+            0.155,
+            0.192,
+            0.285,
+            0.647
+          ]
+        },
+        {
+          "name": "玄关到桌空地",
+          "alt": "foyer to table aisle",
+          "plan": [
+            0.16,
+            0.36,
+            0.27,
+            0.68
+          ],
+          "on": true,
+          "box": [
+            0.145,
+            0.647,
+            0.335,
+            0.985
+          ]
+        },
+        {
+          "name": "东侧窗",
+          "alt": "east window",
+          "box": [
+            0.839,
+            0,
+            1,
+            0.671
+          ],
+          "plan": [
+            0.92,
+            0.2,
+            0.99,
+            0.65
+          ],
+          "on": false,
+          "round": false
+        }
+      ],
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\images\\黎汐家-sheet.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "e2034d2d42f759419ab64af22cfa3fdaf9121005083b85e82cb5f8dd6e486bad",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "ep": 1,
+      "scene": 1,
+      "sceneId": "S01",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐"
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C07",
+          "name": "黎汐",
+          "present": true,
+          "item": "中央生日桌",
+          "side": "west",
+          "along": 0.4,
+          "posture": "stand",
+          "facing": "east"
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔",
+          "present": true,
+          "item": "桌后厨房门",
+          "side": "north",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "开场黎汐在生日桌旁，顾岚乔在厨房门内属于S01在场但画外；主角开门后进入，五位室友只电话未到场。"
+    }
+  ],
+  "status": "已识别实际空景中的5项，完整原图坐标。厨房门用途依制作设定；门内不可见，顾岚乔在门内属剧本在场且画外，不冒称看见室内。"
+}

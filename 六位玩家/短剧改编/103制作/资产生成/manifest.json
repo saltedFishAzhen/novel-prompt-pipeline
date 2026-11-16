@@ -1,0 +1,30 @@
+{
+  "scope": "103 scene S01 and C07/C08 only",
+  "automaticRetry": false,
+  "jobs": [
+    {
+      "id": "S01",
+      "status": "saved_pending_visual_review",
+      "promptSHA256": "427402c8400fd5ddc57007479ab0a439eaac9c8345181734c80657e2344e4bb0",
+      "target": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\images\\黎汐家-sheet.png",
+      "runDir": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\资产生成\\S01\\image-rjxxynq6",
+      "sha256": "e2034d2d42f759419ab64af22cfa3fdaf9121005083b85e82cb5f8dd6e486bad"
+    },
+    {
+      "id": "C07",
+      "status": "saved_pending_visual_review",
+      "promptSHA256": "bec39356fe51f188e32800ba16ae72a01ed4f5a93b881fa705582c07a0e73dd7",
+      "target": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\黎汐-sheet.png",
+      "runDir": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\资产生成\\C07\\image-bjfsk1p7",
+      "sha256": "d6d043b4a7328c41a55771128d78599da3bb63cbef34ab61438033e27267858b"
+    },
+    {
+      "id": "C08",
+      "status": "saved_pending_visual_review",
+      "promptSHA256": "4ad1ca41b810ff3df49430849e3a151ea9d17ef10926287e47b671a66bde4227",
+      "target": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\顾岚乔-sheet.png",
+      "runDir": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\资产生成\\C08\\image-lp1pui_8",
+      "sha256": "139fd18634f169774a6e161f83087e4ace9c9b6cee2839bc7a2d623e18669deb"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "source": "《六位玩家》第一世界",
+  "aspectRatio": "16:9",
+  "continuityVersion": 1,
+  "promptLang": "en",
+  "lang": "zh",
+  "scope": {
+    "code": "103",
+    "originalSceneIndex": 3,
+    "localSceneIndex": 1,
+    "mapping": "本地E01-01至03，合并全集拟E01-14至16，接102的09至13；独立目录，不覆盖101/102。"
+  },
+  "episodes": [
+    {
+      "ep": 1,
+      "segments": [
+        {
+          "id": "E01-01",
+          "sceneIndex": 1,
+          "openingPresent": [
+            "C07",
+            "C08"
+          ],
+          "blocking": "黎汐站在中央生日桌西侧中段，面朝东；顾岚乔站在桌后厨房门北侧，面朝南；其余座位空着，没有其他人。",
+          "soundscape": "室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。",
+          "cuts": [
+            {
+              "beats": [
+                1,
+                1
+              ],
+              "seconds": 4,
+              "size": "medium",
+              "camera": "Static Shot",
+              "characters": [
+                "C01",
+                "C07"
+              ],
+              "offscreen": [
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "中景。黎汐站生日桌西侧，六只杯子仍由她摆放，门铃尚未响；西侧玄关入口在侧后方。本群最帅之人在门外，此刻不露人形，开门动作后才进入本切画内。顾岚乔在厨房内不可见。初帧不能把主角提前放在桌边。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，女主人摆好六杯，听到门铃后走去开门；门外青年在开门后进入玄关，本切初帧仍不露面。",
+              "lens": "50mm 标准，中浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "女主人看杯子后看玄关；青年进入后看她",
+              "focus": "六杯数量、女主人移向玄关及随后来客",
+              "stability": "stable",
+              "enter": [
+                {
+                  "id": "C01",
+                  "beat": 1,
+                  "evidence": "开门",
+                  "reason": "依据正式entrancesExits主角进入；由本拍开门承接其进入玄关，初帧仍在门外，不添加新的门外动作。"
+                }
+              ]
+            },
+            {
+              "beats": [
+                2,
+                2
+              ],
+              "seconds": 4.4,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C01"
+              ],
+              "offscreen": [
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。本群最帅之人已在玄关内侧，携带未交出的礼物，嘴唇闭合；只用局部玄关墙面，不放新闻电视或主播。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年停在玄关内侧，新闻广播余声覆盖画面，嘴唇闭合。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "青年看玄关内迎接者方向",
+              "focus": "主角面部与闭合嘴唇",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                3,
+                3
+              ],
+              "seconds": 2,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C07"
+              ],
+              "offscreen": [
+                {
+                  "id": "C01",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。黎汐在玄关与桌之间面向刚到的主角问话，双手不再新增第七杯；其他人物区域被紧裁排除。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，女主人朝刚到的青年问话。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "黎汐看玄关内的主角",
+              "focus": "黎汐面部",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                4,
+                4
+              ],
+              "seconds": 3.3,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C01"
+              ],
+              "offscreen": [
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。本群最帅之人在玄关内侧回应黎汐，礼物仍在自己手中，未提前交出。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年在玄关内侧回答，仍持礼物。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "主角看黎汐面部",
+              "focus": "主角面部",
+              "stability": "stable"
+            }
+          ],
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 4.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 8.40-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.40-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The host finishes placing exactly six cups, hears the doorbell, and goes to open the west entrance. The guest is outside in the initial frame and becomes visible only after the door opens, entering the foyer as specified by the scene entrance note. The relative stays inside the kitchen, offscreen. Add no knocking sequence or new visitor.\n[Shot 2] At 00:04.000, the camera cuts to <Picture 2>. Static Shot. The guest is now inside the foyer, holding the undelivered gift. A remembered news broadcast is heard, not a television in the room; keep his lips closed. A remembered news broadcaster (S4) says in an off-screen voiceover while the visible guest keeps his lips completely closed: <d>[Chinese] 心脏研究仍在实验阶段，不能作为成熟治疗。</d>\n[Shot 3] At 00:08.400, the camera cuts to <Picture 3>. Static Shot. The host faces the guest and asks about the others. The young female host (S2), an adult with a gentle voice, says: <d>[Chinese] 他们还没到？</d>\n[Shot 4] At 00:10.400, the camera cuts to <Picture 4>. Static Shot. The guest responds from inside the foyer, still holding the gift. The young male guest (S1), an adult with a calm mid-range voice, says: <d>[Chinese] 从学校过来，晚一点。生日快乐。</d>\n\noverall_soundscape: Quiet interior. Cup contact and a single doorbell accompany the opening action; a remembered broadcast remains voiceover rather than an in-room television.\n\nnon_diegetic_music: N/A"
+        },
+        {
+          "id": "E01-02",
+          "sceneIndex": 1,
+          "openingPresent": [
+            "C01",
+            "C07",
+            "C08"
+          ],
+          "blocking": "主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。",
+          "soundscape": "室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。",
+          "cuts": [
+            {
+              "beats": [
+                5,
+                5
+              ],
+              "seconds": 2.5,
+              "size": "medium",
+              "camera": "Static Shot",
+              "characters": [
+                "C01",
+                "C07",
+                "C08"
+              ],
+              "offscreen": [],
+              "props": [],
+              "frame": "三人中景。本群最帅之人在桌西侧通路持礼物准备递给黎汐，黎汐在近旁；顾岚乔位于北侧厨房门内，初帧尚未探出，动作中才向门外探身可见。不要把她当新进屋客人。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年把礼物递给女主人，厨房门内的亲戚探身。",
+              "lens": "50mm 标准，中浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "主角看递出的礼物；黎汐看礼物；顾岚乔看桌西侧来客",
+              "focus": "礼物交接及厨房门探身三人空间",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                6,
+                6
+              ],
+              "seconds": 3.6,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C07"
+              ],
+              "offscreen": [
+                {
+                  "id": "C01",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。黎汐已接到礼物，站桌西侧向主角介绍厨房门处的人；礼物归她，不再回到主角手中。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，女主人接着介绍，礼物仍归她。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "黎汐看主角，介绍方向指向厨房门而非新动作",
+              "focus": "黎汐面部及已接礼物",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                7,
+                7
+              ],
+              "seconds": 2.7,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C08"
+              ],
+              "offscreen": [
+                {
+                  "id": "C01",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。顾岚乔从北侧厨房门内探身说话，身体仍在门内，视线朝桌西侧主角；不能瞬移至玄关。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，厨房门内的亲戚探身说话，不跨到玄关。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "顾岚乔看桌西侧主角",
+              "focus": "顾岚乔脸部及厨房门框",
+              "stability": "stable"
+            }
+          ],
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.10-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The guest hands the existing gift to the host. The relative leans out from the north kitchen doorway; she was already inside the home, not a new arrival.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The host holds the received gift and introduces the relative. Do not return the gift to the guest. The young female host (S2), an adult with a gentle voice, says: <d>[Chinese] 这是我远房亲戚顾岚乔，过来帮忙。</d>\n[Shot 3] At 00:06.100, the camera cuts to <Picture 3>. Static Shot. The relative speaks while leaning from the same kitchen doorway, remaining inside the kitchen side. The adult relative at the kitchen doorway (S3), with an even voice, says: <d>[Chinese] 你先坐，饭还得等一会儿。</d>\n\noverall_soundscape: Quiet interior, soft clothing and gift handling only. No guests or added voices.\n\nnon_diegetic_music: N/A"
+        },
+        {
+          "id": "E01-03",
+          "sceneIndex": 1,
+          "openingPresent": [
+            "C01",
+            "C07",
+            "C08"
+          ],
+          "blocking": "主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。",
+          "soundscape": "室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。",
+          "cuts": [
+            {
+              "beats": [
+                8,
+                8
+              ],
+              "seconds": 2.5,
+              "size": "medium",
+              "camera": "Static Shot",
+              "characters": [
+                "C01"
+              ],
+              "offscreen": [
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "紧中景。本群最帅之人留在桌西侧，双手已无礼物，自己的手机来电待接；其他二人位置在紧裁框外。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年接起自己手机的来电。",
+              "lens": "50mm 标准，中浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "主角看手机来电并接起",
+              "focus": "主角持手机的手",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                9,
+                9
+              ],
+              "seconds": 2.7,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C01"
+              ],
+              "offscreen": [
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。本群最帅之人已把自己的手机举到耳边听电话，嘴唇闭合。杰哥只作电话声，不出现他的头像、视频窗或实物蛋糕。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年持机听电话，嘴唇闭合，远处朋友只闻其声。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "主角视线自然停在前方，专注听电话",
+              "focus": "主角闭合嘴唇、耳旁手机",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                10,
+                10
+              ],
+              "seconds": 2,
+              "size": "close",
+              "camera": "Static Shot",
+              "characters": [
+                "C01"
+              ],
+              "offscreen": [
+                {
+                  "id": "C07",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                },
+                {
+                  "id": "C08",
+                  "reason": "顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"
+                }
+              ],
+              "props": [],
+              "frame": "特写。本群最帅之人仍在同一位置持手机通话，朝手机回应，未新增室友到达或挂电话动作。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，青年对手机回应，保持原位置。",
+              "lens": "85mm 长焦，浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "主角保持通话视线，不看不存在的室友",
+              "focus": "主角说话面部和耳旁手机",
+              "stability": "stable"
+            },
+            {
+              "beats": [
+                11,
+                11
+              ],
+              "seconds": 3.5,
+              "size": "medium",
+              "camera": "Static Shot",
+              "characters": [
+                "C07",
+                "C08"
+              ],
+              "offscreen": [
+                {
+                  "id": "C01",
+                  "reason": "仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"
+                }
+              ],
+              "props": [],
+              "frame": "中景。黎汐已回到生日桌西侧，最后一只饮料杯在手中准备放到桌边，桌上其余五杯可核数；顾岚乔在她身后北侧厨房门内，手在门边准备关闭。总共六杯，不得第七杯。主角留通话区域画外。 横屏16:9，东侧窗光；不加群演或室友。",
+              "shot": "固定机位，女主人把同组六杯中的最后一杯饮料放到桌边，身后亲戚从厨房侧关门。",
+              "lens": "50mm 标准，中浅景深",
+              "cameraPosition": "机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。",
+              "composition": "三分法",
+              "eyeline": "黎汐看最后一杯放置点；顾岚乔看厨房门关闭方向",
+              "focus": "六杯恒定数量与后方厨房门",
+              "stability": "stable"
+            }
+          ],
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 7.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The guest answers his own phone, now with the gift transferred to the host.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The guest listens with the phone at his ear, lips closed. Only the remote friend is heard over the phone; show no extra person, video-call window or cake. The remote male friend (S5), with a cheerful voice over the phone, says in an off-screen voiceover while the visible guest keeps his lips completely closed: <d>[Chinese] 蛋糕买好了，我们马上到。</d>\n[Shot 3] At 00:05.200, the camera cuts to <Picture 3>. Static Shot. The guest replies into the same phone, staying in place. The young male guest (S1), an adult with a calm mid-range voice, says: <d>[Chinese] 好，慢点，路还滑。</d>\n[Shot 4] At 00:07.200, the camera cuts to <Picture 4>. Static Shot. The host sets down the last drink among the same total of six cups: five on the table plus one in her hand at the initial frame. Behind her, the relative closes the north kitchen door from the kitchen side. Do not add a seventh cup, pouring sequence or hang-up action.\n\noverall_soundscape: Phone-call texture only during the call, followed by one final cup placement and the kitchen door closing. No arriving friends, extra conversation or invented hang-up sound.\n\nnon_diegetic_music: N/A"
+        }
+      ]
+    }
+  ]
+}

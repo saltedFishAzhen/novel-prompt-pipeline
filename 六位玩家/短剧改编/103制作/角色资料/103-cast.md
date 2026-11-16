@@ -1,0 +1,158 @@
+# 六位玩家103·C07/C08局部角色资料 — 角色表
+
+共 2 位角色：黎汐、顾岚乔
+
+## 故事摘要
+
+本资料只覆盖第一集第三场需要补齐的两位女性，不是全剧名单。黎汐为生日聚会准备杯子，等待同学到访。远房亲戚顾岚乔在厨房帮忙，主角随后进入。五位室友尚未到场，仅有电话声音；主角沿用既有形象。
+
+---
+
+## 黎汐
+
+> 配角 · 生日聚会主人，期待看看更远的世界。
+
+![黎汐 半身像 · 全身正侧背 · 细节](images/黎汐-sheet.png)
+
+### 画像
+
+- **性别**：女
+- **年龄**：成年，具体视觉年龄为制作设计，见外貌栏（推断）
+- **身份**：高中同学，病重并主动离院；新手关按熟人形象拟造的人物。
+- 向往外界 / 期待亲近 / 犹疑
+
+**外貌**　现稿明确淡妆、浅色裙子、手指苍白。其他均为制作设计（推断）：亚洲面貌，19—22岁视觉年龄，深棕及肩直发、薄刘海、圆润椭圆脸、微下垂眼尾，浅米色圆领短袖及膝裙、柔软棉混纺、窄腰缝、浅米平底鞋，整洁无首饰。
+
+**性情**　103自然接待来客，不新增阴笑、窥视等行为。
+
+**动机**　想看海、开小店、学做衣服；受伪造病历误导，希望死后将心脏留给主角，而非夺取主角心脏。
+
+**人物弧光**　保持现稿关键选择与结局，不与六人合并。生日局的愿望与误杀核心
+
+**关系**
+
+- 本群最帅之人 — 103接待的来客，C01沿用既有角色资产。
+- 顾岚乔 — 远房亲戚；顾岚乔以伪造病历误导黎汐，不能把强迫手术表述为有效救治。
+
+**原文依据**
+
+> 黎汐住处离咖啡厅不远。本群最帅之人先到，敲门时黎汐亲自来开。她化了淡妆，穿一条浅色裙子，客厅摆着点心和饮料，空气里浮着一丝说不清的香味。她往他身后看了一眼：“他们还没到？”
+
+> “我想出去看看。”黎汐说，“去海边吧，我还没有亲眼见过海。也想开一家小店，学会自己做衣服，去很远的地方，看一看以前只在新闻里见过的人。”
+
+> 本群最帅之人的手指僵在屏幕边。他往上翻，黎汐几次询问双心移植是否可行，顾岚乔用一份伪造病例让她相信，他也患有绝症；她说移植能让受赠者保留自己的心脏，再植入另一颗健康心脏的组织。他没有患病，那份病例从头到尾都是谎言。黎汐已经放弃了自己的治疗，知道自己活不了多久。她不是以为两个人都能活下来，而是想在自己死后，让那颗心继续陪着他。
+
+### 形象
+
+`contemporary urban`, `ivory dress`, `dark brown hair`, `tentative expression`
+
+**角色设定表提示词 · 默认出图使用 image.sheet**
+
+```text
+Single character model sheet on ONE 16:9 landscape canvas. A young adult Asian woman in her early twenties, contemporary urban setting. Shoulder-length straight dark brown hair with a light fringe, a softly rounded oval face, slightly downturned outer eye corners, subtle makeup and pale fingers. A light ivory round-neck short-sleeved knee-length dress in soft cotton-blend fabric, narrow waist seam, clean finished edges and ivory flat shoes. Neatly maintained clothing, no jewelry or medical gown. Relaxed upright posture and a tentative open expression. The LEFT 34 percent contains one large three-quarter half-body portrait establishing facial identity. LIGHTING IN THE LEFT ZONE ONLY: soft directional key and cool fill. The RIGHT upper area contains three equally tall FULL-BODY figures of the SAME woman: front, exact side profile, and back; all complete from crown to shoe soles with generous margins. LIGHTING IN THE RIGHT ZONES: flat even neutral light for orthographic inspection. The RIGHT lower detail strip has four small studies: hair arrangement, eyebrow and eye shape, neckline and clean seam, and shoe shape. PROPORTIONS ARE CRITICAL: natural consistent head-to-body ratio, equal leg and torso proportions across the three views; never stretch or compress the body to fit. If space is tight, the detail studies give way, not the figures. Pure white background, no panel labels, no text, no scene, no additional people. Every zone depicts the same character. The full-body views are front view, side profile and back view.
+```
+
+**反向提示词**
+
+```text
+extra people, extra limbs, text, logos, watermark, cropped feet, stretched body, surgical props, blood, sinister grin
+```
+
+**单人底稿提示词（非设定表）**
+
+```text
+A young adult Asian woman in her early twenties, contemporary urban setting. Shoulder-length straight dark brown hair with a light fringe, a softly rounded oval face, slightly downturned outer eye corners, subtle makeup and pale fingers. A light ivory round-neck short-sleeved knee-length dress in soft cotton-blend fabric, narrow waist seam, clean finished edges and ivory flat shoes. Neatly maintained clothing, no jewelry or medical gown. Relaxed upright posture and a tentative open expression. Three-quarter half-body portrait, neutral background, soft directional key light and cool fill, shallow depth of field, face in sharp focus.
+```
+
+现稿明确淡妆、浅色裙子、手指苍白。其他均为制作设计（推断）：亚洲面貌，19—22岁视觉年龄，深棕及肩直发、薄刘海、圆润椭圆脸、微下垂眼尾，浅米色圆领短袖及膝裙、柔软棉混纺、窄腰缝、浅米平底鞋，整洁无首饰。 四分之三半身、中性背景、柔和主光与冷补光。
+
+### 声音
+
+- **音色**：轻而清晰、略带气息（推断，制作设计）
+- **音高**：中高音（推断）
+- **语速**：中速稍有停顿（推断）
+- **口音**：标准普通话（推断，制作设计）
+- **情绪**：期待而犹疑（推断）
+- **类比**：无参考音频；仅设计，未合成或克隆。
+
+**音色提示词 · 喂 TTS 引擎用这条**
+
+```text
+Young adult female, light clear timbre with mild breathiness, medium-high pitch, light chest support, modest dynamics. Soft volume, medium pace with small pauses, gently rising inflection. Standard Mandarin, no regional accent. Tentative and hopeful.
+```
+
+---
+
+## 顾岚乔
+
+> 配角 · 以亲戚身份帮厨，背后推进手术计划。
+
+![顾岚乔 半身像 · 全身正侧背 · 细节](images/顾岚乔-sheet.png)
+
+### 画像
+
+- **性别**：女
+- **年龄**：成年，具体视觉年龄为制作设计，见外貌栏（推断）
+- **身份**：黎汐远房亲戚，参与心脏移植研究；有医院职务但未定职称。新手关拟造人物，不增设主任等头衔。
+- 善于掩饰 / 目标明确 / 利用信任
+
+**外貌**　现稿未定103脸型发色服装；后续有挂在走廊的白工作服和胸牌。制作设计（推断）：亚洲面貌，35—45岁视觉年龄，黑发低髻、圆角长方脸、平直眉、轻微不对称眼睑，灰褐翻领长袖棉衬衫、炭灰直筒裤、黑色低跟鞋，整洁缝边。103不穿挂起的工作服，不提前持喷雾或器械。
+
+**性情**　103自然接待来客，不新增阴笑、窥视等行为。
+
+**动机**　用伪造病历误导黎汐，为活体实验推进未经同意的手术；不是已验证有效的救治。
+
+**人物弧光**　保持现稿关键选择与结局，不与六人合并。新手关欺骗与手术因果
+
+**关系**
+
+- 本群最帅之人 — 103接待的来客，C01沿用既有角色资产。
+- 黎汐 — 远房亲戚；顾岚乔以伪造病历误导黎汐，不能把强迫手术表述为有效救治。
+
+**原文依据**
+
+> 厨房里有餐具轻碰声。黎汐说，正在帮忙做饭的是远房亲戚顾岚乔。顾岚乔探头打了招呼，又回到厨房。黎汐说请了几位同学，可客厅里暂时只有他们两个。本群最帅之人问自己是不是来得太早，她说大家可能还要等一会儿，接着把桌上几只杯子挪开，又取出新杯子。她的动作有些迟疑，一只玻璃杯在桌沿滚了半圈，他伸手扶住。
+
+> 走廊衣架上挂着一件白色工作服，胸牌写着顾岚乔的名字和医院职务。空气里的香味越走越浓。卫生间门没有锁，他进去后反锁，仔细检查窗台和瓷砖。在洗手台旁，一块颜色较浅的瓷砖轻轻一拨便松动，下面藏着一只扁平暗格。里面有手术器械、几瓶麻醉药，还有医院寄来的病情通知。
+
+> 先前的他因此心脏破裂而死。这一回，她又因他的误解而死。顾岚乔为了活体实验编造病历，黎汐把未经同意的强迫当作给予，而他直到割开她的咽喉，才知道刀锋背后的意思。
+
+### 形象
+
+`contemporary urban`, `taupe shirt`, `low black bun`, `composed expression`
+
+**角色设定表提示词 · 默认出图使用 image.sheet**
+
+```text
+Single character model sheet on ONE 16:9 landscape canvas. An adult Asian woman around forty, contemporary urban setting. Black hair secured in a low compact bun, softly squared long face, straight eyebrows, subtly unequal eyelid folds. A taupe collared long-sleeved shirt in fine cotton with precise flat seams, charcoal straight trousers and black low-heeled shoes, neatly maintained surfaces. Balanced upright posture and a composed neutral expression. No lab coat, name badge, jewelry, medical instruments, spray bottle or sinister grin. The LEFT 34 percent contains one large three-quarter half-body portrait establishing facial identity. LIGHTING IN THE LEFT ZONE ONLY: soft directional key and cool fill. The RIGHT upper area contains three equally tall FULL-BODY figures of the SAME woman: front, exact side profile, and back; all complete from crown to shoe soles with generous margins. LIGHTING IN THE RIGHT ZONES: flat even neutral light for orthographic inspection. The RIGHT lower detail strip has four small studies: hair arrangement, eyebrow and eye shape, neckline and clean seam, and shoe shape. PROPORTIONS ARE CRITICAL: natural consistent head-to-body ratio, equal leg and torso proportions across the three views; never stretch or compress the body to fit. If space is tight, the detail studies give way, not the figures. Pure white background, no panel labels, no text, no scene, no additional people. Every zone depicts the same character. The full-body views are front view, side profile and back view.
+```
+
+**反向提示词**
+
+```text
+extra people, extra limbs, text, logos, watermark, cropped feet, stretched body, surgical props, blood, sinister grin
+```
+
+**单人底稿提示词（非设定表）**
+
+```text
+An adult Asian woman around forty, contemporary urban setting. Black hair secured in a low compact bun, softly squared long face, straight eyebrows, subtly unequal eyelid folds. A taupe collared long-sleeved shirt in fine cotton with precise flat seams, charcoal straight trousers and black low-heeled shoes, neatly maintained surfaces. Balanced upright posture and a composed neutral expression. No lab coat, name badge, jewelry, medical instruments, spray bottle or sinister grin. Three-quarter half-body portrait, neutral background, soft directional key light and cool fill, shallow depth of field, face in sharp focus.
+```
+
+现稿未定103脸型发色服装；后续有挂在走廊的白工作服和胸牌。制作设计（推断）：亚洲面貌，35—45岁视觉年龄，黑发低髻、圆角长方脸、平直眉、轻微不对称眼睑，灰褐翻领长袖棉衬衫、炭灰直筒裤、黑色低跟鞋，整洁缝边。103不穿挂起的工作服，不提前持喷雾或器械。 四分之三半身、中性背景、柔和主光与冷补光。
+
+### 声音
+
+- **音色**：结实清晰、少气声（推断，制作设计）
+- **音高**：中低音（推断）
+- **语速**：平稳中速（推断）
+- **口音**：标准普通话（推断，制作设计）
+- **情绪**：平静克制（推断）
+- **类比**：无参考音频；仅设计，未合成或克隆。
+
+**音色提示词 · 喂 TTS 引擎用这条**
+
+```text
+Adult female around forty, firm clear timbre with little breathiness, medium-low pitch, supported chest resonance, controlled dynamics. Moderate volume, steady medium pace, level then falling intonation. Standard Mandarin, no regional accent. Calm and matter-of-fact.
+```
+

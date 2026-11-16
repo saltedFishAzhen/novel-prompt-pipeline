@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《六位玩家》第一世界 · 分镜（第 1 集）</title>
+<style>
+:root{
+  --paper:#eceded; --panel:#f5f6f5; --side:#e4e6e3; --ink:#191d21; --ink-2:#5b636a; --ink-3:#8c9298;
+  --rule:#d2d5d0; --rule-2:#c2c6bf; --seal:#8a3324; --seal-2:#c56a4e; --seal-soft:#8a332412; --ok:#3d6b4f;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1600px;margin:0 auto;padding:24px 32px 90px}
+h1,h2,h3{margin:0;font-weight:400}
+
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.hd h1{font:400 28px/1.1 var(--serif);letter-spacing:.06em}
+.hd .sub{font-size:13px;color:var(--ink-2)}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.gatepill{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);border-radius:99px;padding:6px 12px}
+.gatepill.pass{color:var(--ok);border:1px solid var(--ok)}
+.gatepill.fail{color:var(--seal);border:1px solid var(--seal);background:var(--seal-soft)}
+.expo{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.15s}
+.expo:hover{border-color:var(--seal);color:var(--seal)}
+.expo:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 6px}
+@media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:11px 14px 9px}
+.kpi .l{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.kpi .v{font:400 28px/1.15 var(--serif);margin-top:5px}
+.kpi .v small{font:400 14px var(--serif);color:var(--ink-2)}
+.kpi .d{font-size:11px;color:var(--ink-2);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kpi.accent{border-top:2px solid var(--seal)}
+.galert{margin:14px 0 0;border:1px solid var(--seal);background:var(--seal-soft);border-radius:2px;
+  padding:10px 14px;font-size:13px}
+.galert b{color:var(--seal)}
+.galert span{display:block;font-size:12px;color:var(--ink-2)}
+
+section.top-sec{margin-top:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:16px}
+.sec-h .no{font:500 12px/1 var(--mono);color:var(--seal)}
+.sec-h h2{font:400 20px/1.2 var(--serif);letter-spacing:.05em}
+.sec-h .note{margin-left:auto;font-size:12px;color:var(--ink-3)}
+
+/* 01 cut rhythm strip */
+.rhythm{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:16px 20px 10px}
+.rrow{display:grid;grid-template-columns:44px minmax(0,1fr) 150px;gap:12px;align-items:center;padding:5px 0}
+.rep{font:500 12px/1 var(--mono);color:var(--ink-2)}
+.rtrack{display:flex;height:22px;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--paper)}
+.rseg{display:flex;border-right:2px solid var(--ink-2)}
+.rseg:last-child{border-right:0}
+.seg{display:block;border-right:1px solid var(--panel)}
+.rseg .seg:last-child{border-right:0}
+.seg:hover{outline:2px solid var(--ink);outline-offset:-2px}
+.rval{font:500 12px/1.5 var(--sans);color:var(--ink-2)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink-2);margin:8px 0 2px;flex-wrap:wrap}
+.legend i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px}
+
+/* 02 segment cards */
+.ep{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:18px 22px;margin-bottom:16px}
+.ep-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule-2);padding-bottom:10px;margin-bottom:14px}
+.ep-n{font:400 22px/1 var(--serif);letter-spacing:.04em;color:var(--seal)}
+.ep-est{font-size:12.5px;color:var(--ink-2)}
+.shots{position:relative}
+.shots.clip{max-height:760px;overflow:hidden}
+.shots.clip::after{content:'';position:absolute;left:0;right:0;bottom:0;height:80px;
+  background:linear-gradient(180deg,transparent,var(--panel));pointer-events:none}
+.shmore{display:block;width:100%;margin-top:8px;font:500 11.5px/1 var(--sans);letter-spacing:.06em;
+  color:var(--ink-2);background:var(--paper);border:1px solid var(--rule-2);border-radius:2px;
+  padding:7px 0;cursor:pointer;transition:.15s}
+.shmore:hover{border-color:var(--seal);color:var(--seal)}
+.shmore:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.seggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media(max-width:1100px){.seggrid{grid-template-columns:minmax(0,1fr)}}
+.segcard{background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.seg-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.seg-h b{font:500 14px/1 var(--mono);color:var(--seal)}
+.sec-badge{font:500 11px/1 var(--mono);border:1px solid var(--seal);color:var(--seal);border-radius:99px;padding:2px 8px}
+.beatsref{margin-left:auto;font-size:10.5px;color:var(--ink-3)}
+.frame{width:100%;height:auto;object-fit:contain;border:1px solid var(--rule-2);border-radius:2px;
+  cursor:zoom-in;display:block;background:var(--side)}
+.frame.ph{display:flex;flex-direction:column;gap:6px;padding:10px 12px;cursor:default;overflow:auto}
+.frame.ph b{font:500 10px/1 var(--sans);letter-spacing:.14em;color:var(--ink-3)}
+.frame.ph span{font:400 10.5px/1.55 var(--mono);color:var(--ink-2);overflow:hidden;display:-webkit-box;
+  -webkit-line-clamp:5;-webkit-box-orient:vertical}
+.subs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.fquad{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
+.fquad .fcell{margin:0;min-height:0}
+.fcell-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.fcell-h .copy.mini{margin:0;flex:none}
+.frame.ph .fprompt{font:400 10.5px/1.4 var(--mono);color:var(--ink-2);white-space:pre-wrap;word-break:break-word;display:block;
+  -webkit-line-clamp:none;-webkit-box-orient:vertical;overflow:visible}
+.subf{width:100%;height:auto;object-fit:contain;border:1px solid var(--rule-2);border-radius:2px;
+  cursor:zoom-in;display:block;background:var(--side)}
+.subf.ph{display:flex;align-items:center;justify-content:center;cursor:default;
+  font:500 10px/1 var(--sans);color:var(--ink-3);letter-spacing:.08em}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;border-top:1px solid var(--rule);padding-top:4px}
+@media(max-width:900px){.duo{grid-template-columns:minmax(0,1fr)}}
+.ppanel{border:1px solid var(--rule);border-radius:2px;background:var(--panel);margin-top:7px}
+.pp-h{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1px solid var(--rule)}
+.pp{display:none;margin:0;padding:9px 12px;font:400 12px/1.8 var(--sans);color:var(--ink);
+  white-space:pre-wrap;word-break:break-word;max-height:400px;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--rule-2) transparent}
+.pp.on{display:block}
+.pp::-webkit-scrollbar{width:6px}
+.pp::-webkit-scrollbar-thumb{background:var(--rule-2);border-radius:3px}
+.cuts{margin:0;padding:0;list-style:none}
+.cut{padding:7px 0;border-bottom:1px solid var(--rule)}
+.cut:first-child{padding-top:11px}
+.cut:last-child{border-bottom:0}
+.cut-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.cut-h b{font:500 12px/1 var(--mono);color:var(--seal)}
+.cut-t{font:500 10.5px/1.6 var(--mono);color:var(--ink-3)}
+.cut-sc{font-size:11.5px;color:var(--ink-2)}
+.cut-rc{font:400 10.5px/1.6 var(--mono);border:1px dashed var(--rule-2);border-radius:2px;padding:0 6px;color:var(--ink-2)}
+.cut-rc sup{color:var(--seal-2);font-weight:700;cursor:help;margin-left:2px}
+.cut-h .copy{margin-left:auto;opacity:0;transition:.15s}
+.cut:hover .copy{opacity:1}
+.cut p{margin:3px 0 0;font-size:12px;line-height:1.6}
+.sact{color:var(--ink-2)}
+.sline{font-family:var(--serif)}
+.sline b{font-weight:500;margin-right:6px;color:var(--seal)}
+.chip{font:400 10.5px/1.6 var(--mono);border:1px solid var(--rule-2);border-radius:2px;
+  padding:0 6px;background:var(--panel);color:var(--ink-2);text-decoration:none}
+.chip.lite{border-color:var(--seal-2);color:var(--seal-2)}
+.chip.prop{border-color:var(--seal);color:var(--seal)}
+.chip.mono{font-family:var(--mono)}
+a.chip:hover{border-color:var(--seal);color:var(--seal)}
+.prompts{display:flex;gap:6px}
+.seg-note{margin:0;font-size:11px;color:var(--ink-3)}
+.seg-block{margin:0;font-size:11.5px;line-height:1.7;color:var(--ink-2)}
+.seg-block b{font:500 10.5px/1 var(--sans);letter-spacing:.08em;color:var(--seal);margin-right:8px}
+.cut p.scomp{font:400 10.5px/1.6 var(--sans);color:var(--ink-3)}
+.ptabs{display:flex;gap:2px;margin-right:auto}
+.ptab{font:500 11px/1 var(--sans);letter-spacing:.08em;color:var(--ink-3);background:none;border:0;
+  border-bottom:1.5px solid transparent;padding:4px 6px;cursor:pointer}
+.ptab.on{color:var(--ink);border-bottom-color:var(--seal)}
+.ptab:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.frame,.subf{aspect-ratio:16/9}
+
+/* 03 generation batches */
+.batches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media(max-width:1100px){.batches{grid-template-columns:minmax(0,1fr)}}
+.batch{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:14px 18px}
+.bimg{width:100%;height:auto;object-fit:contain;border:1px solid var(--rule-2);border-radius:2px;
+  cursor:zoom-in;display:block;margin-bottom:10px}
+.batch-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.batch-h b{font:500 13px var(--serif);letter-spacing:.06em}
+.batch-shots{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.batch-need{margin:8px 0 0;font-size:12px;color:var(--ink-2)}
+
+/* 04 audio alignment */
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--rule);font-size:13px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 11px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:var(--side)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--mono);font-size:12px;white-space:nowrap}
+td a{color:var(--seal);text-decoration:none}
+td.serif{font-family:var(--serif)}
+
+.copy{flex:none;font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:5px 10px;cursor:pointer;transition:.15s}
+.copy:hover{border-color:var(--seal);color:var(--seal)}
+.copy:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.copy[data-done]{border-color:var(--seal);color:var(--seal)}
+.copy.mini{padding:3px 7px;font-size:10px}
+.copy.h3{border-color:var(--seal-2);color:var(--seal-2);width:100%}
+.copy.h3:hover,.copy.h3[data-done]{border-color:var(--seal);color:var(--seal)}
+
+.gate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+@media(max-width:900px){.gate{grid-template-columns:1fr}}
+.gate li{display:flex;gap:8px;padding:5px 0;font-size:12.5px;line-height:1.55}
+.gate .m{flex:none;font-weight:700}
+.gate li.ok .m{color:var(--ok)}
+.gate li.bad .m{color:var(--seal)}
+.gate li.bad{background:var(--seal-soft);border-radius:2px;padding-left:6px}
+.gate small{display:block;color:var(--ink-3)}
+.gsum{margin:10px 0 0;font-size:12px;color:var(--ink-2)}
+.gsum b{color:var(--seal)}
+
+.lightbox{position:fixed;inset:0;background:rgba(20,22,24,.88);display:none;align-items:center;
+  justify-content:center;z-index:9;cursor:zoom-out;padding:32px}
+.lightbox.on{display:flex}
+.lightbox img{max-width:96%;max-height:96%;border:1px solid #555;border-radius:2px}
+
+.foot{margin-top:40px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  .expo,.copy,.shmore{display:none!important}
+  .pp{max-height:none;overflow:visible}
+  .duo{grid-template-columns:minmax(0,1fr)}
+  .shots.clip{max-height:none}
+  .shots.clip::after{display:none}
+  .seggrid,.batches{grid-template-columns:minmax(0,1fr)}
+  .page{max-width:none;padding:0}
+  section.top-sec,.segcard,.batch{page-break-inside:avoid}
+  body{background:#fff}
+}
+</style></head><body>
+<div class="page">
+
+<header class="hd">
+  <h1>《六位玩家》第一世界</h1>
+  <span class="sub">分镜 · 第 1 集 · 分镜画幅：16:9</span>
+  <span class="right">
+    <span class="gatepill pass">✓ 质量门 19 / 19</span>
+    <button class="expo" data-name="《六位玩家》第一世界-storyboard.json">导出 JSON</button>
+  </span>
+</header>
+
+<div class="kpis">
+  <div class="kpi accent"><div class="l">生成段</div><div class="v">3 <small>段</small></div><div class="d">一段一次调用，上限 15 秒</div></div>
+  <div class="kpi"><div class="l">分镜</div><div class="v">11 <small>切</small></div><div class="d">平均 3 秒一切</div></div>
+  <div class="kpi"><div class="l">预估总时长</div><div class="v">0 分 33 秒</div><div class="d">目标 0 分 30 秒</div></div>
+  <div class="kpi"><div class="l">生成批次</div><div class="v">1</div><div class="d">同场景同光照共用环境参考图</div></div>
+  <div class="kpi"><div class="l">台词段</div><div class="v">3 <small>段</small></div><div class="d">其余是纯画面段</div></div>
+</div>
+
+
+<section class="top-sec" id="sec-rhythm">
+  <div class="sec-h"><span class="no">01</span><h2>分镜节奏带</h2><span class="note">粗分隔 = 生成段边界 · 段宽 = 分镜时长占比 · 颜色越深景别越近</span></div>
+  <div class="rhythm">
+    <div class="legend"><i><span class="sw" style="background:rgba(138,51,36,0.25)"></span>大远景</i><i><span class="sw" style="background:rgba(138,51,36,0.4)"></span>全景</i><i><span class="sw" style="background:rgba(138,51,36,0.58)"></span>中景</i><i><span class="sw" style="background:rgba(138,51,36,0.78)"></span>特写</i><i><span class="sw" style="background:rgba(138,51,36,1)"></span>大特写</i></div>
+<div class="rrow"><span class="rep">E01</span><div class="rtrack"><span class="rseg" style="width:41.3%"><a class="seg" href="#seg-E01-01" style="width:12%;background:rgba(138,51,36,0.58)" title="E01-01#1 · 4s · 中景 · Static Shot"></a><a class="seg" href="#seg-E01-01" style="width:13.3%;background:rgba(138,51,36,0.78)" title="E01-01#2 · 4.4s · 特写 · Static Shot"></a><a class="seg" href="#seg-E01-01" style="width:6%;background:rgba(138,51,36,0.78)" title="E01-01#3 · 2s · 特写 · Static Shot"></a><a class="seg" href="#seg-E01-01" style="width:9.9%;background:rgba(138,51,36,0.78)" title="E01-01#4 · 3.3s · 特写 · Static Shot"></a></span><span class="rseg" style="width:26.5%"><a class="seg" href="#seg-E01-02" style="width:7.5%;background:rgba(138,51,36,0.58)" title="E01-02#1 · 2.5s · 中景 · Static Shot"></a><a class="seg" href="#seg-E01-02" style="width:10.8%;background:rgba(138,51,36,0.78)" title="E01-02#2 · 3.6s · 特写 · Static Shot"></a><a class="seg" href="#seg-E01-02" style="width:8.1%;background:rgba(138,51,36,0.78)" title="E01-02#3 · 2.7s · 特写 · Static Shot"></a></span><span class="rseg" style="width:32.2%"><a class="seg" href="#seg-E01-03" style="width:7.5%;background:rgba(138,51,36,0.58)" title="E01-03#1 · 2.5s · 中景 · Static Shot"></a><a class="seg" href="#seg-E01-03" style="width:8.1%;background:rgba(138,51,36,0.78)" title="E01-03#2 · 2.7s · 特写 · Static Shot"></a><a class="seg" href="#seg-E01-03" style="width:6%;background:rgba(138,51,36,0.78)" title="E01-03#3 · 2s · 特写 · Static Shot"></a><a class="seg" href="#seg-E01-03" style="width:10.5%;background:rgba(138,51,36,0.58)" title="E01-03#4 · 3.5s · 中景 · Static Shot"></a></span></div><span class="rval">3 段 11 切 · 33.2s</span></div>
+  </div>
+</section>
+
+<section class="top-sec" id="sec-segments">
+  <div class="sec-h"><span class="no">02</span><h2>分集分镜表</h2><span class="note">一段 = 一次生成：主分镜图钉 0.00 秒，子分镜图钉各自切点</span></div>
+<section class="ep" id="ep-1">
+  <header class="ep-h">
+    <span class="ep-n">E01</span>
+    <span class="ep-est">3 段 11 切 · 共 33.2 秒 / 目标 30 秒</span>
+  </header>
+  <div class="shots clip">
+    <div class="seggrid">
+<article class="segcard" id="seg-E01-01">
+  <header class="seg-h">
+    <b>E01-01</b>
+    <span class="sec-badge">13.7s · 4 切</span>
+    <span class="chip">S01 黎汐家</span>
+    
+    <span class="beatsref">第 1 场 第 1–4 拍</span>
+  </header>
+  <div class="fquad"><div class="frame ph fcell"><div class="fcell-h"><b>主分镜图 · #1 未生成</b><button class="copy mini" data-copy="中景。黎汐站生日桌西侧，六只杯子仍由她摆放，门铃尚未响；西侧玄关入口在侧后方。本群最帅之人在门外，此刻不露人形，开门动作后才进入本切画内。顾岚乔在厨房内不可见。初帧不能把主角提前放在桌边。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">中景。黎汐站生日桌西侧，六只杯子仍由她摆放，门铃尚未响；西侧玄关入口在侧后方。本群最帅之人在门外，此刻不露人形，开门动作后才进入本切画内。顾岚乔在厨房内不可见。初帧不能把主角提前放在桌边。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 2 · #2 未生成</b><button class="copy mini" data-copy="特写。本群最帅之人已在玄关内侧，携带未交出的礼物，嘴唇闭合；只用局部玄关墙面，不放新闻电视或主播。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。本群最帅之人已在玄关内侧，携带未交出的礼物，嘴唇闭合；只用局部玄关墙面，不放新闻电视或主播。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 3 · #3 未生成</b><button class="copy mini" data-copy="特写。黎汐在玄关与桌之间面向刚到的主角问话，双手不再新增第七杯；其他人物区域被紧裁排除。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。黎汐在玄关与桌之间面向刚到的主角问话，双手不再新增第七杯；其他人物区域被紧裁排除。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 4 · #4 未生成</b><button class="copy mini" data-copy="特写。本群最帅之人在玄关内侧回应黎汐，礼物仍在自己手中，未提前交出。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。本群最帅之人在玄关内侧回应黎汐，礼物仍在自己手中，未提前交出。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div></div>
+  
+  <p class="seg-block"><b>走位</b>黎汐站在中央生日桌西侧中段，面朝东；顾岚乔站在桌后厨房门北侧，面朝南；其余座位空着，没有其他人。</p>
+  <div class="duo">
+    <ol class="cuts">
+<li class="cut">
+  <div class="cut-h">
+    <b>#1</b>
+    <span class="cut-t">0.00s 起 · 4s</span>
+    <span class="cut-sc">中景 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span><span class="chip">黎汐</span>
+    
+    <button class="copy mini" data-copy="中景。黎汐站生日桌西侧，六只杯子仍由她摆放，门铃尚未响；西侧玄关入口在侧后方。本群最帅之人在门外，此刻不露人形，开门动作后才进入本切画内。顾岚乔在厨房内不可见。初帧不能把主角提前放在桌边。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">50mm 标准，中浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 女主人看杯子后看玄关；青年进入后看她 · 焦点 六杯数量、女主人移向玄关及随后来客 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）、黎汐（C07）；画外：顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：本群最帅之人（C01）第1拍：依据正式entrancesExits主角进入；由本拍开门承接其进入玄关，初帧仍在门外，不添加新的门外动作。；离开：无</p>
+  <p class="sact">黎汐将六只杯子摆上桌，门铃响起，她走去开门。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#2</b>
+    <span class="cut-t">4.00s 起 · 4.4s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span>
+    
+    <button class="copy mini" data-copy="特写。本群最帅之人已在玄关内侧，携带未交出的礼物，嘴唇闭合；只用局部玄关墙面，不放新闻电视或主播。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 青年看玄关内迎接者方向 · 焦点 主角面部与闭合嘴唇 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）；画外：黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>画外音</b>心脏研究仍在实验阶段，不能作为成熟治疗。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#3</b>
+    <span class="cut-t">8.40s 起 · 2s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">黎汐</span>
+    
+    <button class="copy mini" data-copy="特写。黎汐在玄关与桌之间面向刚到的主角问话，双手不再新增第七杯；其他人物区域被紧裁排除。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 黎汐看玄关内的主角 · 焦点 黎汐面部 · 稳定</p>
+  <p class="scomp">画内：黎汐（C07）；画外：本群最帅之人（C01）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>黎汐</b>他们还没到？</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#4</b>
+    <span class="cut-t">10.40s 起 · 3.3s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span>
+    
+    <button class="copy mini" data-copy="特写。本群最帅之人在玄关内侧回应黎汐，礼物仍在自己手中，未提前交出。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 主角看黎汐面部 · 焦点 主角面部 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）；画外：黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>本群最帅之人</b>从学校过来，晚一点。生日快乐。</p>
+</li>
+    </ol>
+    <div class="ppanel">
+      <div class="pp-h">
+        <span class="ptabs"><button class="ptab on" data-i="0">H3 提示词</button><button class="ptab" data-i="1">Seedance 提示词</button></span>
+        <button class="copy" data-copy="How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 4.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 8.40-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.40-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The host finishes placing exactly six cups, hears the doorbell, and goes to open the west entrance. The guest is outside in the initial frame and becomes visible only after the door opens, entering the foyer as specified by the scene entrance note. The relative stays inside the kitchen, offscreen. Add no knocking sequence or new visitor.
+[Shot 2] At 00:04.000, the camera cuts to &lt;Picture 2&gt;. Static Shot. The guest is now inside the foyer, holding the undelivered gift. A remembered news broadcast is heard, not a television in the room; keep his lips closed. A remembered news broadcaster (S4) says in an off-screen voiceover while the visible guest keeps his lips completely closed: &lt;d&gt;[Chinese] 心脏研究仍在实验阶段，不能作为成熟治疗。&lt;/d&gt;
+[Shot 3] At 00:08.400, the camera cuts to &lt;Picture 3&gt;. Static Shot. The host faces the guest and asks about the others. The young female host (S2), an adult with a gentle voice, says: &lt;d&gt;[Chinese] 他们还没到？&lt;/d&gt;
+[Shot 4] At 00:10.400, the camera cuts to &lt;Picture 4&gt;. Static Shot. The guest responds from inside the foyer, still holding the gift. The young male guest (S1), an adult with a calm mid-range voice, says: &lt;d&gt;[Chinese] 从学校过来，晚一点。生日快乐。&lt;/d&gt;
+
+overall_soundscape: Quiet interior. Cup contact and a single doorbell accompany the opening action; a remembered broadcast remains voiceover rather than an in-room television.
+
+non_diegetic_music: N/A">复制</button>
+      </div>
+      <pre class="pp on">How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 4.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 8.40-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.40-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The host finishes placing exactly six cups, hears the doorbell, and goes to open the west entrance. The guest is outside in the initial frame and becomes visible only after the door opens, entering the foyer as specified by the scene entrance note. The relative stays inside the kitchen, offscreen. Add no knocking sequence or new visitor.
+[Shot 2] At 00:04.000, the camera cuts to &lt;Picture 2&gt;. Static Shot. The guest is now inside the foyer, holding the undelivered gift. A remembered news broadcast is heard, not a television in the room; keep his lips closed. A remembered news broadcaster (S4) says in an off-screen voiceover while the visible guest keeps his lips completely closed: &lt;d&gt;[Chinese] 心脏研究仍在实验阶段，不能作为成熟治疗。&lt;/d&gt;
+[Shot 3] At 00:08.400, the camera cuts to &lt;Picture 3&gt;. Static Shot. The host faces the guest and asks about the others. The young female host (S2), an adult with a gentle voice, says: &lt;d&gt;[Chinese] 他们还没到？&lt;/d&gt;
+[Shot 4] At 00:10.400, the camera cuts to &lt;Picture 4&gt;. Static Shot. The guest responds from inside the foyer, still holding the gift. The young male guest (S1), an adult with a calm mid-range voice, says: &lt;d&gt;[Chinese] 从学校过来，晚一点。生日快乐。&lt;/d&gt;
+
+overall_soundscape: Quiet interior. Cup contact and a single doorbell accompany the opening action; a remembered broadcast remains voiceover rather than an in-room television.
+
+non_diegetic_music: N/A</pre>
+      <pre class="pp">@[图片1] = 黎汐家
+@[图片2] = 本群最帅之人
+@[图片3] = 黎汐
+
+【人物关系与构图逻辑】
+黎汐站在中央生日桌西侧中段，面朝东；顾岚乔站在桌后厨房门北侧，面朝南；其余座位空着，没有其他人。
+
+【镜头1】
+焦距：50mm 标准，中浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：中景
+画面：固定机位，女主人摆好六杯，听到门铃后走去开门；门外青年在开门后进入玄关，本切初帧仍不露面。
+台词：{}
+视线落点：女主人看杯子后看玄关；青年进入后看她
+焦点：六杯数量、女主人移向玄关及随后来客
+稳定性：稳定
+
+【镜头2】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，青年停在玄关内侧，新闻广播余声覆盖画面，嘴唇闭合。
+台词：以画外音说{心脏研究仍在实验阶段，不能作为成熟治疗。}
+视线落点：青年看玄关内迎接者方向
+焦点：主角面部与闭合嘴唇
+稳定性：稳定
+
+【镜头3】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，女主人朝刚到的青年问话。
+台词：{他们还没到？}
+视线落点：黎汐看玄关内的主角
+焦点：黎汐面部
+稳定性：稳定
+
+【镜头4】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，青年在玄关内侧回答，仍持礼物。
+台词：{从学校过来，晚一点。生日快乐。}
+视线落点：主角看黎汐面部
+焦点：主角面部
+稳定性：稳定
+
+&lt;室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。&gt;
+
+【约束】
+1. 保持无字幕，避免生成任何文字或字幕
+2. 视频全程禁止出现外形、着装、配饰完全一致的人物
+3. 画面比例 16:9</pre>
+    </div>
+  </div>
+  
+</article>
+<article class="segcard" id="seg-E01-02">
+  <header class="seg-h">
+    <b>E01-02</b>
+    <span class="sec-badge">8.8s · 3 切</span>
+    <span class="chip">S01 黎汐家</span>
+    
+    <span class="beatsref">第 1 场 第 5–7 拍</span>
+  </header>
+  <div class="fquad"><div class="frame ph fcell"><div class="fcell-h"><b>主分镜图 · #1 未生成</b><button class="copy mini" data-copy="三人中景。本群最帅之人在桌西侧通路持礼物准备递给黎汐，黎汐在近旁；顾岚乔位于北侧厨房门内，初帧尚未探出，动作中才向门外探身可见。不要把她当新进屋客人。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">三人中景。本群最帅之人在桌西侧通路持礼物准备递给黎汐，黎汐在近旁；顾岚乔位于北侧厨房门内，初帧尚未探出，动作中才向门外探身可见。不要把她当新进屋客人。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 2 · #2 未生成</b><button class="copy mini" data-copy="特写。黎汐已接到礼物，站桌西侧向主角介绍厨房门处的人；礼物归她，不再回到主角手中。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。黎汐已接到礼物，站桌西侧向主角介绍厨房门处的人；礼物归她，不再回到主角手中。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 3 · #3 未生成</b><button class="copy mini" data-copy="特写。顾岚乔从北侧厨房门内探身说话，身体仍在门内，视线朝桌西侧主角；不能瞬移至玄关。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。顾岚乔从北侧厨房门内探身说话，身体仍在门内，视线朝桌西侧主角；不能瞬移至玄关。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div></div>
+  
+  <p class="seg-block"><b>走位</b>主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。</p>
+  <div class="duo">
+    <ol class="cuts">
+<li class="cut">
+  <div class="cut-h">
+    <b>#1</b>
+    <span class="cut-t">0.00s 起 · 2.5s</span>
+    <span class="cut-sc">中景 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span><span class="chip">黎汐</span><span class="chip">顾岚乔</span>
+    
+    <button class="copy mini" data-copy="三人中景。本群最帅之人在桌西侧通路持礼物准备递给黎汐，黎汐在近旁；顾岚乔位于北侧厨房门内，初帧尚未探出，动作中才向门外探身可见。不要把她当新进屋客人。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">50mm 标准，中浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 主角看递出的礼物；黎汐看礼物；顾岚乔看桌西侧来客 · 焦点 礼物交接及厨房门探身三人空间 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）、黎汐（C07）、顾岚乔（C08）；画外：无；进入：无；离开：无</p>
+  <p class="sact">主角把礼物递给黎汐，顾岚乔从厨房探身。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#2</b>
+    <span class="cut-t">2.50s 起 · 3.6s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">黎汐</span>
+    
+    <button class="copy mini" data-copy="特写。黎汐已接到礼物，站桌西侧向主角介绍厨房门处的人；礼物归她，不再回到主角手中。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 黎汐看主角，介绍方向指向厨房门而非新动作 · 焦点 黎汐面部及已接礼物 · 稳定</p>
+  <p class="scomp">画内：黎汐（C07）；画外：本群最帅之人（C01）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>黎汐</b>这是我远房亲戚顾岚乔，过来帮忙。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#3</b>
+    <span class="cut-t">6.10s 起 · 2.7s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">顾岚乔</span>
+    
+    <button class="copy mini" data-copy="特写。顾岚乔从北侧厨房门内探身说话，身体仍在门内，视线朝桌西侧主角；不能瞬移至玄关。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 顾岚乔看桌西侧主角 · 焦点 顾岚乔脸部及厨房门框 · 稳定</p>
+  <p class="scomp">画内：顾岚乔（C08）；画外：本群最帅之人（C01）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。；进入：无；离开：无</p>
+  <p class="sline"><b>顾岚乔</b>你先坐，饭还得等一会儿。</p>
+</li>
+    </ol>
+    <div class="ppanel">
+      <div class="pp-h">
+        <span class="ptabs"><button class="ptab on" data-i="0">H3 提示词</button><button class="ptab" data-i="1">Seedance 提示词</button></span>
+        <button class="copy" data-copy="How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.10-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The guest hands the existing gift to the host. The relative leans out from the north kitchen doorway; she was already inside the home, not a new arrival.
+[Shot 2] At 00:02.500, the camera cuts to &lt;Picture 2&gt;. Static Shot. The host holds the received gift and introduces the relative. Do not return the gift to the guest. The young female host (S2), an adult with a gentle voice, says: &lt;d&gt;[Chinese] 这是我远房亲戚顾岚乔，过来帮忙。&lt;/d&gt;
+[Shot 3] At 00:06.100, the camera cuts to &lt;Picture 3&gt;. Static Shot. The relative speaks while leaning from the same kitchen doorway, remaining inside the kitchen side. The adult relative at the kitchen doorway (S3), with an even voice, says: &lt;d&gt;[Chinese] 你先坐，饭还得等一会儿。&lt;/d&gt;
+
+overall_soundscape: Quiet interior, soft clothing and gift handling only. No guests or added voices.
+
+non_diegetic_music: N/A">复制</button>
+      </div>
+      <pre class="pp on">How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.10-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The guest hands the existing gift to the host. The relative leans out from the north kitchen doorway; she was already inside the home, not a new arrival.
+[Shot 2] At 00:02.500, the camera cuts to &lt;Picture 2&gt;. Static Shot. The host holds the received gift and introduces the relative. Do not return the gift to the guest. The young female host (S2), an adult with a gentle voice, says: &lt;d&gt;[Chinese] 这是我远房亲戚顾岚乔，过来帮忙。&lt;/d&gt;
+[Shot 3] At 00:06.100, the camera cuts to &lt;Picture 3&gt;. Static Shot. The relative speaks while leaning from the same kitchen doorway, remaining inside the kitchen side. The adult relative at the kitchen doorway (S3), with an even voice, says: &lt;d&gt;[Chinese] 你先坐，饭还得等一会儿。&lt;/d&gt;
+
+overall_soundscape: Quiet interior, soft clothing and gift handling only. No guests or added voices.
+
+non_diegetic_music: N/A</pre>
+      <pre class="pp">@[图片1] = 黎汐家
+@[图片2] = 本群最帅之人
+@[图片3] = 黎汐
+@[图片4] = 顾岚乔
+
+【人物关系与构图逻辑】
+主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。
+
+【镜头1】
+焦距：50mm 标准，中浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：中景
+画面：固定机位，青年把礼物递给女主人，厨房门内的亲戚探身。
+台词：{}
+视线落点：主角看递出的礼物；黎汐看礼物；顾岚乔看桌西侧来客
+焦点：礼物交接及厨房门探身三人空间
+稳定性：稳定
+
+【镜头2】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，女主人接着介绍，礼物仍归她。
+台词：{这是我远房亲戚顾岚乔，过来帮忙。}
+视线落点：黎汐看主角，介绍方向指向厨房门而非新动作
+焦点：黎汐面部及已接礼物
+稳定性：稳定
+
+【镜头3】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，厨房门内的亲戚探身说话，不跨到玄关。
+台词：{你先坐，饭还得等一会儿。}
+视线落点：顾岚乔看桌西侧主角
+焦点：顾岚乔脸部及厨房门框
+稳定性：稳定
+
+&lt;室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。&gt;
+
+【约束】
+1. 保持无字幕，避免生成任何文字或字幕
+2. 视频全程禁止出现外形、着装、配饰完全一致的人物
+3. 画面比例 16:9</pre>
+    </div>
+  </div>
+  
+</article>
+<article class="segcard" id="seg-E01-03">
+  <header class="seg-h">
+    <b>E01-03</b>
+    <span class="sec-badge">10.7s · 4 切</span>
+    <span class="chip">S01 黎汐家</span>
+    
+    <span class="beatsref">第 1 场 第 8–11 拍</span>
+  </header>
+  <div class="fquad"><div class="frame ph fcell"><div class="fcell-h"><b>主分镜图 · #1 未生成</b><button class="copy mini" data-copy="紧中景。本群最帅之人留在桌西侧，双手已无礼物，自己的手机来电待接；其他二人位置在紧裁框外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">紧中景。本群最帅之人留在桌西侧，双手已无礼物，自己的手机来电待接；其他二人位置在紧裁框外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 2 · #2 未生成</b><button class="copy mini" data-copy="特写。本群最帅之人已把自己的手机举到耳边听电话，嘴唇闭合。杰哥只作电话声，不出现他的头像、视频窗或实物蛋糕。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。本群最帅之人已把自己的手机举到耳边听电话，嘴唇闭合。杰哥只作电话声，不出现他的头像、视频窗或实物蛋糕。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 3 · #3 未生成</b><button class="copy mini" data-copy="特写。本群最帅之人仍在同一位置持手机通话，朝手机回应，未新增室友到达或挂电话动作。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">特写。本群最帅之人仍在同一位置持手机通话，朝手机回应，未新增室友到达或挂电话动作。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div>
+<div class="frame ph fcell"><div class="fcell-h"><b>子分镜 4 · #4 未生成</b><button class="copy mini" data-copy="中景。黎汐已回到生日桌西侧，最后一只饮料杯在手中准备放到桌边，桌上其余五杯可核数；顾岚乔在她身后北侧厨房门内，手在门边准备关闭。总共六杯，不得第七杯。主角留通话区域画外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">复制</button></div><span class="fprompt">中景。黎汐已回到生日桌西侧，最后一只饮料杯在手中准备放到桌边，桌上其余五杯可核数；顾岚乔在她身后北侧厨房门内，手在门边准备关闭。总共六杯，不得第七杯。主角留通话区域画外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9</span></div></div>
+  
+  <p class="seg-block"><b>走位</b>主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。</p>
+  <div class="duo">
+    <ol class="cuts">
+<li class="cut">
+  <div class="cut-h">
+    <b>#1</b>
+    <span class="cut-t">0.00s 起 · 2.5s</span>
+    <span class="cut-sc">中景 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span>
+    
+    <button class="copy mini" data-copy="紧中景。本群最帅之人留在桌西侧，双手已无礼物，自己的手机来电待接；其他二人位置在紧裁框外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">50mm 标准，中浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 主角看手机来电并接起 · 焦点 主角持手机的手 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）；画外：黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sact">主角接起杰哥的电话。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#2</b>
+    <span class="cut-t">2.50s 起 · 2.7s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span>
+    
+    <button class="copy mini" data-copy="特写。本群最帅之人已把自己的手机举到耳边听电话，嘴唇闭合。杰哥只作电话声，不出现他的头像、视频窗或实物蛋糕。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 主角视线自然停在前方，专注听电话 · 焦点 主角闭合嘴唇、耳旁手机 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）；画外：黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>画外音</b>蛋糕买好了，我们马上到。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#3</b>
+    <span class="cut-t">5.20s 起 · 2s</span>
+    <span class="cut-sc">特写 · Static Shot</span>
+    
+    <span class="chip">本群最帅之人</span>
+    
+    <button class="copy mini" data-copy="特写。本群最帅之人仍在同一位置持手机通话，朝手机回应，未新增室友到达或挂电话动作。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">85mm 长焦，浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 主角保持通话视线，不看不存在的室友 · 焦点 主角说话面部和耳旁手机 · 稳定</p>
+  <p class="scomp">画内：本群最帅之人（C01）；画外：黎汐（C07）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。、顾岚乔（C08）：顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。；进入：无；离开：无</p>
+  <p class="sline"><b>本群最帅之人</b>好，慢点，路还滑。</p>
+</li>
+<li class="cut">
+  <div class="cut-h">
+    <b>#4</b>
+    <span class="cut-t">7.20s 起 · 3.5s</span>
+    <span class="cut-sc">中景 · Static Shot</span>
+    
+    <span class="chip">黎汐</span><span class="chip">顾岚乔</span>
+    
+    <button class="copy mini" data-copy="中景。黎汐已回到生日桌西侧，最后一只饮料杯在手中准备放到桌边，桌上其余五杯可核数；顾岚乔在她身后北侧厨房门内，手在门边准备关闭。总共六杯，不得第七杯。主角留通话区域画外。 横屏16:9，东侧窗光；不加群演或室友。
+画幅：16:9">分镜图提示词</button>
+  </div>
+  <p class="scomp">50mm 标准，中浅景深 · 机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。 · 三分法 · 视线 黎汐看最后一杯放置点；顾岚乔看厨房门关闭方向 · 焦点 六杯恒定数量与后方厨房门 · 稳定</p>
+  <p class="scomp">画内：黎汐（C07）、顾岚乔（C08）；画外：本群最帅之人（C01）：仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。；进入：无；离开：无</p>
+  <p class="sact">黎汐把最后一杯饮料放到桌边，顾岚乔在她身后关上厨房门。</p>
+</li>
+    </ol>
+    <div class="ppanel">
+      <div class="pp-h">
+        <span class="ptabs"><button class="ptab on" data-i="0">H3 提示词</button><button class="ptab" data-i="1">Seedance 提示词</button></span>
+        <button class="copy" data-copy="How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 7.20-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The guest answers his own phone, now with the gift transferred to the host.
+[Shot 2] At 00:02.500, the camera cuts to &lt;Picture 2&gt;. Static Shot. The guest listens with the phone at his ear, lips closed. Only the remote friend is heard over the phone; show no extra person, video-call window or cake. The remote male friend (S5), with a cheerful voice over the phone, says in an off-screen voiceover while the visible guest keeps his lips completely closed: &lt;d&gt;[Chinese] 蛋糕买好了，我们马上到。&lt;/d&gt;
+[Shot 3] At 00:05.200, the camera cuts to &lt;Picture 3&gt;. Static Shot. The guest replies into the same phone, staying in place. The young male guest (S1), an adult with a calm mid-range voice, says: &lt;d&gt;[Chinese] 好，慢点，路还滑。&lt;/d&gt;
+[Shot 4] At 00:07.200, the camera cuts to &lt;Picture 4&gt;. Static Shot. The host sets down the last drink among the same total of six cups: five on the table plus one in her hand at the initial frame. Behind her, the relative closes the north kitchen door from the kitchen side. Do not add a seventh cup, pouring sequence or hang-up action.
+
+overall_soundscape: Phone-call texture only during the call, followed by one final cup placement and the kitchen door closing. No arriving friends, extra conversation or invented hang-up sound.
+
+non_diegetic_music: N/A">复制</button>
+      </div>
+      <pre class="pp on">How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 7.20-second mark of the target video.
+
+integrated_multimodal_description:
+[Shot 1] Anchor the initial composition to &lt;Picture 1&gt;. Static Shot. The guest answers his own phone, now with the gift transferred to the host.
+[Shot 2] At 00:02.500, the camera cuts to &lt;Picture 2&gt;. Static Shot. The guest listens with the phone at his ear, lips closed. Only the remote friend is heard over the phone; show no extra person, video-call window or cake. The remote male friend (S5), with a cheerful voice over the phone, says in an off-screen voiceover while the visible guest keeps his lips completely closed: &lt;d&gt;[Chinese] 蛋糕买好了，我们马上到。&lt;/d&gt;
+[Shot 3] At 00:05.200, the camera cuts to &lt;Picture 3&gt;. Static Shot. The guest replies into the same phone, staying in place. The young male guest (S1), an adult with a calm mid-range voice, says: &lt;d&gt;[Chinese] 好，慢点，路还滑。&lt;/d&gt;
+[Shot 4] At 00:07.200, the camera cuts to &lt;Picture 4&gt;. Static Shot. The host sets down the last drink among the same total of six cups: five on the table plus one in her hand at the initial frame. Behind her, the relative closes the north kitchen door from the kitchen side. Do not add a seventh cup, pouring sequence or hang-up action.
+
+overall_soundscape: Phone-call texture only during the call, followed by one final cup placement and the kitchen door closing. No arriving friends, extra conversation or invented hang-up sound.
+
+non_diegetic_music: N/A</pre>
+      <pre class="pp">@[图片1] = 黎汐家
+@[图片2] = 本群最帅之人
+@[图片3] = 黎汐
+@[图片4] = 顾岚乔
+
+【人物关系与构图逻辑】
+主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。
+
+【镜头1】
+焦距：50mm 标准，中浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：中景
+画面：固定机位，青年接起自己手机的来电。
+台词：{}
+视线落点：主角看手机来电并接起
+焦点：主角持手机的手
+稳定性：稳定
+
+【镜头2】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，青年持机听电话，嘴唇闭合，远处朋友只闻其声。
+台词：以画外音说{蛋糕买好了，我们马上到。}
+视线落点：主角视线自然停在前方，专注听电话
+焦点：主角闭合嘴唇、耳旁手机
+稳定性：稳定
+
+【镜头3】
+焦距：85mm 长焦，浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：特写
+画面：固定机位，青年对手机回应，保持原位置。
+台词：{好，慢点，路还滑。}
+视线落点：主角保持通话视线，不看不存在的室友
+焦点：主角说话面部和耳旁手机
+稳定性：稳定
+
+【镜头4】
+焦距：50mm 标准，中浅景深
+机位：机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。
+构图：三分法
+运镜：固定镜头
+景别：中景
+画面：固定机位，女主人把同组六杯中的最后一杯饮料放到桌边，身后亲戚从厨房侧关门。
+台词：{}
+视线落点：黎汐看最后一杯放置点；顾岚乔看厨房门关闭方向
+焦点：六杯恒定数量与后方厨房门
+稳定性：稳定
+
+&lt;室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。&gt;
+
+【约束】
+1. 保持无字幕，避免生成任何文字或字幕
+2. 视频全程禁止出现外形、着装、配饰完全一致的人物
+3. 画面比例 16:9</pre>
+    </div>
+  </div>
+  
+</article>
+    </div>
+  </div>
+  <button class="shmore">▾ 展开全部段</button>
+</section>
+</section>
+
+<section class="top-sec" id="sec-batches">
+  <div class="sec-h"><span class="no">03</span><h2>生成批次单</h2><span class="note">自动汇总 · 同批段共用同一张环境参考图</span></div>
+  <div class="batches">
+<article class="batch">
+  
+  <header class="batch-h"><b>批次 01</b><span class="chip">S01 黎汐家</span></header>
+  <div class="batch-shots"><a class="chip mono" href="#seg-E01-01">E01-01</a><a class="chip mono" href="#seg-E01-02">E01-02</a><a class="chip mono" href="#seg-E01-03">E01-03</a></div>
+  <p class="batch-need">需要：本群最帅之人、黎汐、顾岚乔 的角色设定图</p>
+</article>
+  </div>
+</section>
+
+<section class="top-sec" id="sec-dialogue">
+  <div class="sec-h"><span class="no">04</span><h2>配音对齐单</h2><span class="note">自动汇总 · TTS 音频对到哪一段的第几切</span></div>
+  <table><thead><tr><th>段 · 切</th><th>说话人</th><th>台词</th><th>台词秒数</th></tr></thead>
+  <tbody>
+<tr><td><a href="#seg-E01-01">E01-01</a> #2</td><td>画外音</td><td class="serif">心脏研究仍在实验阶段，不能作为成熟治疗。</td><td>4.4</td></tr>
+<tr><td><a href="#seg-E01-01">E01-01</a> #3</td><td>黎汐</td><td class="serif">他们还没到？</td><td>1.3</td></tr>
+<tr><td><a href="#seg-E01-01">E01-01</a> #4</td><td>本群最帅之人</td><td class="serif">从学校过来，晚一点。生日快乐。</td><td>3.3</td></tr>
+<tr><td><a href="#seg-E01-02">E01-02</a> #2</td><td>黎汐</td><td class="serif">这是我远房亲戚顾岚乔，过来帮忙。</td><td>3.6</td></tr>
+<tr><td><a href="#seg-E01-02">E01-02</a> #3</td><td>顾岚乔</td><td class="serif">你先坐，饭还得等一会儿。</td><td>2.7</td></tr>
+<tr><td><a href="#seg-E01-03">E01-03</a> #2</td><td>画外音</td><td class="serif">蛋糕买好了，我们马上到。</td><td>2.7</td></tr>
+<tr><td><a href="#seg-E01-03">E01-03</a> #3</td><td>本群最帅之人</td><td class="serif">好，慢点，路还滑。</td><td>2</td></tr>
+  </tbody></table>
+</section>
+
+<section class="top-sec" id="sec-gates">
+  <div class="sec-h"><span class="no">05</span><h2>质量门</h2></div>
+  <ul class="gate">
+  <li class="ok"><span class="m">✓</span><span>剧本节拍被恰好一次、按顺序、连续认领（分镜级）</span></li>
+  <li class="ok"><span class="m">✓</span><span>每段 0 &lt; 总秒数 ≤ 15（一次生成的上限）</span></li>
+  <li class="ok"><span class="m">✓</span><span>每个分镜 2–8 秒——短剧的注意力节奏</span></li>
+  <li class="ok"><span class="m">✓</span><span>认领节拍的台词装得进分镜秒数</span></li>
+  <li class="ok"><span class="m">✓</span><span>每集总时长在剧本目标 ±15% 内</span></li>
+  <li class="ok"><span class="m">✓</span><span>单个分镜同框 ≤ 3 人，超了必须带拆解说明</span></li>
+  <li class="ok"><span class="m">✓</span><span>段号 E01-01 格式、按顺序连号</span></li>
+  <li class="ok"><span class="m">✓</span><span>景别中文词写进分镜图提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>运镜用 H3 官方词表，且出现在自己的 [Shot k] 段落里</span></li>
+  <li class="ok"><span class="m">✓</span><span>H3 首行对齐指令由分镜结构推导逐字对账，切点时刻逐个对</span></li>
+  <li class="ok"><span class="m">✓</span><span>认领节拍的台词逐字进各自镜头的 H3 &lt;d&gt; 块</span></li>
+  <li class="ok"><span class="m">✓</span><span>H3 提示词语言与设定一致（promptLang=en，正文全英文）</span></li>
+  <li class="ok"><span class="m">✓</span><span>分镜画幅为 16:9，分镜图提示词中文且非空</span></li>
+  <li class="ok"><span class="m">✓</span><span>视频提示词不含角色名（H3 正文与 Seedance 镜头正文；分镜图提示词直呼其名放行）</span></li>
+  <li class="ok"><span class="m">✓</span><span>构图量化字段齐全（每段 blocking；每镜焦距／机位／构图／视线落点／焦点／稳定性）</span></li>
+  <li class="ok"><span class="m">✓</span><span>Seedance 镜头正文中文非空，不写时间、镜头编号、图片引用和协议符号</span></li>
+  <li class="ok"><span class="m">✓</span><span>场次／人物／道具对账剧本</span></li>
+  <li class="ok"><span class="m">✓</span><span>引用的配方存在、必备短语进了分镜图提示词、多格配方连排够格数<small>未挂载配方卡库（--shots &lt;卡片目录&gt;），本门跳过（视为通过）</small></span></li>
+  <li class="ok"><span class="m">✓</span><span>人物在场状态跨切连续，画内人物逐一写入分镜图提示词</span></li>
+</ul>
+  <p class="gsum">全部通过</p>
+</section>
+
+<p class="foot">分镜由模型依据剧本切分：段 = 一次生成，分镜 = 段内剪切（通常 2–5 秒，长台词可延长），每个分镜一张关键帧图。对齐指令、切点时刻、台词由脚本对账；语言检查为启发式。</p>
+</div>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script type="application/json" id="storyboard-data">{"source":"《六位玩家》第一世界","aspectRatio":"16:9","continuityVersion":1,"promptLang":"en","lang":"zh","scope":{"code":"103","originalSceneIndex":3,"localSceneIndex":1,"mapping":"本地E01-01至03，合并全集拟E01-14至16，接102的09至13；独立目录，不覆盖101/102。"},"episodes":[{"ep":1,"segments":[{"id":"E01-01","sceneIndex":1,"openingPresent":["C07","C08"],"blocking":"黎汐站在中央生日桌西侧中段，面朝东；顾岚乔站在桌后厨房门北侧，面朝南；其余座位空着，没有其他人。","soundscape":"室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。","cuts":[{"beats":[1,1],"seconds":4,"size":"medium","camera":"Static Shot","characters":["C01","C07"],"offscreen":[{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"中景。黎汐站生日桌西侧，六只杯子仍由她摆放，门铃尚未响；西侧玄关入口在侧后方。本群最帅之人在门外，此刻不露人形，开门动作后才进入本切画内。顾岚乔在厨房内不可见。初帧不能把主角提前放在桌边。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，女主人摆好六杯，听到门铃后走去开门；门外青年在开门后进入玄关，本切初帧仍不露面。","lens":"50mm 标准，中浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"女主人看杯子后看玄关；青年进入后看她","focus":"六杯数量、女主人移向玄关及随后来客","stability":"stable","enter":[{"id":"C01","beat":1,"evidence":"开门","reason":"依据正式entrancesExits主角进入；由本拍开门承接其进入玄关，初帧仍在门外，不添加新的门外动作。"}]},{"beats":[2,2],"seconds":4.4,"size":"close","camera":"Static Shot","characters":["C01"],"offscreen":[{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。本群最帅之人已在玄关内侧，携带未交出的礼物，嘴唇闭合；只用局部玄关墙面，不放新闻电视或主播。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年停在玄关内侧，新闻广播余声覆盖画面，嘴唇闭合。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"青年看玄关内迎接者方向","focus":"主角面部与闭合嘴唇","stability":"stable"},{"beats":[3,3],"seconds":2,"size":"close","camera":"Static Shot","characters":["C07"],"offscreen":[{"id":"C01","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。黎汐在玄关与桌之间面向刚到的主角问话，双手不再新增第七杯；其他人物区域被紧裁排除。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，女主人朝刚到的青年问话。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"黎汐看玄关内的主角","focus":"黎汐面部","stability":"stable"},{"beats":[4,4],"seconds":3.3,"size":"close","camera":"Static Shot","characters":["C01"],"offscreen":[{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。本群最帅之人在玄关内侧回应黎汐，礼物仍在自己手中，未提前交出。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年在玄关内侧回答，仍持礼物。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"主角看黎汐面部","focus":"主角面部","stability":"stable"}],"h3Prompt":"How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 4.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 8.40-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.40-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to \u003cPicture 1>. Static Shot. The host finishes placing exactly six cups, hears the doorbell, and goes to open the west entrance. The guest is outside in the initial frame and becomes visible only after the door opens, entering the foyer as specified by the scene entrance note. The relative stays inside the kitchen, offscreen. Add no knocking sequence or new visitor.\n[Shot 2] At 00:04.000, the camera cuts to \u003cPicture 2>. Static Shot. The guest is now inside the foyer, holding the undelivered gift. A remembered news broadcast is heard, not a television in the room; keep his lips closed. A remembered news broadcaster (S4) says in an off-screen voiceover while the visible guest keeps his lips completely closed: \u003cd>[Chinese] 心脏研究仍在实验阶段，不能作为成熟治疗。\u003c/d>\n[Shot 3] At 00:08.400, the camera cuts to \u003cPicture 3>. Static Shot. The host faces the guest and asks about the others. The young female host (S2), an adult with a gentle voice, says: \u003cd>[Chinese] 他们还没到？\u003c/d>\n[Shot 4] At 00:10.400, the camera cuts to \u003cPicture 4>. Static Shot. The guest responds from inside the foyer, still holding the gift. The young male guest (S1), an adult with a calm mid-range voice, says: \u003cd>[Chinese] 从学校过来，晚一点。生日快乐。\u003c/d>\n\noverall_soundscape: Quiet interior. Cup contact and a single doorbell accompany the opening action; a remembered broadcast remains voiceover rather than an in-room television.\n\nnon_diegetic_music: N/A"},{"id":"E01-02","sceneIndex":1,"openingPresent":["C01","C07","C08"],"blocking":"主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。","soundscape":"室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。","cuts":[{"beats":[5,5],"seconds":2.5,"size":"medium","camera":"Static Shot","characters":["C01","C07","C08"],"offscreen":[],"props":[],"frame":"三人中景。本群最帅之人在桌西侧通路持礼物准备递给黎汐，黎汐在近旁；顾岚乔位于北侧厨房门内，初帧尚未探出，动作中才向门外探身可见。不要把她当新进屋客人。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年把礼物递给女主人，厨房门内的亲戚探身。","lens":"50mm 标准，中浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"主角看递出的礼物；黎汐看礼物；顾岚乔看桌西侧来客","focus":"礼物交接及厨房门探身三人空间","stability":"stable"},{"beats":[6,6],"seconds":3.6,"size":"close","camera":"Static Shot","characters":["C07"],"offscreen":[{"id":"C01","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。黎汐已接到礼物，站桌西侧向主角介绍厨房门处的人；礼物归她，不再回到主角手中。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，女主人接着介绍，礼物仍归她。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"黎汐看主角，介绍方向指向厨房门而非新动作","focus":"黎汐面部及已接礼物","stability":"stable"},{"beats":[7,7],"seconds":2.7,"size":"close","camera":"Static Shot","characters":["C08"],"offscreen":[{"id":"C01","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"}],"props":[],"frame":"特写。顾岚乔从北侧厨房门内探身说话，身体仍在门内，视线朝桌西侧主角；不能瞬移至玄关。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，厨房门内的亲戚探身说话，不跨到玄关。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"顾岚乔看桌西侧主角","focus":"顾岚乔脸部及厨房门框","stability":"stable"}],"h3Prompt":"How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.10-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to \u003cPicture 1>. Static Shot. The guest hands the existing gift to the host. The relative leans out from the north kitchen doorway; she was already inside the home, not a new arrival.\n[Shot 2] At 00:02.500, the camera cuts to \u003cPicture 2>. Static Shot. The host holds the received gift and introduces the relative. Do not return the gift to the guest. The young female host (S2), an adult with a gentle voice, says: \u003cd>[Chinese] 这是我远房亲戚顾岚乔，过来帮忙。\u003c/d>\n[Shot 3] At 00:06.100, the camera cuts to \u003cPicture 3>. Static Shot. The relative speaks while leaning from the same kitchen doorway, remaining inside the kitchen side. The adult relative at the kitchen doorway (S3), with an even voice, says: \u003cd>[Chinese] 你先坐，饭还得等一会儿。\u003c/d>\n\noverall_soundscape: Quiet interior, soft clothing and gift handling only. No guests or added voices.\n\nnon_diegetic_music: N/A"},{"id":"E01-03","sceneIndex":1,"openingPresent":["C01","C07","C08"],"blocking":"主角与黎汐在生日桌西侧通路相隔一步，顾岚乔仍在北侧厨房门内；西侧玄关与北侧厨房门分明。","soundscape":"室内轻微杯子与衣料声，声音只随原动作；首段门铃与赴约途中新闻余声，末段手机电话声；没有新增电视、聚会人群或室友脚步。","cuts":[{"beats":[8,8],"seconds":2.5,"size":"medium","camera":"Static Shot","characters":["C01"],"offscreen":[{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"紧中景。本群最帅之人留在桌西侧，双手已无礼物，自己的手机来电待接；其他二人位置在紧裁框外。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年接起自己手机的来电。","lens":"50mm 标准，中浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"主角看手机来电并接起","focus":"主角持手机的手","stability":"stable"},{"beats":[9,9],"seconds":2.7,"size":"close","camera":"Static Shot","characters":["C01"],"offscreen":[{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。本群最帅之人已把自己的手机举到耳边听电话，嘴唇闭合。杰哥只作电话声，不出现他的头像、视频窗或实物蛋糕。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年持机听电话，嘴唇闭合，远处朋友只闻其声。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"主角视线自然停在前方，专注听电话","focus":"主角闭合嘴唇、耳旁手机","stability":"stable"},{"beats":[10,10],"seconds":2,"size":"close","camera":"Static Shot","characters":["C01"],"offscreen":[{"id":"C07","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"},{"id":"C08","reason":"顾岚乔一直在厨房内，尚未探身时遮挡于门后；不是离开S01。"}],"props":[],"frame":"特写。本群最帅之人仍在同一位置持手机通话，朝手机回应，未新增室友到达或挂电话动作。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，青年对手机回应，保持原位置。","lens":"85mm 长焦，浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"主角保持通话视线，不看不存在的室友","focus":"主角说话面部和耳旁手机","stability":"stable"},{"beats":[11,11],"seconds":3.5,"size":"medium","camera":"Static Shot","characters":["C07","C08"],"offscreen":[{"id":"C01","reason":"仍在本场对应玄关/生日桌区域，紧裁将实际站位整体排除，不是从可见空地抹去人物。"}],"props":[],"frame":"中景。黎汐已回到生日桌西侧，最后一只饮料杯在手中准备放到桌边，桌上其余五杯可核数；顾岚乔在她身后北侧厨房门内，手在门边准备关闭。总共六杯，不得第七杯。主角留通话区域画外。 横屏16:9，东侧窗光；不加群演或室友。","shot":"固定机位，女主人把同组六杯中的最后一杯饮料放到桌边，身后亲戚从厨房侧关门。","lens":"50mm 标准，中浅景深","cameraPosition":"机位在生日桌南侧朝西北，保持西侧玄关、北侧厨房门方位；紧裁只展示本切角色所在局部，不露应有人却空的区域。","composition":"三分法","eyeline":"黎汐看最后一杯放置点；顾岚乔看厨房门关闭方向","focus":"六杯恒定数量与后方厨房门","stability":"stable"}],"h3Prompt":"How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 7.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to \u003cPicture 1>. Static Shot. The guest answers his own phone, now with the gift transferred to the host.\n[Shot 2] At 00:02.500, the camera cuts to \u003cPicture 2>. Static Shot. The guest listens with the phone at his ear, lips closed. Only the remote friend is heard over the phone; show no extra person, video-call window or cake. The remote male friend (S5), with a cheerful voice over the phone, says in an off-screen voiceover while the visible guest keeps his lips completely closed: \u003cd>[Chinese] 蛋糕买好了，我们马上到。\u003c/d>\n[Shot 3] At 00:05.200, the camera cuts to \u003cPicture 3>. Static Shot. The guest replies into the same phone, staying in place. The young male guest (S1), an adult with a calm mid-range voice, says: \u003cd>[Chinese] 好，慢点，路还滑。\u003c/d>\n[Shot 4] At 00:07.200, the camera cuts to \u003cPicture 4>. Static Shot. The host sets down the last drink among the same total of six cups: five on the table plus one in her hand at the initial frame. Behind her, the relative closes the north kitchen door from the kitchen side. Do not add a seventh cup, pouring sequence or hang-up action.\n\noverall_soundscape: Phone-call texture only during the call, followed by one final cup placement and the kitchen door closing. No arriving friends, extra conversation or invented hang-up sound.\n\nnon_diegetic_music: N/A"}]}]}</script>
+<script>
+const L = {"copied":"已复制","failed":"复制失败","show":"▾ 展开全部段","hide":"▴ 收起"};
+
+// 分集分镜表：段卡区默认最多 760px。不超高的集直接放开；超高的集点开/收起
+document.querySelectorAll('.shmore').forEach((btn) => {
+  const zone = btn.previousElementSibling;
+  if (zone.scrollHeight <= 780) {
+    zone.classList.remove('clip');
+    btn.remove();
+    return;
+  }
+  btn.addEventListener('click', () => {
+    const clipped = zone.classList.toggle('clip');
+    btn.textContent = clipped ? L.show : L.hide;
+    if (clipped) zone.closest('.ep').scrollIntoView({ block: 'nearest' });
+  });
+});
+
+// 点图放大（主分镜图 / 子分镜图 / 批次场景图）
+const lb = document.getElementById('lightbox');
+document.addEventListener('click', (e) => {
+  const img = e.target.closest('img.frame, img.subf, img.bimg');
+  if (img) {
+    lb.querySelector('img').src = img.src;
+    lb.classList.add('on');
+    return;
+  }
+  if (e.target.closest('#lightbox')) lb.classList.remove('on');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') lb.classList.remove('on');
+});
+
+// 提示词面板：H3 / Seedance 页签，复制键复制当前激活的那一份
+document.addEventListener('click', (e) => {
+  const tab = e.target.closest('.ptab');
+  if (!tab) return;
+  const panel = tab.closest('.ppanel');
+  const i = Number(tab.dataset.i);
+  panel.querySelectorAll('.ptab').forEach((b, k) => b.classList.toggle('on', k === i));
+  panel.querySelectorAll('.pp').forEach((pre, k) => pre.classList.toggle('on', k === i));
+  panel.querySelector('.pp-h .copy').dataset.copy = panel.querySelectorAll('.pp')[i].textContent;
+});
+
+// 复制提示词
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy');
+  if (!btn) return;
+  e.preventDefault();
+  const label = btn.textContent;
+  try {
+    await navigator.clipboard.writeText(btn.dataset.copy);
+    btn.textContent = L.copied;
+    btn.dataset.done = '1';
+  } catch {
+    btn.textContent = L.failed;
+  }
+  setTimeout(() => { btn.textContent = label; delete btn.dataset.done; }, 1600);
+});
+
+// 导出：报告自己带着完整的 storyboard.json，下载的是它原样
+document.querySelector('.expo').addEventListener('click', (e) => {
+  const btn = e.currentTarget;
+  const url = URL.createObjectURL(
+    new Blob([document.getElementById('storyboard-data').textContent], { type: 'application/json' }),
+  );
+  const a = Object.assign(document.createElement('a'), { href: url, download: btn.dataset.name });
+  a.click();
+  // 别立刻回收——Safari 会抢在下载读完之前撤掉 blob
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+</script>
+</body></html>

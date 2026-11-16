@@ -53,9 +53,23 @@
         "mainViewBox": [
           0,
           0,
-          0.72,
-          0.7
-        ]
+          1,
+          1
+        ],
+        "referenceImage": {
+          "path": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\images\\咖啡厅-sheet.png",
+          "width": 1536,
+          "height": 864,
+          "aspectRatio": "16:9",
+          "sha256": "368beddc8ea0e469c9e99108b6f215f45e48c5a3f2df360e88bd96ae2c196607",
+          "mainViewBox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "boxBasis": "full-image"
+        }
       },
       "seedNote": "outline 的复用方案：当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。——考虑做成某个主场景的变体（variantOf + changes）",
       "usage": {
