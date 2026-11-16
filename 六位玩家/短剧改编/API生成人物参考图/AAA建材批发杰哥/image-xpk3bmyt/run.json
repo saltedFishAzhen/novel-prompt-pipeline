@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "operation": "edit",
+  "model": "gpt-image-2.6-sunburst",
+  "size": "1536x864",
+  "quality": "medium",
+  "output_format": "png",
+  "n": 1,
+  "reference_count": 1,
+  "prompt_sha256": "6790e8b889b39b00bfc2813e9fbd37af4fdbfaaacffea4cbef0ec8527aeb4d55",
+  "outputs": [
+    {
+      "file": "image-01.png",
+      "bytes": 1670977,
+      "sha256": "c1fa4e075d5235b8a80c9ce544b3a82e7a3f9560b6df8eb47ab6fdd33eaf41bd"
+    }
+  ]
+}

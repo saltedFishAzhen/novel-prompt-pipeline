@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《六位玩家》第一世界 · 美术设定集</title>
+<style>
+:root{
+  --paper:#eceded; --panel:#f5f6f5; --side:#e4e6e3; --ink:#191d21; --ink-2:#5b636a; --ink-3:#8c9298;
+  --rule:#d2d5d0; --rule-2:#c2c6bf; --seal:#8a3324; --seal-2:#c56a4e; --seal-soft:#8a332412; --ok:#3d6b4f;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1600px;margin:0 auto;padding:24px 32px 90px}
+h1,h2,h3,h4{margin:0;font-weight:400}
+
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.hd h1{font:400 28px/1.1 var(--serif);letter-spacing:.06em}
+.hd .sub{font-size:13px;color:var(--ink-2)}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.gatepill{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);border-radius:99px;padding:6px 12px}
+.gatepill.pass{color:var(--ok);border:1px solid var(--ok)}
+.gatepill.fail{color:var(--seal);border:1px solid var(--seal);background:var(--seal-soft)}
+.expo{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.15s}
+.expo:hover{border-color:var(--seal);color:var(--seal)}
+.expo:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 6px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:11px 14px 9px}
+.kpi .l{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.kpi .v{font:400 28px/1.15 var(--serif);margin-top:5px}
+.kpi .d{font-size:11px;color:var(--ink-2);margin-top:1px}
+.kpi.accent{border-top:2px solid var(--seal)}
+.galert{margin:14px 0 0;border:1px solid var(--seal);background:var(--seal-soft);border-radius:2px;
+  padding:10px 14px;font-size:13px}
+.galert b{color:var(--seal)}
+.galert span{display:block;font-size:12px;color:var(--ink-2)}
+
+section.top-sec{margin-top:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:16px}
+.sec-h .no{font:500 12px/1 var(--mono);color:var(--seal)}
+.sec-h h2{font:400 20px/1.2 var(--serif);letter-spacing:.05em}
+.sec-h .note{margin-left:auto;font-size:12px;color:var(--ink-3)}
+
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--rule);font-size:13px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 11px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:var(--side)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+.mono{font:400 11.5px/1.7 var(--mono);color:var(--ink-2);word-break:break-word}
+
+/* 场景设定卡：一排两张（方便截图宣传），卡内纵排、设定图占满卡宽 */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:1100px){.cards{grid-template-columns:1fr}}
+.scene{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:18px 20px}
+.sc-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--rule-2);padding-bottom:10px}
+.sc-id{font:500 12px/1 var(--mono);color:var(--seal)}
+.sc-h h3{font:400 20px/1.2 var(--serif);letter-spacing:.04em}
+.badge{font:500 10.5px/1 var(--sans);padding:2px 8px;border-radius:99px;border:1px solid var(--seal);color:var(--seal)}
+.badge.once{border-color:var(--seal-2);color:var(--seal-2)}
+.sc-use{margin-left:auto;font-size:12px;color:var(--ink-2)}
+.sc-sum{margin:10px 0 12px;font:400 14.5px/1.9 var(--serif)}
+.scene .blk{margin-top:16px}
+.scene .pgroup{margin-top:16px}
+
+.plate{margin:0;background:#fff;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.plate .zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.plate .zoom:focus-visible{outline:2px solid var(--seal);outline-offset:-2px}
+.plate img{display:block;width:100%;height:auto}
+/* 图片弹层 */
+.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;
+  background:#191d21e6;padding:32px;cursor:zoom-out}
+.lightbox.on{display:grid}
+.lightbox img{max-width:100%;max-height:100%;background:#fff;border-radius:2px;
+  box-shadow:0 8px 40px #0006}
+.lightbox-x{position:absolute;top:18px;right:22px;font:500 13px/1 var(--sans);color:#fff;
+  background:none;border:1px solid #fff6;border-radius:3px;padding:8px 12px;cursor:pointer}
+.lightbox-x:hover{border-color:#fff}
+.plate figcaption{font-size:11px;letter-spacing:.08em;color:var(--ink-3);padding:6px 10px;border-top:1px solid var(--rule)}
+.plate-empty{display:grid;place-items:center;min-height:180px;text-align:center;
+  border:1px dashed var(--rule-2);background:var(--paper);color:var(--ink-3);font-size:13px}
+.plate-empty em{font-style:normal;font-size:12px;opacity:.8}
+.variant{margin:10px 0 0;font-size:12.5px;color:var(--seal);background:var(--seal-soft);padding:7px 10px;border-radius:2px}
+.variant b{font-family:var(--mono);font-weight:500}
+
+.blk{margin-bottom:16px}
+.blk h4{font:500 11px/1.6 var(--sans);letter-spacing:.18em;color:var(--seal);margin-bottom:8px}
+.blk h4 small{display:block;letter-spacing:0;font-weight:400;color:var(--ink-3);font-size:11px}
+.anchors{margin:0;padding:0 0 0 2px;list-style:none;counter-reset:an}
+/* ::before 序号也是网格项，desc 必须显式钉在第二列，否则会掉进 22px 窄列一字一行 */
+.anchors li{counter-increment:an;display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:8px;
+  padding:6px 0;border-top:1px solid var(--rule);font-size:13px}
+.anchors li:first-child{border-top:0}
+.anchors li::before{content:counter(an,decimal-leading-zero);grid-column:1;grid-row:1;
+  font:500 11px/1.9 var(--mono);color:var(--seal)}
+.anchors b{grid-column:2;font-weight:500}
+.anchors span{grid-column:2;display:block;font-size:12px;color:var(--ink-2)}
+.lights{display:flex;flex-direction:column;gap:6px}
+.light{display:flex;align-items:baseline;gap:10px;background:var(--paper);border:1px solid var(--rule);
+  border-radius:2px;padding:7px 10px}
+.light i{flex:none;font-style:normal;font:500 12px/1.6 var(--sans);color:var(--ink)}
+.light .mono{flex:1;min-width:0}
+
+.pgroup{border:1px solid var(--rule);border-radius:2px;background:var(--paper);padding:4px 12px 8px;margin-top:12px}
+.pr{border-bottom:1px solid var(--rule)}
+.pgroup .pr:last-of-type{border-bottom:0}
+.pr summary{display:flex;align-items:center;gap:10px;padding:10px 0;cursor:pointer;list-style:none;
+  font:500 12px/1 var(--sans);letter-spacing:.04em}
+.pr summary::-webkit-details-marker{display:none}
+.pr summary::before{content:"▸";color:var(--seal);font-size:11px;transition:transform .15s}
+.pr[open] summary::before{transform:rotate(90deg)}
+.pr summary span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr p{margin:0 0 10px;padding:10px 12px;background:var(--panel);border:1px solid var(--rule);
+  border-radius:2px;font:400 12px/1.75 var(--mono);white-space:pre-wrap;word-break:break-word}
+.pgroup-f{padding:10px 0 4px}
+.copy{flex:none;font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:4px 10px;cursor:pointer;transition:.15s}
+.copy:hover{border-color:var(--seal);color:var(--seal)}
+.copy:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.copy[data-done]{border-color:var(--seal);color:var(--seal)}
+.copy.wide{width:100%;padding:9px}
+.copy.mini{padding:2px 7px;font-size:10.5px}
+
+.gate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+@media(max-width:900px){.gate{grid-template-columns:1fr}}
+.gate li{display:flex;gap:8px;padding:5px 0;font-size:12.5px;line-height:1.55}
+.gate .m{flex:none;font-weight:700}
+.gate li.ok .m{color:var(--ok)}
+.gate li.bad .m{color:var(--seal)}
+.gate li.bad{background:var(--seal-soft);border-radius:2px;padding-left:6px}
+.gate small{display:block;color:var(--ink-3)}
+.gsum{margin:10px 0 0;font-size:12px;color:var(--ink-2)}
+.gsum b{color:var(--seal)}
+
+.foot{margin-top:40px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  .expo,.copy{display:none!important}
+  .pr p{display:block!important}
+  .pr summary::before{content:""}
+  .page{max-width:none;padding:0}
+  section.top-sec,.scene{page-break-inside:avoid}
+  body{background:#fff}
+}
+</style></head><body>
+<div class="page">
+
+<header class="hd">
+  <h1>《六位玩家》第一世界</h1>
+  <span class="sub">美术设定集</span>
+  <span class="right">
+    <span class="gatepill pass">✓ 质量门 11 / 11</span>
+    <button class="expo" data-name="《六位玩家》第一世界-art.json">导出 JSON</button>
+  </span>
+</header>
+
+<div class="kpis">
+  <div class="kpi accent"><div class="l">场景</div><div class="v">1</div><div class="d">主场景 0</div></div>
+  <div class="kpi"><div class="l">叙事道具</div><div class="v">0</div><div class="d">0 个状态变体</div></div>
+  <div class="kpi"><div class="l">一致性锚点</div><div class="v">5</div><div class="d">生成镜头的核对表（场景 + 道具）</div></div>
+  <div class="kpi"><div class="l">光照状态</div><div class="v">1</div><div class="d">换时段 = 重新生成</div></div>
+</div>
+
+
+
+
+<section class="top-sec" id="sec-list">
+  <div class="sec-h"><span class="no">01</span><h2>场景清单</h2></div>
+  <table><thead><tr><th>ID</th><th>场景</th><th>类型</th><th>出现集</th><th>锚点</th><th>光照</th><th>变体</th></tr></thead>
+<tbody><tr><td>S09</td><td>学校食堂门口</td><td>一次性</td><td>1、3</td><td>5</td><td>午后阴雨·屋檐遮雨</td><td>—</td></tr></tbody></table>
+</section>
+
+<section class="top-sec" id="sec-cards">
+  <div class="sec-h"><span class="no">02</span><h2>场景设定卡</h2></div>
+  <div class="cards">
+<article class="scene" id="sc-S09">
+  <header class="sc-h">
+    <span class="sc-id">S09</span>
+    <h3>学校食堂门口</h3>
+    <span class="badge once">一次性</span>
+    <span class="sc-use">出现集 1、3　承载爽点 悬疑推进/因果揭示</span>
+  </header>
+  <p class="sc-sum">用普通校园午后雨檐承载六人吃完饭后的熟络玩笑，干湿交界自然促成聚集与退步，留出由门口到台阶的通路支持结尾一人先走、五人留下。屋檐、双门、地面配色与尺度均为制作设计，不是小说钦定建筑；不增加进屋取物、滑板、群演。</p>
+  <figure class="plate">
+  <button class="zoom" data-src="images/学校食堂门口-sheet.png" aria-label="放大查看">
+    <img src="images/学校食堂门口-sheet.png" alt="学校食堂门口 主视角＋底部与右侧细节条" loading="lazy">
+  </button>
+  <figcaption>主视角＋底部与右侧细节条</figcaption>
+</figure>
+  
+  <section class="blk">
+    <h4>一致性锚点<small>每次生成都必须出现的特征——认场景靠它，QC 也靠它</small></h4>
+    <ol class="anchors"><li><b>平直浅灰雨檐</b><span>后方食堂外墙向前挑出的平直浅灰檐板，覆盖连续约7米宽、3米深的干燥平台；仅制作尺度。</span></li><li><b>深灰双扇玻璃门</b><span>后方墙面偏左一组深灰金属框双扇玻璃门，门前不设家具；玻璃无人物反射，室内只见暗淡无人的入口，不另建内景。</span></li><li><b>干湿分界</b><span>屋檐内浅灰防滑铺地较干，前缘外地面雨湿变深，水滴沿檐口落下形成连续边界；不是积水淹没。</span></li><li><b>两级宽台阶</b><span>平台前缘两级宽浅灰台阶下降到校园步道，踏面防滑槽清楚，中央出口与门前通路连通。</span></li><li><b>右侧开放通路</b><span>檐下右侧保留空白站立区域，中央出口无桌椅柱体阻挡；台阶外步道向画面右后方延伸，可望见街口方向。</span></li></ol>
+  </section>
+  <section class="blk">
+    <h4>光照与时段</h4>
+    <div class="lights"><div class="light"><i>午后阴雨·屋檐遮雨</i><span class="mono">A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.</span><button class="copy mini" data-copy="A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.">复制</button></div></div>
+  </section>
+  <div class="pgroup">
+    <details class="pr">
+  <summary><span>主视角 EN</span><button class="copy" data-copy="A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.">复制</button></summary>
+  <p>A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.</p>
+</details>
+    <details class="pr">
+  <summary><span>设定图 EN</span><button class="copy" data-copy="One 16:9 landscape environment reference sheet. Main master view occupies the upper-left 72 percent width and 70 percent height. Thin dividers separate an L-shaped detail border: two close-up panels on the right and three close-up panels along the bottom. Every detail must be a crop enlargement of the same master space: canopy edge, door frame, dry-to-wet boundary, step grooves, open paving route. Nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels, captions, text or watermarks. A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows">复制</button></summary>
+  <p>One 16:9 landscape environment reference sheet. Main master view occupies the upper-left 72 percent width and 70 percent height. Thin dividers separate an L-shaped detail border: two close-up panels on the right and three close-up panels along the bottom. Every detail must be a crop enlargement of the same master space: canopy edge, door frame, dry-to-wet boundary, step grooves, open paving route. Nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels, captions, text or watermarks. A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows</p>
+</details>
+    <details class="pr">
+  <summary><span>反向提示词</span><button class="copy" data-copy="people, human figures, characters, crowds, silhouettes of people, human reflections, hands, phones, backpacks, skateboards, food, tables, chairs, blocking pillars, flooding, dramatic night lighting, oversaturated colours, sterile showroom cleanliness, warped perspective, melted geometry, floating objects, text, watermark, signature">复制</button></summary>
+  <p>people, human figures, characters, crowds, silhouettes of people, human reflections, hands, phones, backpacks, skateboards, food, tables, chairs, blocking pillars, flooding, dramatic night lighting, oversaturated colours, sterile showroom cleanliness, warped perspective, melted geometry, floating objects, text, watermark, signature</p>
+</details>
+    <div class="pgroup-f"><button class="copy wide" data-copy="{
+  &quot;id&quot;: &quot;S09&quot;,
+  &quot;name&quot;: &quot;学校食堂门口&quot;,
+  &quot;primary&quot;: false,
+  &quot;summary&quot;: &quot;用普通校园午后雨檐承载六人吃完饭后的熟络玩笑，干湿交界自然促成聚集与退步，留出由门口到台阶的通路支持结尾一人先走、五人留下。屋檐、双门、地面配色与尺度均为制作设计，不是小说钦定建筑；不增加进屋取物、滑板、群演。&quot;,
+  &quot;anchors&quot;: [
+    {
+      &quot;name&quot;: &quot;平直浅灰雨檐&quot;,
+      &quot;desc&quot;: &quot;后方食堂外墙向前挑出的平直浅灰檐板，覆盖连续约7米宽、3米深的干燥平台；仅制作尺度。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;深灰双扇玻璃门&quot;,
+      &quot;desc&quot;: &quot;后方墙面偏左一组深灰金属框双扇玻璃门，门前不设家具；玻璃无人物反射，室内只见暗淡无人的入口，不另建内景。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;干湿分界&quot;,
+      &quot;desc&quot;: &quot;屋檐内浅灰防滑铺地较干，前缘外地面雨湿变深，水滴沿檐口落下形成连续边界；不是积水淹没。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;两级宽台阶&quot;,
+      &quot;desc&quot;: &quot;平台前缘两级宽浅灰台阶下降到校园步道，踏面防滑槽清楚，中央出口与门前通路连通。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;右侧开放通路&quot;,
+      &quot;desc&quot;: &quot;檐下右侧保留空白站立区域，中央出口无桌椅柱体阻挡；台阶外步道向画面右后方延伸，可望见街口方向。&quot;
+    }
+  ],
+  &quot;lighting&quot;: [
+    {
+      &quot;state&quot;: &quot;午后阴雨·屋檐遮雨&quot;,
+      &quot;prompt&quot;: &quot;A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.&quot;
+    }
+  ],
+  &quot;image&quot;: {
+    &quot;prompt&quot;: &quot;A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.&quot;,
+    &quot;negativePrompt&quot;: &quot;people, human figures, characters, crowds, silhouettes of people, human reflections, hands, phones, backpacks, skateboards, food, tables, chairs, blocking pillars, flooding, dramatic night lighting, oversaturated colours, sterile showroom cleanliness, warped perspective, melted geometry, floating objects, text, watermark, signature&quot;,
+    &quot;sheet&quot;: &quot;One 16:9 landscape environment reference sheet. Main master view occupies the upper-left 72 percent width and 70 percent height. Thin dividers separate an L-shaped detail border: two close-up panels on the right and three close-up panels along the bottom. Every detail must be a crop enlargement of the same master space: canopy edge, door frame, dry-to-wet boundary, step grooves, open paving route. Nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels, captions, text or watermarks. A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows&quot;,
+    &quot;tags&quot;: [
+      &quot;environment sheet&quot;,
+      &quot;maintained campus&quot;,
+      &quot;rainy afternoon&quot;,
+      &quot;grey paving&quot;,
+      &quot;glass doors&quot;
+    ],
+    &quot;mainViewBox&quot;: [
+      0,
+      0,
+      0.72,
+      0.7
+    ],
+    &quot;referenceImage&quot;: {
+      &quot;path&quot;: &quot;D:\\work\\articles\\六位玩家\\短剧改编\\101制作\\images\\学校食堂门口-sheet.png&quot;,
+      &quot;width&quot;: 1536,
+      &quot;height&quot;: 864,
+      &quot;aspectRatio&quot;: &quot;16:9&quot;,
+      &quot;sha256&quot;: &quot;1baf113d3f8eba55cf6ddadd5260f4b624dccf6916ff50c2e84cb925e47a2aae&quot;,
+      &quot;mainViewBox&quot;: [
+        0,
+        0,
+        1,
+        1
+      ],
+      &quot;boxBasis&quot;: &quot;full-image&quot;
+    }
+  },
+  &quot;seedNote&quot;: &quot;outline 的复用方案：当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。——考虑做成某个主场景的变体（variantOf + changes）&quot;,
+  &quot;usage&quot;: {
+    &quot;episodes&quot;: [
+      1,
+      3
+    ],
+    &quot;beats&quot;: [
+      &quot;悬疑推进/因果揭示&quot;
+    ]
+  },
+  &quot;sheetImage&quot;: &quot;images/学校食堂门口-sheet.png&quot;
+}">复制整个场景 JSON</button></div>
+  </div>
+</article>
+  </div>
+</section>
+
+
+
+<section class="top-sec" id="sec-gates">
+  <div class="sec-h"><span class="no">03</span><h2>质量门</h2></div>
+  <ul class="gate">
+  <li class="ok"><span class="m">✓</span><span>一致性锚点 3–5 个</span></li>
+  <li class="ok"><span class="m">✓</span><span>光照状态至少 1 个且落成提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>参考图无人：反向提示词禁人（场景与道具都查）</span></li>
+  <li class="ok"><span class="m">✓</span><span>出图提示词完整且全部英文</span></li>
+  <li class="ok"><span class="m">✓</span><span>提示词不含角色名<small>未提供 cast.json，本门跳过（视为通过）</small></span></li>
+  <li class="ok"><span class="m">✓</span><span>变体引用完整（variantOf 存在且带 changes）</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具状态至少 1 个且落成提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具尺度参照写进提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具参考图无手：反向提示词禁手</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具设定图纯白背景可抠</span></li>
+  <li class="ok"><span class="m">✓</span><span>同建筑同层的连接与两侧提示词一致</span></li>
+</ul>
+  <p class="gsum">全部通过</p>
+</section>
+
+<p class="foot">设定与提示词由模型依据大纲/原文生成，质量门由脚本确定性检查。参考图一律无人——人是另一层资产；道具参考图另加无手、纯白背景。</p>
+</div>
+
+<div class="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-x" aria-label="关闭">关闭</button>
+  <img alt="">
+</div>
+
+<script type="application/json" id="art-data">{"source":"《六位玩家》第一世界","sceneAspectRatio":"16:9","scenes":[{"id":"S09","name":"学校食堂门口","primary":false,"summary":"用普通校园午后雨檐承载六人吃完饭后的熟络玩笑，干湿交界自然促成聚集与退步，留出由门口到台阶的通路支持结尾一人先走、五人留下。屋檐、双门、地面配色与尺度均为制作设计，不是小说钦定建筑；不增加进屋取物、滑板、群演。","anchors":[{"name":"平直浅灰雨檐","desc":"后方食堂外墙向前挑出的平直浅灰檐板，覆盖连续约7米宽、3米深的干燥平台；仅制作尺度。"},{"name":"深灰双扇玻璃门","desc":"后方墙面偏左一组深灰金属框双扇玻璃门，门前不设家具；玻璃无人物反射，室内只见暗淡无人的入口，不另建内景。"},{"name":"干湿分界","desc":"屋檐内浅灰防滑铺地较干，前缘外地面雨湿变深，水滴沿檐口落下形成连续边界；不是积水淹没。"},{"name":"两级宽台阶","desc":"平台前缘两级宽浅灰台阶下降到校园步道，踏面防滑槽清楚，中央出口与门前通路连通。"},{"name":"右侧开放通路","desc":"檐下右侧保留空白站立区域，中央出口无桌椅柱体阻挡；台阶外步道向画面右后方延伸，可望见街口方向。"}],"lighting":[{"state":"午后阴雨·屋檐遮雨","prompt":"A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text."}],"image":{"prompt":"A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text.","negativePrompt":"people, human figures, characters, crowds, silhouettes of people, human reflections, hands, phones, backpacks, skateboards, food, tables, chairs, blocking pillars, flooding, dramatic night lighting, oversaturated colours, sterile showroom cleanliness, warped perspective, melted geometry, floating objects, text, watermark, signature","sheet":"One 16:9 landscape environment reference sheet. Main master view occupies the upper-left 72 percent width and 70 percent height. Thin dividers separate an L-shaped detail border: two close-up panels on the right and three close-up panels along the bottom. Every detail must be a crop enlargement of the same master space: canopy edge, door frame, dry-to-wet boundary, step grooves, open paving route. Nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels, captions, text or watermarks. A single empty exterior of a Chinese campus cafeteria entrance with early 2020s architecture, on a rainy overcast afternoon. Landscape 16:9. Seen from the campus path at a three-quarter angle toward the facade, all five anchors visible: a straight pale grey projecting canopy over a broad sheltered landing; one pair of dark grey metal-framed glass doors set left of center on the rear wall; light grey dry non-slip paving under the canopy meeting darker rain-wet paving at its front drip line; two broad shallow steps descending from the landing to the path; an unobstructed central walking route and generous empty standing space on the right, with the campus path receding to the right toward a distant street corner. The sheltered landing is approximately seven meters wide and three meters deep. No freestanding column obstructs the gathering area. Closed transparent doors show only a dim empty entrance beyond, no separate interior scene. Cool soft afternoon daylight, readable sheltered faces would remain possible, fine rain outside the canopy, restrained wet-ground reflections, no flooding. Plain off-white wall, functional maintained campus finishes, slight foot traffic wear on thresholds and steps. Empty scene, no people, no human reflections, no loose personal belongings, no phones or backpacks, no skateboard, no food, no tables or chairs, no signage or readable text. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows","tags":["environment sheet","maintained campus","rainy afternoon","grey paving","glass doors"],"mainViewBox":[0,0,0.72,0.7],"referenceImage":{"path":"D:\\work\\articles\\六位玩家\\短剧改编\\101制作\\images\\学校食堂门口-sheet.png","width":1536,"height":864,"aspectRatio":"16:9","sha256":"1baf113d3f8eba55cf6ddadd5260f4b624dccf6916ff50c2e84cb925e47a2aae","mainViewBox":[0,0,1,1],"boxBasis":"full-image"}},"seedNote":"outline 的复用方案：当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。——考虑做成某个主场景的变体（variantOf + changes）","usage":{"episodes":[1,3],"beats":["悬疑推进/因果揭示"]},"sheetImage":"images/学校食堂门口-sheet.png"}],"props":[],"dynasty":"2020年代中国校园建筑（制作设计年代，非原著明确纪年）","scope":"仅第1集第1场101，26拍；不是全剧美术包。","productionNotes":{"sourceFacts":"101现稿26拍：六人从食堂出来，避雨聊天，两部手机各自使用，杰哥挪开挡通路背包，主角下台阶，其余五人留下。","designOnly":"建筑尺寸、门窗形制、五锚点外观和双级台阶是本次美术制作提案，不是小说明示。","ordinaryHandProps":"两部手机及杰哥背包留在角色/镜头连续性，不进叙事道具库，不烘焙进空景。","referenceStatus":"尚无实际景图，未进行认图，mainViewBox仅设定图计划框。","generation":"本阶段只交提示词；一张空景主图由父任务调用，建议用image.prompt而非多面板sheet。"},"productionStatus":"101单张空景已生成并实看；实际图为完整单视角，非多面板sheet；正式站位/分镜未完成"}</script>
+<script>
+const L = {"copied":"已复制","failed":"复制失败"};
+
+// 图片弹层：点图放大，点背景或 Esc 关闭
+const lb = document.querySelector('.lightbox');
+const lbImg = lb.querySelector('img');
+function closeLb() { lb.classList.remove('on'); lbImg.removeAttribute('src'); }
+document.addEventListener('click', (e) => {
+  const z = e.target.closest('.zoom');
+  if (z) { lbImg.src = z.dataset.src; lb.classList.add('on'); return; }
+  if (e.target.closest('.lightbox')) closeLb();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+// 复制按钮
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy');
+  if (!btn) return;
+  e.preventDefault();
+  const label = btn.textContent;
+  try {
+    await navigator.clipboard.writeText(btn.dataset.copy);
+    btn.textContent = L.copied;
+    btn.dataset.done = '1';
+  } catch {
+    btn.textContent = L.failed;
+  }
+  setTimeout(() => { btn.textContent = label; delete btn.dataset.done; }, 1600);
+});
+
+// 导出：报告自己带着完整的 art.json，下载的是它原样
+document.querySelector('.expo').addEventListener('click', (e) => {
+  const btn = e.currentTarget;
+  const url = URL.createObjectURL(
+    new Blob([document.getElementById('art-data').textContent], { type: 'application/json' }),
+  );
+  const a = Object.assign(document.createElement('a'), { href: url, download: btn.dataset.name });
+  a.click();
+  // 别立刻回收——Safari 会抢在下载读完之前撤掉 blob
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+</script>
+</body></html>
