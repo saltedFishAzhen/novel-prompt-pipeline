@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《六位玩家》第一世界 · 开场站位</title>
+<style>
+:root{
+  --paper:#eceded; --panel:#f5f6f5; --side:#e4e6e3; --ink:#191d21; --ink-2:#5b636a; --ink-3:#8c9298;
+  --rule:#d2d5d0; --rule-2:#c2c6bf; --seal:#8a3324; --seal-2:#c56a4e; --seal-soft:#8a332412; --ok:#3d6b4f;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1600px;margin:0 auto;padding:24px 32px 90px}
+h1,h2,h3,h4{margin:0;font-weight:400}
+button{font-family:var(--sans)}
+
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.hd h1{font:400 28px/1.1 var(--serif);letter-spacing:.06em}
+.hd .sub{font-size:13px;color:var(--ink-2)}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.state{font-size:12px;color:var(--ink-3)}
+.state.dirty{color:var(--seal)}
+.gatepill{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);border-radius:99px;padding:6px 12px}
+.gatepill.pass{color:var(--ok);border:1px solid var(--ok)}
+.gatepill.fail{color:var(--seal);border:1px solid var(--seal);background:var(--seal-soft)}
+.expo,.restore{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.15s}
+.expo:hover,.restore:hover{border-color:var(--seal);color:var(--seal)}
+.expo.dirty{border-color:var(--seal);color:#fff;background:var(--seal)}
+.restore[hidden]{display:none}
+button:focus-visible,input:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 6px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:11px 14px 9px}
+.kpi .l{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.kpi .v{font:400 28px/1.15 var(--serif);margin-top:5px}
+.kpi .d{font-size:11px;color:var(--ink-2);margin-top:1px}
+.kpi.accent{border-top:2px solid var(--seal)}
+.galert{margin:14px 0 0;border:1px solid var(--seal);background:var(--seal-soft);border-radius:2px;padding:10px 14px;font-size:13px}
+.galert b{color:var(--seal)}
+.galert span{display:block;font-size:12px;color:var(--ink-2)}
+
+section.top-sec{margin-top:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:16px}
+.sec-h .no{font:500 12px/1 var(--mono);color:var(--seal)}
+.sec-h h2{font:400 20px/1.2 var(--serif);letter-spacing:.05em}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.cards.one{grid-template-columns:1fr}
+@media(max-width:1100px){.cards{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:18px 20px}
+.sc-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--rule-2);padding-bottom:10px;margin-bottom:14px}
+.sc-id{font:500 12px/1 var(--mono);color:var(--seal)}
+.sc-h h3{font:400 20px/1.2 var(--serif);letter-spacing:.04em}
+.badge{font:500 10.5px/1 var(--sans);padding:2px 8px;border-radius:99px;border:1px solid var(--seal);color:var(--seal)}
+.badge.soft{border-color:var(--rule-2);color:var(--ink-2)}
+.sc-use{margin-left:auto;font-size:12px;color:var(--ink-2)}
+.lbl{font:500 11px/1.6 var(--sans);letter-spacing:.14em;color:var(--seal)}
+
+.plate{margin:0 0 12px;background:#fff;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.pic{position:relative;line-height:0}
+.pic img{display:block;width:100%;height:auto}
+.mainbox{position:absolute;border:1px dashed #c96;pointer-events:none}
+.pbox{position:absolute;border:1.5px dashed transparent;border-radius:2px;pointer-events:none}
+.pbox span{position:absolute;left:0;top:-1px;transform:translateY(-100%);font:500 11px/1.4 var(--sans);color:#fff;background:var(--seal);padding:0 4px;border-radius:2px;white-space:nowrap;display:none}
+.pbox.lit{border-color:var(--seal);background:#8a33241f}
+.pbox.lit span{display:block}
+.plate-empty{display:grid;place-items:center;min-height:120px;text-align:center;border:1px dashed var(--rule-2);background:var(--paper);color:var(--ink-3);font-size:13px;padding:12px}
+.plate-empty em{font-style:normal;font-size:12px;opacity:.8}
+.plate.mini{max-width:420px}
+
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--rule);font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 11px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:var(--side)}
+tr:last-child td{border-bottom:0}
+table.items tr.lit td{background:var(--seal-soft)}
+
+.scene .grid{display:grid;grid-template-columns:minmax(320px,640px) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:1100px){.scene .grid{grid-template-columns:1fr}}
+.room{position:relative;aspect-ratio:16/10;touch-action:none;user-select:none;-webkit-user-select:none;
+  border:1px solid var(--rule-2);border-radius:2px;background:#fff}
+/* 方位字放在平面外面一圈：东西贴着北墙、西墙摆时，字不压在它们上面 */
+.planwrap{padding:16px 18px 0}
+.compass{position:absolute;font-size:11px;line-height:1;color:var(--ink-3);pointer-events:none}
+.compass.n{top:-14px;left:50%;transform:translateX(-50%)}
+.compass.s{bottom:-14px;left:50%;transform:translateX(-50%)}
+.compass.w{left:-14px;top:50%;transform:translateY(-50%)}
+.compass.e{right:-14px;top:50%;transform:translateY(-50%)}
+.tray{margin-top:22px}
+.thing{position:absolute;border:1px solid var(--rule-2);border-radius:2px;background:var(--side)}
+/* 名字贴在左上角、不折行：人站在东西中间时不挡名字，小东西的名字溢出到旁边 */
+.thing span{position:absolute;left:2px;top:1px;font-size:11px;line-height:1.3;color:var(--ink-2);white-space:nowrap;pointer-events:none}
+.thing.round span{left:50%;top:50%;transform:translate(-50%,-50%)}
+.thing.seat{border-color:var(--seal-2);background:#c56a4e1a}
+.thing.round{border-radius:50%}
+.thing.lit{border-color:var(--seal);box-shadow:0 0 0 1.5px var(--seal)}
+.token{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;cursor:grab;touch-action:none;z-index:2;border:2px solid #fff;box-shadow:0 1px 3px #0004}
+.token.sit{background:var(--ink-2)}
+.token b{font:500 13px/1 var(--sans);pointer-events:none}
+.token .name{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:2px;font-size:11px;line-height:1.3;
+  color:var(--ink);background:#ffffffd9;padding:0 3px;border-radius:2px;white-space:nowrap;pointer-events:none}
+.token .facing{position:absolute;inset:-9px;pointer-events:none}
+.token .facing::before{content:"";position:absolute;left:50%;top:0;margin-left:-5px;border:5px solid transparent;border-bottom:7px solid var(--seal);border-top:0}
+.token.sel{outline:2px solid var(--seal);outline-offset:2px}
+.token.lifted{cursor:grabbing;z-index:5;transition:none}
+.tray{border:1px dashed var(--rule-2);border-radius:2px;padding:8px 10px;background:var(--paper);min-height:46px}
+.tray.over{border-color:var(--seal);background:var(--seal-soft)}
+.tray-l{display:block;font-size:11px;color:var(--ink-3);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px/1 var(--sans);padding:6px 10px;border-radius:99px;background:var(--panel);border:1px solid var(--rule-2);cursor:grab;touch-action:none;user-select:none}
+.chip.lifted{position:fixed;z-index:20;pointer-events:none;box-shadow:0 2px 8px #0003}
+.chips .none{font-size:12px;color:var(--ink-3)}
+
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.pick{border:1px solid var(--rule);border-radius:2px;background:var(--paper);padding:10px 12px;font-size:12.5px;color:var(--ink-2)}
+.pick h4{font:400 16px/1.3 var(--serif);color:var(--ink);margin-bottom:8px}
+.pick .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.seg{display:inline-flex;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.seg button,.rose button,.step,.out{font:500 12px/1 var(--sans);background:var(--panel);color:var(--ink-2);border:0;padding:6px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--rule-2)}
+.seg button[aria-pressed="true"],.rose button[aria-pressed="true"]{background:var(--seal);color:#fff}
+.rose{display:grid;grid-template-columns:repeat(3,48px);gap:2px}
+.rose button{border:1px solid var(--rule-2);border-radius:2px;padding:6px 0}
+.rose .mid{display:grid;place-items:center;font-size:11px;color:var(--ink-3)}
+.out{border:1px solid var(--rule-2);border-radius:2px}
+.out:hover,.step:hover,.seg button:hover{color:var(--seal)}
+.extras{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.step{border:1px solid var(--rule-2);border-radius:2px;padding:4px 10px}
+.extras .n{font:500 15px/1 var(--mono);min-width:22px;text-align:center}
+.extras .where{flex:1;min-width:180px;font:13px/1.4 var(--sans);padding:6px 8px;border:1px solid var(--rule-2);border-radius:2px;background:#fff}
+.sentence{border:1px solid var(--rule);border-radius:2px;background:#fff;padding:8px 12px}
+.sentence .sh{display:flex;align-items:center;justify-content:space-between}
+.sentence .text{margin:6px 0 2px;font:400 14px/1.8 var(--serif)}
+.copy{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);border:1px solid var(--rule-2);border-radius:2px;padding:4px 10px;cursor:pointer}
+.copy:hover,.copy[data-done]{border-color:var(--seal);color:var(--seal)}
+.why{margin:0;font-size:12.5px;color:var(--ink-2)}
+.why .lbl{margin-right:8px}
+.live{list-style:none;margin:0;padding:0;font-size:12px}
+.live li{color:var(--seal);background:var(--seal-soft);border-radius:2px;padding:4px 8px;margin-top:4px}
+.live li.ok{color:var(--ok);background:none;padding-left:0}
+
+.gate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+@media(max-width:900px){.gate{grid-template-columns:1fr}}
+.gate li{display:flex;gap:8px;padding:5px 0;font-size:12.5px;line-height:1.55}
+.gate .m{flex:none;font-weight:700}
+.gate li.ok .m{color:var(--ok)}
+.gate li.bad .m{color:var(--seal)}
+.gate li.bad{background:var(--seal-soft);border-radius:2px;padding-left:6px}
+.gate small{display:block;color:var(--ink-3)}
+.gsum{margin:10px 0 0;font-size:12px;color:var(--ink-2)}
+.foot{margin-top:40px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  .expo,.restore,.copy,.tray,.pick,.extras button{display:none!important}
+  .page{max-width:none;padding:0}
+  .card{page-break-inside:avoid}
+  body{background:#fff}
+}
+</style></head><body>
+<div class="page">
+
+<header class="hd">
+  <h1>《六位玩家》第一世界</h1>
+  <span class="sub">开场站位</span>
+  <span class="right">
+    <span class="state" aria-live="polite">和文件一致</span>
+    <span class="gatepill pass">✓ 质量门 8/8</span>
+    <button class="restore" hidden>还原到文件里的版本</button>
+    <button class="expo" data-name="《六位玩家》第一世界-staging.json">导出 JSON</button>
+  </span>
+</header>
+
+<div class="kpis">
+  <div class="kpi accent"><div class="l">场次</div><div class="v">5</div><div class="d">3 场有人不在场</div></div>
+  <div class="kpi"><div class="l">地点</div><div class="v">4</div><div class="d">2 个按图认的</div></div>
+  <div class="kpi"><div class="l">开场在场</div><div class="v">16</div><div class="d">人次</div></div>
+  <div class="kpi"><div class="l">群演</div><div class="v">0</div><div class="d">名，只作背景</div></div>
+</div>
+
+
+<section class="top-sec" id="sec-scenes">
+  <div class="sec-h"><span class="no">01</span><h2>各场开场站位</h2></div>
+  <div class="cards one">
+<article class="card scene" data-scene="0" id="sc-3-1">
+  <header class="sc-h"><span class="sc-id">第 3 集第 1 场</span><h3>黎汐家</h3>
+    <span class="sc-use">7 人</span></header>
+  <div class="grid">
+    <div class="planwrap">
+      <div class="room" role="img" aria-label="俯视平面，上北下南、左西右东">
+        <span class="compass n">北</span><span class="compass s">南</span>
+        <span class="compass w">西</span><span class="compass e">东</span>
+        <div class="things"></div><div class="tokens"></div>
+      </div>
+      <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
+    </div>
+    <div class="side">
+      <figure class="plate mini"><div class="pic"><img src="../第二集制作/夜间客厅.png" alt="黎汐家" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="厨房门" style="left:44.70%;top:14.30%;width:14.90%;height:44.30%"><span>厨房门</span></i><i class="pbox" data-item="侧走廊开口" style="left:11.70%;top:14.80%;width:2.30%;height:50.80%"><span>侧走廊开口</span></i><i class="pbox" data-item="深灰入户门" style="left:15.30%;top:19.60%;width:13.60%;height:46.10%"><span>深灰入户门</span></i><i class="pbox" data-item="生日桌" style="left:37.40%;top:52.90%;width:32.10%;height:46.50%"><span>生日桌</span></i><i class="pbox" data-item="北侧冰箱" style="left:65.20%;top:25.10%;width:14.80%;height:47.60%"><span>北侧冰箱</span></i></div></figure>
+      <div class="pick"></div>
+      <div class="extras">
+        <span class="lbl">群演</span>
+        <button class="step" data-step="-1" aria-label="-1">−</button><b class="n"></b><button class="step" data-step="1" aria-label="+1">+</button>
+        <input class="where" type="text" placeholder="群演在哪，如「长桌东侧南端」">
+      </div>
+      <div class="sentence"><div class="sh"><span class="lbl">开场走位</span><button class="copy mini">复制</button></div><p class="text"></p></div>
+      <p class="why"><span class="lbl">为什么这么排</span>回档到完好客厅，七人开场均在；主角与伸手取杯的室友相邻，站姿为制作起点非新剧情。</p>
+      <ul class="live"></ul>
+    </div>
+  </div>
+</article>
+<article class="card scene" data-scene="1" id="sc-3-2">
+  <header class="sc-h"><span class="sc-id">第 3 集第 2 场</span><h3>黎汐家卫生间</h3>
+    <span class="sc-use">3 人</span></header>
+  <div class="grid">
+    <div class="planwrap">
+      <div class="room" role="img" aria-label="俯视平面，上北下南、左西右东">
+        <span class="compass n">北</span><span class="compass s">南</span>
+        <span class="compass w">西</span><span class="compass e">东</span>
+        <div class="things"></div><div class="tokens"></div>
+      </div>
+      <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
+    </div>
+    <div class="side">
+      <div class="plate plate-empty mini"><span>黎汐家卫生间 · 没有图<br><em>把场景图放到 images/黎汐家卫生间-sheet.png 再 render，就能对着图核对</em></span></div>
+      <div class="pick"></div>
+      <div class="extras">
+        <span class="lbl">群演</span>
+        <button class="step" data-step="-1" aria-label="-1">−</button><b class="n"></b><button class="step" data-step="1" aria-label="+1">+</button>
+        <input class="where" type="text" placeholder="群演在哪，如「长桌东侧南端」">
+      </div>
+      <div class="sentence"><div class="sh"><span class="lbl">开场走位</span><button class="copy mini">复制</button></div><p class="text"></p></div>
+      <p class="why"><span class="lbl">为什么这么排</span>仅主角在卫生间门内；二位女性第6拍进入，不提前在场。</p>
+      <ul class="live"></ul>
+    </div>
+  </div>
+</article>
+<article class="card scene" data-scene="2" id="sc-3-3">
+  <header class="sc-h"><span class="sc-id">第 3 集第 3 场</span><h3>咖啡厅门外街边</h3>
+    <span class="sc-use">1 人</span></header>
+  <div class="grid">
+    <div class="planwrap">
+      <div class="room" role="img" aria-label="俯视平面，上北下南、左西右东">
+        <span class="compass n">北</span><span class="compass s">南</span>
+        <span class="compass w">西</span><span class="compass e">东</span>
+        <div class="things"></div><div class="tokens"></div>
+      </div>
+      <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
+    </div>
+    <div class="side">
+      <div class="plate plate-empty mini"><span>咖啡厅门外街边 · 没有图<br><em>把场景图放到 images/咖啡厅门外街边-sheet.png 再 render，就能对着图核对</em></span></div>
+      <div class="pick"></div>
+      <div class="extras">
+        <span class="lbl">群演</span>
+        <button class="step" data-step="-1" aria-label="-1">−</button><b class="n"></b><button class="step" data-step="1" aria-label="+1">+</button>
+        <input class="where" type="text" placeholder="群演在哪，如「长桌东侧南端」">
+      </div>
+      <div class="sentence"><div class="sh"><span class="lbl">开场走位</span><button class="copy mini">复制</button></div><p class="text"></p></div>
+      <p class="why"><span class="lbl">为什么这么排</span>回档后的主角独自在咖啡店门外，电话对方不在场。</p>
+      <ul class="live"></ul>
+    </div>
+  </div>
+</article>
+<article class="card scene" data-scene="3" id="sc-3-4">
+  <header class="sc-h"><span class="sc-id">第 3 集第 4 场</span><h3>学校食堂门口</h3>
+    <span class="sc-use">6 人</span></header>
+  <div class="grid">
+    <div class="planwrap">
+      <div class="room" role="img" aria-label="俯视平面，上北下南、左西右东">
+        <span class="compass n">北</span><span class="compass s">南</span>
+        <span class="compass w">西</span><span class="compass e">东</span>
+        <div class="things"></div><div class="tokens"></div>
+      </div>
+      <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
+    </div>
+    <div class="side">
+      <figure class="plate mini"><div class="pic"><img src="../101制作/images/学校食堂门口-sheet.png" alt="学校食堂门口" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="双扇玻璃门" style="left:18.50%;top:26.50%;width:19.80%;height:43.90%"><span>双扇玻璃门</span></i><i class="pbox" data-item="檐下空地" style="left:39.00%;top:64.30%;width:35.00%;height:9.40%"><span>檐下空地</span></i><i class="pbox" data-item="两级宽台阶" style="left:17.40%;top:66.90%;width:71.40%;height:28.50%"><span>两级宽台阶</span></i><i class="pbox" data-item="雨中步道" style="left:81.00%;top:57.20%;width:19.00%;height:33.80%"><span>雨中步道</span></i></div></figure>
+      <div class="pick"></div>
+      <div class="extras">
+        <span class="lbl">群演</span>
+        <button class="step" data-step="-1" aria-label="-1">−</button><b class="n"></b><button class="step" data-step="1" aria-label="+1">+</button>
+        <input class="where" type="text" placeholder="群演在哪，如「长桌东侧南端」">
+      </div>
+      <div class="sentence"><div class="sh"><span class="lbl">开场走位</span><button class="copy mini">复制</button></div><p class="text"></p></div>
+      <p class="why"><span class="lbl">为什么这么排</span>五室友已在会合处，主角首拍走来；不因对白先坐而发明凳子或坐下动作。</p>
+      <ul class="live"></ul>
+    </div>
+  </div>
+</article>
+<article class="card scene" data-scene="4" id="sc-3-5">
+  <header class="sc-h"><span class="sc-id">第 3 集第 5 场</span><h3>黎汐家</h3>
+    <span class="sc-use">8 人</span></header>
+  <div class="grid">
+    <div class="planwrap">
+      <div class="room" role="img" aria-label="俯视平面，上北下南、左西右东">
+        <span class="compass n">北</span><span class="compass s">南</span>
+        <span class="compass w">西</span><span class="compass e">东</span>
+        <div class="things"></div><div class="tokens"></div>
+      </div>
+      <div class="tray"><span class="tray-l">开场不在场——拖到平面上就是在场</span><div class="chips"></div></div>
+    </div>
+    <div class="side">
+      <figure class="plate mini"><div class="pic"><img src="../第二集制作/夜间客厅.png" alt="黎汐家" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="厨房门" style="left:44.70%;top:14.30%;width:14.90%;height:44.30%"><span>厨房门</span></i><i class="pbox" data-item="侧走廊开口" style="left:11.70%;top:14.80%;width:2.30%;height:50.80%"><span>侧走廊开口</span></i><i class="pbox" data-item="深灰入户门" style="left:15.30%;top:19.60%;width:13.60%;height:46.10%"><span>深灰入户门</span></i><i class="pbox" data-item="生日桌" style="left:37.40%;top:52.90%;width:32.10%;height:46.50%"><span>生日桌</span></i><i class="pbox" data-item="北侧冰箱" style="left:65.20%;top:25.10%;width:14.80%;height:47.60%"><span>北侧冰箱</span></i></div></figure>
+      <div class="pick"></div>
+      <div class="extras">
+        <span class="lbl">群演</span>
+        <button class="step" data-step="-1" aria-label="-1">−</button><b class="n"></b><button class="step" data-step="1" aria-label="+1">+</button>
+        <input class="where" type="text" placeholder="群演在哪，如「长桌东侧南端」">
+      </div>
+      <div class="sentence"><div class="sh"><span class="lbl">开场走位</span><button class="copy mini">复制</button></div><p class="text"></p></div>
+      <p class="why"><span class="lbl">为什么这么排</span>主角与五室友尚未到本场起点；两位女性已在屋内，五人到来后只停楼梯间。</p>
+      <ul class="live"></ul>
+    </div>
+  </div>
+</article>
+  </div>
+</section>
+
+<section class="top-sec" id="sec-locations">
+  <div class="sec-h"><span class="no">02</span><h2>地点与认出来的东西</h2></div>
+  <div class="cards">
+<article class="card loc" data-loc="S01">
+  <header class="sc-h"><span class="sc-id">S01</span><h3>黎汐家</h3>
+    <span class="badge">按图认的</span></header>
+  <p>B01 / F01</p>
+  <ul><li>D01: west → S17</li><li>D03: west → S18</li></ul>
+  <figure class="plate "><div class="pic"><img src="../第二集制作/夜间客厅.png" alt="黎汐家" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="厨房门" style="left:44.70%;top:14.30%;width:14.90%;height:44.30%"><span>厨房门</span></i><i class="pbox" data-item="侧走廊开口" style="left:11.70%;top:14.80%;width:2.30%;height:50.80%"><span>侧走廊开口</span></i><i class="pbox" data-item="深灰入户门" style="left:15.30%;top:19.60%;width:13.60%;height:46.10%"><span>深灰入户门</span></i><i class="pbox" data-item="生日桌" style="left:37.40%;top:52.90%;width:32.10%;height:46.50%"><span>生日桌</span></i><i class="pbox" data-item="北侧冰箱" style="left:65.20%;top:25.10%;width:14.80%;height:47.60%"><span>北侧冰箱</span></i></div></figure>
+  <table class="items"><thead><tr><th>东西</th><th>另一种语言</th><th>能坐能站</th><th>圆的</th></tr></thead><tbody>
+  <tr data-item="厨房门"><td>厨房门</td><td>kitchen door</td><td></td><td></td></tr>
+  <tr data-item="侧走廊开口"><td>侧走廊开口</td><td>side corridor opening</td><td></td><td></td></tr>
+  <tr data-item="深灰入户门"><td>深灰入户门</td><td>dark grey entrance door</td><td></td><td></td></tr>
+  <tr data-item="生日桌"><td>生日桌</td><td>birthday table</td><td></td><td></td></tr>
+  <tr data-item="北侧冰箱"><td>北侧冰箱</td><td>north fridge</td><td></td><td></td></tr>
+  </tbody></table>
+</article>
+<article class="card loc" data-loc="S16">
+  <header class="sc-h"><span class="sc-id">S16</span><h3>黎汐家卫生间</h3>
+    <span class="badge soft">没有图，按设定提示词推算</span></header>
+  <p>B01 / F01</p>
+  <ul><li>D02: south → S17</li></ul>
+  <div class="plate plate-empty "><span>黎汐家卫生间 · 没有图<br><em>把场景图放到 images/黎汐家卫生间-sheet.png 再 render，就能对着图核对</em></span></div>
+  <table class="items"><thead><tr><th>东西</th><th>另一种语言</th><th>能坐能站</th><th>圆的</th></tr></thead><tbody>
+  <tr data-item="卫生间南门"><td>卫生间南门</td><td>south bathroom door</td><td></td><td></td></tr>
+  <tr data-item="北侧洗手台"><td>北侧洗手台</td><td>north washbasin</td><td></td><td></td></tr>
+  <tr data-item="台旁暗格砖"><td>台旁暗格砖</td><td>tile beside basin</td><td></td><td></td></tr>
+  <tr data-item="门台间空地"><td>门台间空地</td><td>clear floor</td><td>✓</td><td></td></tr>
+  </tbody></table>
+</article>
+<article class="card loc" data-loc="S19">
+  <header class="sc-h"><span class="sc-id">S19</span><h3>咖啡厅门外街边</h3>
+    <span class="badge soft">没有图，按设定提示词推算</span></header>
+  <p>B02 / F01</p>
+  <ul><li>D04: west → S10</li></ul>
+  <div class="plate plate-empty "><span>咖啡厅门外街边 · 没有图<br><em>把场景图放到 images/咖啡厅门外街边-sheet.png 再 render，就能对着图核对</em></span></div>
+  <table class="items"><thead><tr><th>东西</th><th>另一种语言</th><th>能坐能站</th><th>圆的</th></tr></thead><tbody>
+  <tr data-item="咖啡厅玻璃门"><td>咖啡厅玻璃门</td><td>cafe glass door</td><td></td><td></td></tr>
+  <tr data-item="门旁墙垛"><td>门旁墙垛</td><td>wall pier beside door</td><td></td><td></td></tr>
+  <tr data-item="街边铺地"><td>街边铺地</td><td>paved sidewalk</td><td>✓</td><td></td></tr>
+  <tr data-item="店外固定窗"><td>店外固定窗</td><td>fixed storefront window</td><td></td><td></td></tr>
+  </tbody></table>
+</article>
+<article class="card loc" data-loc="S09">
+  <header class="sc-h"><span class="sc-id">S09</span><h3>学校食堂门口</h3>
+    <span class="badge">按图认的</span></header>
+  
+  
+  <figure class="plate "><div class="pic"><img src="../101制作/images/学校食堂门口-sheet.png" alt="学校食堂门口" loading="lazy"><i class="mainbox" style="left:0%;top:0%;width:100%;height:100%"></i><i class="pbox" data-item="双扇玻璃门" style="left:18.50%;top:26.50%;width:19.80%;height:43.90%"><span>双扇玻璃门</span></i><i class="pbox" data-item="檐下空地" style="left:39.00%;top:64.30%;width:35.00%;height:9.40%"><span>檐下空地</span></i><i class="pbox" data-item="两级宽台阶" style="left:17.40%;top:66.90%;width:71.40%;height:28.50%"><span>两级宽台阶</span></i><i class="pbox" data-item="雨中步道" style="left:81.00%;top:57.20%;width:19.00%;height:33.80%"><span>雨中步道</span></i></div></figure>
+  <table class="items"><thead><tr><th>东西</th><th>另一种语言</th><th>能坐能站</th><th>圆的</th></tr></thead><tbody>
+  <tr data-item="双扇玻璃门"><td>双扇玻璃门</td><td>double glass doors</td><td></td><td></td></tr>
+  <tr data-item="檐下空地"><td>檐下空地</td><td>sheltered landing</td><td>✓</td><td></td></tr>
+  <tr data-item="两级宽台阶"><td>两级宽台阶</td><td>two broad steps</td><td>✓</td><td></td></tr>
+  <tr data-item="雨中步道"><td>雨中步道</td><td>campus path</td><td>✓</td><td></td></tr>
+  </tbody></table>
+</article>
+  </div>
+</section>
+
+<section class="top-sec" id="sec-gates">
+  <div class="sec-h"><span class="no">03</span><h2>质量门</h2></div>
+  <ul class="gate"><li class="ok"><span class="m">✓</span><span>每个地点都认了图，4–20 件东西</span></li>
+<li class="ok"><span class="m">✓</span><span>东西的名字不重复，平面位置和图上位置都是合法的框</span></li>
+<li class="ok"><span class="m">✓</span><span>每一场的地点都有认图结果</span></li>
+<li class="ok"><span class="m">✓</span><span>每一场的出场人物正好各一条<small>未提供 script.json：只查站位表自己，没跟剧本核对</small></span></li>
+<li class="ok"><span class="m">✓</span><span>每个人都定了开场在不在，至少一个人在场</span></li>
+<li class="ok"><span class="m">✓</span><span>在场的人落在认出来的东西上，方位、坐站、朝向合法</span></li>
+<li class="ok"><span class="m">✓</span><span>同一侧及圆桌相邻侧的人不叠在一处</span></li>
+<li class="ok"><span class="m">✓</span><span>群演人数是整数，有群演写明在哪</span></li></ul>
+  <p class="gsum">质量门全部通过 · 这是 render 那一刻的结果；页面上改过以后，以导出后再跑 validate 为准。每场卡片右下角是改动后实时重算的检查。</p>
+</section>
+
+<p class="foot">novel-staging · 开场站位。平面上的位置由「东西 + 哪一侧 + 沿着多远」算出来，跟走位句永远是一回事。</p>
+</div>
+
+<script type="application/json" id="staging-data">{"source":"《六位玩家》第一世界","lang":"zh","locations":[{"sceneId":"S01","name":"黎汐家","space":{"buildingId":"B01","floorId":"F01","adjacentTo":["S17","S18"]},"spatialConnections":[{"id":"D01","side":"west","otherSceneId":"S17","portal":{"widthMeters":1,"heightMeters":2.1,"material":"cream plaster opening","anchors":["grey square floor tiles","plain cream jamb"]}},{"id":"D03","side":"west","otherSceneId":"S18","portal":{"widthMeters":0.9,"heightMeters":2.1,"material":"dark grey metal door","anchors":["peephole","dark frame and grey threshold"]}}],"referenceImage":{"path":"D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png","width":1536,"height":864,"aspectRatio":"16:9","sha256":"18f2e9ff7501864487a2cb8e193b2bc6fa61c02c83e04659c0652480b0953d0f","mainViewBox":[0,0,1,1],"boxBasis":"full-image"},"readFrom":"picture","items":[{"name":"厨房门","alt":"kitchen door","plan":[0.46,0.06,0.62,0.13],"on":false,"round":false,"box":[0.447,0.143,0.596,0.586]},{"name":"侧走廊开口","alt":"side corridor opening","plan":[0.02,0.15,0.08,0.29],"on":false,"round":false,"box":[0.117,0.148,0.14,0.656],"connectionId":"D01"},{"name":"深灰入户门","alt":"dark grey entrance door","plan":[0.02,0.33,0.09,0.54],"on":false,"round":false,"box":[0.153,0.196,0.289,0.657],"connectionId":"D03"},{"name":"生日桌","alt":"birthday table","plan":[0.35,0.39,0.69,0.72],"on":false,"round":false,"box":[0.374,0.529,0.695,0.994]},{"name":"北侧冰箱","alt":"north fridge","plan":[0.71,0.12,0.87,0.31],"on":false,"round":false,"box":[0.652,0.251,0.8,0.727]}]},{"sceneId":"S16","name":"黎汐家卫生间","space":{"buildingId":"B01","floorId":"F01","adjacentTo":["S17"]},"spatialConnections":[{"id":"D02","side":"south","otherSceneId":"S17","portal":{"widthMeters":0.8,"heightMeters":2,"material":"cream painted door","anchors":["plain silver lever","small privacy-lock fitting"]}}],"readFrom":"prompt","items":[{"name":"卫生间南门","alt":"south bathroom door","plan":[0.35,0.88,0.59,0.98],"on":false,"round":false,"connectionId":"D02"},{"name":"北侧洗手台","alt":"north washbasin","plan":[0.27,0.07,0.53,0.22],"on":false,"round":false},{"name":"台旁暗格砖","alt":"tile beside basin","plan":[0.6,0.06,0.77,0.2],"on":false,"round":false},{"name":"门台间空地","alt":"clear floor","plan":[0.31,0.4,0.68,0.68],"on":true,"round":false}]},{"sceneId":"S19","name":"咖啡厅门外街边","space":{"buildingId":"B02","floorId":"F01","adjacentTo":["S10"]},"spatialConnections":[{"id":"D04","side":"west","otherSceneId":"S10","portal":{"widthMeters":0.9,"heightMeters":2.1,"material":"dark grey metal framed glass","anchors":["long slim vertical handle","light grey threshold"]}}],"readFrom":"prompt","items":[{"name":"咖啡厅玻璃门","alt":"cafe glass door","plan":[0.01,0.27,0.1,0.49],"on":false,"round":false,"connectionId":"D04"},{"name":"门旁墙垛","alt":"wall pier beside door","plan":[0.01,0.58,0.12,0.76],"on":false,"round":false},{"name":"街边铺地","alt":"paved sidewalk","plan":[0.33,0.26,0.68,0.72],"on":true,"round":false},{"name":"店外固定窗","alt":"fixed storefront window","plan":[0.02,0.04,0.1,0.18],"on":false,"round":false}]},{"sceneId":"S09","name":"学校食堂门口","referenceImage":{"path":"D:\\work\\articles\\六位玩家\\短剧改编\\101制作\\images\\学校食堂门口-sheet.png","width":1536,"height":864,"aspectRatio":"16:9","sha256":"1baf113d3f8eba55cf6ddadd5260f4b624dccf6916ff50c2e84cb925e47a2aae","mainViewBox":[0,0,1,1],"boxBasis":"full-image"},"readFrom":"picture","items":[{"name":"双扇玻璃门","alt":"double glass doors","plan":[0.16,0.06,0.36,0.12],"on":false,"round":false,"box":[0.185,0.265,0.383,0.704]},{"name":"檐下空地","alt":"sheltered landing","plan":[0.4,0.2,0.83,0.51],"on":true,"round":false,"box":[0.39,0.643,0.74,0.737]},{"name":"两级宽台阶","alt":"two broad steps","plan":[0.12,0.61,0.86,0.74],"on":true,"round":false,"box":[0.174,0.669,0.888,0.954]},{"name":"雨中步道","alt":"campus path","plan":[0.89,0.22,0.99,0.9],"on":true,"round":false,"box":[0.81,0.572,1,0.91]}]}],"scenes":[{"ep":3,"scene":1,"sceneId":"S01","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C02","name":"森巴"},{"id":"C03","name":"x坤"},{"id":"C04","name":"y坤"},{"id":"C05","name":"邓布利多"},{"id":"C06","name":"AAA建材批发杰哥"},{"id":"C07","name":"黎汐"}],"places":[{"id":"C01","name":"本群最帅之人","present":true,"item":"生日桌","side":"west","along":0.35,"posture":"stand","facing":"east"},{"id":"C02","name":"森巴","present":true,"item":"生日桌","side":"south","along":0.25,"posture":"stand","facing":"north"},{"id":"C03","name":"x坤","present":true,"item":"生日桌","side":"south","along":0.75,"posture":"stand","facing":"north"},{"id":"C04","name":"y坤","present":true,"item":"生日桌","side":"west","along":0.65,"posture":"stand","facing":"east"},{"id":"C05","name":"邓布利多","present":true,"item":"生日桌","side":"east","along":0.3,"posture":"stand","facing":"west"},{"id":"C06","name":"AAA建材批发杰哥","present":true,"item":"生日桌","side":"east","along":0.7,"posture":"stand","facing":"west"},{"id":"C07","name":"黎汐","present":true,"item":"生日桌","side":"north","along":0.5,"posture":"stand","facing":"south"}],"extras":0,"extrasWhere":null,"why":"回档到完好客厅，七人开场均在；主角与伸手取杯的室友相邻，站姿为制作起点非新剧情。"},{"ep":3,"scene":2,"sceneId":"S16","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C07","name":"黎汐"},{"id":"C08","name":"顾岚乔"}],"places":[{"id":"C01","name":"本群最帅之人","present":true,"item":"卫生间南门","side":"north","along":0.5,"posture":"stand","facing":"south"},{"id":"C07","name":"黎汐","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C08","name":"顾岚乔","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null}],"extras":0,"extrasWhere":null,"why":"仅主角在卫生间门内；二位女性第6拍进入，不提前在场。"},{"ep":3,"scene":3,"sceneId":"S19","cast":[{"id":"C01","name":"本群最帅之人"}],"places":[{"id":"C01","name":"本群最帅之人","present":true,"item":"门旁墙垛","side":"east","along":0.5,"posture":"stand","facing":"west"}],"extras":0,"extrasWhere":null,"why":"回档后的主角独自在咖啡店门外，电话对方不在场。"},{"ep":3,"scene":4,"sceneId":"S09","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C02","name":"森巴"},{"id":"C03","name":"x坤"},{"id":"C04","name":"y坤"},{"id":"C05","name":"邓布利多"},{"id":"C06","name":"AAA建材批发杰哥"}],"places":[{"id":"C01","name":"本群最帅之人","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C02","name":"森巴","present":true,"item":"双扇玻璃门","side":"south","along":0.2,"posture":"stand","facing":"southeast"},{"id":"C03","name":"x坤","present":true,"item":"檐下空地","side":"north","along":0.2,"posture":"stand","facing":"south"},{"id":"C04","name":"y坤","present":true,"item":"檐下空地","side":"north","along":0.5,"posture":"stand","facing":"south"},{"id":"C05","name":"邓布利多","present":true,"item":"檐下空地","side":"north","along":0.8,"posture":"stand","facing":"south"},{"id":"C06","name":"AAA建材批发杰哥","present":true,"item":"双扇玻璃门","side":"south","along":0.8,"posture":"stand","facing":"southeast"}],"extras":0,"extrasWhere":null,"why":"五室友已在会合处，主角首拍走来；不因对白先坐而发明凳子或坐下动作。"},{"ep":3,"scene":5,"sceneId":"S01","cast":[{"id":"C01","name":"本群最帅之人"},{"id":"C02","name":"森巴"},{"id":"C03","name":"x坤"},{"id":"C04","name":"y坤"},{"id":"C05","name":"邓布利多"},{"id":"C06","name":"AAA建材批发杰哥"},{"id":"C07","name":"黎汐"},{"id":"C08","name":"顾岚乔"}],"places":[{"id":"C01","name":"本群最帅之人","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C02","name":"森巴","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C03","name":"x坤","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C04","name":"y坤","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C05","name":"邓布利多","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C06","name":"AAA建材批发杰哥","present":false,"item":null,"side":null,"along":null,"posture":null,"facing":null},{"id":"C07","name":"黎汐","present":true,"item":"生日桌","side":"west","along":0.5,"posture":"stand","facing":"west"},{"id":"C08","name":"顾岚乔","present":true,"item":"厨房门","side":"north","along":0.5,"posture":"stand","facing":"south"}],"extras":0,"extrasWhere":null,"why":"主角与五室友尚未到本场起点；两位女性已在屋内，五人到来后只停楼梯间。"}],"status":"S01夜客厅与S09食堂已按旧实际图认4—5项；S16卫生间、S19店外暂prompt推算，待生成认图。走廊/楼梯是逐切环境覆盖，非新增剧情场次。"}</script>
+<script>
+function stagingCore() {
+  const SIDES = ['north', 'east', 'south', 'west', 'on'];
+  const POSTURES = ['sit', 'stand'];
+  const FACINGS = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'];
+  /** 人站在一件东西边上时，离它的边多远。 */
+  const PLAN_GAP = 0.04;
+  /** 同一件东西同一侧的两个人，along 至少差这么多才不算叠在一处。 */
+  const MIN_APART = 0.12;
+  const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+  const ZH_SIDE = { north: '北侧', east: '东侧', south: '南侧', west: '西侧' };
+  const ZH_FACING = {
+    north: '北', northeast: '东北', east: '东', southeast: '东南', south: '南', southwest: '西南', west: '西', northwest: '西北',
+  };
+  /** 东西两侧沿南北排，南北两侧沿东西排。 */
+  const runsNorthSouth = (side) => side === 'east' || side === 'west';
+
+  /** 从正上方看是圆的（圆桌、圆地毯）：画成圆，人围着它一圈。没写 round 就看名字。 */
+  const isRound = (i) => (typeof i.round === 'boolean' ? i.round : /圆|round|circular|oval/i.test(`${i.name} ${i.alt ?? ''}`));
+
+  function alongWord(side, along, lang) {
+    if (side === 'on') return '';
+    const third = along < 1 / 3 ? 0 : along > 2 / 3 ? 2 : 1;
+    if (runsNorthSouth(side)) {
+      return lang === 'zh' ? ['靠北', '中段', '靠南'][third] : ['toward the north end', 'in the middle', 'toward the south end'][third];
+    }
+    return lang === 'zh' ? ['靠西', '', '靠东'][third] : ['toward the west end', '', 'toward the east end'][third];
+  }
+
+  /**
+   * 一个人的位置写成一句走位：「胡二爷坐在左舷长坐板上，面朝东」。`after` 是同一件东西
+   * 同一侧排在他前面的那个人（「…东侧中段、胡二爷南侧」），落在同一段里也说得清先后。
+   */
+  function placeSentence(p, lang, after, itemName) {
+    const thing = itemName ?? p.item;
+    if (!p.present || !p.item || !thing) return null;
+    const step = runsNorthSouth(p.side) ? 'south' : 'east';
+    if (lang === 'zh') {
+      const verb = p.posture === 'sit' ? '坐在' : '站在';
+      const where = p.side === 'on'
+        ? `${thing}上`
+        : `${thing}${ZH_SIDE[p.side]}${alongWord(p.side, p.along, 'zh')}${after ? `、${after.name}${step === 'south' ? '南' : '东'}侧` : ''}`;
+      return `${p.name}${verb}${where}，面朝${ZH_FACING[p.facing] ?? p.facing}`;
+    }
+    const verb = p.posture === 'sit' ? 'sits' : 'stands';
+    const where = p.side === 'on'
+      ? `on the ${thing}`
+      : [`on the ${p.side} side of the ${thing}`, alongWord(p.side, p.along, 'en'), after ? `just ${step} of ${after.name}` : '']
+          .filter(Boolean).join(', ');
+    return `${p.name} ${verb} ${where}, facing ${p.facing}`;
+  }
+
+  /** 同一件东西同一侧，每个人前面紧挨着的是谁（按 along 排）。 */
+  function neighbours(places) {
+    const groups = new Map();
+    for (const p of places) {
+      if (!p.present || !p.item || p.side === 'on') continue;
+      const key = `${p.item}:${p.side}`;
+      groups.set(key, [...(groups.get(key) ?? []), p]);
+    }
+    const before = new Map();
+    for (const list of groups.values()) {
+      const sorted = [...list].sort((a, b) => a.along - b.along);
+      sorted.forEach((p, i) => { if (i > 0) before.set(p.id, sorted[i - 1]); });
+    }
+    return before;
+  }
+
+  function extrasSentence(s, lang) {
+    const where = (s.extrasWhere ?? '').trim();
+    if (!(s.extras > 0)) return lang === 'zh' ? '其余座位空着，没有其他人' : 'every other seat is empty and nobody else is there';
+    return lang === 'zh'
+      ? `另有 ${s.extras} 名群演${where ? `在${where}` : ''}，只作背景`
+      : `${s.extras} extra${s.extras === 1 ? '' : 's'}${where ? ` ${where}` : ''}, background only`;
+  }
+
+  /**
+   * 这一场的开场走位：在场的每个人一句，按站位表的顺序，最后一句交代还有没有别人。
+   * 分镜这一场第一段的开场走位就照抄它。`nameIn` 把东西的名字换成另一种语言。
+   */
+  function stagingBlocking(scene, lang, nameIn) {
+    const places = (scene.places ?? []).filter((p) => p.present && p.item);
+    const before = neighbours(places);
+    const clauses = places
+      .map((p) => placeSentence(p, lang, before.get(p.id), nameIn ? nameIn(p.item) : p.item))
+      .filter(Boolean);
+    if (!clauses.length) return null;
+    clauses.push(extrasSentence(scene, lang));
+    return lang === 'zh' ? `${clauses.join('；')}。` : `${clauses.join('; ')}.`;
+  }
+
+  /** 面朝他所在的那件东西：在它东侧就面朝西。在它上面就面朝房间——背对它靠着的那面墙，不靠墙就朝南（机位）。 */
+  function defaultFacing(side, item) {
+    if (side === 'east') return 'west';
+    if (side === 'west') return 'east';
+    if (side === 'north') return 'south';
+    if (side === 'south') return 'north';
+    if (!item) return 'south';
+    const cx = (item.plan[0] + item.plan[2]) / 2;
+    if (cx < 0.25) return 'east';
+    if (cx > 0.75) return 'west';
+    return 'south';
+  }
+
+  /*
+   * 圆的东西一侧是四分之一圈，along 沿这段弧走，跟沿直边走一样：南侧是下面那段，从西南（0）
+   * 到东南（1）；东侧是右边那段，从东北（0）到东南（1）。角度在平面上量，y 朝下：0 是东、90 是南。
+   */
+  const ARC_START = { south: 135, west: 225, north: 225, east: -45 };
+  const ARC_TURN = { south: -90, west: -90, north: 90, east: 90 };
+
+  function arcPlace(deg) {
+    const a = ((deg % 360) + 360) % 360;
+    if (a > 45 && a <= 135) return { side: 'south', along: (135 - a) / 90 };
+    if (a > 135 && a <= 225) return { side: 'west', along: (225 - a) / 90 };
+    if (a > 225 && a <= 315) return { side: 'north', along: (a - 225) / 90 };
+    return { side: 'east', along: ((a > 315 ? a - 360 : a) + 45) / 90 };
+  }
+
+  /** 一个位置画在平面上的哪一点。 */
+  function placePoint(item, side, along, spread = 0) {
+    const [x0, y0, x1, y1] = item.plan;
+    const t = clamp01(along ?? 0.5);
+    if (side !== 'on' && isRound(item)) {
+      const deg = ((ARC_START[side] + ARC_TURN[side] * t) * Math.PI) / 180;
+      return {
+        x: clamp01((x0 + x1) / 2 + ((x1 - x0) / 2 + PLAN_GAP) * Math.cos(deg)),
+        y: clamp01((y0 + y1) / 2 + ((y1 - y0) / 2 + PLAN_GAP) * Math.sin(deg)),
+      };
+    }
+    let p;
+    if (side === 'north') p = { x: x0 + (x1 - x0) * t, y: y0 - PLAN_GAP };
+    else if (side === 'south') p = { x: x0 + (x1 - x0) * t, y: y1 + PLAN_GAP };
+    else if (side === 'west') p = { x: x0 - PLAN_GAP, y: y0 + (y1 - y0) * t };
+    else if (side === 'east') p = { x: x1 + PLAN_GAP, y: y0 + (y1 - y0) * t };
+    // 在它上面：放在中间，几个人就并排
+    else p = { x: (x0 + x1) / 2 + (x1 - x0) * 0.2 * spread, y: (y0 + y1) / 2 };
+    return { x: clamp01(p.x), y: clamp01(p.y) };
+  }
+
+  /**
+   * 每个在场的人画在平面上的哪一点，按句子里说的（东西、哪一侧、沿着多远）算——画出来的跟写出来的
+   * 永远是一回事。几个人在同一件东西上就并排。东西不在 items 里的人没有点。
+   */
+  function placePoints(places, items) {
+    const byName = new Map(items.map((i) => [i.name, i]));
+    const onSoFar = new Map();
+    const out = new Map();
+    for (const p of places) {
+      const it = p.present && p.item ? byName.get(p.item) : undefined;
+      if (!it) continue;
+      let spread = 0;
+      if (p.side === 'on') {
+        const k = onSoFar.get(it.name) ?? 0;
+        onSoFar.set(it.name, k + 1);
+        spread = k === 0 ? 0 : k % 2 ? (k + 1) / 2 : -k / 2;
+      }
+      out.set(p.id, placePoint(it, p.side, p.along, spread));
+    }
+    return out;
+  }
+
+  /**
+   * 拖到平面上某一点松手，人落在哪：落在能坐能站的东西里面（最小的那件）就在它上面；否则落在
+   * 最近那件东西最近的一侧、沿这一侧多远——松在桌面上就是桌子最近的那条边。
+   */
+  function nearestPlace(pt, items) {
+    const inside = (b) => pt.x >= b[0] && pt.x <= b[2] && pt.y >= b[1] && pt.y <= b[3];
+    const area = (b) => (b[2] - b[0]) * (b[3] - b[1]);
+    const seat = items.filter((i) => i.on && inside(i.plan)).sort((a, b) => area(a.plan) - area(b.plan))[0];
+    if (seat) return { item: seat.name, side: 'on', along: 0.5 };
+    let best = null;
+    for (const i of items) {
+      const [x0, y0, x1, y1] = i.plan;
+      if (isRound(i)) {
+        const rx = (x1 - x0) / 2 || 0.001;
+        const ry = (y1 - y0) / 2 || 0.001;
+        const dx = pt.x - (x0 + x1) / 2;
+        const dy = pt.y - (y0 + y1) / 2;
+        const deg = Math.atan2(dy / ry, dx / rx);
+        const d = Math.hypot(dx - rx * Math.cos(deg), dy - ry * Math.sin(deg));
+        const bias = (dx / rx) ** 2 + (dy / ry) ** 2 <= 1 ? -1 + area(i.plan) * 0.01 : 0;
+        if (!best || d + bias < best.d) best = { item: i.name, ...arcPlace((deg * 180) / Math.PI), d: d + bias };
+        continue;
+      }
+      const cx = Math.min(x1, Math.max(x0, pt.x));
+      const cy = Math.min(y1, Math.max(y0, pt.y));
+      const sides = [
+        ['north', Math.hypot(pt.x - cx, pt.y - y0), clamp01((pt.x - x0) / (x1 - x0 || 1))],
+        ['south', Math.hypot(pt.x - cx, pt.y - y1), clamp01((pt.x - x0) / (x1 - x0 || 1))],
+        ['west', Math.hypot(pt.x - x0, pt.y - cy), clamp01((pt.y - y0) / (y1 - y0 || 1))],
+        ['east', Math.hypot(pt.x - x1, pt.y - cy), clamp01((pt.y - y0) / (y1 - y0 || 1))],
+      ];
+      // 点在某件东西里面就算它最近，不管哪条边；两件都罩着它时取小的那件
+      const bias = inside(i.plan) ? -1 + area(i.plan) * 0.01 : 0;
+      for (const [side, d, along] of sides) {
+        if (!best || d + bias < best.d) best = { item: i.name, side, along, d: d + bias };
+      }
+    }
+    return best ? { item: best.item, side: best.side, along: best.along } : null;
+  }
+
+  /**
+   * 拖动后这个人怎么变：换了东西或换了一侧就转过去面朝它；落在能坐的东西上就坐下；
+   * 原来不在场、刚拖进来的人站着。
+   */
+  function moveTo(place, target, items) {
+    const it = items.find((i) => i.name === target.item);
+    const turned = !place.present || target.side !== place.side || target.item !== place.item;
+    return {
+      ...place,
+      present: true,
+      item: target.item,
+      side: target.side,
+      along: target.side === 'on' ? 0.5 : Math.round(target.along * 100) / 100,
+      posture: target.side === 'on' && it?.on ? 'sit' : !place.present ? 'stand' : place.posture ?? 'stand',
+      facing: turned ? defaultFacing(target.side, it) : place.facing,
+    };
+  }
+
+  /**
+   * 一场的站位哪里不对：质量门按 gate 汇总，报告页面上改一下就重算一遍。
+   * `location` 是这一场所在地点的认图结果。
+   */
+  function sceneProblems(scene, location, lang = 'zh') {
+    const zh = lang === 'zh';
+    const out = [];
+    const add = (gate, text) => out.push({ gate, text });
+    const items = Array.isArray(location?.items) ? location.items.filter((i) => i && typeof i === 'object' && !Array.isArray(i)) : [];
+    const things = new Map(items.map((i) => [i.name, i]));
+    const cast = Array.isArray(scene.cast) ? scene.cast : [];
+    const places = Array.isArray(scene.places) ? scene.places : [];
+    if (!cast.length) add('cast-complete', zh ? '出场人物表为空' : 'scene cast is empty');
+    if (!places.length) add('cast-complete', zh ? '站位表为空' : 'places are empty');
+    if (cast.some((c) => !c || typeof c.id !== 'string' || !c.id.trim() || typeof c.name !== 'string' || !c.name.trim())) {
+      add('cast-complete', zh ? '出场人物缺 id 或姓名' : 'scene cast requires an id and name for each person');
+    }
+    if (places.some((p) => !p || typeof p.id !== 'string' || !p.id.trim() || typeof p.name !== 'string' || !p.name.trim())) {
+      add('cast-complete', zh ? '站位人物缺 id 或姓名' : 'places require an id and name for each person');
+    }
+    if (cast.some((c) => !c || typeof c !== 'object') || places.some((p) => !p || typeof p !== 'object')) return out;
+    const ids = places.map((p) => p.id);
+    const castIds = cast.map((c) => c.id);
+    if (new Set(castIds).size !== castIds.length) add('cast-complete', zh ? '出场人物 id 重复' : 'scene cast contains duplicate ids');
+    const missing = cast.filter((c) => !ids.includes(c.id)).map((c) => c.name);
+    if (missing.length) add('cast-complete', zh ? `站位表里少了：${missing.join('、')}` : `missing from the places: ${missing.join(', ')}`);
+    const extra = places.filter((p) => !castIds.includes(p.id)).map((p) => p.name ?? p.id);
+    if (extra.length) add('cast-complete', zh ? `出场人物表以外的人：${extra.join('、')}` : `not in the scene's cast: ${extra.join(', ')}`);
+    const twice = ids.filter((id, i) => ids.indexOf(id) !== i);
+    if (twice.length) add('cast-complete', zh ? `同一个人写了两次：${[...new Set(twice)].join('、')}` : `listed twice: ${[...new Set(twice)].join(', ')}`);
+    const castById = new Map(cast.map((c) => [c.id, c]));
+    for (const p of places) {
+      const c = castById.get(p.id);
+      if (c && p.name !== c.name) add('cast-complete', zh
+        ? `${p.id} 的站位姓名「${p.name ?? ''}」与出场人物表「${c.name ?? ''}」不一致`
+        : `${p.id}'s place name does not match the scene cast name`);
+    }
+
+    const undecided = places.filter((p) => typeof p.present !== 'boolean').map((p) => p.name);
+    if (undecided.length) add('present-set', zh ? `还没定开场在不在：${undecided.join('、')}` : `not yet said whether they are there at the opening: ${undecided.join(', ')}`);
+    else if (places.length && !places.some((p) => p.present)) add('present-set', zh ? '开场一个人都不在' : 'nobody is there when the scene opens');
+
+    for (const p of places) {
+      if (p.present === false) {
+        if (p.item != null || p.side != null || p.along != null) {
+          add('place-valid', zh ? `${p.name} 开场不在，item、side、along 要空着` : `${p.name} is not there at the opening: leave item, side and along empty`);
+        }
+        continue;
+      }
+      if (p.present !== true) continue;
+      const it = things.get(p.item);
+      if (!it) add('place-valid', zh ? `${p.name} 站的「${p.item ?? ''}」不在这个地点认出来的东西里` : `${p.name}'s "${p.item ?? ''}" is not one of the things read off this place`);
+      if (!SIDES.includes(p.side)) add('place-valid', zh ? `${p.name} 的 side 要是 north / east / south / west / on` : `${p.name}'s side must be north / east / south / west / on`);
+      else if (p.side === 'on' && it && !it.on) add('place-valid', zh ? `${p.name} 写了在「${p.item}」上，可它上面不能坐也不能站，写它的哪一侧` : `${p.name} is on the "${p.item}", which nobody can sit or stand on: say which side`);
+      if (p.side !== 'on' && !(typeof p.along === 'number' && p.along >= 0 && p.along <= 1)) {
+        add('place-valid', zh ? `${p.name} 的 along 要是 0 到 1 之间的数` : `${p.name}'s along must be a number from 0 to 1`);
+      }
+      if (!POSTURES.includes(p.posture)) add('place-valid', zh ? `${p.name} 的 posture 要是 sit 或 stand` : `${p.name}'s posture must be sit or stand`);
+      if (!FACINGS.includes(p.facing)) add('place-valid', zh ? `${p.name} 的 facing 要是八个方位之一` : `${p.name}'s facing must be one of the eight directions`);
+    }
+
+    const sideGroups = new Map();
+    for (const p of places) {
+      if (p.present !== true || !things.has(p.item) || p.side === 'on' || typeof p.along !== 'number') continue;
+      const key = `${p.item}:${p.side}`;
+      sideGroups.set(key, [...(sideGroups.get(key) ?? []), p]);
+    }
+    for (const list of sideGroups.values()) {
+      const sorted = [...list].sort((a, b) => a.along - b.along);
+      for (let i = 1; i < sorted.length; i++) {
+        const a = sorted[i - 1];
+        const b = sorted[i];
+        if (b.along - a.along < MIN_APART) {
+          add('no-overlap', zh
+            ? `${a.name} 和 ${b.name} 叠在「${b.item}」${ZH_SIDE[b.side]}同一处，沿这一侧拉开`
+            : `${a.name} and ${b.name} stand on one spot on the ${b.side} side of the "${b.item}": spread them along it`);
+        }
+      }
+    }
+
+    // 圆桌相邻侧共用弧的端点。按平面实际坐标检查跨侧距离，阈值与同侧 MIN_APART 对应。
+    const aroundRound = places.filter((p) => p.present === true && p.side !== 'on' &&
+      SIDES.includes(p.side) && Number.isFinite(p.along) && p.along >= 0 && p.along <= 1 &&
+      things.has(p.item) && isRound(things.get(p.item)) &&
+      Array.isArray(things.get(p.item).plan) && things.get(p.item).plan.length === 4 &&
+      things.get(p.item).plan.every(Number.isFinite));
+    for (let i = 0; i < aroundRound.length; i++) {
+      for (let j = i + 1; j < aroundRound.length; j++) {
+        const a = aroundRound[i];
+        const b = aroundRound[j];
+        if (a.item !== b.item || a.side === b.side) continue;
+        const item = things.get(a.item);
+        const [x0, y0, x1, y1] = item.plan;
+        const rx = (x1 - x0) / 2 + PLAN_GAP;
+        const ry = (y1 - y0) / 2 + PLAN_GAP;
+        if (rx <= 0 || ry <= 0) continue;
+        const pa = placePoint(item, a.side, a.along);
+        const pb = placePoint(item, b.side, b.along);
+        const distance = Math.hypot((pa.x - pb.x) / rx, (pa.y - pb.y) / ry);
+        // 三角函数与坐标运算存在浮点舍入；恰好达到最小间隔时应当通过。
+        const minDistance = 2 * Math.sin(MIN_APART * Math.PI / 4);
+        if (distance < minDistance - 1e-12) add('no-overlap', zh
+          ? `${a.name} 和 ${b.name} 在「${a.item}」相邻侧的平面位置重叠，沿桌边拉开`
+          : `${a.name} and ${b.name} overlap across sides of the "${a.item}": spread them along it`);
+      }
+    }
+
+    if (!(Number.isInteger(scene.extras) && scene.extras >= 0)) add('extras', zh ? '群演人数要是 0 或正整数（剧本没写有别人就是 0）' : 'extras must be 0 or a whole number (0 when the script names nobody else)');
+    else if (scene.extras > 0 && !(scene.extrasWhere ?? '').trim()) add('extras', zh ? `有 ${scene.extras} 名群演，没写他们在哪` : `${scene.extras} extras, but not where they are`);
+    else if (scene.extras === 0 && (scene.extrasWhere ?? '').trim()) add('extras', zh ? '没有群演，extrasWhere 要空着' : 'no extras: leave extrasWhere empty');
+    return out;
+  }
+
+  return {
+    SIDES, POSTURES, FACINGS, PLAN_GAP, MIN_APART, ZH_FACING,
+    isRound, placeSentence, extrasSentence, stagingBlocking, defaultFacing,
+    placePoint, placePoints, nearestPlace, moveTo, sceneProblems,
+  };
+}
+const core = stagingCore();
+const LANG = "zh";
+const WORK = "zh";
+const T = {"pickHint":"点一下平面上的人，调整坐站和朝向；拖动调整位置","sit":"坐着","stand":"站着","facing":"朝向","makeAbsent":"移出：开场不在","trayEmpty":"都在场","copied":"已复制","copyFailed":"复制失败","ok":"这一场没问题","nobody":"（开场没人在场）","edited":"页面上改过，还没导出","saved":"和文件一致","restore":"还原到文件里的版本","restoreAgain":"再点一次还原","facingNames":{"north":"正北","northeast":"东北","east":"正东","southeast":"东南","south":"正南","southwest":"西南","west":"正西","northwest":"西北"}};
+const ANGLE = { north: 0, northeast: 45, east: 90, southeast: 135, south: 180, southwest: 225, west: 270, northwest: 315 };
+const ROSE = ['northwest', 'north', 'northeast', 'west', null, 'east', 'southwest', 'south', 'southeast'];
+
+const ORIGINAL = document.getElementById('staging-data').textContent;
+// 页面上的改动先存在这台电脑的浏览器里，刷新不丢；文件内容变了（重新 render 过）就不再套用旧改动
+const KEY = 'novel-staging:' + ORIGINAL.length + ':' + [...ORIGINAL].reduce((h, c) => (h * 31 + c.charCodeAt(0)) | 0, 7);
+let doc = JSON.parse(ORIGINAL);
+try { const kept = localStorage.getItem(KEY); if (kept) doc = JSON.parse(kept); } catch { /* 隐私模式或禁了存储：不保存，照样能改能导出 */ }
+const selected = new Map(); // 场次序号 → 选中的人
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const locOf = (s) => (doc.locations || []).find((l) => l.sceneId === s.sceneId);
+const nameIn = (s) => {
+  if (LANG === WORK) return undefined;
+  const alt = new Map((locOf(s)?.items || []).map((i) => [i.name, i.alt || i.name]));
+  return (n) => alt.get(n) ?? n;
+};
+
+function persist() {
+  const now = JSON.stringify(doc);
+  const dirty = now !== JSON.stringify(JSON.parse(ORIGINAL));
+  try { if (dirty) localStorage.setItem(KEY, now); else localStorage.removeItem(KEY); } catch { /* 见上 */ }
+  const st = document.querySelector('.state');
+  st.textContent = dirty ? T.edited : T.saved;
+  st.classList.toggle('dirty', dirty);
+  document.querySelector('.expo').classList.toggle('dirty', dirty);
+  document.querySelector('.restore').hidden = !dirty;
+}
+
+function highlight(card, item) {
+  card.querySelectorAll('.thing').forEach((el) => el.classList.toggle('lit', !!item && el.dataset.item === item));
+  card.querySelectorAll('.pbox').forEach((el) => el.classList.toggle('lit', !!item && el.dataset.item === item));
+  const loc = card.dataset.scene !== undefined ? locOf(doc.scenes[Number(card.dataset.scene)]) : null;
+  if (loc) document.querySelectorAll('.loc[data-loc="' + CSS.escape(loc.sceneId) + '"] tr[data-item]').forEach((tr) => tr.classList.toggle('lit', !!item && tr.dataset.item === item));
+}
+
+function drawScene(si) {
+  const s = doc.scenes[si];
+  const card = document.querySelector('.scene[data-scene="' + si + '"]');
+  const items = locOf(s)?.items || [];
+  const pct = (v) => (v * 100).toFixed(2) + '%';
+  card.querySelector('.things').innerHTML = items.map((i) => {
+    const [x0, y0, x1, y1] = i.plan;
+    return '<div class="thing' + (i.on ? ' seat' : '') + (core.isRound(i) ? ' round' : '') + '" data-item="' + esc(i.name) + '" title="' + esc(i.name) + '" style="left:' + pct(x0) + ';top:' + pct(y0) + ';width:' + pct(x1 - x0) + ';height:' + pct(y1 - y0) + '"><span>' + esc(i.name) + '</span></div>';
+  }).join('');
+  const pts = core.placePoints(s.places || [], items);
+  const sel = selected.get(si);
+  card.querySelector('.tokens').innerHTML = (s.places || []).filter((p) => pts.has(p.id)).map((p) => {
+    const pt = pts.get(p.id);
+    return '<div class="token' + (p.posture === 'sit' ? ' sit' : '') + (sel === p.id ? ' sel' : '') + '" role="button" tabindex="0" data-id="' + esc(p.id) + '" title="' + esc(p.name) + '" style="left:' + pct(pt.x) + ';top:' + pct(pt.y) + '">'
+      + '<i class="facing" style="transform:rotate(' + (ANGLE[p.facing] ?? 180) + 'deg)"></i><b>' + esc([...p.name][0]) + '</b><span class="name">' + esc(p.name) + '</span></div>';
+  }).join('');
+  const out = (s.places || []).filter((p) => !pts.has(p.id));
+  card.querySelector('.chips').innerHTML = out.length
+    ? out.map((p) => '<span class="chip" role="button" tabindex="0" data-id="' + esc(p.id) + '">' + esc(p.name) + '</span>').join('')
+    : '<span class="none">' + esc(T.trayEmpty) + '</span>';
+
+  const p = (s.places || []).find((x) => x.id === sel && pts.has(x.id));
+  card.querySelector('.pick').innerHTML = !p ? esc(T.pickHint)
+    : '<h4>' + esc(p.name) + '</h4>'
+      + '<div class="row"><span class="seg">' + ['sit', 'stand'].map((v) => '<button data-posture="' + v + '" aria-pressed="' + (p.posture === v) + '">' + esc(T[v]) + '</button>').join('') + '</span>'
+      + '<button class="out">' + esc(T.makeAbsent) + '</button></div>'
+      + '<div class="row"><span>' + esc(T.facing) + '</span><div class="rose">' + ROSE.map((f) => f
+        ? '<button data-facing="' + f + '" aria-pressed="' + (p.facing === f) + '" title="' + esc(T.facingNames[f]) + '">' + esc(T.facingNames[f]) + '</button>'
+        : '<span class="mid">' + esc(T.facingNames[p.facing] ?? '') + '</span>').join('') + '</div></div>';
+
+  card.querySelector('.extras .n').textContent = Number.isInteger(s.extras) ? s.extras : '—';
+  const where = card.querySelector('.extras .where');
+  if (document.activeElement !== where) where.value = s.extrasWhere || '';
+  card.querySelector('.sentence .text').textContent = core.stagingBlocking(s, LANG, nameIn(s)) || T.nobody;
+  const problems = core.sceneProblems(s, locOf(s), LANG);
+  card.querySelector('.live').innerHTML = problems.length
+    ? problems.map((x) => '<li>' + esc(x.text) + '</li>').join('')
+    : '<li class="ok">✓ ' + esc(T.ok) + '</li>';
+}
+
+function update(si, change) {
+  change(doc.scenes[si]);
+  persist();
+  drawScene(si);
+}
+
+/* 拖动：平面上的人拖到别处，或从「开场不在场」拖进平面；拖回托盘就是开场不在 */
+let drag = null;
+function startDrag(e, si, id, el) {
+  drag = { si, id, el, x: e.clientX, y: e.clientY, moved: false, fromTray: el.classList.contains('chip') };
+  el.setPointerCapture?.(e.pointerId);
+}
+document.addEventListener('pointerdown', (e) => {
+  const el = e.target.closest('.token, .chip[data-id]');
+  if (!el) return;
+  e.preventDefault();
+  const card = el.closest('.scene');
+  startDrag(e, Number(card.dataset.scene), el.dataset.id, el);
+});
+document.addEventListener('pointermove', (e) => {
+  if (!drag) return;
+  if (!drag.moved && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 4) return;
+  drag.moved = true;
+  const card = document.querySelector('.scene[data-scene="' + drag.si + '"]');
+  const room = card.querySelector('.room').getBoundingClientRect();
+  drag.el.classList.add('lifted');
+  if (drag.fromTray) {
+    drag.el.style.left = e.clientX - 20 + 'px';
+    drag.el.style.top = e.clientY - 14 + 'px';
+  } else {
+    drag.el.style.left = ((e.clientX - room.left) / room.width) * 100 + '%';
+    drag.el.style.top = ((e.clientY - room.top) / room.height) * 100 + '%';
+  }
+  const inRoom = e.clientX >= room.left && e.clientX <= room.right && e.clientY >= room.top && e.clientY <= room.bottom;
+  const items = locOf(doc.scenes[drag.si])?.items || [];
+  const target = inRoom ? core.nearestPlace({ x: (e.clientX - room.left) / room.width, y: (e.clientY - room.top) / room.height }, items) : null;
+  highlight(card, target?.item);
+  const tray = card.querySelector('.tray').getBoundingClientRect();
+  card.querySelector('.tray').classList.toggle('over', e.clientX >= tray.left && e.clientX <= tray.right && e.clientY >= tray.top && e.clientY <= tray.bottom);
+});
+document.addEventListener('pointerup', (e) => {
+  if (!drag) return;
+  const { si, id, moved } = drag;
+  drag = null;
+  const card = document.querySelector('.scene[data-scene="' + si + '"]');
+  card.querySelector('.tray').classList.remove('over');
+  highlight(card, null);
+  if (!moved) {
+    selected.set(si, id);
+    drawScene(si);
+    return;
+  }
+  const room = card.querySelector('.room').getBoundingClientRect();
+  const tray = card.querySelector('.tray').getBoundingClientRect();
+  const within = (r) => e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+  const s = doc.scenes[si];
+  const items = locOf(s)?.items || [];
+  if (within(room)) {
+    const target = core.nearestPlace({ x: (e.clientX - room.left) / room.width, y: (e.clientY - room.top) / room.height }, items);
+    if (target) {
+      selected.set(si, id);
+      update(si, (sc) => { sc.places = sc.places.map((p) => (p.id === id ? core.moveTo(p, target, items) : p)); });
+      return;
+    }
+  } else if (within(tray)) {
+    update(si, (sc) => { sc.places = sc.places.map((p) => (p.id === id ? { ...p, present: false, item: null, side: null, along: null } : p)); });
+    return;
+  }
+  drawScene(si);
+});
+
+/* 选中一个人以后：坐站、朝向、移出 */
+document.addEventListener('click', async (e) => {
+  const card = e.target.closest('.scene');
+  if (card) {
+    const si = Number(card.dataset.scene);
+    const id = selected.get(si);
+    const set = (change) => update(si, (sc) => { sc.places = sc.places.map((p) => (p.id === id ? { ...p, ...change } : p)); });
+    const b = e.target.closest('button');
+    if (b?.dataset.posture) return set({ posture: b.dataset.posture });
+    if (b?.dataset.facing) return set({ facing: b.dataset.facing });
+    if (b?.classList.contains('out')) { selected.delete(si); return set({ present: false, item: null, side: null, along: null }); }
+    if (b?.dataset.step) {
+      return update(si, (sc) => {
+        sc.extras = Math.max(0, (Number.isInteger(sc.extras) ? sc.extras : 0) + Number(b.dataset.step));
+        if (sc.extras === 0) sc.extrasWhere = null;
+      });
+    }
+  }
+  const copy = e.target.closest('.copy');
+  if (copy) {
+    const text = copy.closest('.sentence')?.querySelector('.text')?.textContent ?? '';
+    const label = copy.textContent;
+    try { await navigator.clipboard.writeText(text); copy.textContent = T.copied; copy.dataset.done = '1'; } catch { copy.textContent = T.copyFailed; }
+    setTimeout(() => { copy.textContent = label; delete copy.dataset.done; }, 1600);
+  }
+});
+document.addEventListener('keydown', (e) => {
+  const el = e.target.closest?.('.token');
+  if (el && (e.key === 'Enter' || e.key === ' ')) {
+    e.preventDefault();
+    const si = Number(el.closest('.scene').dataset.scene);
+    selected.set(si, el.dataset.id);
+    drawScene(si);
+  }
+});
+document.addEventListener('input', (e) => {
+  if (!e.target.classList.contains('where')) return;
+  const si = Number(e.target.closest('.scene').dataset.scene);
+  update(si, (sc) => { sc.extrasWhere = e.target.value.trim() ? e.target.value : null; });
+});
+document.addEventListener('pointerover', (e) => {
+  const thing = e.target.closest('.thing, tr[data-item]');
+  const card = e.target.closest('.card');
+  if (!card || drag) return;
+  if (card.classList.contains('loc')) {
+    card.querySelectorAll('.pbox').forEach((el) => el.classList.toggle('lit', !!thing && el.dataset.item === thing.dataset.item));
+    card.querySelectorAll('tr[data-item]').forEach((tr) => tr.classList.toggle('lit', !!thing && tr.dataset.item === thing.dataset.item));
+  } else highlight(card, thing?.dataset.item);
+});
+
+/* 导出：下载的是改过的 staging.json，喂回 validate / render 照样能用 */
+document.querySelector('.expo').addEventListener('click', (e) => {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(doc, null, 2) + '\n'], { type: 'application/json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: e.currentTarget.dataset.name });
+  a.click();
+  // 别立刻回收——Safari 会抢在下载读完之前撤掉 blob
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+/* 还原：点两次，防手滑 */
+let armed = null;
+document.querySelector('.restore').addEventListener('click', (e) => {
+  const btn = e.currentTarget;
+  if (!armed) {
+    btn.textContent = T.restoreAgain;
+    armed = setTimeout(() => { armed = null; btn.textContent = T.restore; }, 3000);
+    return;
+  }
+  clearTimeout(armed);
+  armed = null;
+  btn.textContent = T.restore;
+  doc = JSON.parse(ORIGINAL);
+  selected.clear();
+  persist();
+  doc.scenes.forEach((_, i) => drawScene(i));
+});
+
+doc.scenes.forEach((_, i) => drawScene(i));
+persist();
+</script>
+</body></html>

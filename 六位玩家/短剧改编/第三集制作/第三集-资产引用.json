@@ -1,0 +1,438 @@
+{
+  "scope": "第三集整集统一资产引用；仅此清单非生图任务",
+  "sourceScript": "D:\\work\\articles\\六位玩家\\短剧改编\\六位玩家-script.json",
+  "sourceSHA256": "5855325613c83bfa92c0d7537ba61ee69998118c161256a7fdd63f96c22adf83",
+  "episode": 3,
+  "characters": [
+    {
+      "id": "C01",
+      "name": "本群最帅之人",
+      "age": 22,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\本群最帅之人\\image-j655lwqc\\image-01.png",
+        "sha256": "b2bcde4ce53addd41a0533fe80a16955c979cc7015096075ae9f4bd8a2e49632",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C02",
+      "name": "森巴",
+      "age": 23,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\森巴\\image-3wshrwh7\\image-01.png",
+        "sha256": "a3cf3bc70ff7e8eebd452b5c1a3240df8b098e7c470cf8cdd9afd1599e26dc34",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C03",
+      "name": "x坤",
+      "age": 21,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\x坤\\image-qfsrwkhk\\image-01.png",
+        "sha256": "f52241cc612881c9e23b6a4756cd18e49043163492e73861677a01e311c874b5",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C04",
+      "name": "y坤",
+      "age": 21,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\y坤\\image-hht3i49z\\image-01.png",
+        "sha256": "1c5f3df3611cded7bd21ab6de56890db8531fb2d8c95780069ede4c81856bf7f",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C05",
+      "name": "邓布利多",
+      "age": 23,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\邓布利多\\image-mw9jb546\\image-01.png",
+        "sha256": "08309411198e29f1ef689d49b709c6fe1b24e8f32a52cf8b5cb60bd78a79852b",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C06",
+      "name": "AAA建材批发杰哥",
+      "age": 21,
+      "ageStatus": "总纲与101清单一致",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\AAA建材批发杰哥\\image-xpk3bmyt\\image-01.png",
+        "sha256": "c1fa4e075d5235b8a80c9ce544b3a82e7a3f9560b6df8eb47ab6fdd33eaf41bd",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "101-制作清单.json 最新学生发型/衣服；不回退原始照片",
+      "sceneUsage": [
+        1,
+        4,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C07",
+      "name": "黎汐",
+      "age": null,
+      "ageStatus": "未定具体年龄；卡内视觉年龄为制作选择",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\黎汐-sheet.png",
+        "sha256": "d6d043b4a7328c41a55771128d78599da3bb63cbef34ab61438033e27267858b",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "103制作/角色资料/103-cast.json及已生成图",
+      "sceneUsage": [
+        1,
+        2,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    },
+    {
+      "id": "C08",
+      "name": "顾岚乔",
+      "age": null,
+      "ageStatus": "未定具体年龄；卡内视觉年龄为制作选择",
+      "reference": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\顾岚乔-sheet.png",
+        "sha256": "139fd18634f169774a6e161f83087e4ace9c9b6cee2839bc7a2d623e18669deb",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "source": "103制作/角色资料/103-cast.json及已生成图",
+      "sceneUsage": [
+        2,
+        5
+      ],
+      "status": "existing_reuse_no_new_card",
+      "approvalLimit": "本次仅核路径/hash/解码，不代替用户视觉审批"
+    }
+  ],
+  "sceneReferences": [
+    {
+      "id": "home-night",
+      "asset": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png",
+        "sha256": "18f2e9ff7501864487a2cb8e193b2bc6fa61c02c83e04659c0652480b0953d0f",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "sceneUsage": [
+        1,
+        5
+      ],
+      "visualReview": "已实看：左后黑入户门、中央浅色内门、右窗、木桌四椅、右侧冰箱。回档固定此版；第二轮保持家具，不能混回餐边柜。只覆盖客厅正向，不证明走廊内部/卫生间/门外平台。"
+    },
+    {
+      "id": "home-day-old",
+      "asset": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\images\\黎汐家-sheet.png",
+        "sha256": "e2034d2d42f759419ab64af22cfa3fdaf9121005083b85e82cb5f8dd6e486bad",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "sceneUsage": [],
+      "visualReview": "已实看：同格局但右侧为木餐边柜，与夜图冰箱漂移；只作历史格局核对，不混用为第三集连续镜头参考。"
+    },
+    {
+      "id": "school",
+      "asset": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\101制作\\images\\学校食堂门口-sheet.png",
+        "sha256": "1baf113d3f8eba55cf6ddadd5260f4b624dccf6916ff50c2e84cb925e47a2aae",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "sceneUsage": [
+        4
+      ],
+      "visualReview": "已实看：左玻璃双门、屋檐干平台、前方台阶、右雨后道路。可复用当日下午会合；六人站平台，不推成室内食堂或宿舍。"
+    },
+    {
+      "id": "cafe-interior",
+      "asset": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\images\\咖啡厅-sheet.png",
+        "sha256": "368beddc8ea0e469c9e99108b6f215f45e48c5a3f2df360e88bd96ae2c196607",
+        "dimensions": [
+          1536,
+          864
+        ],
+        "existsAndDecodes": true
+      },
+      "sceneUsage": [],
+      "visualReview": "已实看：室内双人桌、左窗、右玻璃门与外侧绿篱人行道。可约束外景材料与朝向，但不能拿室内图冒充第3场街边靠墙机位。"
+    }
+  ],
+  "newSceneGaps": [
+    {
+      "name": "连接玄关侧口的走廊衣架",
+      "owner": "第三集美术/分镜作者负责，本文不生成",
+      "status": "required_not_verified_generated"
+    },
+    {
+      "name": "卫生间洗手台与暗格",
+      "owner": "第三集美术/分镜作者负责，本文不生成",
+      "status": "required_not_verified_generated"
+    },
+    {
+      "name": "入户门外楼梯平台",
+      "owner": "第三集美术/分镜作者负责，本文不生成",
+      "status": "required_not_verified_generated"
+    },
+    {
+      "name": "咖啡厅外靠墙局部",
+      "owner": "第三集美术/分镜作者负责，本文不生成",
+      "status": "required_not_verified_generated"
+    }
+  ],
+  "props": [
+    {
+      "name": "医院胸牌与挂起白大褂",
+      "sceneUsage": [
+        1
+      ],
+      "referenceDecision": "required_design_reference",
+      "constraints": "需要稳定胸牌正反/姓名版式和挂置状态；姓名顾岚乔可读，医院名称/职称未定不虚构。白大褂挂衣架，不新增穿白大褂角色。可与走廊衣架新景合并参考；文字用可控排版，不依赖生图乱字。"
+    },
+    {
+      "name": "病情通知",
+      "sceneUsage": [
+        2
+      ],
+      "referenceDecision": "required_design_reference",
+      "constraints": "核心线索需统一独立平面版式：黎汐病危、主动离院；不要编造检验数字、诊断细项或真医院标识。可用排版素材而非付费生图。研究参与信息依据本场心声，不必强塞同一通知。"
+    },
+    {
+      "name": "器械/药瓶/喷雾/手术刀",
+      "sceneUsage": [
+        2
+      ],
+      "referenceDecision": "reference_required_for_continuity",
+      "constraints": "暗格陈列与顾岚乔持喷雾、黎汐持刀有因果；需定一致外观/尺度/归属，可合为一张无手道具板或从已批准前集画面抽参考。未核得独立道具图，标待定；不写剂量、药品配方或手术操作。"
+    },
+    {
+      "name": "备用钥匙",
+      "sceneUsage": [
+        2
+      ],
+      "referenceDecision": "shot_text_sufficient",
+      "constraints": "普通钥匙，开门者黎汐；镜头动作与手部连续即可，不新增特殊功能。"
+    },
+    {
+      "name": "杯子/点心",
+      "sceneUsage": [
+        1,
+        5
+      ],
+      "referenceDecision": "shot_text_sufficient",
+      "constraints": "保持第二集对应桌面状态；回档杯子完整；末场黎汐递点心。无需独立付费图，若特写需锁定同一款。"
+    },
+    {
+      "name": "购物袋",
+      "sceneUsage": [
+        4
+      ],
+      "referenceDecision": "shot_text_sufficient",
+      "constraints": "杰哥准备买蛋糕用，不能画成已经装着蛋糕或凭空变背包。普通袋型由镜头统一。"
+    },
+    {
+      "name": "手机/公开履历/生日邀请",
+      "sceneUsage": [
+        3,
+        4,
+        5
+      ],
+      "referenceDecision": "shot_text_and_controlled_screen_graphics",
+      "constraints": "主角电话、x坤公开核查、杰哥持机、顾岚乔接电话各自归属；既有手机外形沿用。邀请及履历需要时用可控屏幕图层，不伪造真实个人履历或加黑客功能。"
+    }
+  ],
+  "sceneUsage": [
+    {
+      "sceneIndex": 1,
+      "sceneId": "S01",
+      "location": "黎汐家·回档客厅与走廊",
+      "characters": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "presentAtStart": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "entrancesExits": "主角第三动作离开客厅去走廊，其他人留桌旁。"
+    },
+    {
+      "sceneIndex": 2,
+      "sceneId": "S01",
+      "location": "黎汐家·卫生间",
+      "characters": [
+        "C01",
+        "C07",
+        "C08"
+      ],
+      "presentAtStart": [
+        "C01"
+      ],
+      "entrancesExits": "黎汐用备用钥匙开门后进入，顾岚乔随后站到门口。"
+    },
+    {
+      "sceneIndex": 3,
+      "sceneId": "S10",
+      "location": "咖啡厅外街边·下午回档点",
+      "characters": [
+        "C01"
+      ],
+      "presentAtStart": [
+        "C01"
+      ],
+      "entrancesExits": "主角回档恢复街边位置；其余人仅电话声。"
+    },
+    {
+      "sceneIndex": 4,
+      "sceneId": "S09",
+      "location": "学校食堂外约定会合处·当日下午",
+      "characters": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "presentAtStart": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "entrancesExits": "主角走到五人面前；本场讨论完六人一同离开赴生日住处。"
+    },
+    {
+      "sceneIndex": 5,
+      "sceneId": "S01",
+      "location": "黎汐家·客厅及门外楼梯间",
+      "characters": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "presentAtStart": [
+        "C07",
+        "C08"
+      ],
+      "entrancesExits": "主角进客厅，五人停楼梯间；顾岚乔末段离开客厅并下楼。"
+    }
+  ],
+  "notes": [
+    "场号用本集1—5区分重复S01，非创建各场独立制作目录。",
+    "主角22；森巴23；x坤21；y坤21；邓布利多23；杰哥21。",
+    "第3场仅主角入画，杰哥/x坤是电话声；末场五室友在楼梯间，不进客厅。",
+    "无新增角色缺口；不生成图片、不改原设定、不触第二集文件。"
+  ]
+}

@@ -1,0 +1,821 @@
+{
+  "source": "《六位玩家》第一世界",
+  "lang": "zh",
+  "locations": [
+    {
+      "sceneId": "S01",
+      "name": "黎汐家",
+      "space": {
+        "buildingId": "B01",
+        "floorId": "F01",
+        "adjacentTo": [
+          "S17",
+          "S18"
+        ]
+      },
+      "spatialConnections": [
+        {
+          "id": "D01",
+          "side": "west",
+          "otherSceneId": "S17",
+          "portal": {
+            "widthMeters": 1,
+            "heightMeters": 2.1,
+            "material": "cream plaster opening",
+            "anchors": [
+              "grey square floor tiles",
+              "plain cream jamb"
+            ]
+          }
+        },
+        {
+          "id": "D03",
+          "side": "west",
+          "otherSceneId": "S18",
+          "portal": {
+            "widthMeters": 0.9,
+            "heightMeters": 2.1,
+            "material": "dark grey metal door",
+            "anchors": [
+              "peephole",
+              "dark frame and grey threshold"
+            ]
+          }
+        }
+      ],
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "18f2e9ff7501864487a2cb8e193b2bc6fa61c02c83e04659c0652480b0953d0f",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      },
+      "readFrom": "picture",
+      "items": [
+        {
+          "name": "厨房门",
+          "alt": "kitchen door",
+          "plan": [
+            0.46,
+            0.06,
+            0.62,
+            0.13
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.447,
+            0.143,
+            0.596,
+            0.586
+          ]
+        },
+        {
+          "name": "侧走廊开口",
+          "alt": "side corridor opening",
+          "plan": [
+            0.02,
+            0.15,
+            0.08,
+            0.29
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.117,
+            0.148,
+            0.14,
+            0.656
+          ],
+          "connectionId": "D01"
+        },
+        {
+          "name": "深灰入户门",
+          "alt": "dark grey entrance door",
+          "plan": [
+            0.02,
+            0.33,
+            0.09,
+            0.54
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.153,
+            0.196,
+            0.289,
+            0.657
+          ],
+          "connectionId": "D03"
+        },
+        {
+          "name": "生日桌",
+          "alt": "birthday table",
+          "plan": [
+            0.35,
+            0.39,
+            0.69,
+            0.72
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.374,
+            0.529,
+            0.695,
+            0.994
+          ]
+        },
+        {
+          "name": "北侧冰箱",
+          "alt": "north fridge",
+          "plan": [
+            0.71,
+            0.12,
+            0.87,
+            0.31
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.652,
+            0.251,
+            0.8,
+            0.727
+          ]
+        }
+      ]
+    },
+    {
+      "sceneId": "S16",
+      "name": "黎汐家卫生间",
+      "space": {
+        "buildingId": "B01",
+        "floorId": "F01",
+        "adjacentTo": [
+          "S17"
+        ]
+      },
+      "spatialConnections": [
+        {
+          "id": "D02",
+          "side": "south",
+          "otherSceneId": "S17",
+          "portal": {
+            "widthMeters": 0.8,
+            "heightMeters": 2,
+            "material": "cream painted door",
+            "anchors": [
+              "plain silver lever",
+              "small privacy-lock fitting"
+            ]
+          }
+        }
+      ],
+      "readFrom": "prompt",
+      "items": [
+        {
+          "name": "卫生间南门",
+          "alt": "south bathroom door",
+          "plan": [
+            0.35,
+            0.88,
+            0.59,
+            0.98
+          ],
+          "on": false,
+          "round": false,
+          "connectionId": "D02"
+        },
+        {
+          "name": "北侧洗手台",
+          "alt": "north washbasin",
+          "plan": [
+            0.27,
+            0.07,
+            0.53,
+            0.22
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "台旁暗格砖",
+          "alt": "tile beside basin",
+          "plan": [
+            0.6,
+            0.06,
+            0.77,
+            0.2
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "门台间空地",
+          "alt": "clear floor",
+          "plan": [
+            0.31,
+            0.4,
+            0.68,
+            0.68
+          ],
+          "on": true,
+          "round": false
+        }
+      ]
+    },
+    {
+      "sceneId": "S19",
+      "name": "咖啡厅门外街边",
+      "space": {
+        "buildingId": "B02",
+        "floorId": "F01",
+        "adjacentTo": [
+          "S10"
+        ]
+      },
+      "spatialConnections": [
+        {
+          "id": "D04",
+          "side": "west",
+          "otherSceneId": "S10",
+          "portal": {
+            "widthMeters": 0.9,
+            "heightMeters": 2.1,
+            "material": "dark grey metal framed glass",
+            "anchors": [
+              "long slim vertical handle",
+              "light grey threshold"
+            ]
+          }
+        }
+      ],
+      "readFrom": "prompt",
+      "items": [
+        {
+          "name": "咖啡厅玻璃门",
+          "alt": "cafe glass door",
+          "plan": [
+            0.01,
+            0.27,
+            0.1,
+            0.49
+          ],
+          "on": false,
+          "round": false,
+          "connectionId": "D04"
+        },
+        {
+          "name": "门旁墙垛",
+          "alt": "wall pier beside door",
+          "plan": [
+            0.01,
+            0.58,
+            0.12,
+            0.76
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "街边铺地",
+          "alt": "paved sidewalk",
+          "plan": [
+            0.33,
+            0.26,
+            0.68,
+            0.72
+          ],
+          "on": true,
+          "round": false
+        },
+        {
+          "name": "店外固定窗",
+          "alt": "fixed storefront window",
+          "plan": [
+            0.02,
+            0.04,
+            0.1,
+            0.18
+          ],
+          "on": false,
+          "round": false
+        }
+      ]
+    },
+    {
+      "sceneId": "S09",
+      "name": "学校食堂门口",
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\101制作\\images\\学校食堂门口-sheet.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "1baf113d3f8eba55cf6ddadd5260f4b624dccf6916ff50c2e84cb925e47a2aae",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      },
+      "readFrom": "picture",
+      "items": [
+        {
+          "name": "双扇玻璃门",
+          "alt": "double glass doors",
+          "plan": [
+            0.16,
+            0.06,
+            0.36,
+            0.12
+          ],
+          "on": false,
+          "round": false,
+          "box": [
+            0.185,
+            0.265,
+            0.383,
+            0.704
+          ]
+        },
+        {
+          "name": "檐下空地",
+          "alt": "sheltered landing",
+          "plan": [
+            0.4,
+            0.2,
+            0.83,
+            0.51
+          ],
+          "on": true,
+          "round": false,
+          "box": [
+            0.39,
+            0.643,
+            0.74,
+            0.737
+          ]
+        },
+        {
+          "name": "两级宽台阶",
+          "alt": "two broad steps",
+          "plan": [
+            0.12,
+            0.61,
+            0.86,
+            0.74
+          ],
+          "on": true,
+          "round": false,
+          "box": [
+            0.174,
+            0.669,
+            0.888,
+            0.954
+          ]
+        },
+        {
+          "name": "雨中步道",
+          "alt": "campus path",
+          "plan": [
+            0.89,
+            0.22,
+            0.99,
+            0.9
+          ],
+          "on": true,
+          "round": false,
+          "box": [
+            0.81,
+            0.572,
+            1,
+            0.91
+          ]
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "ep": 3,
+      "scene": 1,
+      "sceneId": "S01",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C02",
+          "name": "森巴"
+        },
+        {
+          "id": "C03",
+          "name": "x坤"
+        },
+        {
+          "id": "C04",
+          "name": "y坤"
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多"
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": true,
+          "item": "生日桌",
+          "side": "west",
+          "along": 0.35,
+          "posture": "stand",
+          "facing": "east"
+        },
+        {
+          "id": "C02",
+          "name": "森巴",
+          "present": true,
+          "item": "生日桌",
+          "side": "south",
+          "along": 0.25,
+          "posture": "stand",
+          "facing": "north"
+        },
+        {
+          "id": "C03",
+          "name": "x坤",
+          "present": true,
+          "item": "生日桌",
+          "side": "south",
+          "along": 0.75,
+          "posture": "stand",
+          "facing": "north"
+        },
+        {
+          "id": "C04",
+          "name": "y坤",
+          "present": true,
+          "item": "生日桌",
+          "side": "west",
+          "along": 0.65,
+          "posture": "stand",
+          "facing": "east"
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多",
+          "present": true,
+          "item": "生日桌",
+          "side": "east",
+          "along": 0.3,
+          "posture": "stand",
+          "facing": "west"
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥",
+          "present": true,
+          "item": "生日桌",
+          "side": "east",
+          "along": 0.7,
+          "posture": "stand",
+          "facing": "west"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐",
+          "present": true,
+          "item": "生日桌",
+          "side": "north",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "回档到完好客厅，七人开场均在；主角与伸手取杯的室友相邻，站姿为制作起点非新剧情。"
+    },
+    {
+      "ep": 3,
+      "scene": 2,
+      "sceneId": "S16",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐"
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": true,
+          "item": "卫生间南门",
+          "side": "north",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "south"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "仅主角在卫生间门内；二位女性第6拍进入，不提前在场。"
+    },
+    {
+      "ep": 3,
+      "scene": 3,
+      "sceneId": "S19",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": true,
+          "item": "门旁墙垛",
+          "side": "east",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "west"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "回档后的主角独自在咖啡店门外，电话对方不在场。"
+    },
+    {
+      "ep": 3,
+      "scene": 4,
+      "sceneId": "S09",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C02",
+          "name": "森巴"
+        },
+        {
+          "id": "C03",
+          "name": "x坤"
+        },
+        {
+          "id": "C04",
+          "name": "y坤"
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多"
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C02",
+          "name": "森巴",
+          "present": true,
+          "item": "双扇玻璃门",
+          "side": "south",
+          "along": 0.2,
+          "posture": "stand",
+          "facing": "southeast"
+        },
+        {
+          "id": "C03",
+          "name": "x坤",
+          "present": true,
+          "item": "檐下空地",
+          "side": "north",
+          "along": 0.2,
+          "posture": "stand",
+          "facing": "south"
+        },
+        {
+          "id": "C04",
+          "name": "y坤",
+          "present": true,
+          "item": "檐下空地",
+          "side": "north",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "south"
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多",
+          "present": true,
+          "item": "檐下空地",
+          "side": "north",
+          "along": 0.8,
+          "posture": "stand",
+          "facing": "south"
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥",
+          "present": true,
+          "item": "双扇玻璃门",
+          "side": "south",
+          "along": 0.8,
+          "posture": "stand",
+          "facing": "southeast"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "五室友已在会合处，主角首拍走来；不因对白先坐而发明凳子或坐下动作。"
+    },
+    {
+      "ep": 3,
+      "scene": 5,
+      "sceneId": "S01",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C02",
+          "name": "森巴"
+        },
+        {
+          "id": "C03",
+          "name": "x坤"
+        },
+        {
+          "id": "C04",
+          "name": "y坤"
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多"
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥"
+        },
+        {
+          "id": "C07",
+          "name": "黎汐"
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C02",
+          "name": "森巴",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C03",
+          "name": "x坤",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C04",
+          "name": "y坤",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C05",
+          "name": "邓布利多",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C06",
+          "name": "AAA建材批发杰哥",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C07",
+          "name": "黎汐",
+          "present": true,
+          "item": "生日桌",
+          "side": "west",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "west"
+        },
+        {
+          "id": "C08",
+          "name": "顾岚乔",
+          "present": true,
+          "item": "厨房门",
+          "side": "north",
+          "along": 0.5,
+          "posture": "stand",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "主角与五室友尚未到本场起点；两位女性已在屋内，五人到来后只停楼梯间。"
+    }
+  ],
+  "status": "S01夜客厅与S09食堂已按旧实际图认4—5项；S16卫生间、S19店外暂prompt推算，待生成认图。走廊/楼梯是逐切环境覆盖，非新增剧情场次。"
+}

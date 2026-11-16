@@ -1,0 +1,77 @@
+[
+  {
+    "id": "S17",
+    "name": "黎汐家侧走廊",
+    "aspectRatio": "16:9",
+    "prompt": "Landscape 16:9, empty scene, no people. A narrow side corridor of the same apartment, seen from its east opening toward the west wall. Match the existing warm cream walls and grey square floor tiles. The east opening connects to the living-room west-side passage, separate from the dark grey entrance door. A simple empty coat rack stands against the west wall clear of the walking route. A cream bathroom door is on the north side, with a plain silver lever and a small privacy-lock fitting. A short open route links the east opening to the bathroom. Nighttime ceiling light, no daylight. No white coat, badge, document or medical tools baked into this empty reference.\nConnection D01 on east side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.\nConnection D02 on north side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.",
+    "negativePrompt": "people, human figures, characters, crowds, silhouettes of people, human reflections, text, watermark, signature, warped perspective, melted geometry, floating objects, blood, gore",
+    "referencePaths": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png"
+    ],
+    "dependency": "沿既有图只生成此必要新角度，不重生成角色。",
+    "status": "文字任务，未调用生成",
+    "assetId": "S17",
+    "outputFile": "走廊.png",
+    "sourceReferences": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png"
+    ],
+    "dependsOn": []
+  },
+  {
+    "id": "S16",
+    "name": "黎汐家卫生间",
+    "aspectRatio": "16:9",
+    "prompt": "Landscape 16:9, empty scene, no people. A compact bathroom belonging to the same apartment, viewed from near its south doorway. A cream door on the south wall uses a plain silver lever and privacy lock, matching the corridor side. A simple white washbasin and mirror are on the north wall. Immediately beside the basin on the east section of that wall, one pale rectangular tile has a visibly uneven seam; it covers a small recessed compartment in the wall, not a freestanding cabinet. Keep an open floor path between doorway and basin. Night interior ceiling light, grey floor tiles, no shower occupant, no instruments, medicine bottles, papers or blood baked into the empty reference. The loose tile is closed in the reference; its opening is an action state.\nConnection D02 on south side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.",
+    "negativePrompt": "people, human figures, characters, crowds, silhouettes of people, human reflections, text, watermark, signature, warped perspective, melted geometry, floating objects, blood, gore",
+    "referencePaths": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\走廊.png"
+    ],
+    "dependency": "先生成并核对S17卫生间门后，S16沿用同门结构；本项当前无实际参考图。",
+    "status": "文字任务，未调用生成",
+    "assetId": "S16",
+    "outputFile": "卫生间.png",
+    "sourceReferences": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\走廊.png"
+    ],
+    "dependsOn": [
+      "S17"
+    ],
+    "referenceStatus": "S17计划输出，当前待生成；禁止假称已有图"
+  },
+  {
+    "id": "S18",
+    "name": "黎汐家门外楼梯平台",
+    "aspectRatio": "16:9",
+    "prompt": "Landscape 16:9, empty scene, no people. The exterior landing immediately outside the same apartment entrance. A dark grey metal apartment door with a peephole is on the east wall, matching the living-room west entrance; preserve its silver-grey threshold and dark frame. A modest concrete stair flight leads down away from the landing along the west side, with a simple metal handrail. Warm shared-corridor ceiling light, light neutral plaster walls and worn grey paving. Keep enough unobstructed landing space for five people waiting without blocking the doorway. Do not introduce another apartment door, elevator, street-level car or visible floor number. No people, phones, bags or food.\nConnection D03 on east side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.",
+    "negativePrompt": "people, human figures, characters, crowds, silhouettes of people, human reflections, text, watermark, signature, warped perspective, melted geometry, floating objects, blood, gore",
+    "referencePaths": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png"
+    ],
+    "dependency": "沿既有图只生成此必要新角度，不重生成角色。",
+    "status": "文字任务，未调用生成",
+    "assetId": "S18",
+    "outputFile": "楼梯平台.png",
+    "sourceReferences": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png"
+    ],
+    "dependsOn": []
+  },
+  {
+    "id": "S19",
+    "name": "咖啡厅门外街边",
+    "aspectRatio": "16:9",
+    "prompt": "Landscape 16:9, empty scene, no people. Exterior close local view of the same contemporary cafe entrance from the existing interior reference. The west-side glass doorway has the same narrow dark grey frame and long slim vertical handle; the fixed storefront glass remains adjacent and distinct. Show the light grey paved sidewalk and a plain exterior wall pier next to the entrance that a person can brace a hand against. The interior table stays inside, never moved outside. Overcast afternoon light, no rain intensification, no signage or readable text. No people, phones, bags or cars. Keep this an intimate doorway-and-wall streetside angle, not a newly invented full storefront.\nConnection D04 on west side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.",
+    "negativePrompt": "people, human figures, characters, crowds, silhouettes of people, human reflections, text, watermark, signature, warped perspective, melted geometry, floating objects, blood, gore",
+    "referencePaths": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\images\\咖啡厅-sheet.png"
+    ],
+    "dependency": "沿既有图只生成此必要新角度，不重生成角色。",
+    "status": "文字任务，未调用生成",
+    "assetId": "S19",
+    "outputFile": "咖啡厅外.png",
+    "sourceReferences": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\images\\咖啡厅-sheet.png"
+    ],
+    "dependsOn": []
+  }
+]
