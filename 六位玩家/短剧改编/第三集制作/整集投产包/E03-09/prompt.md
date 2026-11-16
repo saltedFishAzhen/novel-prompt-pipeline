@@ -11,7 +11,7 @@
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message. Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 

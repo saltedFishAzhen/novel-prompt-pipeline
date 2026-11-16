@@ -21,35 +21,35 @@
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人的手刚按住y坤伸向杯子的手，随后才松开；杯子与桌面完好，未切蛋糕还在原桌面，不复制上一轮伤痕。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人的手正要触及y坤伸向杯子的手，随后才松开；杯子与桌面完好，未切蛋糕还在原桌面，不复制上一轮伤痕。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。y坤；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。y坤；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。森巴；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。森巴；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#5 分镜图提示词**
 
 ```text
-中景。本群最帅之人仍在桌旁，视线看完好桌面，身体正准备转向西侧通路，不先站在衣架旁。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人仍在桌旁，视线看完好桌面，身体正准备转向西侧通路，不先站在衣架旁。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -60,11 +60,11 @@
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 7.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 11.20-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man stops his roommate reaching for an intact cup, then slowly releases his hand. The table is restored, not damaged.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the food-loving roommate (S4), with a clear natural voice, says: <d>[Chinese] 怎么了？这杯不是我的吗？</d>
-[Shot 3] At 00:05.200, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 刚才……你们没听见什么？</d>
-[Shot 4] At 00:07.900, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 你是不是没睡醒？蛋糕还没切呢。</d>
-[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The young man looks at the intact table and turns toward the side corridor. His friends remain at the table.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man stops his roommate reaching for an intact cup, then slowly releases his hand. The table is restored, not damaged. Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the food-loving roommate (S4), with a clear natural voice, says: <d>[Chinese] 怎么了？这杯不是我的吗？</d> Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
+[Shot 3] At 00:05.200, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 刚才……你们没听见什么？</d> Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
+[Shot 4] At 00:07.900, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 你是不是没睡醒？蛋糕还没切呢。</d> Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
+[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The young man looks at the intact table and turns toward the side corridor. His friends remain at the table. Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -84,7 +84,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌东南侧朝西北拍桌西的主角/y坤，西侧玄关局部为背景；两人不换边，50/85mm紧框不露出他人应占的空位。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -96,7 +96,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌东南侧朝西北拍桌西的主角/y坤，西侧玄关局部为背景；两人不换边，50/85mm紧框不露出他人应占的空位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -108,7 +108,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌东南侧朝西北拍桌西的主角/y坤，西侧玄关局部为背景；两人不换边，50/85mm紧框不露出他人应占的空位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -120,7 +120,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌北偏东朝西南拍南侧森巴，背景仅近处衣肩/桌缘柔焦，不把北侧厨房门和冰箱放到森巴身后；人物不移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -132,7 +132,7 @@ non_diegetic_music: N/A
 
 【镜头5】
 焦距：50mm 标准，中浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌东南侧朝西北拍桌西的主角/y坤，西侧玄关局部为背景；两人不换边，50/85mm紧框不露出他人应占的空位。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -161,7 +161,7 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-特写。邓布利多；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。邓布利多；回档后完好客厅桌旁，七人仍在同场。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -172,7 +172,7 @@ non_diegetic_music: N/A
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你脸色不好，我陪你？</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你脸色不好，我陪你？</d> Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -190,7 +190,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：桌西南侧朝东北拍桌东的邓布利多，东窗局部柔焦可在背后；不是将人物搬到桌西来拍相同背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -219,14 +219,14 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-特写。本群最帅之人已经走到侧走廊入口，回头朝仍在客厅桌边的邓布利多答话。只取主角与走廊门框局部，不让桌边六人消失成空客厅；主角未到卫生间内。横屏16:9。
+特写。本群最帅之人已经走到侧走廊入口，回头朝仍在客厅桌边的邓布利多答话。只取主角与走廊门框局部，不让桌边六人消失成空客厅；主角未到卫生间内。横屏16:9。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-中景。本群最帅之人已到侧走廊衣架旁，顾岚乔白大褂挂在架上，主角手刚触胸牌准备翻转；顾岚乔本人不入镜。胸牌只稳定版式，不编医院全称。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人已到侧走廊衣架旁，顾岚乔白大褂挂在架上，主角手刚触胸牌准备翻转；顾岚乔本人不入镜。胸牌只稳定版式，不编医院全称。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -237,8 +237,8 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.20-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d>
-[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d> Continuity: 
+[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name. Continuity: 
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -302,35 +302,35 @@ Spatial continuity from actual reference: Actual full-image view from south look
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人在卫生间内西侧门旁，手刚触反锁处，洗手台与盆右松动瓷砖位于同一北侧远墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在卫生间内西侧门旁，手刚触反锁处，洗手台与盆右松动瓷砖位于同一北侧远墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-中景。本群最帅之人在北墙台旁，松动瓷砖暗格将打开；手术器械与病情通知位于同暗格内，纸张尚未取出，不提前展示病历全文。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在北墙台旁，松动瓷砖暗格将打开；手术器械与病情通知位于同暗格内，纸张尚未取出，不提前展示病历全文。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-中景。本群最帅之人在洗手台旁看已发现的器械与简洁药瓶，手准备按胸口；不增具体医疗操作或药品品牌。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在洗手台旁看已发现的器械与简洁药瓶，手准备按胸口；不增具体医疗操作或药品品牌。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 已取出的病情通知压在洗手台边沿，器械留暗格内；不凭空消失或变回封闭暗格。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#5 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 已取出的病情通知压在洗手台边沿，器械留暗格内；不凭空消失或变回封闭暗格。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -341,11 +341,11 @@ Spatial continuity from actual reference: Actual full-image view from south look
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.40-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the left west-wall door, then checks the loose tile beside the north-wall basin.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data.
-[Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d>
-[Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure.
-[Shot 5] At 00:12.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 她们想取我的心？</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the left west-wall door, then checks the loose tile beside the north-wall basin. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 5] At 00:12.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 她们想取我的心？</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -365,7 +365,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -377,7 +377,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头2】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -389,7 +389,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -401,7 +401,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -413,7 +413,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -436,7 +436,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 | 切 | 起点 | 秒 | 景别 | 运镜 | 配方 | 画面 | 画内／画外／进出 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| #1 | 0.00s | 2.5 | 中景 | Static Shot（固定） | — | 门外钥匙转动，黎汐推门进来，顾岚乔举着喷雾站在她身后。 | 画内：本群最帅之人（C01）、黎汐（C07）、顾岚乔（C08）；画外：无；进入：黎汐（C07）第6拍：按原动作进入当前区域，不新增路径事件。、顾岚乔（C08）第6拍：按原动作进入当前区域，不新增路径事件。；离开：无 |
+| #1 | 0.00s | 2.5 | 中景 | Static Shot（固定） | — | 门外钥匙转动，黎汐推门进来，顾岚乔举着喷雾站在她身后。 | 画内：本群最帅之人（C01）；画外：黎汐（C07）：未打开的不透明西门之外，钥匙开门后才进入画面。、顾岚乔（C08）：在黎汐身后、门外，未开门时不能透门看见。；进入：黎汐（C07）第6拍：按原动作进入当前区域，不新增路径事件。、顾岚乔（C08）第6拍：按原动作进入当前区域，不新增路径事件。；离开：无 |
 | #2 | 2.50s | 2 | 特写 | Static Shot（固定） | — | 黎汐：「你不该翻那个。」 | 画内：黎汐（C07）；画外：本群最帅之人（C01）：主角在台旁，黎汐近台、顾岚乔在门口；该人物实际位置被本切紧框/房间边界排除，未离开本场。、顾岚乔（C08）：主角在台旁，黎汐近台、顾岚乔在门口；该人物实际位置被本切紧框/房间边界排除，未离开本场。；进入：无；离开：无 |
 | #3 | 4.50s | 4.2 | 特写 | Static Shot（固定） | — | 本群最帅之人：「那我该做什么？等你们把我放到手术台上？」 | 画内：本群最帅之人（C01）；画外：黎汐（C07）：主角在台旁，黎汐近台、顾岚乔在门口；该人物实际位置被本切紧框/房间边界排除，未离开本场。、顾岚乔（C08）：主角在台旁，黎汐近台、顾岚乔在门口；该人物实际位置被本切紧框/房间边界排除，未离开本场。；进入：无；离开：无 |
 | #4 | 8.70s | 2.5 | 中景 | Static Shot（固定） | — | 顾岚乔喷出药雾，主角退到洗手台旁。 | 画内：本群最帅之人（C01）、顾岚乔（C08）；画外：黎汐（C07）：主角在台旁，黎汐近台、顾岚乔在门口；该人物实际位置被本切紧框/房间边界排除，未离开本场。；进入：无；离开：无 |
@@ -445,35 +445,35 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人在台旁；黎汐和顾岚乔尚在卫生间门外，初帧通过门外动作将推门进入：黎汐用备用钥匙开门，顾岚乔在她身后持简单喷雾。不是二人先在台边出现。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在洗手台前转向仍关闭的不透明西侧门；门外的黎汐和顾岚乔此刻不可见。初帧只有主角，随后钥匙响、门打开，黎汐先进入，顾岚乔持喷雾在后；不能透视门板。横屏16:9。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。黎汐；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。黎汐；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人与顾岚乔。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人与顾岚乔。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#5 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -484,11 +484,11 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 4.50-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.70-second mark of the target video; Picture 5 (from Shot 5) aligns with the 11.20-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. A spare key turns outside. The host opens the bathroom door and enters; the relative stands immediately behind her with a simple spray bottle. They are outside the initial frame until the door opens.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你不该翻那个。</d>
-[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 那我该做什么？等你们把我放到手术台上？</d>
-[Shot 4] At 00:08.700, the camera cuts to <Picture 4>. Static Shot. The relative sprays a brief mist from the doorway; the young man backs up beside the basin. The host remains near the doorway outside this tighter crop.
-[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们为什么非要这么做？</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. A spare key turns outside. The host opens the bathroom door and enters; the relative stands immediately behind her with a simple spray bottle. They are outside the initial frame until the door opens. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你不该翻那个。</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 那我该做什么？等你们把我放到手术台上？</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 4] At 00:08.700, the camera cuts to <Picture 4>. Static Shot. The relative sprays a brief mist from the doorway; the young man backs up beside the basin. The host remains near the doorway outside this tighter crop. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们为什么非要这么做？</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -510,7 +510,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -522,7 +522,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室东南侧向西北拍西门内的女性，西侧门框局部在后；机位仍在门—盆轴线南侧，不能继续把北墙镜子放到她身后。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -534,7 +534,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室西南侧向东北拍北墙盆前主角，盆边/远墙在后；主角朝西侧来人看，机位留主角—门口轴线南侧。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -546,7 +546,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -558,7 +558,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室西南侧向东北拍北墙盆前主角，盆边/远墙在后；主角朝西侧来人看，机位留主角—门口轴线南侧。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -591,35 +591,35 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 **#1 分镜图提示词**
 
 ```text
-特写。顾岚乔；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。顾岚乔；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-中景。黎汐在主角面前举起简单手术刀，本群最帅之人在台旁；刀初帧未接触身体，运动指向主角解剖右胸，不反转到左胸。用遮挡表现危险，不画伤口、穿刺或血液。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。黎汐在主角面前举起简单手术刀，本群最帅之人在台旁；刀初帧未接触身体，运动指向主角解剖右胸，不反转到左胸。用遮挡表现危险，不画伤口、穿刺或血液。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写（地面低机位）。本群最帅之人已在洗手盆前地面低位侧倒，脸部和少量灰色地砖入画，头部位置与上一刀落动作末一致；不再站立，不换到门边或客厅。只拍面部，不拍伤口、血或内脏。黎汐与顾岚乔仍在原地但均在紧框外，不能因主角倒地把她们重排。横屏16:9。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#5 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写（地面低机位）。本群最帅之人已在洗手盆前地面低位侧倒，脸部和少量灰色地砖入画，头部位置与上一刀落动作末一致；不再站立，不换到门边或客厅。只拍面部，不拍伤口、血或内脏。黎汐与顾岚乔仍在原地但均在紧框外，不能因主角倒地把她们重排。横屏16:9。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -630,11 +630,11 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 3.80-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.80-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.30-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.10-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 时间不多了。我们没有机会慢慢解释。</d>
-[Shot 2] At 00:03.800, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 至少把话说清楚！</d>
-[Shot 3] At 00:05.800, the camera cuts to <Picture 3>. Static Shot. The host raises a simple scalpel and brings it toward his anatomical right chest. Use body occlusion; show no puncture, wound, blood or surgical detail.
-[Shot 4] At 00:08.300, the camera cuts to <Picture 4>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The neutral reload prompt says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 你已死亡。是否回到已记录的时间点？</d>
-[Shot 5] At 00:12.100, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 下午街边。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 时间不多了。我们没有机会慢慢解释。</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 2] At 00:03.800, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 至少把话说清楚！</d> Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque.
+[Shot 3] At 00:05.800, the camera cuts to <Picture 3>. Static Shot. The host raises a simple scalpel and brings it toward his anatomical right chest. Use body occlusion; show no puncture, wound, blood or surgical detail. Continuity: Stay on the south side of the door-to-basin action axis. The young man is beside the far-wall basin; the women approach from the left door, never from behind the mirror. Door is opaque. At the end of this motion the young man loses strength and sinks beside the basin; contact is obscured, with no graphic detail. The following low-angle face crops continue this exact floor position.
+[Shot 4] At 00:08.300, the camera cuts to <Picture 4>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The neutral reload prompt says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 你已死亡。是否回到已记录的时间点？</d> Continuity: The young man is already low on the basin-side floor. Tight low face crop with tile only; no return to standing, no graphic injury, no new physical listener.
+[Shot 5] At 00:12.100, the camera cuts to <Picture 5>. Static Shot. The weakened young man answers the nonphysical reload prompt without rising from the floor. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 下午街边。</d> Continuity: The young man is already low on the basin-side floor. Tight low face crop with tile only; no return to standing, no graphic injury, no new physical listener.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -656,7 +656,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室东南侧向西北拍西门内的女性，西侧门框局部在后；机位仍在门—盆轴线南侧，不能继续把北墙镜子放到她身后。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -668,7 +668,7 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室西南侧向东北拍北墙盆前主角，盆边/远墙在后；主角朝西侧来人看，机位留主角—门口轴线南侧。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -680,11 +680,11 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头3】
 焦距：50mm 标准，中浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：浴室南侧沿门—盆轴线同一侧取紧中景；西门在左、北墙盆在右后，暗格始终与盆同墙。
 构图：三分法
 运镜：固定镜头
 景别：中景
-画面：固定机位，女主人举起手术刀，刀落向他的右胸。
+画面：固定机位，女主人举起手术刀，刀落向他的右胸。 动作末主角在洗手盆前沿身体失力下沉，画面遮挡危险接触，不出现血腥；为下切低位濒死画面接续。
 台词：{}
 视线落点：原动作中的手/物件/路径：黎汐举起手术刀，刀落向他的右胸。
 焦点：原动作主体与连续物件：黎汐举起手术刀，刀落向他的右胸。
@@ -692,11 +692,11 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：洗手盆前地面高度的面部紧特写，固定同一侧、灰地砖局部背景；不得用站姿的北墙/镜子背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
-画面：固定机位，青年保持闭唇，原声画外响起。
+画面：固定低位面部特写，人物不重新站起；只听无形读档提示，嘴唇闭合。
 台词：以画外音说{你已死亡。是否回到已记录的时间点？}
 视线落点：主角视线失焦，系统提示非具象人物
 焦点：本拍画内说话者面部及对应听者方向
@@ -704,11 +704,11 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
+机位：洗手盆前地面高度的面部紧特写，固定同一侧、灰地砖局部背景；不得用站姿的北墙/镜子背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
-画面：固定机位，说话者在既定位置回应对方，不新增动作。
+画面：固定低位面部特写，人物不重新站起；主角虚弱明确回应读档选择，不对门口人物说话。
 台词：{下午街边。}
 视线落点：主角虚弱地对无形读档提示作答，不看不存在的同伴
 焦点：本拍画内说话者面部及对应听者方向
@@ -736,28 +736,28 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人回到同咖啡厅门外，身体无上一轮伤口，手刚扶门旁墙面，手机尚待拨给杰哥；只有主角在此。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人回到同咖啡厅门外，身体无上一轮伤口，手刚扶门旁墙面，手机尚待拨给杰哥；只有主角在此。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -768,10 +768,10 @@ Spatial continuity from actual reference: Actual full-image view from the south 
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.90-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.00-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Restored and uninjured at the same cafe streetside, the young man braces against the wall and immediately calls his caring roommate.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们今晚先别进黎汐家。到了附近等我消息。</d>
-[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The helpful roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 出什么事了？你自己注意安全。</d>
-[Shot 4] At 00:10.000, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我会说明白。先听我这一次。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Restored and uninjured at the same cafe streetside, the young man braces against the wall and immediately calls his caring roommate. Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们今晚先别进黎汐家。到了附近等我消息。</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The helpful roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 出什么事了？你自己注意安全。</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 4] At 00:10.000, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我会说明白。先听我这一次。</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -791,7 +791,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -803,7 +803,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -815,7 +815,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -827,7 +827,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -858,28 +858,28 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人仍在店外同位置持自己手机，刚结束第一通话，准备拨给x坤；不增加联系人照片或对方入画。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人仍在店外同位置持自己手机，刚结束第一通话，准备拨给x坤；不增加联系人照片或对方入画。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -890,10 +890,10 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 7.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.50-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He ends the first call and dials the computer-skilled roommate on the same phone.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 帮我查顾岚乔的公开履历，还有那项心脏研究。</d>
-[Shot 3] At 00:07.200, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The computer-skilled roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 只查公开资料，不联系她，对吧？</d>
-[Shot 4] At 00:10.500, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 对。查到发给我，不要惊动她。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He ends the first call and dials the computer-skilled roommate on the same phone. Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 帮我查顾岚乔的公开履历，还有那项心脏研究。</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 3] At 00:07.200, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The computer-skilled roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 只查公开资料，不联系她，对吧？</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
+[Shot 4] At 00:10.500, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 对。查到发给我，不要惊动她。</d> Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -913,7 +913,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -925,7 +925,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -937,7 +937,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -949,7 +949,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -977,7 +977,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人在店外持自己手机，生日邀请将再次亮起，他没有点击回复；邀请文字仅做受控后期，勿造地址时间。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在店外持自己手机，生日邀请将再次亮起，他没有点击回复；邀请文字仅做受控后期，勿造地址时间。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -988,7 +988,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message. Continuity: The only physical character remains against the same stone pier beside the glass door; phone voices have no visible bodies. Same phone throughout both calls.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1008,7 +1008,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
+机位：店外墙垛南偏西的斜侧近机位，主角仍贴同一墙面扶墙/打电话；只按真实玻璃门框和右侧石墙裁切，不反打出不存在的街对面人物。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1027,7 +1027,7 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 
 ### E03-10 · 学校食堂门口 · 13.4 秒 · 4 个分镜
 
-> 走位：森巴站在双扇玻璃门南侧靠西，面朝东南；x坤站在檐下空地北侧靠西，面朝南；y坤站在檐下空地北侧、x坤东侧，面朝南；邓布利多站在檐下空地北侧靠东、y坤东侧，面朝南；AAA建材批发杰哥站在双扇玻璃门南侧靠东、森巴东侧，面朝东南；其余座位空着，没有其他人。
+> 走位：森巴站在双扇玻璃门南侧靠西，面朝东南；x坤站在檐下空地北侧靠西，面朝南；y坤站在檐下空地北侧靠东、邓布利多东侧，面朝南；邓布利多站在檐下空地北侧、x坤东侧，面朝南；AAA建材批发杰哥站在双扇玻璃门南侧靠东、森巴东侧，面朝东南；其余座位空着，没有其他人。
 
 | 切 | 起点 | 秒 | 景别 | 运镜 | 配方 | 画面 | 画内／画外／进出 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1039,28 +1039,28 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 **#1 分镜图提示词**
 
 ```text
-全景。本群最帅之人在会合处边缘快步接近，其余五人已在檐下；森巴、x坤、y坤、邓布利多分散，AAA建材批发杰哥手持普通购物袋将放下。六人各自独立，袋里不是已经买好的蛋糕。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+全景。本群最帅之人在会合处边缘快步接近，其余五人已在檐下；森巴、x坤、y坤、邓布利多分散，AAA建材批发杰哥手持普通购物袋将放下。六人各自独立，袋里不是已经买好的蛋糕。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。x坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。x坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1071,10 +1071,10 @@ Spatial continuity from actual reference: Actual full-image view: the glass entr
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.30-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.70-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man approaches his five waiting roommates. The helpful roommate lowers the ordinary shopping bag intended for buying a cake; there is no purchased cake inside.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 先坐一下。你这个脸色，到底怎么了？</d>
-[Shot 3] At 00:06.300, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 黎汐病得很重。她家里有手术器械和麻醉药。</d>
-[Shot 4] At 00:10.700, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the computer-skilled roommate (S3), with a clear natural voice, says: <d>[Chinese] 你怎么知道她家里有器械？</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man approaches his five waiting roommates. The helpful roommate lowers the ordinary shopping bag intended for buying a cake; there is no purchased cake inside. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 先坐一下。你这个脸色，到底怎么了？</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 3] At 00:06.300, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 黎汐病得很重。她家里有手术器械和麻醉药。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 4] At 00:10.700, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the computer-skilled roommate (S3), with a clear natural voice, says: <d>[Chinese] 你怎么知道她家里有器械？</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1093,11 +1093,11 @@ non_diegetic_music: N/A
 @[图片7] = AAA建材批发杰哥
 
 【人物关系与构图逻辑】
-森巴站在双扇玻璃门南侧靠西，面朝东南；x坤站在檐下空地北侧靠西，面朝南；y坤站在檐下空地北侧、x坤东侧，面朝南；邓布利多站在檐下空地北侧靠东、y坤东侧，面朝南；AAA建材批发杰哥站在双扇玻璃门南侧靠东、森巴东侧，面朝东南；其余座位空着，没有其他人。
+森巴站在双扇玻璃门南侧靠西，面朝东南；x坤站在檐下空地北侧靠西，面朝南；y坤站在檐下空地北侧靠东、邓布利多东侧，面朝南；邓布利多站在檐下空地北侧、x坤东侧，面朝南；AAA建材批发杰哥站在双扇玻璃门南侧靠东、森巴东侧，面朝东南；其余座位空着，没有其他人。
 
 【镜头1】
 焦距：35mm 标准，较深景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北的既定全景，门在画左、檐下北缘三人在右；六人按固定站位均入画，不把单人图当群体全景。
 构图：三分法
 运镜：固定镜头
 景别：全景
@@ -1109,7 +1109,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1121,7 +1121,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：檐下北偏东向南拍会合前缘主角，后方是台阶/步道局部而非玻璃门；主角面向北侧同伴，禁止反打时移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1133,7 +1133,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1165,28 +1165,28 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人与x坤相对约一步，主角看着他停住话头，x坤未获得共同回档记忆。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人与x坤各留会合后的原位隔空相望，不因切镜靠拢或交换位置，主角看着他停住话头，x坤未获得共同回档记忆。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-中景。x坤把自己手机上查到的公开履历转递给邓布利多看；初帧仍由x坤持机，公开资料只用稳定页面版式，不加黑客界面或虚构机构。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。x坤把自己手机上查到的公开履历转递给邓布利多看；初帧仍由x坤持机，公开资料只用稳定页面版式，不加黑客界面或虚构机构。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 邓布利多在x坤东侧相邻位接过手机，y坤在更东侧；不隔着y坤递送。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1197,10 +1197,10 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.90-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.90-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He looks at the computer-skilled roommate and stops himself from explaining further.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我现在解释不清楚。你们可以不信我的猜测。</d>
-[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 但先别一个人进去。</d>
-[Shot 4] At 00:08.900, the camera cuts to <Picture 4>. Static Shot. The computer-skilled roommate presents the publicly available resume on his own phone to the coordinating roommate. No hacking, contact with the subject or fabricated institution.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He looks at the computer-skilled roommate and stops himself from explaining further. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我现在解释不清楚。你们可以不信我的猜测。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 但先别一个人进去。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 4] At 00:08.900, the camera cuts to <Picture 4>. Static Shot. The computer-skilled roommate presents the publicly available resume on his own phone to the coordinating roommate. No hacking, contact with the subject or fabricated institution. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1220,7 +1220,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1232,7 +1232,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：檐下北偏东向南拍会合前缘主角，后方是台阶/步道局部而非玻璃门；主角面向北侧同伴，禁止反打时移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1244,7 +1244,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：檐下北偏东向南拍会合前缘主角，后方是台阶/步道局部而非玻璃门；主角面向北侧同伴，禁止反打时移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1256,7 +1256,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1287,21 +1287,21 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-特写。x坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。x坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。森巴；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。森巴；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1312,9 +1312,9 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 4.70-second mark of the target video; Picture 3 (from Shot 3) aligns with the 7.40-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the computer-skilled roommate (S3), with a clear natural voice, says: <d>[Chinese] 她确实参与过心脏移植研究，技术还在争议中。</d>
-[Shot 2] At 00:04.700, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 所以，她们要拿你做实验？</d>
-[Shot 3] At 00:07.400, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 还不能确定。提到换心，或者叫你们进封闭房间，别去。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the computer-skilled roommate (S3), with a clear natural voice, says: <d>[Chinese] 她确实参与过心脏移植研究，技术还在争议中。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 2] At 00:04.700, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 所以，她们要拿你做实验？</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 3] At 00:07.400, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 还不能确定。提到换心，或者叫你们进封闭房间，别去。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1334,7 +1334,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1346,7 +1346,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1358,7 +1358,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：檐下北偏东向南拍会合前缘主角，后方是台阶/步道局部而非玻璃门；主角面向北侧同伴，禁止反打时移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1389,28 +1389,28 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。邓布利多；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。邓布利多；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。y坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。y坤；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。森巴；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。森巴；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1421,10 +1421,10 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.80-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 我跟你一起去。</d>
-[Shot 2] At 00:02.000, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 我们都去。先约好，情况不对就一起离开。</d>
-[Shot 3] At 00:06.200, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the food-loving roommate (S4), with a clear natural voice, says: <d>[Chinese] 明知道有问题还去，像恐怖片主角。</d>
-[Shot 4] At 00:09.800, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 恐怖片主角通常没我们这么多室友。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 我跟你一起去。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 2] At 00:02.000, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 我们都去。先约好，情况不对就一起离开。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 3] At 00:06.200, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the food-loving roommate (S4), with a clear natural voice, says: <d>[Chinese] 明知道有问题还去，像恐怖片主角。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 4] At 00:09.800, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the lively roommate (S2), with a clear natural voice, says: <d>[Chinese] 恐怖片主角通常没我们这么多室友。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1445,7 +1445,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1457,7 +1457,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1469,7 +1469,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1481,7 +1481,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1512,28 +1512,28 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人摇头，手刚拦住AAA建材批发杰哥正伸向购物袋的手；袋仍在原处，未换成背包，其他同伴留画外。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人摇头，手刚拦住AAA建材批发杰哥正伸向购物袋的手；袋仍在原处，未换成背包，其他同伴留画外。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 购物袋留在杰哥原站位脚边；主角拦住的是拿袋的手，不是把袋瞬移到主角手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。邓布利多；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。邓布利多；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。AAA建材批发杰哥；六人留在食堂外同会合位置，主角没有赋予室友回档记忆。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1544,10 +1544,10 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.40-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.80-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man shakes his head and stops the helpful roommate reaching for the same shopping bag.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们在门外等。不能都进去。</d>
-[Shot 3] At 00:05.400, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你求助，或者里面有异常动静，我们就上前。</d>
-[Shot 4] At 00:09.800, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 别一个人硬撑。我们就在门外。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The young man shakes his head and stops the helpful roommate reaching for the same shopping bag. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们在门外等。不能都进去。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 3] At 00:05.400, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你求助，或者里面有异常动静，我们就上前。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
+[Shot 4] At 00:09.800, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the helpful roommate (S6), with a clear natural voice, says: <d>[Chinese] 别一个人硬撑。我们就在门外。</d> Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1567,7 +1567,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1579,7 +1579,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：檐下北偏东向南拍会合前缘主角，后方是台阶/步道局部而非玻璃门；主角面向北侧同伴，禁止反打时移到北墙。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1591,7 +1591,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北/西北拍檐下北缘目标，身后为固定白墙局部；邓与x相邻，y更东，紧框切掉其余人物区域而非清空背景。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1603,7 +1603,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台东侧向西北拍门前的森巴/杰哥，玻璃门局部在背后；与主角对话沿既定前后轴，人物不为镜头换位。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1632,7 +1632,7 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-全景。六人仍在会合处即将一同离开，本群最帅之人、森巴、x坤、y坤、邓布利多、AAA建材批发杰哥均可见；杰哥自己的手机在手中，不与x坤手机混同。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+全景。六人仍在会合处即将一同离开，本群最帅之人、森巴、x坤、y坤、邓布利多、AAA建材批发杰哥均可见；杰哥自己的手机在手中，不与x坤手机混同。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 x坤的手机已交由邓布利多持有，仅在画框包含他的手时可见；不复制回x坤手中。 购物袋留在杰哥原站位脚边；主角拦住的是拿袋的手，不是把袋瞬移到主角手中。 画面起点六人尚未离开，袋仍可见在原处；后续离开只沿台阶到步道，不另加取袋动作。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1643,7 +1643,7 @@ non_diegetic_music: N/A
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. All six depart the meeting spot together. The helpful roommate holds his own phone; no person is left behind.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. All six depart the meeting spot together. The helpful roommate holds his own phone; no person is left behind. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1666,7 +1666,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：35mm 标准，较深景深
-机位：檐内同层机位，保留门后台阶前，人物不落到雨中台阶下；近景只取局部墙面。
+机位：平台南偏东向北的既定全景，门在画左、檐下北缘三人在右；六人按固定站位均入画，不把单人图当群体全景。
 构图：三分法
 运镜：固定镜头
 景别：全景
@@ -1699,35 +1699,35 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-中景。黎汐在入户门内准备开门，本群最帅之人在门外将跨进玄关；其余五人到楼梯平台停住但本紧镜不拍他们，不可画他们进入客厅。顾岚乔仍厨房内。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。黎汐在入户门内准备开门，本群最帅之人在门外将跨进玄关；其余五人到楼梯平台停住但本紧镜不拍他们，不可画他们进入客厅。顾岚乔仍厨房内。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。黎汐；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。黎汐；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-中景。本群最帅之人在靠入户门的座位旁准备坐下，顾岚乔持她自己的手机从北侧厨房出来；她不是从玄关进入。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在靠入户门的座位旁准备坐下，顾岚乔持她自己的手机从北侧厨房出来；她不是从玄关进入。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 主角固定使用生日桌西侧靠北、距深灰入户门最近的原木椅；坐下后不换到东窗/冰箱侧座位。黎汐在该座位与入户门之间，递点心可够到。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#5 分镜图提示词**
 
 ```text
-特写。顾岚乔；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。顾岚乔；主角在客厅靠入户门，五室友在门外平台，黎汐客厅，顾岚乔厨房至门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1738,11 +1738,11 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 4.50-second mark of the target video; Picture 4 (from Shot 4) aligns with the 6.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 9.40-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The host opens the apartment door and the young man steps into the foyer. His five roommates stop on the outside stair landing and do not enter the apartment. The relative remains inside the kitchen.
-[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 室友们没来吗？</d>
-[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 在附近。今天先不进来。</d>
-[Shot 4] At 00:06.900, the camera cuts to <Picture 4>. Static Shot. The young man sits nearest the entrance. The relative comes out of the kitchen holding her own phone.
-[Shot 5] At 00:09.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 有东西落在车上了，我去拿。</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The host opens the apartment door and the young man steps into the foyer. His five roommates stop on the outside stair landing and do not enter the apartment. The relative remains inside the kitchen. Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 室友们没来吗？</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 在附近。今天先不进来。</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 4] At 00:06.900, the camera cuts to <Picture 4>. Static Shot. The young man sits nearest the entrance. The relative comes out of the kitchen holding her own phone. Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 5] At 00:09.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 有东西落在车上了，我去拿。</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1762,7 +1762,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：客厅南偏东朝西北的近门区域机位；主角只用桌西北原木椅，黎汐在椅与门之间。厨房出场保留北门方向，不让画外五人占据客厅。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1774,7 +1774,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：生日桌南侧朝西北拍主角与入户门间的黎汐，站位固定；不把她移到北侧厨房门前作为所谓反打。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1786,7 +1786,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：生日桌东南侧朝西北拍固定西北座位主角，身后只为近门墙面/玄关局部，不能切到桌东冰箱旁；主角保持坐姿（坐下动作之前除外）。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1798,7 +1798,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：客厅南偏东朝西北的近门区域机位；主角只用桌西北原木椅，黎汐在椅与门之间。厨房出场保留北门方向，不让画外五人占据客厅。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1810,7 +1810,7 @@ non_diegetic_music: N/A
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：客厅南偏东朝西北的近门区域机位；主角只用桌西北原木椅，黎汐在椅与门之间。厨房出场保留北门方向，不让画外五人占据客厅。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1839,7 +1839,7 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-中景。顾岚乔在入户门外楼梯平台即将下楼；AAA建材批发杰哥看向邓布利多，邓布利多准备摇头让路。其余三位室友仍在平台画外，不拍进客厅。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。顾岚乔在入户门外楼梯平台即将下楼；AAA建材批发杰哥看向邓布利多，邓布利多准备摇头让路。其余三位室友仍在平台画外，不拍进客厅。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1850,7 +1850,7 @@ non_diegetic_music: N/A
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside. Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1872,7 +1872,7 @@ Spatial continuity from actual reference: Actual full-image view: the apartment 
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：楼梯平台南侧机位朝远端右侧入户门；下行梯在左前，顾岚乔由门外平台向左前下楼，五室友仅在平台，不进入客厅。
+机位：平台南侧朝北，入户门在右后、下行梯在左前。顾岚乔沿门到楼梯的清晰通路下行，杰哥与邓留通路侧边；用中近裁切排除另三人区域，不拍出空的全平台。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1904,28 +1904,28 @@ Spatial continuity from actual reference: Actual full-image view: the apartment 
 **#1 分镜图提示词**
 
 ```text
-特写。黎汐；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。黎汐；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 主角固定使用生日桌西侧靠北、距深灰入户门最近的原木椅；坐下后不换到东窗/冰箱侧座位。黎汐在该座位与入户门之间，递点心可够到。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#2 分镜图提示词**
 
 ```text
-特写。本群最帅之人；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。本群最帅之人；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 主角固定使用生日桌西侧靠北、距深灰入户门最近的原木椅；坐下后不换到东窗/冰箱侧座位。黎汐在该座位与入户门之间，递点心可够到。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#3 分镜图提示词**
 
 ```text
-特写。黎汐；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+特写。黎汐；主角已坐近门位置，黎汐在客厅，五室友一直在门外楼梯间，顾岚乔已下楼。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 主角固定使用生日桌西侧靠北、距深灰入户门最近的原木椅；坐下后不换到东窗/冰箱侧座位。黎汐在该座位与入户门之间，递点心可够到。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
 **#4 分镜图提示词**
 
 ```text
-中景。本群最帅之人已坐靠入户门位置，黎汐把普通点心递向他；初帧点心未被接走或吃下，入户门在她身后尚未完全合上。五室友仍留门外，不能因门关闭而消失或入屋。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人已坐靠入户门位置，黎汐把普通点心递向他；初帧点心未被接走或吃下，入户门在她身后尚未完全合上。五室友仍留门外，不能因门关闭而消失或入屋。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。 主角固定使用生日桌西侧靠北、距深灰入户门最近的原木椅；坐下后不换到东窗/冰箱侧座位。黎汐在该座位与入户门之间，递点心可够到。 以本镜cameraPosition限定的局部背景为准，严禁套用同一空景全景造成换位或把在场者抹掉。
 画幅：16:9
 ```
 
@@ -1936,10 +1936,10 @@ Spatial continuity from actual reference: Actual full-image view: the apartment 
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.00-second mark of the target video; Picture 3 (from Shot 3) aligns with the 4.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 6.20-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你一直在看门。</d>
-[Shot 2] At 00:02.000, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 习惯。</d>
-[Shot 3] At 00:04.000, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你对我也这么不放心？</d>
-[Shot 4] At 00:06.200, the camera cuts to <Picture 4>. Static Shot. The host offers a snack to the seated guest as the entrance door closes behind her. He has not taken or eaten it in the initial frame. The five friends stay outside.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你一直在看门。</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 2] At 00:02.000, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 习惯。</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 3] At 00:04.000, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你对我也这么不放心？</d> Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
+[Shot 4] At 00:06.200, the camera cuts to <Picture 4>. Static Shot. The host offers a snack to the seated guest as the entrance door closes behind her. He has not taken or eaten it in the initial frame. The five friends stay outside. Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
@@ -1958,7 +1958,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：生日桌南侧朝西北拍主角与入户门间的黎汐，站位固定；不把她移到北侧厨房门前作为所谓反打。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1970,7 +1970,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：生日桌东南侧朝西北拍固定西北座位主角，身后只为近门墙面/玄关局部，不能切到桌东冰箱旁；主角保持坐姿（坐下动作之前除外）。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1982,7 +1982,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：生日桌南侧朝西北拍主角与入户门间的黎汐，站位固定；不把她移到北侧厨房门前作为所谓反打。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -1994,7 +1994,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：机位在生日桌南侧朝北/西北，入户门在西侧，厨房门在北侧；紧镜按人物实际方位取同轴反打。
+机位：客厅南偏东朝西北的近门区域机位；主角只用桌西北原木椅，黎汐在椅与门之间。厨房出场保留北门方向，不让画外五人占据客厅。
 构图：三分法
 运镜：固定镜头
 景别：中景

@@ -11,7 +11,7 @@
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你脸色不好，我陪你？</d>
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the coordinating roommate (S5), with a clear natural voice, says: <d>[Chinese] 你脸色不好，我陪你？</d> Continuity: Keep the exact table side and original spacing. A reverse changes camera direction and background, never the seat or actor position. Crop out all occupied positions of offscreen roommates.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 

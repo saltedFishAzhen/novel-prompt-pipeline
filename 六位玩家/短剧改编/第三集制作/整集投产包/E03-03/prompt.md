@@ -12,8 +12,8 @@
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.20-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d>
-[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d> Continuity: 
+[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name. Continuity: 
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 

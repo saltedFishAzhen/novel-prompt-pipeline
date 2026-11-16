@@ -11,7 +11,7 @@
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. All six depart the meeting spot together. The helpful roommate holds his own phone; no person is left behind.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. All six depart the meeting spot together. The helpful roommate holds his own phone; no person is left behind. Continuity: Lock the meeting layout: two roommates by the door, three along the sheltered wall, arriving young man at the open front. The glasses roommate is adjacent east of the computing roommate for the phone handoff. Frame tight or include every visible participant.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 

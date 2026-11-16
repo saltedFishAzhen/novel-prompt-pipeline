@@ -11,7 +11,7 @@
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside. Continuity: Use the original northwest chair on the west side of the table, closest to the entrance; the young man stays there after sitting. The host is between him and the entry door. Five friends remain outside, never inside the room.
 
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 

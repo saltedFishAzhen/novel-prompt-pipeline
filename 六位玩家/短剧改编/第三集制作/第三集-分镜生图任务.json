@@ -176,9 +176,7 @@
       "promptFile": "生图提示词/E03-05-f1.txt",
       "references": [
         "卫生间.png",
-        "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\本群最帅之人\\image-j655lwqc\\image-01.png",
-        "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\黎汐-sheet.png",
-        "D:\\work\\articles\\六位玩家\\短剧改编\\103制作\\角色资料\\images\\顾岚乔-sheet.png"
+        "D:\\work\\articles\\六位玩家\\短剧改编\\API生成人物参考图\\本群最帅之人\\image-j655lwqc\\image-01.png"
       ],
       "outputFile": "整集投产包/E03-05/f1.png",
       "dependsOn": [],
