@@ -1,0 +1,128 @@
+{
+  "source": "《六位玩家》第一世界",
+  "status": "40集完整剧本完成；全40集独立逐场内容复核及必要修正完成，确定性校验通过",
+  "params": {
+    "charsPerSecond": 4.5,
+    "actionSeconds": 2.5,
+    "tolerance": 0.15,
+    "maxLineChars": 35
+  },
+  "sourceVersion": {
+    "git": "e6a6b3a",
+    "sha256": "b7f99a3fda371d5de08ecf1387d038d629fafad55778d9f704ba95b385007617",
+    "note": "小说已同步修正异名、早期诊所残留及门口视线；短剧沿用同一明确因果。"
+  },
+  "format": "横屏16:9",
+  "episodes": [
+    {
+      "ep": 1,
+      "targetSeconds": 55.4,
+      "hook": "临窗桌边递来的黑卡，能否证明这场合作的身份？",
+      "cliff": "没有新通知之后，手机才真正震动亮起生日邀请。",
+      "hookBeat": [
+        1,
+        1
+      ],
+      "beatsClaimed": [],
+      "scenes": [
+        {
+          "sceneId": "S10",
+          "location": "咖啡厅·临窗桌及门外街边",
+          "characters": [
+            "C01",
+            "C23"
+          ],
+          "presentAtStart": [
+            "C23"
+          ],
+          "entrancesExits": "主角首拍入座；末段起身离店，神秘女人留在桌边。",
+          "props": [],
+          "flow": [
+            {
+              "action": "主角拉开椅子坐下，红发女人将一张黑色卡片推到桌边。"
+            },
+            {
+              "speaker": "C23",
+              "line": "我们关注过您的直播。您很适合这次合作。"
+            },
+            {
+              "speaker": "C01",
+              "line": "哪个平台？工作证明能看一下吗？"
+            },
+            {
+              "speaker": "C23",
+              "line": "一场以整个世界为舞台的游戏。"
+            },
+            {
+              "speaker": "C23",
+              "line": "多人竞技，真实的人，真实的生命。"
+            },
+            {
+              "action": "主角看着卡片，没有伸手去拿。"
+            },
+            {
+              "speaker": "C01",
+              "line": "抱歉，我不参加。"
+            },
+            {
+              "speaker": "C23",
+              "line": "您不想先听听待遇？"
+            },
+            {
+              "speaker": "C01",
+              "line": "我更想确认你的工作证明。"
+            },
+            {
+              "action": "女人收回手，没有拿出证件。"
+            },
+            {
+              "speaker": "C23",
+              "line": "看来您很谨慎。"
+            },
+            {
+              "speaker": "C01",
+              "line": "谈合作，总得先知道对方是谁。"
+            },
+            {
+              "action": "主角起身，女人仍坐着。"
+            },
+            {
+              "speaker": "C23",
+              "line": "您现在拒绝，不代表这件事不会发生。"
+            },
+            {
+              "speaker": "C01",
+              "line": "那得看是什么事。"
+            },
+            {
+              "speaker": "C23",
+              "line": "比如，一场所有人都要参加的游戏。"
+            },
+            {
+              "action": "主角走出店门，忽然停步，耳边响起短促的游戏提示音。"
+            },
+            {
+              "action": "他拿出手机查看，屏幕没有新通知。"
+            },
+            {
+              "speaker": "VO",
+              "line": "又是这个声音。可手机根本没响。",
+              "delivery": "主角心声，压低"
+            },
+            {
+              "action": "手机随后真正震动，黎汐的生日邀请亮起。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "originalSceneIndex": 2,
+    "localSceneIndex": 1,
+    "code": "102",
+    "source": "D:\\work\\articles\\六位玩家\\短剧改编\\六位玩家-script.json",
+    "sha256": "5855325613c83bfa92c0d7537ba61ee69998118c161256a7fdd63f96c22adf83",
+    "note": "原第1集第2场20拍逐字复制；presentAtStart保留C23；仅本场时长目标按seed相加，不修改语速/原文。"
+  }
+}

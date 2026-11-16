@@ -1,0 +1,104 @@
+{
+  "source": "《六位玩家》第一世界",
+  "lang": "zh",
+  "locations": [
+    {
+      "sceneId": "S10",
+      "name": "咖啡厅",
+      "readFrom": "prompt",
+      "items": [
+        {
+          "name": "临窗双人方桌",
+          "alt": "window-side rectangular table",
+          "plan": [
+            0.18,
+            0.28,
+            0.43,
+            0.48
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "西侧固定窗",
+          "alt": "west fixed window",
+          "plan": [
+            0.02,
+            0.18,
+            0.07,
+            0.53
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "东侧玻璃出口",
+          "alt": "east glass exit",
+          "plan": [
+            0.78,
+            0.67,
+            0.84,
+            0.82
+          ],
+          "on": false,
+          "round": false
+        },
+        {
+          "name": "门外铺地区",
+          "alt": "exterior paved area",
+          "plan": [
+            0.87,
+            0.62,
+            0.99,
+            0.95
+          ],
+          "on": true,
+          "round": false
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "ep": 1,
+      "scene": 1,
+      "sceneId": "S10",
+      "cast": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人"
+        },
+        {
+          "id": "C23",
+          "name": "神秘女人"
+        }
+      ],
+      "places": [
+        {
+          "id": "C01",
+          "name": "本群最帅之人",
+          "present": false,
+          "item": null,
+          "side": null,
+          "along": null,
+          "posture": null,
+          "facing": null
+        },
+        {
+          "id": "C23",
+          "name": "神秘女人",
+          "present": true,
+          "item": "临窗双人方桌",
+          "side": "north",
+          "along": 0.5,
+          "posture": "sit",
+          "facing": "south"
+        }
+      ],
+      "extras": 0,
+      "extrasWhere": null,
+      "why": "依正式presentAtStart仅红发女人在桌边；主角第1拍拉椅坐下进入桌边会谈场域，不新增推门进店动作。"
+    }
+  ],
+  "status": "按提示词推算草案，未认图；无referenceImage或box，实际图未完成。"
+}

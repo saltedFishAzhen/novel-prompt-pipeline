@@ -1,0 +1,710 @@
+[
+  {
+    "segment": "E01-01",
+    "aspectRatio": "16:9",
+    "seconds": 10,
+    "cuts": 3,
+    "cutStarts": [
+      0,
+      2.5,
+      6.7
+    ],
+    "openingPresent": [
+      "C23"
+    ],
+    "framePlan": [
+      {
+        "cut": 1,
+        "frame": "f1.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C23"
+        ],
+        "endPresent": [
+          "C23",
+          "C01"
+        ],
+        "visible": [
+          "C01",
+          "C23"
+        ],
+        "visibleCount": 2,
+        "offscreen": [],
+        "enter": [
+          {
+            "id": "C01",
+            "beat": 1,
+            "evidence": "主角拉开椅子坐下",
+            "reason": "按正式开场元数据，拉椅入座进入会谈桌边场域；不添加推门进店。"
+          }
+        ],
+        "exit": [],
+        "props": [],
+        "framePrompt": "双人中景。本群最帅之人来到临窗桌南侧的椅旁，手刚扶住椅背准备坐下；神秘女人红发、已坐桌北侧，手与黑卡仍在桌面靠她一侧。初帧为拉椅入座动作起点，黑卡未推完。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "双人中景。本群最帅之人来到临窗桌南侧的椅旁，手刚扶住椅背准备坐下；神秘女人红发、已坐桌北侧，手与黑卡仍在桌面靠她一侧。初帧为拉椅入座动作起点，黑卡未推完。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 2,
+        "frame": "f2.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C23",
+          "C01"
+        ],
+        "endPresent": [
+          "C23",
+          "C01"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人红发，坐在临窗桌北侧朝画外主角说话，黑卡已在桌南缘；背景仅固定窗与墙面局部，不能把对面椅子拍空。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人红发，坐在临窗桌北侧朝画外主角说话，黑卡已在桌南缘；背景仅固定窗与墙面局部，不能把对面椅子拍空。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 3,
+        "frame": "f3.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C23",
+          "C01"
+        ],
+        "endPresent": [
+          "C23",
+          "C01"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人已坐临窗桌南侧，看向画外红发女人询问；双手未触碰黑卡，背景为局部室内墙面。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人已坐临窗桌南侧，看向画外红发女人询问；双手未触碰黑卡，背景为局部室内墙面。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      }
+    ],
+    "prompt": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/prompt.md",
+    "pictures": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f3.png"
+    ],
+    "missing": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-01/f3.png"
+    ]
+  },
+  {
+    "segment": "E01-02",
+    "aspectRatio": "16:9",
+    "seconds": 11.2,
+    "cuts": 4,
+    "cutStarts": [
+      0,
+      3.1,
+      6.7,
+      9.2
+    ],
+    "openingPresent": [
+      "C01",
+      "C23"
+    ],
+    "framePlan": [
+      {
+        "cut": 1,
+        "frame": "f1.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人红发，仍坐桌北侧，面向画外主角说明游戏，姿态不改变；背景只取固定窗局部。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人红发，仍坐桌北侧，面向画外主角说明游戏，姿态不改变；背景只取固定窗局部。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 2,
+        "frame": "f2.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01",
+          "C23"
+        ],
+        "visibleCount": 2,
+        "offscreen": [],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "双人紧中景。本群最帅之人南侧、神秘女人北侧隔桌相对，黑卡停在桌南缘；女人继续说明，主角不伸手。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "双人紧中景。本群最帅之人南侧、神秘女人北侧隔桌相对，黑卡停在桌南缘；女人继续说明，主角不伸手。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 3,
+        "frame": "f3.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人的视线落在桌南缘黑卡，手与卡保持距离，卡边缘可在下方入框；不拍拿起动作。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人的视线落在桌南缘黑卡，手与卡保持距离，卡边缘可在下方入框；不拍拿起动作。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 4,
+        "frame": "f4.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人仍坐原位，面向画外女人明确拒绝，手不碰卡。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人仍坐原位，面向画外女人明确拒绝，手不碰卡。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      }
+    ],
+    "prompt": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/prompt.md",
+    "pictures": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f4.png"
+    ],
+    "missing": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-02/f4.png"
+    ]
+  },
+  {
+    "segment": "E01-03",
+    "aspectRatio": "16:9",
+    "seconds": 12.3,
+    "cuts": 5,
+    "cutStarts": [
+      0,
+      2,
+      4.7,
+      7.2,
+      9.2
+    ],
+    "openingPresent": [
+      "C01",
+      "C23"
+    ],
+    "framePlan": [
+      {
+        "cut": 1,
+        "frame": "f1.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人红发，仍坐桌北侧，朝画外主角追问待遇；她没有拿出其他物件。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人红发，仍坐桌北侧，朝画外主角追问待遇；她没有拿出其他物件。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 2,
+        "frame": "f2.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人坐桌南侧，视线对向女人，继续追问工作证明；黑卡仍留桌上。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人坐桌南侧，视线对向女人，继续追问工作证明；黑卡仍留桌上。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 3,
+        "frame": "f3.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "紧中景。神秘女人仍坐北侧，手在桌边准备收回，黑卡已停桌南缘且不随手收走；不出现证件或翻包。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "紧中景。神秘女人仍坐北侧，手在桌边准备收回，黑卡已停桌南缘且不随手收走；不出现证件或翻包。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 4,
+        "frame": "f4.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人收手后仍坐着，面向画外主角回应谨慎，双手不展示任何证件。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人收手后仍坐着，面向画外主角回应谨慎，双手不展示任何证件。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 5,
+        "frame": "f5.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人仍坐桌南侧回应身份问题，未起身；背景只见局部墙面。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人仍坐桌南侧回应身份问题，未起身；背景只见局部墙面。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      }
+    ],
+    "prompt": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/prompt.md",
+    "pictures": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f4.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f5.png"
+    ],
+    "missing": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f4.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-03/f5.png"
+    ]
+  },
+  {
+    "segment": "E01-04",
+    "aspectRatio": "16:9",
+    "seconds": 11.9,
+    "cuts": 4,
+    "cutStarts": [
+      0,
+      2.5,
+      6.3,
+      8.3
+    ],
+    "openingPresent": [
+      "C01",
+      "C23"
+    ],
+    "framePlan": [
+      {
+        "cut": 1,
+        "frame": "f1.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01",
+          "C23"
+        ],
+        "visibleCount": 2,
+        "offscreen": [],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "双人中景。本群最帅之人仍坐在南侧椅上、准备起身；神秘女人坐北侧保持不动。黑卡在桌南缘无人拿走，通往出口的桌东侧路线畅通。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "双人中景。本群最帅之人仍坐在南侧椅上、准备起身；神秘女人坐北侧保持不动。黑卡在桌南缘无人拿走，通往出口的桌东侧路线畅通。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 2,
+        "frame": "f2.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人仍坐桌北侧，抬眼看向已经起身的画外主角发出提醒；不跟着站起。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人仍坐桌北侧，抬眼看向已经起身的画外主角发出提醒；不跟着站起。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 3,
+        "frame": "f3.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人已站在南侧椅旁，低头朝坐着的画外女人回话，尚未走出咖啡厅。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人已站在南侧椅旁，低头朝坐着的画外女人回话，尚未走出咖啡厅。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 4,
+        "frame": "f4.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C23"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C01",
+            "reason": "仍在会谈桌边，紧裁反打将其实际位置排除在框外，不能将其座位画空。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。神秘女人坐在桌北侧，视线向站着的主角，继续说明所有人参与；黑卡留桌。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。神秘女人坐在桌北侧，视线向站着的主角，继续说明所有人参与；黑卡留桌。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      }
+    ],
+    "prompt": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/prompt.md",
+    "pictures": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f4.png"
+    ],
+    "missing": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-04/f4.png"
+    ]
+  },
+  {
+    "segment": "E01-05",
+    "aspectRatio": "16:9",
+    "seconds": 10.8,
+    "cuts": 4,
+    "cutStarts": [
+      0,
+      2.5,
+      5,
+      8.3
+    ],
+    "openingPresent": [
+      "C01",
+      "C23"
+    ],
+    "framePlan": [
+      {
+        "cut": 1,
+        "frame": "f1.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "女人仍坐室内临窗桌，出口/门外局部构图将桌边整体排除，不表示她离场。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "中景。本群最帅之人处在咖啡厅玻璃出口内侧的门槛前，准备跨出；画面带同一出口和门外一小块铺地，不把桌边搬到街上。女人留在内侧临窗桌区域、被窄框排除。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "中景。本群最帅之人处在咖啡厅玻璃出口内侧的门槛前，准备跨出；画面带同一出口和门外一小块铺地，不把桌边搬到街上。女人留在内侧临窗桌区域、被窄框排除。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 2,
+        "frame": "f2.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "女人仍坐室内临窗桌，出口/门外局部构图将桌边整体排除，不表示她离场。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "紧中景。本群最帅之人已在同一玻璃出口外一小步处停住，手尚未拿出手机；背景仅出口门框与街边局部。初帧保留取手机动作起点。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "紧中景。本群最帅之人已在同一玻璃出口外一小步处停住，手尚未拿出手机；背景仅出口门框与街边局部。初帧保留取手机动作起点。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 3,
+        "frame": "f3.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "女人仍坐室内临窗桌，出口/门外局部构图将桌边整体排除，不表示她离场。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人在门外看着已取出的自己手机，屏幕没有新通知；嘴唇闭合，仅心声，保持站位。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人在门外看着已取出的自己手机，屏幕没有新通知；嘴唇闭合，仅心声，保持站位。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      },
+      {
+        "cut": 4,
+        "frame": "f4.png",
+        "aspectRatio": "16:9",
+        "startPresent": [
+          "C01",
+          "C23"
+        ],
+        "endPresent": [
+          "C01",
+          "C23"
+        ],
+        "visible": [
+          "C01"
+        ],
+        "visibleCount": 1,
+        "offscreen": [
+          {
+            "id": "C23",
+            "reason": "女人仍坐室内临窗桌，出口/门外局部构图将桌边整体排除，不表示她离场。"
+          }
+        ],
+        "enter": [],
+        "exit": [],
+        "props": [],
+        "framePrompt": "特写。本群最帅之人在门外持自己手机，初帧屏幕尚无新通知、手机静止；随后才震动并亮生日邀请。不得把未定义的邀请全文提前写进画面。 横屏16:9，午后阴天窗光；不加群演。",
+        "generationPrompt": "特写。本群最帅之人在门外持自己手机，初帧屏幕尚无新通知、手机静止；随后才震动并亮生日邀请。不得把未定义的邀请全文提前写进画面。 横屏16:9，午后阴天窗光；不加群演。\n画幅：16:9"
+      }
+    ],
+    "prompt": "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/prompt.md",
+    "pictures": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f4.png"
+    ],
+    "missing": [
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f1.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f2.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f3.png",
+      "D:\\work\\articles\\六位玩家\\短剧改编\\102制作\\H3投产包/E01-05/f4.png"
+    ]
+  }
+]

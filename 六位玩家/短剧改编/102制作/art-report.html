@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《六位玩家》第一世界 · 美术设定集</title>
+<style>
+:root{
+  --paper:#eceded; --panel:#f5f6f5; --side:#e4e6e3; --ink:#191d21; --ink-2:#5b636a; --ink-3:#8c9298;
+  --rule:#d2d5d0; --rule-2:#c2c6bf; --seal:#8a3324; --seal-2:#c56a4e; --seal-soft:#8a332412; --ok:#3d6b4f;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1600px;margin:0 auto;padding:24px 32px 90px}
+h1,h2,h3,h4{margin:0;font-weight:400}
+
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.hd h1{font:400 28px/1.1 var(--serif);letter-spacing:.06em}
+.hd .sub{font-size:13px;color:var(--ink-2)}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.gatepill{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);border-radius:99px;padding:6px 12px}
+.gatepill.pass{color:var(--ok);border:1px solid var(--ok)}
+.gatepill.fail{color:var(--seal);border:1px solid var(--seal);background:var(--seal-soft)}
+.expo{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.15s}
+.expo:hover{border-color:var(--seal);color:var(--seal)}
+.expo:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 6px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:11px 14px 9px}
+.kpi .l{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.kpi .v{font:400 28px/1.15 var(--serif);margin-top:5px}
+.kpi .d{font-size:11px;color:var(--ink-2);margin-top:1px}
+.kpi.accent{border-top:2px solid var(--seal)}
+.galert{margin:14px 0 0;border:1px solid var(--seal);background:var(--seal-soft);border-radius:2px;
+  padding:10px 14px;font-size:13px}
+.galert b{color:var(--seal)}
+.galert span{display:block;font-size:12px;color:var(--ink-2)}
+
+section.top-sec{margin-top:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:16px}
+.sec-h .no{font:500 12px/1 var(--mono);color:var(--seal)}
+.sec-h h2{font:400 20px/1.2 var(--serif);letter-spacing:.05em}
+.sec-h .note{margin-left:auto;font-size:12px;color:var(--ink-3)}
+
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--rule);font-size:13px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 11px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:var(--side)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+.mono{font:400 11.5px/1.7 var(--mono);color:var(--ink-2);word-break:break-word}
+
+/* 场景设定卡：一排两张（方便截图宣传），卡内纵排、设定图占满卡宽 */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:1100px){.cards{grid-template-columns:1fr}}
+.scene{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:18px 20px}
+.sc-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--rule-2);padding-bottom:10px}
+.sc-id{font:500 12px/1 var(--mono);color:var(--seal)}
+.sc-h h3{font:400 20px/1.2 var(--serif);letter-spacing:.04em}
+.badge{font:500 10.5px/1 var(--sans);padding:2px 8px;border-radius:99px;border:1px solid var(--seal);color:var(--seal)}
+.badge.once{border-color:var(--seal-2);color:var(--seal-2)}
+.sc-use{margin-left:auto;font-size:12px;color:var(--ink-2)}
+.sc-sum{margin:10px 0 12px;font:400 14.5px/1.9 var(--serif)}
+.scene .blk{margin-top:16px}
+.scene .pgroup{margin-top:16px}
+
+.plate{margin:0;background:#fff;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.plate .zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.plate .zoom:focus-visible{outline:2px solid var(--seal);outline-offset:-2px}
+.plate img{display:block;width:100%;height:auto}
+/* 图片弹层 */
+.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;
+  background:#191d21e6;padding:32px;cursor:zoom-out}
+.lightbox.on{display:grid}
+.lightbox img{max-width:100%;max-height:100%;background:#fff;border-radius:2px;
+  box-shadow:0 8px 40px #0006}
+.lightbox-x{position:absolute;top:18px;right:22px;font:500 13px/1 var(--sans);color:#fff;
+  background:none;border:1px solid #fff6;border-radius:3px;padding:8px 12px;cursor:pointer}
+.lightbox-x:hover{border-color:#fff}
+.plate figcaption{font-size:11px;letter-spacing:.08em;color:var(--ink-3);padding:6px 10px;border-top:1px solid var(--rule)}
+.plate-empty{display:grid;place-items:center;min-height:180px;text-align:center;
+  border:1px dashed var(--rule-2);background:var(--paper);color:var(--ink-3);font-size:13px}
+.plate-empty em{font-style:normal;font-size:12px;opacity:.8}
+.variant{margin:10px 0 0;font-size:12.5px;color:var(--seal);background:var(--seal-soft);padding:7px 10px;border-radius:2px}
+.variant b{font-family:var(--mono);font-weight:500}
+
+.blk{margin-bottom:16px}
+.blk h4{font:500 11px/1.6 var(--sans);letter-spacing:.18em;color:var(--seal);margin-bottom:8px}
+.blk h4 small{display:block;letter-spacing:0;font-weight:400;color:var(--ink-3);font-size:11px}
+.anchors{margin:0;padding:0 0 0 2px;list-style:none;counter-reset:an}
+/* ::before 序号也是网格项，desc 必须显式钉在第二列，否则会掉进 22px 窄列一字一行 */
+.anchors li{counter-increment:an;display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:8px;
+  padding:6px 0;border-top:1px solid var(--rule);font-size:13px}
+.anchors li:first-child{border-top:0}
+.anchors li::before{content:counter(an,decimal-leading-zero);grid-column:1;grid-row:1;
+  font:500 11px/1.9 var(--mono);color:var(--seal)}
+.anchors b{grid-column:2;font-weight:500}
+.anchors span{grid-column:2;display:block;font-size:12px;color:var(--ink-2)}
+.lights{display:flex;flex-direction:column;gap:6px}
+.light{display:flex;align-items:baseline;gap:10px;background:var(--paper);border:1px solid var(--rule);
+  border-radius:2px;padding:7px 10px}
+.light i{flex:none;font-style:normal;font:500 12px/1.6 var(--sans);color:var(--ink)}
+.light .mono{flex:1;min-width:0}
+
+.pgroup{border:1px solid var(--rule);border-radius:2px;background:var(--paper);padding:4px 12px 8px;margin-top:12px}
+.pr{border-bottom:1px solid var(--rule)}
+.pgroup .pr:last-of-type{border-bottom:0}
+.pr summary{display:flex;align-items:center;gap:10px;padding:10px 0;cursor:pointer;list-style:none;
+  font:500 12px/1 var(--sans);letter-spacing:.04em}
+.pr summary::-webkit-details-marker{display:none}
+.pr summary::before{content:"▸";color:var(--seal);font-size:11px;transition:transform .15s}
+.pr[open] summary::before{transform:rotate(90deg)}
+.pr summary span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr p{margin:0 0 10px;padding:10px 12px;background:var(--panel);border:1px solid var(--rule);
+  border-radius:2px;font:400 12px/1.75 var(--mono);white-space:pre-wrap;word-break:break-word}
+.pgroup-f{padding:10px 0 4px}
+.copy{flex:none;font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:4px 10px;cursor:pointer;transition:.15s}
+.copy:hover{border-color:var(--seal);color:var(--seal)}
+.copy:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.copy[data-done]{border-color:var(--seal);color:var(--seal)}
+.copy.wide{width:100%;padding:9px}
+.copy.mini{padding:2px 7px;font-size:10.5px}
+
+.gate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+@media(max-width:900px){.gate{grid-template-columns:1fr}}
+.gate li{display:flex;gap:8px;padding:5px 0;font-size:12.5px;line-height:1.55}
+.gate .m{flex:none;font-weight:700}
+.gate li.ok .m{color:var(--ok)}
+.gate li.bad .m{color:var(--seal)}
+.gate li.bad{background:var(--seal-soft);border-radius:2px;padding-left:6px}
+.gate small{display:block;color:var(--ink-3)}
+.gsum{margin:10px 0 0;font-size:12px;color:var(--ink-2)}
+.gsum b{color:var(--seal)}
+
+.foot{margin-top:40px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  .expo,.copy{display:none!important}
+  .pr p{display:block!important}
+  .pr summary::before{content:""}
+  .page{max-width:none;padding:0}
+  section.top-sec,.scene{page-break-inside:avoid}
+  body{background:#fff}
+}
+</style></head><body>
+<div class="page">
+
+<header class="hd">
+  <h1>《六位玩家》第一世界</h1>
+  <span class="sub">美术设定集</span>
+  <span class="right">
+    <span class="gatepill pass">✓ 质量门 11 / 11</span>
+    <button class="expo" data-name="《六位玩家》第一世界-art.json">导出 JSON</button>
+  </span>
+</header>
+
+<div class="kpis">
+  <div class="kpi accent"><div class="l">场景</div><div class="v">1</div><div class="d">主场景 0</div></div>
+  <div class="kpi"><div class="l">叙事道具</div><div class="v">0</div><div class="d">0 个状态变体</div></div>
+  <div class="kpi"><div class="l">一致性锚点</div><div class="v">5</div><div class="d">生成镜头的核对表（场景 + 道具）</div></div>
+  <div class="kpi"><div class="l">光照状态</div><div class="v">2</div><div class="d">换时段 = 重新生成</div></div>
+</div>
+
+
+
+
+<section class="top-sec" id="sec-list">
+  <div class="sec-h"><span class="no">01</span><h2>场景清单</h2></div>
+  <table><thead><tr><th>ID</th><th>场景</th><th>类型</th><th>出现集</th><th>锚点</th><th>光照</th><th>变体</th></tr></thead>
+<tbody><tr><td>S10</td><td>咖啡厅</td><td>一次性</td><td>1、3</td><td>5</td><td>午后阴天·室内临窗桌、同一午后·门外街边</td><td>—</td></tr></tbody></table>
+</section>
+
+<section class="top-sec" id="sec-cards">
+  <div class="sec-h"><span class="no">02</span><h2>场景设定卡</h2></div>
+  <div class="cards">
+<article class="scene" id="sc-S10">
+  <header class="sc-h">
+    <span class="sc-id">S10</span>
+    <h3>咖啡厅</h3>
+    <span class="badge once">一次性</span>
+    <span class="sc-use">出现集 1、3　承载爽点 悬疑推进/因果揭示</span>
+  </header>
+  <p class="sc-sum">以隔桌相对的克制距离承载合作试探与拒绝，再沿可见出口接门外停步与真假提示音反差。室内、玻璃出口、门外街边属于同一咖啡厅连续空间，但不是同一人物坐标。以下窗、桌椅、门和通路形制均为制作设计，不冒称小说钦定。</p>
+  <div class="plate plate-empty"><span>咖啡厅 · 尚未出图<br><em>用下方提示词生成</em></span></div>
+  
+  <section class="blk">
+    <h4>一致性锚点<small>每次生成都必须出现的特征——认场景靠它，QC 也靠它</small></h4>
+    <ol class="anchors"><li><b>临窗双人方桌</b><span>西侧固定窗旁一张深色小方桌，南北两把独立椅，桌南缘用于推黑卡；不加咖啡饮食。</span></li><li><b>西侧固定玻璃窗</b><span>桌西侧整块固定玻璃窗，深灰窄框，望见同一街边，无可读标识。</span></li><li><b>东侧单扇玻璃门</b><span>室内东南侧单扇深灰框玻璃出口，窄竖把手，连接门外街边，不与西侧固定窗混淆。</span></li><li><b>桌到门空通路</b><span>桌东侧保留通往东南出口的连续走路空地，不穿墙、不穿桌。</span></li><li><b>门外浅灰铺地</b><span>与门槛外相连的浅灰街边铺地，延续门窗深灰框与同一建筑；门外停步位置距门一小步。</span></li></ol>
+  </section>
+  <section class="blk">
+    <h4>光照与时段</h4>
+    <div class="lights"><div class="light"><i>午后阴天·室内临窗桌</i><span class="mono">Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.</span><button class="copy mini" data-copy="Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.">复制</button></div><div class="light"><i>同一午后·门外街边</i><span class="mono">Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside.</span><button class="copy mini" data-copy="Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside.">复制</button></div></div>
+  </section>
+  <div class="pgroup">
+    <details class="pr">
+  <summary><span>主视角 EN</span><button class="copy" data-copy="Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.">复制</button></summary>
+  <p>Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.</p>
+</details>
+    <details class="pr">
+  <summary><span>设定图 EN</span><button class="copy" data-copy="One 16:9 landscape sheet. Upper-left master view covers 72 percent width and 70 percent height. An L-shaped detail border has two close-up panels at right and three along the bottom, separated by thin lines. Show crop enlargements of table edge, fixed window frame, exit handle, clear aisle and threshold paving; nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels or text. Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows">复制</button></summary>
+  <p>One 16:9 landscape sheet. Upper-left master view covers 72 percent width and 70 percent height. An L-shaped detail border has two close-up panels at right and three along the bottom, separated by thin lines. Show crop enlargements of table edge, fixed window frame, exit handle, clear aisle and threshold paving; nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels or text. Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows</p>
+</details>
+    <details class="pr">
+  <summary><span>反向提示词</span><button class="copy" data-copy="people, human figures, characters, crowds, human reflections, silhouettes of people, phones, cards, coffee cups, food, readable text, watermark, signature, warped perspective, melted geometry, floating objects, blocked exits">复制</button></summary>
+  <p>people, human figures, characters, crowds, human reflections, silhouettes of people, phones, cards, coffee cups, food, readable text, watermark, signature, warped perspective, melted geometry, floating objects, blocked exits</p>
+</details>
+    <div class="pgroup-f"><button class="copy wide" data-copy="{
+  &quot;id&quot;: &quot;S10&quot;,
+  &quot;name&quot;: &quot;咖啡厅&quot;,
+  &quot;primary&quot;: false,
+  &quot;summary&quot;: &quot;以隔桌相对的克制距离承载合作试探与拒绝，再沿可见出口接门外停步与真假提示音反差。室内、玻璃出口、门外街边属于同一咖啡厅连续空间，但不是同一人物坐标。以下窗、桌椅、门和通路形制均为制作设计，不冒称小说钦定。&quot;,
+  &quot;anchors&quot;: [
+    {
+      &quot;name&quot;: &quot;临窗双人方桌&quot;,
+      &quot;desc&quot;: &quot;西侧固定窗旁一张深色小方桌，南北两把独立椅，桌南缘用于推黑卡；不加咖啡饮食。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;西侧固定玻璃窗&quot;,
+      &quot;desc&quot;: &quot;桌西侧整块固定玻璃窗，深灰窄框，望见同一街边，无可读标识。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;东侧单扇玻璃门&quot;,
+      &quot;desc&quot;: &quot;室内东南侧单扇深灰框玻璃出口，窄竖把手，连接门外街边，不与西侧固定窗混淆。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;桌到门空通路&quot;,
+      &quot;desc&quot;: &quot;桌东侧保留通往东南出口的连续走路空地，不穿墙、不穿桌。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;门外浅灰铺地&quot;,
+      &quot;desc&quot;: &quot;与门槛外相连的浅灰街边铺地，延续门窗深灰框与同一建筑；门外停步位置距门一小步。&quot;
+    }
+  ],
+  &quot;lighting&quot;: [
+    {
+      &quot;state&quot;: &quot;午后阴天·室内临窗桌&quot;,
+      &quot;prompt&quot;: &quot;Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.&quot;
+    },
+    {
+      &quot;state&quot;: &quot;同一午后·门外街边&quot;,
+      &quot;prompt&quot;: &quot;Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside.&quot;
+    }
+  ],
+  &quot;image&quot;: {
+    &quot;prompt&quot;: &quot;Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.&quot;,
+    &quot;negativePrompt&quot;: &quot;people, human figures, characters, crowds, human reflections, silhouettes of people, phones, cards, coffee cups, food, readable text, watermark, signature, warped perspective, melted geometry, floating objects, blocked exits&quot;,
+    &quot;sheet&quot;: &quot;One 16:9 landscape sheet. Upper-left master view covers 72 percent width and 70 percent height. An L-shaped detail border has two close-up panels at right and three along the bottom, separated by thin lines. Show crop enlargements of table edge, fixed window frame, exit handle, clear aisle and threshold paving; nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels or text. Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows&quot;,
+    &quot;tags&quot;: [
+      &quot;environment sheet&quot;,
+      &quot;maintained cafe&quot;,
+      &quot;overcast afternoon&quot;,
+      &quot;dark wood&quot;,
+      &quot;glass&quot;
+    ],
+    &quot;mainViewBox&quot;: [
+      0,
+      0,
+      0.72,
+      0.7
+    ]
+  },
+  &quot;seedNote&quot;: &quot;outline 的复用方案：当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。——考虑做成某个主场景的变体（variantOf + changes）&quot;,
+  &quot;usage&quot;: {
+    &quot;episodes&quot;: [
+      1,
+      3
+    ],
+    &quot;beats&quot;: [
+      &quot;悬疑推进/因果揭示&quot;
+    ]
+  }
+}">复制整个场景 JSON</button></div>
+  </div>
+</article>
+  </div>
+</section>
+
+
+
+<section class="top-sec" id="sec-gates">
+  <div class="sec-h"><span class="no">03</span><h2>质量门</h2></div>
+  <ul class="gate">
+  <li class="ok"><span class="m">✓</span><span>一致性锚点 3–5 个</span></li>
+  <li class="ok"><span class="m">✓</span><span>光照状态至少 1 个且落成提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>参考图无人：反向提示词禁人（场景与道具都查）</span></li>
+  <li class="ok"><span class="m">✓</span><span>出图提示词完整且全部英文</span></li>
+  <li class="ok"><span class="m">✓</span><span>提示词不含角色名<small>未提供 cast.json，本门跳过（视为通过）</small></span></li>
+  <li class="ok"><span class="m">✓</span><span>变体引用完整（variantOf 存在且带 changes）</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具状态至少 1 个且落成提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具尺度参照写进提示词</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具参考图无手：反向提示词禁手</span></li>
+  <li class="ok"><span class="m">✓</span><span>道具设定图纯白背景可抠</span></li>
+  <li class="ok"><span class="m">✓</span><span>同建筑同层的连接与两侧提示词一致</span></li>
+</ul>
+  <p class="gsum">全部通过</p>
+</section>
+
+<p class="foot">设定与提示词由模型依据大纲/原文生成，质量门由脚本确定性检查。参考图一律无人——人是另一层资产；道具参考图另加无手、纯白背景。</p>
+</div>
+
+<div class="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-x" aria-label="关闭">关闭</button>
+  <img alt="">
+</div>
+
+<script type="application/json" id="art-data">{"source":"《六位玩家》第一世界","sceneAspectRatio":"16:9","scenes":[{"id":"S10","name":"咖啡厅","primary":false,"summary":"以隔桌相对的克制距离承载合作试探与拒绝，再沿可见出口接门外停步与真假提示音反差。室内、玻璃出口、门外街边属于同一咖啡厅连续空间，但不是同一人物坐标。以下窗、桌椅、门和通路形制均为制作设计，不冒称小说钦定。","anchors":[{"name":"临窗双人方桌","desc":"西侧固定窗旁一张深色小方桌，南北两把独立椅，桌南缘用于推黑卡；不加咖啡饮食。"},{"name":"西侧固定玻璃窗","desc":"桌西侧整块固定玻璃窗，深灰窄框，望见同一街边，无可读标识。"},{"name":"东侧单扇玻璃门","desc":"室内东南侧单扇深灰框玻璃出口，窄竖把手，连接门外街边，不与西侧固定窗混淆。"},{"name":"桌到门空通路","desc":"桌东侧保留通往东南出口的连续走路空地，不穿墙、不穿桌。"},{"name":"门外浅灰铺地","desc":"与门槛外相连的浅灰街边铺地，延续门窗深灰框与同一建筑；门外停步位置距门一小步。"}],"lighting":[{"state":"午后阴天·室内临窗桌","prompt":"Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit."},{"state":"同一午后·门外街边","prompt":"Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside."}],"image":{"prompt":"Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.","negativePrompt":"people, human figures, characters, crowds, human reflections, silhouettes of people, phones, cards, coffee cups, food, readable text, watermark, signature, warped perspective, melted geometry, floating objects, blocked exits","sheet":"One 16:9 landscape sheet. Upper-left master view covers 72 percent width and 70 percent height. An L-shaped detail border has two close-up panels at right and three along the bottom, separated by thin lines. Show crop enlargements of table edge, fixed window frame, exit handle, clear aisle and threshold paving; nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels or text. Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows","tags":["environment sheet","maintained cafe","overcast afternoon","dark wood","glass"],"mainViewBox":[0,0,0.72,0.7]},"seedNote":"outline 的复用方案：当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。——考虑做成某个主场景的变体（variantOf + changes）","usage":{"episodes":[1,3],"beats":["悬疑推进/因果揭示"]}}],"props":[],"dynasty":"2020年代中国城市咖啡厅建筑风格（制作选择，非原文纪年）","scope":"102临窗桌与同一出口外街边；仅制作设计，无已有场景图。","productionNotes":{"missing":"无S10实际图，须室内主图及门外同出口角度一致性核对；无C23图。","ordinaryProps":"黑色卡片及主角手机为本场连续性物件；outline无对应黑卡ID，未擅借银枪P01或新增全剧ID。卡片无文字图案，留在桌边，主角不拿；手机第18拍取出，20拍才震动。","adjacency":"同S10的室内外子区域，不虚构另一个sceneId或跨场景spatial合同。"}}</script>
+<script>
+const L = {"copied":"已复制","failed":"复制失败"};
+
+// 图片弹层：点图放大，点背景或 Esc 关闭
+const lb = document.querySelector('.lightbox');
+const lbImg = lb.querySelector('img');
+function closeLb() { lb.classList.remove('on'); lbImg.removeAttribute('src'); }
+document.addEventListener('click', (e) => {
+  const z = e.target.closest('.zoom');
+  if (z) { lbImg.src = z.dataset.src; lb.classList.add('on'); return; }
+  if (e.target.closest('.lightbox')) closeLb();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+// 复制按钮
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy');
+  if (!btn) return;
+  e.preventDefault();
+  const label = btn.textContent;
+  try {
+    await navigator.clipboard.writeText(btn.dataset.copy);
+    btn.textContent = L.copied;
+    btn.dataset.done = '1';
+  } catch {
+    btn.textContent = L.failed;
+  }
+  setTimeout(() => { btn.textContent = label; delete btn.dataset.done; }, 1600);
+});
+
+// 导出：报告自己带着完整的 art.json，下载的是它原样
+document.querySelector('.expo').addEventListener('click', (e) => {
+  const btn = e.currentTarget;
+  const url = URL.createObjectURL(
+    new Blob([document.getElementById('art-data').textContent], { type: 'application/json' }),
+  );
+  const a = Object.assign(document.createElement('a'), { href: url, download: btn.dataset.name });
+  a.click();
+  // 别立刻回收——Safari 会抢在下载读完之前撤掉 blob
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+</script>
+</body></html>

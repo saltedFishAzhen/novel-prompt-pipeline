@@ -1,0 +1,21 @@
+{
+  "sheetAspectRatio": "16:9",
+  "jobs": [
+    {
+      "characterId": "C23",
+      "characterName": "神秘女人",
+      "promptSource": "image.sheet",
+      "prompt": "Single character model sheet on ONE 16:9 landscape canvas. An adult Asian woman, visually around thirty, in a contemporary urban setting. Shoulder-length copper-red softly wavy hair with a side part, a long oval face, dark brown eyes, a subtly higher right eyebrow, relaxed mouth with a restrained smile. A charcoal single-breasted blazer over an ivory collarless top, straight charcoal trousers and black low-heeled closed-toe shoes; fine matte fabric, clean seams and carefully maintained surfaces. Upright relaxed posture, shoulders level, arms relaxed independently at her sides. No insignia, jewelry, badge, card or supernatural features. The LEFT 34 percent contains one large three-quarter half-body portrait establishing facial identity. LIGHTING IN THE LEFT ZONE ONLY: soft directional key and cool fill. The RIGHT upper area contains three equally tall FULL-BODY figures of the SAME woman: front, exact side profile, and back; all complete from crown to shoe soles with generous margins. LIGHTING IN THE RIGHT ZONES: flat even neutral light for orthographic inspection. The RIGHT lower detail strip has four small studies: hair part and copper waves, eyebrow and eye shape, blazer collar and clean seam, and low-heeled shoe shape. PROPORTIONS ARE CRITICAL: natural consistent head-to-body ratio, equal leg and torso proportions across the three views; never stretch or compress the body to fit. If space is tight, the detail studies give way, not the figures. Pure white background, no panel labels, no text, no scene, no additional people. Every zone depicts the same character. The full-body views are front view, side profile and back view.",
+      "negativePrompt": "different identities, extra people, red eyes, supernatural glow, badges, logos, text, watermark, handheld cards, extra limbs, extra fingers, cropped feet, elongated torso, compressed legs",
+      "aspectRatio": "16:9",
+      "requiredPanels": [
+        "bust portrait",
+        "full-body front view",
+        "full-body side view",
+        "full-body back view",
+        "detail studies"
+      ],
+      "outputFile": "神秘女人-sheet.png"
+    }
+  ]
+}
