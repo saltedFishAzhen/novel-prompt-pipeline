@@ -1,8 +1,8 @@
 {
   "summary": {
     "total_chapters": 17,
-    "total_words": 97816,
-    "average_words": 5753.88,
+    "total_words": 97872,
+    "average_words": 5757.18,
     "min_words": 3128,
     "max_words": 9875,
     "ideal_range": [
@@ -30,18 +30,18 @@
     },
     {
       "chapter": "004-无法回家的家人.md",
-      "words": 6160,
-      "gap": 160
+      "words": 6184,
+      "gap": 184
     },
     {
       "chapter": "008-只有他记得.md",
-      "words": 7788,
-      "gap": 1788
+      "words": 7791,
+      "gap": 1791
     },
     {
       "chapter": "013-无法避免的选择.md",
-      "words": 6823,
-      "gap": 823
+      "words": 6817,
+      "gap": 817
     },
     {
       "chapter": "017-出去之后，我们再见.md",
@@ -84,10 +84,10 @@
       "chapter_num": 4,
       "file_name": "004-无法回家的家人.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\004-无法回家的家人.md",
-      "total_words": 6160,
-      "hanzi_count": 6131,
+      "total_words": 6184,
+      "hanzi_count": 6155,
       "english_count": 29,
-      "punctuation_count": 1019,
+      "punctuation_count": 1020,
       "status": "too_long"
     },
     {
@@ -104,10 +104,10 @@
       "chapter_num": 6,
       "file_name": "006-酒馆里的线索.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\006-酒馆里的线索.md",
-      "total_words": 5836,
-      "hanzi_count": 5783,
+      "total_words": 5874,
+      "hanzi_count": 5821,
       "english_count": 53,
-      "punctuation_count": 968,
+      "punctuation_count": 971,
       "status": "normal"
     },
     {
@@ -124,8 +124,8 @@
       "chapter_num": 8,
       "file_name": "008-只有他记得.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\008-只有他记得.md",
-      "total_words": 7788,
-      "hanzi_count": 7766,
+      "total_words": 7791,
+      "hanzi_count": 7769,
       "english_count": 22,
       "punctuation_count": 1361,
       "status": "too_long"
@@ -174,8 +174,8 @@
       "chapter_num": 13,
       "file_name": "013-无法避免的选择.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\013-无法避免的选择.md",
-      "total_words": 6823,
-      "hanzi_count": 6806,
+      "total_words": 6817,
+      "hanzi_count": 6800,
       "english_count": 17,
       "punctuation_count": 1172,
       "status": "too_long"
@@ -184,8 +184,8 @@
       "chapter_num": 14,
       "file_name": "014-她自己的决定.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\014-她自己的决定.md",
-      "total_words": 5839,
-      "hanzi_count": 5825,
+      "total_words": 5836,
+      "hanzi_count": 5822,
       "english_count": 14,
       "punctuation_count": 1013,
       "status": "normal"
@@ -222,7 +222,7 @@
     }
   ],
   "reportContext": {
-    "generatedAtUtc": "2026-11-16T10:51:08.0765682Z",
+    "generatedAtUtc": "2026-11-16T10:53:43.3819346Z",
     "thresholdPolicy": "inherited-reference-only",
     "note": "统计已按当前章节重新计算。理想区间4500–8500及警告区间2000–6000沿用历史参数，二者不一致：6000–8500字可能同时位于理想区间并触发过长警告。仅供参考，不代表用户已批准固定章长，不据此删剧情或强制拆章。"
   }
