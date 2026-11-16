@@ -32,6 +32,7 @@ Repository = "https://github.com/saltedFishAzhen/novel-prompt-pipeline"
 Issues = "https://github.com/saltedFishAzhen/novel-prompt-pipeline/issues"
 
 [project.optional-dependencies]
+images = ["openai>=2.54,<3"]
 dev = [
   "build>=1.2,<2",
   "hatchling>=1.27,<2",
@@ -42,13 +43,14 @@ dev = [
 
 [project.scripts]
 comfyui-remote = "comfyui_client.__main__:main"
+openai-images = "openai_images.__main__:main"
 
 [tool.hatch.build]
 exclude = ["**/__pycache__", "**/*.pyc", "/runs"]
 
 [tool.hatch.build.targets.wheel]
 core-metadata-version = "2.4"
-packages = ["workflows/comfyui_client"]
+packages = ["workflows/comfyui_client", "workflows/openai_images"]
 
 # The declaration and the workflow stay outside the package in the source tree,
 # so they are installed next to it and resolved relative to the package's parent.
