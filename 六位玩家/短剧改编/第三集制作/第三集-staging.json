@@ -8,41 +8,13 @@
       "space": {
         "buildingId": "B01",
         "floorId": "F01",
-        "adjacentTo": [
+        "adjacentTo": [],
+        "unverifiedAdjacency": [
           "S17",
           "S18"
         ]
       },
-      "spatialConnections": [
-        {
-          "id": "D01",
-          "side": "west",
-          "otherSceneId": "S17",
-          "portal": {
-            "widthMeters": 1,
-            "heightMeters": 2.1,
-            "material": "cream plaster opening",
-            "anchors": [
-              "grey square floor tiles",
-              "plain cream jamb"
-            ]
-          }
-        },
-        {
-          "id": "D03",
-          "side": "west",
-          "otherSceneId": "S18",
-          "portal": {
-            "widthMeters": 0.9,
-            "heightMeters": 2.1,
-            "material": "dark grey metal door",
-            "anchors": [
-              "peephole",
-              "dark frame and grey threshold"
-            ]
-          }
-        }
-      ],
+      "spatialConnections": [],
       "referenceImage": {
         "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第二集制作\\夜间客厅.png",
         "width": 1536,
@@ -93,8 +65,7 @@
             0.148,
             0.14,
             0.656
-          ],
-          "connectionId": "D01"
+          ]
         },
         {
           "name": "深灰入户门",
@@ -112,8 +83,7 @@
             0.196,
             0.289,
             0.657
-          ],
-          "connectionId": "D03"
+          ]
         },
         {
           "name": "生日桌",
@@ -161,12 +131,15 @@
         "floorId": "F01",
         "adjacentTo": [
           "S17"
+        ],
+        "unverifiedAdjacency": [
+          "S17"
         ]
       },
       "spatialConnections": [
         {
           "id": "D02",
-          "side": "south",
+          "side": "west",
           "otherSceneId": "S17",
           "portal": {
             "widthMeters": 0.8,
@@ -179,58 +152,92 @@
           }
         }
       ],
-      "readFrom": "prompt",
+      "readFrom": "picture",
       "items": [
         {
-          "name": "卫生间南门",
-          "alt": "south bathroom door",
-          "plan": [
-            0.35,
-            0.88,
-            0.59,
-            0.98
-          ],
-          "on": false,
-          "round": false,
-          "connectionId": "D02"
-        },
-        {
           "name": "北侧洗手台",
-          "alt": "north washbasin",
-          "plan": [
-            0.27,
-            0.07,
-            0.53,
-            0.22
+          "alt": "far-wall basin",
+          "box": [
+            0.41,
+            0.52,
+            0.56,
+            0.69
           ],
-          "on": false,
-          "round": false
+          "plan": [
+            0.36,
+            0.03,
+            0.57,
+            0.19
+          ],
+          "on": false
         },
         {
           "name": "台旁暗格砖",
-          "alt": "tile beside basin",
+          "alt": "recess right of basin",
+          "box": [
+            0.567,
+            0.326,
+            0.643,
+            0.53
+          ],
           "plan": [
-            0.6,
-            0.06,
-            0.77,
-            0.2
+            0.64,
+            0.015,
+            0.82,
+            0.06
+          ],
+          "on": false
+        },
+        {
+          "name": "卫生间西门",
+          "alt": "west bathroom door",
+          "box": [
+            0.132,
+            0,
+            0.272,
+            1
+          ],
+          "plan": [
+            0.01,
+            0.3,
+            0.07,
+            0.74
           ],
           "on": false,
-          "round": false
+          "connectionId": "D02"
         },
         {
           "name": "门台间空地",
           "alt": "clear floor",
-          "plan": [
-            0.31,
-            0.4,
-            0.68,
-            0.68
+          "box": [
+            0.29,
+            0.76,
+            0.69,
+            0.99
           ],
-          "on": true,
-          "round": false
+          "plan": [
+            0.27,
+            0.36,
+            0.74,
+            0.8
+          ],
+          "on": true
         }
-      ]
+      ],
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\卫生间.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "ad103b4ee791e8ffb61d2c9cbf4dfa1f6c16108a5d79226d8b438dd314915acc",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      }
     },
     {
       "sceneId": "S19",
@@ -238,78 +245,97 @@
       "space": {
         "buildingId": "B02",
         "floorId": "F01",
-        "adjacentTo": [
+        "adjacentTo": [],
+        "unverifiedAdjacency": [
           "S10"
         ]
       },
-      "spatialConnections": [
-        {
-          "id": "D04",
-          "side": "west",
-          "otherSceneId": "S10",
-          "portal": {
-            "widthMeters": 0.9,
-            "heightMeters": 2.1,
-            "material": "dark grey metal framed glass",
-            "anchors": [
-              "long slim vertical handle",
-              "light grey threshold"
-            ]
-          }
-        }
-      ],
-      "readFrom": "prompt",
+      "spatialConnections": [],
+      "readFrom": "picture",
       "items": [
+        {
+          "name": "店外固定窗",
+          "alt": "fixed storefront window",
+          "box": [
+            0,
+            0,
+            0.438,
+            0.81
+          ],
+          "plan": [
+            0.03,
+            0.01,
+            0.43,
+            0.07
+          ],
+          "on": false
+        },
         {
           "name": "咖啡厅玻璃门",
           "alt": "cafe glass door",
-          "plan": [
-            0.01,
-            0.27,
-            0.1,
-            0.49
+          "box": [
+            0.442,
+            0.014,
+            0.655,
+            0.934
           ],
-          "on": false,
-          "round": false,
-          "connectionId": "D04"
+          "plan": [
+            0.47,
+            0.02,
+            0.64,
+            0.09
+          ],
+          "on": false
         },
         {
           "name": "门旁墙垛",
-          "alt": "wall pier beside door",
-          "plan": [
-            0.01,
-            0.58,
-            0.12,
-            0.76
+          "alt": "stone wall pier",
+          "box": [
+            0.654,
+            0,
+            1,
+            0.86
           ],
-          "on": false,
-          "round": false
+          "plan": [
+            0.7,
+            0.01,
+            0.97,
+            0.15
+          ],
+          "on": false
         },
         {
           "name": "街边铺地",
           "alt": "paved sidewalk",
-          "plan": [
-            0.33,
-            0.26,
-            0.68,
-            0.72
+          "box": [
+            0.28,
+            0.94,
+            0.97,
+            1
           ],
-          "on": true,
-          "round": false
-        },
-        {
-          "name": "店外固定窗",
-          "alt": "fixed storefront window",
           "plan": [
-            0.02,
-            0.04,
-            0.1,
-            0.18
+            0.22,
+            0.36,
+            0.96,
+            0.85
           ],
-          "on": false,
-          "round": false
+          "on": true
         }
-      ]
+      ],
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\咖啡厅外.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "de9455858e653c17d65c9992085493c0d30453e17b1d4fd38d44ae0aa4a035ae",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      }
     },
     {
       "sceneId": "S09",
@@ -401,6 +427,222 @@
             1,
             0.91
           ]
+        }
+      ],
+      "spatialConnections": []
+    },
+    {
+      "sceneId": "S17",
+      "name": "黎汐家侧走廊",
+      "space": {
+        "buildingId": "B01",
+        "floorId": "F01",
+        "adjacentTo": [
+          "S16"
+        ],
+        "unverifiedAdjacency": [
+          "S01",
+          "S16"
+        ]
+      },
+      "spatialConnections": [
+        {
+          "id": "D02",
+          "side": "east",
+          "otherSceneId": "S16",
+          "portal": {
+            "widthMeters": 0.8,
+            "heightMeters": 2.0,
+            "material": "cream painted door",
+            "anchors": [
+              "plain silver lever",
+              "small privacy-lock fitting"
+            ]
+          }
+        }
+      ],
+      "readFrom": "picture",
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\走廊.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "aa0c2feed9a38ae11eb201905437c75a41c6655fecfcc0a677788d6ee5d01c65",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      },
+      "items": [
+        {
+          "name": "远左衣架",
+          "alt": "far-left coat rack",
+          "box": [
+            0.379,
+            0.25,
+            0.438,
+            0.75
+          ],
+          "plan": [
+            0.12,
+            0.05,
+            0.29,
+            0.24
+          ],
+          "on": false
+        },
+        {
+          "name": "东侧卫生间门",
+          "alt": "east bathroom door",
+          "box": [
+            0.642,
+            0.018,
+            0.73,
+            0.99
+          ],
+          "plan": [
+            0.93,
+            0.27,
+            0.99,
+            0.79
+          ],
+          "on": false,
+          "connectionId": "D02"
+        },
+        {
+          "name": "走廊通路",
+          "alt": "corridor floor",
+          "box": [
+            0.28,
+            0.75,
+            0.65,
+            0.99
+          ],
+          "plan": [
+            0.3,
+            0.36,
+            0.75,
+            0.78
+          ],
+          "on": true
+        },
+        {
+          "name": "近侧通路口",
+          "alt": "near passage floor",
+          "box": [
+            0.25,
+            0.94,
+            0.66,
+            1
+          ],
+          "plan": [
+            0.23,
+            0.86,
+            0.8,
+            0.98
+          ],
+          "on": true
+        }
+      ]
+    },
+    {
+      "sceneId": "S18",
+      "name": "黎汐家门外楼梯平台",
+      "space": {
+        "buildingId": "B01",
+        "floorId": "F01",
+        "adjacentTo": [],
+        "unverifiedAdjacency": [
+          "S01"
+        ]
+      },
+      "spatialConnections": [],
+      "readFrom": "picture",
+      "referenceImage": {
+        "path": "D:\\work\\articles\\六位玩家\\短剧改编\\第三集制作\\楼梯平台.png",
+        "width": 1536,
+        "height": 864,
+        "aspectRatio": "16:9",
+        "sha256": "3b493ffe013ddd2ebcbf6d2a521aa55e48dc6e9f425cb48d679c129aa166ee0a",
+        "mainViewBox": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "boxBasis": "full-image"
+      },
+      "items": [
+        {
+          "name": "远端入户门",
+          "alt": "far apartment door",
+          "box": [
+            0.694,
+            0.151,
+            0.871,
+            0.72
+          ],
+          "plan": [
+            0.69,
+            0.01,
+            0.89,
+            0.08
+          ],
+          "on": false
+        },
+        {
+          "name": "左侧栏杆",
+          "alt": "left stair railing",
+          "box": [
+            0.24,
+            0.452,
+            0.354,
+            0.97
+          ],
+          "plan": [
+            0.3,
+            0.39,
+            0.35,
+            0.9
+          ],
+          "on": false
+        },
+        {
+          "name": "下行楼梯",
+          "alt": "descending stairs",
+          "box": [
+            0,
+            0.81,
+            0.27,
+            1
+          ],
+          "plan": [
+            0.02,
+            0.6,
+            0.27,
+            0.99
+          ],
+          "on": true
+        },
+        {
+          "name": "门外平台",
+          "alt": "landing",
+          "box": [
+            0.36,
+            0.73,
+            0.95,
+            0.99
+          ],
+          "plan": [
+            0.44,
+            0.29,
+            0.91,
+            0.8
+          ],
+          "on": true
         }
       ]
     }
@@ -539,11 +781,11 @@
           "id": "C01",
           "name": "本群最帅之人",
           "present": true,
-          "item": "卫生间南门",
-          "side": "north",
+          "item": "卫生间西门",
+          "side": "east",
           "along": 0.5,
           "posture": "stand",
-          "facing": "south"
+          "facing": "west"
         },
         {
           "id": "C07",
@@ -586,10 +828,10 @@
           "name": "本群最帅之人",
           "present": true,
           "item": "门旁墙垛",
-          "side": "east",
+          "side": "south",
           "along": 0.5,
           "posture": "stand",
-          "facing": "west"
+          "facing": "north"
         }
       ],
       "extras": 0,
@@ -817,5 +1059,5 @@
       "why": "主角与五室友尚未到本场起点；两位女性已在屋内，五人到来后只停楼梯间。"
     }
   ],
-  "status": "S01夜客厅与S09食堂已按旧实际图认4—5项；S16卫生间、S19店外暂prompt推算，待生成认图。走廊/楼梯是逐切环境覆盖，非新增剧情场次。"
+  "status": "四张新景已按实际完整原图重新认图；主视图局部方位，不推断画外房间。"
 }

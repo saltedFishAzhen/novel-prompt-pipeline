@@ -410,7 +410,7 @@
               "frame": "特写。本群最帅之人已经走到侧走廊入口，回头朝仍在客厅桌边的邓布利多答话。只取主角与走廊门框局部，不让桌边六人消失成空客厅；主角未到卫生间内。横屏16:9。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "侧走廊东口内的东侧机位，朝西取主角回头面部，客厅桌旁人物在后侧画框外。",
+              "cameraPosition": "走廊近侧南机位朝远端左侧衣架；卫生间门位于画面右侧东墙。客厅在机位后画外，不编造可见门洞。",
               "composition": "三分法",
               "eyeline": "主角在侧走廊入口回头看桌旁邓布利多",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -418,7 +418,7 @@
               "environmentReference": {
                 "assetId": "S17",
                 "path": "走廊.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -462,7 +462,7 @@
               "frame": "中景。本群最帅之人已到侧走廊衣架旁，顾岚乔白大褂挂在架上，主角手刚触胸牌准备翻转；顾岚乔本人不入镜。胸牌只稳定版式，不编医院全称。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，他经过衣架，翻过女亲戚白大褂上的医院胸牌。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "侧走廊东口朝西取衣架，卫生间门在北侧，不以厨房门冒充。",
+              "cameraPosition": "走廊近侧南机位朝远端左侧衣架；卫生间门位于画面右侧东墙。客厅在机位后画外，不编造可见门洞。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：他经过衣架，翻过顾岚乔白大褂上的医院胸牌。",
               "focus": "原动作主体与连续物件：他经过衣架，翻过顾岚乔白大褂上的医院胸牌。",
@@ -470,11 +470,11 @@
               "environmentReference": {
                 "assetId": "S17",
                 "path": "走廊.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d>\n[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 不用，去一下卫生间。</d>\n[Shot 2] At 00:02.200, the camera cuts to <Picture 2>. Static Shot. In the side corridor he turns over the hospital badge attached to a hanging white coat. Show a stable generic badge layout, not an invented hospital name.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening."
         },
         {
           "id": "E03-04",
@@ -482,7 +482,7 @@
           "openingPresent": [
             "C01"
           ],
-          "blocking": "本群最帅之人站在卫生间南门北侧，面朝南；其余座位空着，没有其他人。",
+          "blocking": "本群最帅之人站在卫生间西门东侧中段，面朝西；其余座位空着，没有其他人。",
           "soundscape": "按原动作脚步、衣料和物件轻响；电话/系统/心声依逐拍对白区分，不新增群演声音。",
           "cuts": [
             {
@@ -498,10 +498,10 @@
               ],
               "offscreen": [],
               "props": [],
-              "frame": "中景。本群最帅之人在卫生间内南侧门旁，手刚触反锁处，洗手台与松动瓷砖在北墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
+              "frame": "中景。本群最帅之人在卫生间内西侧门旁，手刚触反锁处，洗手台与盆右松动瓷砖位于同一北侧远墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年反锁卫生间门，检查洗手台旁松动的瓷砖。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：主角反锁卫生间门，检查洗手台旁松动的瓷砖。",
               "focus": "原动作主体与连续物件：主角反锁卫生间门，检查洗手台旁松动的瓷砖。",
@@ -509,7 +509,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -528,7 +528,7 @@
               "frame": "中景。本群最帅之人在北墙台旁，松动瓷砖暗格将打开；手术器械与病情通知位于同暗格内，纸张尚未取出，不提前展示病历全文。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，他打开暗格，取出手术器械旁的病情通知。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：他打开暗格，取出手术器械旁的病情通知。",
               "focus": "原动作主体与连续物件：他打开暗格，取出手术器械旁的病情通知。",
@@ -536,7 +536,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -555,7 +555,7 @@
               "frame": "特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年保持闭唇，原声画外响起。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角看手中的病情通知",
               "focus": "主角与病情通知的阅读关系",
@@ -563,7 +563,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -582,7 +582,7 @@
               "frame": "中景。本群最帅之人在洗手台旁看已发现的器械与简洁药瓶，手准备按胸口；不增具体医疗操作或药品品牌。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年对照器械与药瓶，按住自己的胸口。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：主角对照器械与药瓶，按住自己的胸口。",
               "focus": "原动作主体与连续物件：主角对照器械与药瓶，按住自己的胸口。",
@@ -590,7 +590,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -609,7 +609,7 @@
               "frame": "特写。本群最帅之人；主角在卫生间台旁，黎汐与顾岚乔未进门。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角看已发现的器械并意识到自己的胸口",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -617,11 +617,11 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.40-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the south door, then checks the loose tile beside the north-wall basin.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data.\n[Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d>\n[Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure.\n[Shot 5] At 00:12.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 她们想取我的心？</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.40-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the left west-wall door, then checks the loose tile beside the north-wall basin.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data.\n[Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d>\n[Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure.\n[Shot 5] At 00:12.400, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 她们想取我的心？</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin."
         },
         {
           "id": "E03-05",
@@ -650,7 +650,7 @@
               "frame": "中景。本群最帅之人在台旁；黎汐和顾岚乔尚在卫生间门外，初帧通过门外动作将推门进入：黎汐用备用钥匙开门，顾岚乔在她身后持简单喷雾。不是二人先在台边出现。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，门外钥匙转动，女主人推门进来，女亲戚举着喷雾站在她身后。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：门外钥匙转动，黎汐推门进来，顾岚乔举着喷雾站在她身后。",
               "focus": "原动作主体与连续物件：门外钥匙转动，黎汐推门进来，顾岚乔举着喷雾站在她身后。",
@@ -658,7 +658,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               },
               "enter": [
                 {
@@ -700,7 +700,7 @@
               "frame": "特写。黎汐；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "黎汐看洗手台旁主角",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -708,7 +708,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -736,7 +736,7 @@
               "frame": "特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角看门口黎汐",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -744,7 +744,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -766,10 +766,10 @@
                 }
               ],
               "props": [],
-              "frame": "中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
+              "frame": "中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人与顾岚乔。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，女亲戚喷出药雾，青年退到洗手台旁。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：顾岚乔喷出药雾，主角退到洗手台旁。",
               "focus": "原动作主体与连续物件：顾岚乔喷出药雾，主角退到洗手台旁。",
@@ -777,7 +777,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -805,7 +805,7 @@
               "frame": "特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角从洗手台旁看门口两人",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -813,11 +813,11 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 4.50-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.70-second mark of the target video; Picture 5 (from Shot 5) aligns with the 11.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. A spare key turns outside. The host opens the bathroom door and enters; the relative stands immediately behind her with a simple spray bottle. They are outside the initial frame until the door opens.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你不该翻那个。</d>\n[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 那我该做什么？等你们把我放到手术台上？</d>\n[Shot 4] At 00:08.700, the camera cuts to <Picture 4>. Static Shot. The relative sprays a brief mist from the doorway; the young man backs up beside the basin. The host remains near the doorway outside this tighter crop.\n[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们为什么非要这么做？</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 4.50-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.70-second mark of the target video; Picture 5 (from Shot 5) aligns with the 11.20-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. A spare key turns outside. The host opens the bathroom door and enters; the relative stands immediately behind her with a simple spray bottle. They are outside the initial frame until the door opens.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female host (S7), with a clear natural voice, says: <d>[Chinese] 你不该翻那个。</d>\n[Shot 3] At 00:04.500, the camera cuts to <Picture 3>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 那我该做什么？等你们把我放到手术台上？</d>\n[Shot 4] At 00:08.700, the camera cuts to <Picture 4>. Static Shot. The relative sprays a brief mist from the doorway; the young man backs up beside the basin. The host remains near the doorway outside this tighter crop.\n[Shot 5] At 00:11.200, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们为什么非要这么做？</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin."
         },
         {
           "id": "E03-06",
@@ -855,7 +855,7 @@
               "frame": "特写。顾岚乔；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "顾岚乔看退到台旁的主角",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -863,7 +863,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -891,7 +891,7 @@
               "frame": "特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角看门口顾岚乔",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -899,7 +899,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -924,7 +924,7 @@
               "frame": "中景。黎汐在主角面前举起简单手术刀，本群最帅之人在台旁；刀初帧未接触身体，运动指向主角解剖右胸，不反转到左胸。用遮挡表现危险，不画伤口、穿刺或血液。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，女主人举起手术刀，刀落向他的右胸。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：黎汐举起手术刀，刀落向他的右胸。",
               "focus": "原动作主体与连续物件：黎汐举起手术刀，刀落向他的右胸。",
@@ -932,7 +932,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -960,7 +960,7 @@
               "frame": "特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年保持闭唇，原声画外响起。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角视线失焦，系统提示非具象人物",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -968,7 +968,7 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -996,7 +996,7 @@
               "frame": "特写。本群最帅之人；主角在台旁，黎汐近台、顾岚乔在门口。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。",
+              "cameraPosition": "卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。",
               "composition": "三分法",
               "eyeline": "主角虚弱地对无形读档提示作答，不看不存在的同伴",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -1004,11 +1004,11 @@
               "environmentReference": {
                 "assetId": "S16",
                 "path": "卫生间.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 3.80-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.80-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.30-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.10-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 时间不多了。我们没有机会慢慢解释。</d>\n[Shot 2] At 00:03.800, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 至少把话说清楚！</d>\n[Shot 3] At 00:05.800, the camera cuts to <Picture 3>. Static Shot. The host raises a simple scalpel and brings it toward his anatomical right chest. Use body occlusion; show no puncture, wound, blood or surgical detail.\n[Shot 4] At 00:08.300, the camera cuts to <Picture 4>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The neutral reload prompt says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 你已死亡。是否回到已记录的时间点？</d>\n[Shot 5] At 00:12.100, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 下午街边。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 3.80-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.80-second mark of the target video; Picture 4 (from Shot 4) aligns with the 8.30-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.10-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the female relative (S8), with a clear natural voice, says: <d>[Chinese] 时间不多了。我们没有机会慢慢解释。</d>\n[Shot 2] At 00:03.800, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 至少把话说清楚！</d>\n[Shot 3] At 00:05.800, the camera cuts to <Picture 3>. Static Shot. The host raises a simple scalpel and brings it toward his anatomical right chest. Use body occlusion; show no puncture, wound, blood or surgical detail.\n[Shot 4] At 00:08.300, the camera cuts to <Picture 4>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The neutral reload prompt says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 你已死亡。是否回到已记录的时间点？</d>\n[Shot 5] At 00:12.100, the camera cuts to <Picture 5>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 下午街边。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin."
         },
         {
           "id": "E03-07",
@@ -1016,7 +1016,7 @@
           "openingPresent": [
             "C01"
           ],
-          "blocking": "本群最帅之人站在门旁墙垛东侧中段，面朝西；其余座位空着，没有其他人。",
+          "blocking": "本群最帅之人站在门旁墙垛南侧，面朝北；其余座位空着，没有其他人。",
           "soundscape": "按原动作脚步、衣料和物件轻响；电话/系统/心声依逐拍对白区分，不新增群演声音。",
           "cuts": [
             {
@@ -1035,7 +1035,7 @@
               "frame": "中景。本群最帅之人回到同咖啡厅门外，身体无上一轮伤口，手刚扶门旁墙面，手机尚待拨给杰哥；只有主角在此。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年扶住街边墙面，立刻拨通热心室友电话。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：主角扶住街边墙面，立刻拨通杰哥电话。",
               "focus": "原动作主体与连续物件：主角扶住街边墙面，立刻拨通杰哥电话。",
@@ -1043,7 +1043,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1062,7 +1062,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角看手机通话方向，杰哥不在画内",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -1070,7 +1070,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1089,7 +1089,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年保持闭唇，原声画外响起。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角听耳旁手机，嘴唇闭合",
               "focus": "手机与主角闭唇反应",
@@ -1097,7 +1097,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1116,7 +1116,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角仍对第一通电话回应",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -1124,11 +1124,11 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.90-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.00-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Restored and uninjured at the same cafe streetside, the young man braces against the wall and immediately calls his caring roommate.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们今晚先别进黎汐家。到了附近等我消息。</d>\n[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The helpful roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 出什么事了？你自己注意安全。</d>\n[Shot 4] At 00:10.000, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我会说明白。先听我这一次。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 6.90-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.00-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Restored and uninjured at the same cafe streetside, the young man braces against the wall and immediately calls his caring roommate.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 你们今晚先别进黎汐家。到了附近等我消息。</d>\n[Shot 3] At 00:06.900, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The helpful roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 出什么事了？你自己注意安全。</d>\n[Shot 4] At 00:10.000, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 我会说明白。先听我这一次。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier."
         },
         {
           "id": "E03-08",
@@ -1155,7 +1155,7 @@
               "frame": "中景。本群最帅之人仍在店外同位置持自己手机，刚结束第一通话，准备拨给x坤；不增加联系人照片或对方入画。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年挂断，拨给熟悉计算机的室友。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：主角挂断，拨给x坤。",
               "focus": "原动作主体与连续物件：主角挂断，拨给x坤。",
@@ -1163,7 +1163,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1182,7 +1182,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角对已拨通的第二通电话说话",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -1190,7 +1190,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1209,7 +1209,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。嘴唇闭合，仅听电话/阅读心声/系统声音，不凭空增加说话人形象。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，青年保持闭唇，原声画外响起。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角听手机内x坤确认，嘴唇闭合",
               "focus": "手机与主角闭唇反应",
@@ -1217,7 +1217,7 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             },
             {
@@ -1236,7 +1236,7 @@
               "frame": "特写。本群最帅之人；主角独自在下午咖啡厅门外墙边，电话对方不入画。面向本拍对话对象说话，身份服装不变。只取脸部与局部背景，不让画外同伴应站的空区域入镜。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，说话者在既定位置回应对方，不新增动作。",
               "lens": "85mm 长焦，浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "主角对第二通电话确认范围",
               "focus": "本拍画内说话者面部及对应听者方向",
@@ -1244,11 +1244,11 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 7.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.50-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He ends the first call and dials the computer-skilled roommate on the same phone.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 帮我查顾岚乔的公开履历，还有那项心脏研究。</d>\n[Shot 3] At 00:07.200, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The computer-skilled roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 只查公开资料，不联系她，对吧？</d>\n[Shot 4] At 00:10.500, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 对。查到发给我，不要惊动她。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 7.20-second mark of the target video; Picture 4 (from Shot 4) aligns with the 10.50-second mark of the target video.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. He ends the first call and dials the computer-skilled roommate on the same phone.\n[Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 帮我查顾岚乔的公开履历，还有那项心脏研究。</d>\n[Shot 3] At 00:07.200, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The computer-skilled roommate over the phone says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 只查公开资料，不联系她，对吧？</d>\n[Shot 4] At 00:10.500, the camera cuts to <Picture 4>. Static Shot. The indicated speaker addresses the established listener from the current position. Keep other people outside the tight crop, never erase them from a visible empty area. the cautious young man (S1), with a clear natural voice, says: <d>[Chinese] 对。查到发给我，不要惊动她。</d>\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier."
         },
         {
           "id": "E03-09",
@@ -1275,7 +1275,7 @@
               "frame": "中景。本群最帅之人在店外持自己手机，生日邀请将再次亮起，他没有点击回复；邀请文字仅做受控后期，勿造地址时间。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，生日邀请再次亮起，青年没有立刻回复。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。",
+              "cameraPosition": "店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：生日邀请再次亮起，主角没有立刻回复。",
               "focus": "原动作主体与连续物件：生日邀请再次亮起，主角没有立刻回复。",
@@ -1283,11 +1283,11 @@
               "environmentReference": {
                 "assetId": "S19",
                 "path": "咖啡厅外.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               }
             }
           ],
-          "h3Prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. The birthday invitation lights up again. He does not immediately reply; invent no readable address or message.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier."
         },
         {
           "id": "E03-10",
@@ -2737,7 +2737,7 @@
               "frame": "中景。顾岚乔在入户门外楼梯平台即将下楼；AAA建材批发杰哥看向邓布利多，邓布利多准备摇头让路。其余三位室友仍在平台画外，不拍进客厅。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。",
               "shot": "固定机位，女亲戚下楼，热心室友向协调同伴看去，后者摇头让开路。",
               "lens": "50mm 标准，中浅景深",
-              "cameraPosition": "楼梯平台南侧机位朝入户门与下行梯方向，五室友在门外，客厅不作背景替代。",
+              "cameraPosition": "楼梯平台南侧机位朝远端右侧入户门；下行梯在左前，顾岚乔由门外平台向左前下楼，五室友仅在平台，不进入客厅。",
               "composition": "三分法",
               "eyeline": "原动作中的手/物件/路径：顾岚乔下楼，杰哥向邓布利多看去，后者摇头让开路。",
               "focus": "原动作主体与连续物件：顾岚乔下楼，杰哥向邓布利多看去，后者摇头让开路。",
@@ -2745,7 +2745,7 @@
               "environmentReference": {
                 "assetId": "S18",
                 "path": "楼梯平台.png",
-                "status": "pending_generation"
+                "status": "picture_verified"
               },
               "exit": [
                 {
@@ -2757,7 +2757,7 @@
               ]
             }
           ],
-          "h3Prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A"
+          "h3Prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. On the exterior landing the relative heads downstairs. The helpful roommate looks toward the coordinating roommate, who shakes his head and gives way. The other three friends stay outside.\n\noverall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.\n\nnon_diegetic_music: N/A\n\nSpatial continuity from actual reference: Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall."
         },
         {
           "id": "E03-18",

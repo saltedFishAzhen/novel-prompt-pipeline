@@ -4,10 +4,7 @@
 
 - B01 黎汐家住宅同层及楼梯平台: F01 住宅所在层（层号未定）
 - B02 咖啡厅与紧邻街边: F01 临街地面层
-- D01: S01 (west) ↔ S17 (east); 1m × 2.1m; cream plaster opening; grey square floor tiles, plain cream jamb
-- D02: S17 (north) ↔ S16 (south); 0.8m × 2m; cream painted door; plain silver lever, small privacy-lock fitting
-- D03: S01 (west) ↔ S18 (east); 0.9m × 2.1m; dark grey metal door; peephole, dark frame and grey threshold
-- D04: S10 (east) ↔ S19 (west); 0.9m × 2.1m; dark grey metal framed glass; long slim vertical handle, light grey threshold
+- D02: S17 (east) ↔ S16 (west); 0.8m × 2m; cream painted door; plain silver lever, small privacy-lock fitting
 
 ## 场景清单
 
@@ -37,9 +34,7 @@
 
 ### 光照与时段
 
-- **晚间·顶灯与窗外暗蓝**：`Empty interior of the same early-2020s Chinese city apartment, landscape 16:9, no people. Preserve the west dark grey entrance door, central light wood rectangular dining table, north cream solid kitchen door and east pale-grey framed window from the structural reference. Evening interior with warm ceiling lamps and dark blue outside the east window; no daylight. Six matching ordinary dining chairs around the unchanged table, with open circulation between the west entrance and table and between table and north kitchen doorway. A modest freestanding refrigerator occupies the north-wall sideboard position east of the kitchen door, without blocking the window or kitchen entrance. Keep the floor tiles and wall materials from the reference. No people, human reflections, food, cups, cake, phone, gift, weapons, spray, signs or readable text. This is an empty space reference, not a populated birthday table.
-Connection D01 on west side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D03 on west side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.`
+- **晚间·顶灯与窗外暗蓝**：`Empty interior of the same early-2020s Chinese city apartment, landscape 16:9, no people. Preserve the west dark grey entrance door, central light wood rectangular dining table, north cream solid kitchen door and east pale-grey framed window from the structural reference. Evening interior with warm ceiling lamps and dark blue outside the east window; no daylight. Six matching ordinary dining chairs around the unchanged table, with open circulation between the west entrance and table and between table and north kitchen doorway. A modest freestanding refrigerator occupies the north-wall sideboard position east of the kitchen door, without blocking the window or kitchen entrance. Keep the floor tiles and wall materials from the reference. No people, human reflections, food, cups, cake, phone, gift, weapons, spray, signs or readable text. This is an empty space reference, not a populated birthday table.`
 
 ### 出图提示词包
 
@@ -47,8 +42,6 @@ Connection D03 on west side: width 0.9m, height 2.1m, material dark grey metal d
 
 ```text
 Empty interior of the same early-2020s Chinese city apartment, landscape 16:9, no people. Preserve the west dark grey entrance door, central light wood rectangular dining table, north cream solid kitchen door and east pale-grey framed window from the structural reference. Evening interior with warm ceiling lamps and dark blue outside the east window; no daylight. Six matching ordinary dining chairs around the unchanged table, with open circulation between the west entrance and table and between table and north kitchen doorway. A modest freestanding refrigerator occupies the north-wall sideboard position east of the kitchen door, without blocking the window or kitchen entrance. Keep the floor tiles and wall materials from the reference. No people, human reflections, food, cups, cake, phone, gift, weapons, spray, signs or readable text. This is an empty space reference, not a populated birthday table.
-Connection D01 on west side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D03 on west side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.
 ```
 
 **反向提示词**
@@ -61,8 +54,6 @@ people, human figures, characters, crowds, human reflections, silhouettes of peo
 
 ```text
 Single full-view 16:9 empty environment reference, no inset panels or labels. Empty interior of the same early-2020s Chinese city apartment, landscape 16:9, no people. Preserve the west dark grey entrance door, central light wood rectangular dining table, north cream solid kitchen door and east pale-grey framed window from the structural reference. Evening interior with warm ceiling lamps and dark blue outside the east window; no daylight. Six matching ordinary dining chairs around the unchanged table, with open circulation between the west entrance and table and between table and north kitchen doorway. A modest freestanding refrigerator occupies the north-wall sideboard position east of the kitchen door, without blocking the window or kitchen entrance. Keep the floor tiles and wall materials from the reference. No people, human reflections, food, cups, cake, phone, gift, weapons, spray, signs or readable text. This is an empty space reference, not a populated birthday table. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D01 on west side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D03 on west side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.
 ```
 
 `environment sheet`, `evening interior`, `wood table`
@@ -123,10 +114,8 @@ One 16:9 landscape environment reference sheet. Main master view occupies the up
 
 ### 光照与时段
 
-- **午后阴天·室内临窗桌**：`Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.
-Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.`
-- **同一午后·门外街边**：`Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside.
-Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.`
+- **午后阴天·室内临窗桌**：`Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.`
+- **同一午后·门外街边**：`Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. View the same exit from the outside streetside at eye level: a close local view of the grey door frame and adjacent paving, with the table remaining inside beyond the doorway; never move the table outside.`
 
 ### 出图提示词包
 
@@ -134,7 +123,6 @@ Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal f
 
 ```text
 Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit.
-Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.
 ```
 
 **反向提示词**
@@ -147,7 +135,6 @@ people, human figures, characters, crowds, human reflections, silhouettes of peo
 
 ```text
 One 16:9 landscape sheet. Upper-left master view covers 72 percent width and 70 percent height. An L-shaped detail border has two close-up panels at right and three along the bottom, separated by thin lines. Show crop enlargements of table edge, fixed window frame, exit handle, clear aisle and threshold paving; nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. No labels or text. Empty contemporary Chinese city cafe in early 2020s architectural style, landscape 16:9, no people. A small dark rectangular table beside a single fixed west-side window has two separate chairs at its north and south sides. A clear walking aisle runs east of the table to a single narrow dark grey metal-framed glass exit at the southeast corner, with a slim vertical handle. The exit is distinct from the fixed window. Beyond its threshold is a light grey paved streetside area. Soft overcast afternoon light through the window, no direct sun. Plain warm off-white walls and maintained dark wood furniture; light traffic wear at the threshold. No drinks, food, personal belongings, cards, phones, readable signs or decorations. The interior table, fixed window, exit and outside paving must remain one consistent architecture, with an unobstructed route from chair to exit. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.
 ```
 
 `environment sheet`, `maintained cafe`, `overcast afternoon`, `dark wood`, `glass`
@@ -156,29 +143,27 @@ Connection D04 on east side: width 0.9m, height 2.1m, material dark grey metal f
 
 ## S17 黎汐家侧走廊
 
-第三集必要子空间制作设计；依已有同建筑参考补足原稿动作所需空间，不冒称已有图认出。
+主视图南侧向北：空木衣架位于远端左侧；米白卫生间门在右侧东墙；灰砖通路居中。客厅连接在机位后方未入图，不凭空补门。
 
 ### 一致性锚点
 
-1. **侧走廊东口** — 连接原客厅左侧走道的侧向开口，不是厨房门或入户门。
-2. **西墙空衣架** — 简洁空衣架贴西墙，白大褂及胸牌由分镜补，不烘焙。
-3. **北侧卫生间门** — 米白门扇、银色执手和隐私锁，连接卫生间。
-4. **灰砖通路** — 沿用原客厅灰色方砖，门间连续可通行。
+1. **画外客厅连接** — 主视图南侧向北：空木衣架位于远端左侧；米白卫生间门在右侧东墙；灰砖通路居中。客厅连接在机位后方未入图，不凭空补门。
+2. **西墙空衣架** — 主视图南侧向北：空木衣架位于远端左侧；米白卫生间门在右侧东墙；灰砖通路居中。客厅连接在机位后方未入图，不凭空补门。
+3. **东侧卫生间门** — 主视图南侧向北：空木衣架位于远端左侧；米白卫生间门在右侧东墙；灰砖通路居中。客厅连接在机位后方未入图，不凭空补门。
+4. **灰砖通路** — 主视图南侧向北：空木衣架位于远端左侧；米白卫生间门在右侧东墙；灰砖通路居中。客厅连接在机位后方未入图，不凭空补门。
 
 ### 光照与时段
 
-- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. A narrow side corridor of the same apartment, seen from its east opening toward the west wall. Match the existing warm cream walls and grey square floor tiles. The east opening connects to the living-room west-side passage, separate from the dark grey entrance door. A simple empty coat rack stands against the west wall clear of the walking route. A cream bathroom door is on the north side, with a plain silver lever and a small privacy-lock fitting. A short open route links the east opening to the bathroom. Nighttime ceiling light, no daylight. No white coat, badge, document or medical tools baked into this empty reference.
-Connection D01 on east side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D02 on north side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.`
+- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening.
+Connection D02 on east side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.`
 
 ### 出图提示词包
 
 **主视角 EN**
 
 ```text
-Landscape 16:9, empty scene, no people. A narrow side corridor of the same apartment, seen from its east opening toward the west wall. Match the existing warm cream walls and grey square floor tiles. The east opening connects to the living-room west-side passage, separate from the dark grey entrance door. A simple empty coat rack stands against the west wall clear of the walking route. A cream bathroom door is on the north side, with a plain silver lever and a small privacy-lock fitting. A short open route links the east opening to the bathroom. Nighttime ceiling light, no daylight. No white coat, badge, document or medical tools baked into this empty reference.
-Connection D01 on east side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D02 on north side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
+Landscape 16:9, empty scene, no people. Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening.
+Connection D02 on east side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
 ```
 
 **反向提示词**
@@ -190,9 +175,8 @@ people, human figures, characters, crowds, silhouettes of people, human reflecti
 **设定图 EN**
 
 ```text
-One 16:9 landscape environment sheet. Main view in upper-left 72 percent width and 70 percent height; thin dividers and L-shaped detail border, two crops at right and three below. All details are crop enlargements of the master view, nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. Landscape 16:9, empty scene, no people. A narrow side corridor of the same apartment, seen from its east opening toward the west wall. Match the existing warm cream walls and grey square floor tiles. The east opening connects to the living-room west-side passage, separate from the dark grey entrance door. A simple empty coat rack stands against the west wall clear of the walking route. A cream bathroom door is on the north side, with a plain silver lever and a small privacy-lock fitting. A short open route links the east opening to the bathroom. Nighttime ceiling light, no daylight. No white coat, badge, document or medical tools baked into this empty reference. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D01 on east side: width 1m, height 2.1m, material cream plaster opening, anchors grey square floor tiles and plain cream jamb.
-Connection D02 on north side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
+One 16:9 landscape environment sheet; upper-left main view 72% width and 70% height with detail crops at right and below. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Maintained surfaces, no people. Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening.
+Connection D02 on east side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
 ```
 
 `environment sheet`, `maintained surfaces`, `connected architecture`
@@ -201,27 +185,27 @@ Connection D02 on north side: width 0.8m, height 2m, material cream painted door
 
 ## S16 黎汐家卫生间
 
-第三集必要子空间制作设计；依已有同建筑参考补足原稿动作所需空间，不冒称已有图认出。
+主视图南侧向北：米白门在西侧画面左；洗手盆和镜在北侧远墙中央；暗格紧邻盆右，仍在同一北墙。门台之间为灰砖空地。
 
 ### 一致性锚点
 
-1. **南侧反锁门** — 承接走廊北侧门，双面同银色执手与隐私锁。
-2. **北墙洗手台** — 白瓷洗手盆与简单镜面，主角后退可抵台侧。
-3. **台旁松动瓷砖** — 洗手台旁北墙偏东一块接缝不齐的浅色长方砖，暗格藏其后；不能变成独立保险箱。
-4. **门台间空地** — 门到洗手台连续通道，可容门口两人及台边一人，不扩大为手术室。
+1. **西侧反锁门** — 主视图南侧向北：米白门在西侧画面左；洗手盆和镜在北侧远墙中央；暗格紧邻盆右，仍在同一北墙。门台之间为灰砖空地。
+2. **北墙洗手台** — 主视图南侧向北：米白门在西侧画面左；洗手盆和镜在北侧远墙中央；暗格紧邻盆右，仍在同一北墙。门台之间为灰砖空地。
+3. **台旁松动瓷砖** — 主视图南侧向北：米白门在西侧画面左；洗手盆和镜在北侧远墙中央；暗格紧邻盆右，仍在同一北墙。门台之间为灰砖空地。
+4. **门台间空地** — 主视图南侧向北：米白门在西侧画面左；洗手盆和镜在北侧远墙中央；暗格紧邻盆右，仍在同一北墙。门台之间为灰砖空地。
 
 ### 光照与时段
 
-- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. A compact bathroom belonging to the same apartment, viewed from near its south doorway. A cream door on the south wall uses a plain silver lever and privacy lock, matching the corridor side. A simple white washbasin and mirror are on the north wall. Immediately beside the basin on the east section of that wall, one pale rectangular tile has a visibly uneven seam; it covers a small recessed compartment in the wall, not a freestanding cabinet. Keep an open floor path between doorway and basin. Night interior ceiling light, grey floor tiles, no shower occupant, no instruments, medicine bottles, papers or blood baked into the empty reference. The loose tile is closed in the reference; its opening is an action state.
-Connection D02 on south side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.`
+- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
+Connection D02 on west side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.`
 
 ### 出图提示词包
 
 **主视角 EN**
 
 ```text
-Landscape 16:9, empty scene, no people. A compact bathroom belonging to the same apartment, viewed from near its south doorway. A cream door on the south wall uses a plain silver lever and privacy lock, matching the corridor side. A simple white washbasin and mirror are on the north wall. Immediately beside the basin on the east section of that wall, one pale rectangular tile has a visibly uneven seam; it covers a small recessed compartment in the wall, not a freestanding cabinet. Keep an open floor path between doorway and basin. Night interior ceiling light, grey floor tiles, no shower occupant, no instruments, medicine bottles, papers or blood baked into the empty reference. The loose tile is closed in the reference; its opening is an action state.
-Connection D02 on south side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
+Landscape 16:9, empty scene, no people. Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
+Connection D02 on west side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
 ```
 
 **反向提示词**
@@ -233,8 +217,8 @@ people, human figures, characters, crowds, silhouettes of people, human reflecti
 **设定图 EN**
 
 ```text
-One 16:9 landscape environment sheet. Main view in upper-left 72 percent width and 70 percent height; thin dividers and L-shaped detail border, two crops at right and three below. All details are crop enlargements of the master view, nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. Landscape 16:9, empty scene, no people. A compact bathroom belonging to the same apartment, viewed from near its south doorway. A cream door on the south wall uses a plain silver lever and privacy lock, matching the corridor side. A simple white washbasin and mirror are on the north wall. Immediately beside the basin on the east section of that wall, one pale rectangular tile has a visibly uneven seam; it covers a small recessed compartment in the wall, not a freestanding cabinet. Keep an open floor path between doorway and basin. Night interior ceiling light, grey floor tiles, no shower occupant, no instruments, medicine bottles, papers or blood baked into the empty reference. The loose tile is closed in the reference; its opening is an action state. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D02 on south side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
+One 16:9 landscape environment sheet; upper-left main view 72% width and 70% height with detail crops at right and below. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Maintained surfaces, no people. Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
+Connection D02 on west side: width 0.8m, height 2m, material cream painted door, anchors plain silver lever and small privacy-lock fitting.
 ```
 
 `environment sheet`, `maintained surfaces`, `connected architecture`
@@ -243,27 +227,25 @@ Connection D02 on south side: width 0.8m, height 2m, material cream painted door
 
 ## S18 黎汐家门外楼梯平台
 
-第三集必要子空间制作设计；依已有同建筑参考补足原稿动作所需空间，不冒称已有图认出。
+主视图南侧向北：深灰入户门在远端北墙偏右；下行楼梯在左前方，金属栏杆分隔楼梯与平台；左侧开窗见夜景。
 
 ### 一致性锚点
 
-1. **东侧入户门外面** — 同客厅深灰金属入户门外面，猫眼、深框与阈石对应，非厨房门。
-2. **西侧下行楼梯** — 楼梯由平台向下，不将车放楼道；只能表现下楼离开。
-3. **金属扶手** — 朴素扶手沿楼梯边，门口让路空间不受阻。
-4. **门外等待平台** — 五室友可分散停留的灰地平台，不站到客厅里。
+1. **远端偏右入户门** — 主视图南侧向北：深灰入户门在远端北墙偏右；下行楼梯在左前方，金属栏杆分隔楼梯与平台；左侧开窗见夜景。
+2. **西侧下行楼梯** — 主视图南侧向北：深灰入户门在远端北墙偏右；下行楼梯在左前方，金属栏杆分隔楼梯与平台；左侧开窗见夜景。
+3. **金属扶手** — 主视图南侧向北：深灰入户门在远端北墙偏右；下行楼梯在左前方，金属栏杆分隔楼梯与平台；左侧开窗见夜景。
+4. **门外等待平台** — 主视图南侧向北：深灰入户门在远端北墙偏右；下行楼梯在左前方，金属栏杆分隔楼梯与平台；左侧开窗见夜景。
 
 ### 光照与时段
 
-- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. The exterior landing immediately outside the same apartment entrance. A dark grey metal apartment door with a peephole is on the east wall, matching the living-room west entrance; preserve its silver-grey threshold and dark frame. A modest concrete stair flight leads down away from the landing along the west side, with a simple metal handrail. Warm shared-corridor ceiling light, light neutral plaster walls and worn grey paving. Keep enough unobstructed landing space for five people waiting without blocking the doorway. Do not introduce another apartment door, elevator, street-level car or visible floor number. No people, phones, bags or food.
-Connection D03 on east side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.`
+- **夜间室内/楼道**：`Landscape 16:9, empty scene, no people. Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall.`
 
 ### 出图提示词包
 
 **主视角 EN**
 
 ```text
-Landscape 16:9, empty scene, no people. The exterior landing immediately outside the same apartment entrance. A dark grey metal apartment door with a peephole is on the east wall, matching the living-room west entrance; preserve its silver-grey threshold and dark frame. A modest concrete stair flight leads down away from the landing along the west side, with a simple metal handrail. Warm shared-corridor ceiling light, light neutral plaster walls and worn grey paving. Keep enough unobstructed landing space for five people waiting without blocking the doorway. Do not introduce another apartment door, elevator, street-level car or visible floor number. No people, phones, bags or food.
-Connection D03 on east side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.
+Landscape 16:9, empty scene, no people. Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall.
 ```
 
 **反向提示词**
@@ -275,8 +257,7 @@ people, human figures, characters, crowds, silhouettes of people, human reflecti
 **设定图 EN**
 
 ```text
-One 16:9 landscape environment sheet. Main view in upper-left 72 percent width and 70 percent height; thin dividers and L-shaped detail border, two crops at right and three below. All details are crop enlargements of the master view, nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. Landscape 16:9, empty scene, no people. The exterior landing immediately outside the same apartment entrance. A dark grey metal apartment door with a peephole is on the east wall, matching the living-room west entrance; preserve its silver-grey threshold and dark frame. A modest concrete stair flight leads down away from the landing along the west side, with a simple metal handrail. Warm shared-corridor ceiling light, light neutral plaster walls and worn grey paving. Keep enough unobstructed landing space for five people waiting without blocking the doorway. Do not introduce another apartment door, elevator, street-level car or visible floor number. No people, phones, bags or food. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D03 on east side: width 0.9m, height 2.1m, material dark grey metal door, anchors peephole and dark frame and grey threshold.
+One 16:9 landscape environment sheet; upper-left main view 72% width and 70% height with detail crops at right and below. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Maintained surfaces, no people. Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall.
 ```
 
 `environment sheet`, `maintained surfaces`, `connected architecture`
@@ -285,27 +266,25 @@ Connection D03 on east side: width 0.9m, height 2.1m, material dark grey metal d
 
 ## S19 咖啡厅门外街边
 
-第三集必要子空间制作设计；依已有同建筑参考补足原稿动作所需空间，不冒称已有图认出。
+主视图南侧向北：玻璃门在北面中右，长竖拉手；落地窗在左，桌椅仅在玻璃后室内；墙柱在门右，灰砖铺地在前。
 
 ### 一致性锚点
 
-1. **西侧玻璃出口外面** — 承接原咖啡厅同一深灰细框玻璃门与长竖拉手。
-2. **门旁墙垛** — 临门一小段外墙，供主角扶墙，不增加新建筑。
-3. **浅灰街边铺地** — 沿用原图门外可见的浅灰铺地。
-4. **邻接固定玻璃窗** — 保持固定窗和活动门区别，不把桌子搬到室外。
+1. **远端中右玻璃门** — 主视图南侧向北：玻璃门在北面中右，长竖拉手；落地窗在左，桌椅仅在玻璃后室内；墙柱在门右，灰砖铺地在前。
+2. **门旁墙垛** — 主视图南侧向北：玻璃门在北面中右，长竖拉手；落地窗在左，桌椅仅在玻璃后室内；墙柱在门右，灰砖铺地在前。
+3. **浅灰街边铺地** — 主视图南侧向北：玻璃门在北面中右，长竖拉手；落地窗在左，桌椅仅在玻璃后室内；墙柱在门右，灰砖铺地在前。
+4. **邻接固定玻璃窗** — 主视图南侧向北：玻璃门在北面中右，长竖拉手；落地窗在左，桌椅仅在玻璃后室内；墙柱在门右，灰砖铺地在前。
 
 ### 光照与时段
 
-- **下午回档街边**：`Landscape 16:9, empty scene, no people. Exterior close local view of the same contemporary cafe entrance from the existing interior reference. The west-side glass doorway has the same narrow dark grey frame and long slim vertical handle; the fixed storefront glass remains adjacent and distinct. Show the light grey paved sidewalk and a plain exterior wall pier next to the entrance that a person can brace a hand against. The interior table stays inside, never moved outside. Overcast afternoon light, no rain intensification, no signage or readable text. No people, phones, bags or cars. Keep this an intimate doorway-and-wall streetside angle, not a newly invented full storefront.
-Connection D04 on west side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.`
+- **下午回档街边**：`Landscape 16:9, empty scene, no people. Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.`
 
 ### 出图提示词包
 
 **主视角 EN**
 
 ```text
-Landscape 16:9, empty scene, no people. Exterior close local view of the same contemporary cafe entrance from the existing interior reference. The west-side glass doorway has the same narrow dark grey frame and long slim vertical handle; the fixed storefront glass remains adjacent and distinct. Show the light grey paved sidewalk and a plain exterior wall pier next to the entrance that a person can brace a hand against. The interior table stays inside, never moved outside. Overcast afternoon light, no rain intensification, no signage or readable text. No people, phones, bags or cars. Keep this an intimate doorway-and-wall streetside angle, not a newly invented full storefront.
-Connection D04 on west side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.
+Landscape 16:9, empty scene, no people. Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.
 ```
 
 **反向提示词**
@@ -317,8 +296,7 @@ people, human figures, characters, crowds, silhouettes of people, human reflecti
 **设定图 EN**
 
 ```text
-One 16:9 landscape environment sheet. Main view in upper-left 72 percent width and 70 percent height; thin dividers and L-shaped detail border, two crops at right and three below. All details are crop enlargements of the master view, nothing invented that is not present in the master view. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Absolutely no people anywhere. Landscape 16:9, empty scene, no people. Exterior close local view of the same contemporary cafe entrance from the existing interior reference. The west-side glass doorway has the same narrow dark grey frame and long slim vertical handle; the fixed storefront glass remains adjacent and distinct. Show the light grey paved sidewalk and a plain exterior wall pier next to the entrance that a person can brace a hand against. The interior table stays inside, never moved outside. Overcast afternoon light, no rain intensification, no signage or readable text. No people, phones, bags or cars. Keep this an intimate doorway-and-wall streetside angle, not a newly invented full storefront. Well-kept, actively maintained materials: sound lacquer with an even sheen, swept stone and timber, polished metal fittings, tight joinery, no peeling paint and no water staining; wear confined to the traffic a space like this really takes — thresholds, handrails, the stone directly inside a doorway. Atmospheric depth with haze or volumetric light where the space allows
-Connection D04 on west side: width 0.9m, height 2.1m, material dark grey metal framed glass, anchors long slim vertical handle and light grey threshold.
+One 16:9 landscape environment sheet; upper-left main view 72% width and 70% height with detail crops at right and below. THE SPACE MUST BE IDENTICAL ACROSS ALL PANELS. Maintained surfaces, no people. Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.
 ```
 
 `environment sheet`, `maintained surfaces`, `connected architecture`

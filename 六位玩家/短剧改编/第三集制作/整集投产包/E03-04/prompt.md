@@ -15,7 +15,7 @@
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.40-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the south door, then checks the loose tile beside the north-wall basin.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the left west-wall door, then checks the loose tile beside the north-wall basin.
 [Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data.
 [Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d>
 [Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure.
@@ -24,3 +24,5 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.

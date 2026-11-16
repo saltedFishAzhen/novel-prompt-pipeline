@@ -16,3 +16,5 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.

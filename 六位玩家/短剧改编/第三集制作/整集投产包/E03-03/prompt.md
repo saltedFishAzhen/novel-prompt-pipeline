@@ -18,3 +18,5 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening.

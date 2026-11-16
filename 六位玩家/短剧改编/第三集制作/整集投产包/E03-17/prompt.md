@@ -16,3 +16,5 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall.

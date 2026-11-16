@@ -243,6 +243,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from south looking north: the empty wooden coat rack stands at far left. The cream bathroom door is on the right east wall. Keep the center floor route open. The living-room connection behind the camera is not visible; do not invent a visible opening.
 ```
 
 **Seedance 视频提示词**
@@ -256,7 +258,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：侧走廊东口内的东侧机位，朝西取主角回头面部，客厅桌旁人物在后侧画框外。
+机位：走廊近侧南机位朝远端左侧衣架；卫生间门位于画面右侧东墙。客厅在机位后画外，不编造可见门洞。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -268,7 +270,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：50mm 标准，中浅景深
-机位：侧走廊东口朝西取衣架，卫生间门在北侧，不以厨房门冒充。
+机位：走廊近侧南机位朝远端左侧衣架；卫生间门位于画面右侧东墙。客厅在机位后画外，不编造可见门洞。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -287,7 +289,7 @@ non_diegetic_music: N/A
 
 ### E03-04 · 黎汐家卫生间 · 14.4 秒 · 5 个分镜
 
-> 走位：本群最帅之人站在卫生间南门北侧，面朝南；其余座位空着，没有其他人。
+> 走位：本群最帅之人站在卫生间西门东侧中段，面朝西；其余座位空着，没有其他人。
 
 | 切 | 起点 | 秒 | 景别 | 运镜 | 配方 | 画面 | 画内／画外／进出 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -300,7 +302,7 @@ non_diegetic_music: N/A
 **#1 分镜图提示词**
 
 ```text
-中景。本群最帅之人在卫生间内南侧门旁，手刚触反锁处，洗手台与松动瓷砖在北墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。本群最帅之人在卫生间内西侧门旁，手刚触反锁处，洗手台与盆右松动瓷砖位于同一北侧远墙；随后反锁再检查台旁瓷砖。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
 画幅：16:9
 ```
 
@@ -339,7 +341,7 @@ non_diegetic_music: N/A
 How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 2) aligns with the 2.50-second mark of the target video; Picture 3 (from Shot 3) aligns with the 5.00-second mark of the target video; Picture 4 (from Shot 4) aligns with the 9.90-second mark of the target video; Picture 5 (from Shot 5) aligns with the 12.40-second mark of the target video.
 
 integrated_multimodal_description:
-[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the south door, then checks the loose tile beside the north-wall basin.
+[Shot 1] Anchor the initial composition to <Picture 1>. Static Shot. Inside the bathroom he locks the left west-wall door, then checks the loose tile beside the north-wall basin.
 [Shot 2] At 00:02.500, the camera cuts to <Picture 2>. Static Shot. He opens the recess behind the loose tile and takes out a medical notice beside simple surgical tools. No fabricated readable medical data.
 [Shot 3] At 00:05.000, the camera cuts to <Picture 3>. Static Shot. The visible young man keeps his lips closed while the indicated off-screen voice is heard. The young man reading internally says in an off-screen voiceover while the visible young man keeps his lips completely closed: <d>[Chinese] 黎汐病危，主动离院。顾岚乔参与心脏移植研究。</d>
 [Shot 4] At 00:09.900, the camera cuts to <Picture 4>. Static Shot. He compares the tools with simple medicine bottles and presses a hand to his chest. Add no medical procedure.
@@ -348,6 +350,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
 ```
 
 **Seedance 视频提示词**
@@ -357,11 +361,11 @@ non_diegetic_music: N/A
 @[图片2] = 本群最帅之人
 
 【人物关系与构图逻辑】
-本群最帅之人站在卫生间南门北侧，面朝南；其余座位空着，没有其他人。
+本群最帅之人站在卫生间西门东侧中段，面朝西；其余座位空着，没有其他人。
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -373,7 +377,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -385,7 +389,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -397,7 +401,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -409,7 +413,7 @@ non_diegetic_music: N/A
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -462,7 +466,7 @@ non_diegetic_music: N/A
 **#4 分镜图提示词**
 
 ```text
-中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
+中景。顾岚乔在卫生间门口举喷雾，主角仍在台前的退路起点；随后药雾喷出、主角退至台旁。黎汐站门口另一侧画外。画内角色为本群最帅之人与顾岚乔。 横屏16:9；无新增群演，不编造可读机构、病例数据或通讯全文。
 画幅：16:9
 ```
 
@@ -489,6 +493,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
 ```
 
 **Seedance 视频提示词**
@@ -504,7 +510,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -516,7 +522,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -528,7 +534,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -540,7 +546,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -552,7 +558,7 @@ non_diegetic_music: N/A
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -633,6 +639,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
 ```
 
 **Seedance 视频提示词**
@@ -648,7 +656,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -660,7 +668,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -672,7 +680,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：50mm 标准，中浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -684,7 +692,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -696,7 +704,7 @@ non_diegetic_music: N/A
 
 【镜头5】
 焦距：85mm 长焦，浅景深
-机位：机位在卫生间东侧朝西北，洗手台北侧、门南侧，镜头不翻转主角解剖右胸。
+机位：卫生间南侧偏东机位朝北/西北；门在画面左侧西墙，盆在远端中央，暗格紧盆右同一远墙。近景不纳入画外同伴区域，不翻转解剖右胸。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -716,7 +724,7 @@ non_diegetic_music: N/A
 
 ### E03-07 · 咖啡厅门外街边 · 12.9 秒 · 4 个分镜
 
-> 走位：本群最帅之人站在门旁墙垛东侧中段，面朝西；其余座位空着，没有其他人。
+> 走位：本群最帅之人站在门旁墙垛南侧，面朝北；其余座位空着，没有其他人。
 
 | 切 | 起点 | 秒 | 景别 | 运镜 | 配方 | 画面 | 画内／画外／进出 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -768,6 +776,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.
 ```
 
 **Seedance 视频提示词**
@@ -777,11 +787,11 @@ non_diegetic_music: N/A
 @[图片2] = 本群最帅之人
 
 【人物关系与构图逻辑】
-本群最帅之人站在门旁墙垛东侧中段，面朝西；其余座位空着，没有其他人。
+本群最帅之人站在门旁墙垛南侧，面朝北；其余座位空着，没有其他人。
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -793,7 +803,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -805,7 +815,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -817,7 +827,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -888,6 +898,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.
 ```
 
 **Seedance 视频提示词**
@@ -901,7 +913,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -913,7 +925,7 @@ non_diegetic_music: N/A
 
 【镜头2】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -925,7 +937,7 @@ non_diegetic_music: N/A
 
 【镜头3】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -937,7 +949,7 @@ non_diegetic_music: N/A
 
 【镜头4】
 焦距：85mm 长焦，浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：特写
@@ -981,6 +993,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the glass entrance is centered right on the far frontage, the fixed window is left and shows tables ONLY INSIDE. The stone wall pier is right of the door; the exterior tiled sidewalk is foreground. Keep the protagonist outside against that right pier.
 ```
 
 **Seedance 视频提示词**
@@ -994,7 +1008,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：同咖啡店门外局部平视，门框与扶墙在同一街边，不回到室内桌旁。
+机位：店外南侧偏西机位取主角与右侧石墙柱；玻璃门在其左后中右，固定窗在更左，桌椅只在玻璃后室内。
 构图：三分法
 运镜：固定镜头
 景别：中景
@@ -1841,6 +1855,8 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view: the apartment door is on the far wall at upper right; descending stairs occupy the near left, with a metal railing separating them from the clear landing. Preserve the left-side night window. Do not move the door onto an invented side wall.
 ```
 
 **Seedance 视频提示词**
@@ -1856,7 +1872,7 @@ non_diegetic_music: N/A
 
 【镜头1】
 焦距：50mm 标准，中浅景深
-机位：楼梯平台南侧机位朝入户门与下行梯方向，五室友在门外，客厅不作背景替代。
+机位：楼梯平台南侧机位朝远端右侧入户门；下行梯在左前，顾岚乔由门外平台向左前下楼，五室友仅在平台，不进入客厅。
 构图：三分法
 运镜：固定镜头
 景别：中景

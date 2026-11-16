@@ -24,3 +24,5 @@ integrated_multimodal_description:
 overall_soundscape: Restrained location ambience. Footsteps and object sounds only accompany the original actions. No added voices or medical procedure sounds.
 
 non_diegetic_music: N/A
+
+Spatial continuity from actual reference: Actual full-image view from the south looking north: the cream door is on the left west wall. The basin and mirror are centered on the far north wall. The recess tile is immediately to the right of the basin ON THE SAME FAR WALL, not on the right side wall. Grey tiled clear floor connects door and basin.
