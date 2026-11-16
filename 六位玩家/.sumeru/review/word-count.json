@@ -1,10 +1,10 @@
 {
   "summary": {
     "total_chapters": 17,
-    "total_words": 85079,
-    "average_words": 5004.65,
-    "min_words": 4557,
-    "max_words": 7648,
+    "total_words": 97816,
+    "average_words": 5753.88,
+    "min_words": 3128,
+    "max_words": 9875,
     "ideal_range": [
       4500,
       8500
@@ -14,19 +14,39 @@
       6000
     ],
     "too_short_count": 0,
-    "too_long_count": 2
+    "too_long_count": 6
   },
   "too_short_chapters": [],
   "too_long_chapters": [
     {
       "chapter": "001-新手关·消失的她.md",
-      "words": 7648,
-      "gap": 1648
+      "words": 9316,
+      "gap": 3316
     },
     {
-      "chapter": "014-她自己的决定.md",
-      "words": 6084,
-      "gap": 84
+      "chapter": "002-同一座末世城市.md",
+      "words": 6528,
+      "gap": 528
+    },
+    {
+      "chapter": "004-无法回家的家人.md",
+      "words": 6160,
+      "gap": 160
+    },
+    {
+      "chapter": "008-只有他记得.md",
+      "words": 7788,
+      "gap": 1788
+    },
+    {
+      "chapter": "013-无法避免的选择.md",
+      "words": 6823,
+      "gap": 823
+    },
+    {
+      "chapter": "017-出去之后，我们再见.md",
+      "words": 9875,
+      "gap": 3875
     }
   ],
   "chapters": [
@@ -34,171 +54,176 @@
       "chapter_num": 1,
       "file_name": "001-新手关·消失的她.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\001-新手关·消失的她.md",
-      "total_words": 7648,
-      "hanzi_count": 7579,
-      "english_count": 69,
-      "punctuation_count": 1167,
+      "total_words": 9316,
+      "hanzi_count": 9242,
+      "english_count": 74,
+      "punctuation_count": 1516,
       "status": "too_long"
     },
     {
       "chapter_num": 2,
       "file_name": "002-同一座末世城市.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\002-同一座末世城市.md",
-      "total_words": 4595,
-      "hanzi_count": 4572,
-      "english_count": 23,
-      "punctuation_count": 625,
-      "status": "normal"
+      "total_words": 6528,
+      "hanzi_count": 6500,
+      "english_count": 28,
+      "punctuation_count": 943,
+      "status": "too_long"
     },
     {
       "chapter_num": 3,
       "file_name": "003-各自找到活路.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\003-各自找到活路.md",
-      "total_words": 4729,
-      "hanzi_count": 4679,
-      "english_count": 50,
-      "punctuation_count": 767,
-      "status": "normal"
+      "total_words": 3480,
+      "hanzi_count": 3450,
+      "english_count": 30,
+      "punctuation_count": 524,
+      "status": "warning"
     },
     {
       "chapter_num": 4,
       "file_name": "004-无法回家的家人.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\004-无法回家的家人.md",
-      "total_words": 5526,
-      "hanzi_count": 5494,
-      "english_count": 32,
-      "punctuation_count": 925,
-      "status": "normal"
+      "total_words": 6160,
+      "hanzi_count": 6131,
+      "english_count": 29,
+      "punctuation_count": 1019,
+      "status": "too_long"
     },
     {
       "chapter_num": 5,
       "file_name": "005-反复抵达的死亡.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\005-反复抵达的死亡.md",
-      "total_words": 4965,
-      "hanzi_count": 4915,
-      "english_count": 50,
-      "punctuation_count": 727,
+      "total_words": 5832,
+      "hanzi_count": 5777,
+      "english_count": 55,
+      "punctuation_count": 853,
       "status": "normal"
     },
     {
       "chapter_num": 6,
       "file_name": "006-酒馆里的线索.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\006-酒馆里的线索.md",
-      "total_words": 5090,
-      "hanzi_count": 5041,
-      "english_count": 49,
-      "punctuation_count": 864,
+      "total_words": 5836,
+      "hanzi_count": 5783,
+      "english_count": 53,
+      "punctuation_count": 968,
       "status": "normal"
     },
     {
       "chapter_num": 7,
       "file_name": "007-提前打开的门.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\007-提前打开的门.md",
-      "total_words": 4573,
-      "hanzi_count": 4542,
-      "english_count": 31,
-      "punctuation_count": 758,
-      "status": "normal"
+      "total_words": 3128,
+      "hanzi_count": 3111,
+      "english_count": 17,
+      "punctuation_count": 564,
+      "status": "warning"
     },
     {
       "chapter_num": 8,
       "file_name": "008-只有他记得.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\008-只有他记得.md",
-      "total_words": 4597,
-      "hanzi_count": 4586,
-      "english_count": 11,
-      "punctuation_count": 751,
-      "status": "normal"
+      "total_words": 7788,
+      "hanzi_count": 7766,
+      "english_count": 22,
+      "punctuation_count": 1361,
+      "status": "too_long"
     },
     {
       "chapter_num": 9,
       "file_name": "009-记住她的名字.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\009-记住她的名字.md",
-      "total_words": 4625,
-      "hanzi_count": 4596,
-      "english_count": 29,
-      "punctuation_count": 772,
-      "status": "normal"
+      "total_words": 3315,
+      "hanzi_count": 3305,
+      "english_count": 10,
+      "punctuation_count": 585,
+      "status": "warning"
     },
     {
       "chapter_num": 10,
       "file_name": "010-解药留给谁.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\010-解药留给谁.md",
-      "total_words": 4617,
-      "hanzi_count": 4578,
-      "english_count": 39,
-      "punctuation_count": 913,
+      "total_words": 5493,
+      "hanzi_count": 5447,
+      "english_count": 46,
+      "punctuation_count": 1003,
       "status": "normal"
     },
     {
       "chapter_num": 11,
       "file_name": "011-没说出口的计划.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\011-没说出口的计划.md",
-      "total_words": 4788,
-      "hanzi_count": 4737,
-      "english_count": 51,
-      "punctuation_count": 934,
-      "status": "normal"
+      "total_words": 4497,
+      "hanzi_count": 4454,
+      "english_count": 43,
+      "punctuation_count": 797,
+      "status": "warning"
     },
     {
       "chapter_num": 12,
       "file_name": "012-棋盘两端.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\012-棋盘两端.md",
-      "total_words": 4585,
-      "hanzi_count": 4559,
-      "english_count": 26,
-      "punctuation_count": 684,
+      "total_words": 5859,
+      "hanzi_count": 5825,
+      "english_count": 34,
+      "punctuation_count": 862,
       "status": "normal"
     },
     {
       "chapter_num": 13,
       "file_name": "013-无法避免的选择.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\013-无法避免的选择.md",
-      "total_words": 4877,
-      "hanzi_count": 4843,
-      "english_count": 34,
-      "punctuation_count": 595,
-      "status": "normal"
+      "total_words": 6823,
+      "hanzi_count": 6806,
+      "english_count": 17,
+      "punctuation_count": 1172,
+      "status": "too_long"
     },
     {
       "chapter_num": 14,
       "file_name": "014-她自己的决定.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\014-她自己的决定.md",
-      "total_words": 6084,
-      "hanzi_count": 6075,
-      "english_count": 9,
-      "punctuation_count": 762,
-      "status": "too_long"
+      "total_words": 5839,
+      "hanzi_count": 5825,
+      "english_count": 14,
+      "punctuation_count": 1013,
+      "status": "normal"
     },
     {
       "chapter_num": 15,
       "file_name": "015-回到医院.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\015-回到医院.md",
-      "total_words": 4559,
-      "hanzi_count": 4518,
-      "english_count": 41,
-      "punctuation_count": 683,
-      "status": "normal"
+      "total_words": 3284,
+      "hanzi_count": 3278,
+      "english_count": 6,
+      "punctuation_count": 555,
+      "status": "warning"
     },
     {
       "chapter_num": 16,
       "file_name": "016-无法拯救.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\016-无法拯救.md",
-      "total_words": 4557,
-      "hanzi_count": 4524,
-      "english_count": 33,
-      "punctuation_count": 672,
+      "total_words": 4763,
+      "hanzi_count": 4754,
+      "english_count": 9,
+      "punctuation_count": 922,
       "status": "normal"
     },
     {
       "chapter_num": 17,
       "file_name": "017-出去之后，我们再见.md",
       "file_path": "D:\\work\\articles\\六位玩家\\chapters\\017-出去之后，我们再见.md",
-      "total_words": 4664,
-      "hanzi_count": 4613,
-      "english_count": 51,
-      "punctuation_count": 711,
-      "status": "normal"
+      "total_words": 9875,
+      "hanzi_count": 9847,
+      "english_count": 28,
+      "punctuation_count": 1889,
+      "status": "too_long"
     }
-  ]
+  ],
+  "reportContext": {
+    "generatedAtUtc": "2026-11-16T10:51:08.0765682Z",
+    "thresholdPolicy": "inherited-reference-only",
+    "note": "统计已按当前章节重新计算。理想区间4500–8500及警告区间2000–6000沿用历史参数，二者不一致：6000–8500字可能同时位于理想区间并触发过长警告。仅供参考，不代表用户已批准固定章长，不据此删剧情或强制拆章。"
+  }
 }
