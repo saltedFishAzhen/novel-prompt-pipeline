@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《六位玩家》第一世界 · 短剧改编大纲</title>
+<style>
+:root{
+  --paper:#eceded; --panel:#f5f6f5; --side:#e4e6e3; --ink:#191d21; --ink-2:#5b636a; --ink-3:#8c9298;
+  --rule:#d2d5d0; --rule-2:#c2c6bf; --seal:#8a3324; --seal-2:#c56a4e; --seal-3:#e0a98c; --seal-soft:#8a332412; --ok:#3d6b4f;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1600px;margin:0 auto;padding:24px 32px 90px}
+h1,h2,h3{margin:0;font-weight:400}
+
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.hd h1{font:400 28px/1.1 var(--serif);letter-spacing:.06em}
+.hd .sub{font-size:13px;color:var(--ink-2)}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.gatepill{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--sans);border-radius:99px;padding:6px 12px}
+.gatepill.pass{color:var(--ok);border:1px solid var(--ok)}
+.gatepill.fail{color:var(--seal);border:1px solid var(--seal);background:var(--seal-soft)}
+.expo{font:500 11px/1 var(--sans);color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.15s}
+.expo:hover{border-color:var(--seal);color:var(--seal)}
+.expo:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:18px 0 6px}
+@media(max-width:980px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:11px 14px 9px}
+.kpi .l{font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.kpi .v{font:400 28px/1.15 var(--serif);margin-top:5px}
+.kpi .v small{font:400 14px var(--serif);color:var(--ink-2)}
+.kpi .v.mode{font-size:21px;padding-top:5px}
+.kpi .d{font-size:11px;color:var(--ink-2);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kpi.accent{border-top:2px solid var(--seal)}
+
+.galert{margin:14px 0 0;border:1px solid var(--seal);background:var(--seal-soft);border-radius:2px;
+  padding:10px 14px;font-size:13px}
+.galert b{color:var(--seal)}
+.galert span{display:block;font-size:12px;color:var(--ink-2)}
+
+section{margin-top:34px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:16px}
+.sec-h .no{font:500 12px/1 var(--mono);color:var(--seal)}
+.sec-h h2{font:400 20px/1.2 var(--serif);letter-spacing:.05em}
+.sec-h .note{margin-left:auto;font-size:12px;color:var(--ink-3)}
+
+/* beat-rhythm chart/table tabs */
+.tabs{display:flex;width:max-content;margin-bottom:12px;border:1px solid var(--rule-2);
+  border-radius:2px;overflow:hidden}
+.tab{font:500 12px/1 var(--sans);letter-spacing:.06em;padding:7px 16px;background:var(--panel);
+  border:0;cursor:pointer;color:var(--ink-2);transition:.15s}
+.tab + .tab{border-left:1px solid var(--rule-2)}
+.tab.on{background:var(--seal);color:#fff}
+.tab:focus-visible{outline:2px solid var(--seal);outline-offset:-2px}
+.tabpane{display:none}
+.tabpane.on{display:block}
+
+/* episode overview: first three cards, fade-out + expand */
+.epswrap{position:relative}
+.eps{position:relative}
+.epswrap.clip .eps .ep:nth-child(n+4){display:none}
+.epswrap.clip .eps::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;
+  background:linear-gradient(180deg,transparent,var(--paper));pointer-events:none}
+.epsmore{display:block;margin:10px auto 0;font:500 12px/1 var(--sans);letter-spacing:.06em;
+  color:var(--ink-2);background:var(--panel);border:1px solid var(--rule-2);border-radius:2px;
+  padding:8px 18px;cursor:pointer;transition:.15s}
+.epsmore:hover{border-color:var(--seal);color:var(--seal)}
+.epsmore:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+/* key decisions: the three sign-off items */
+.dec3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start}
+@media(max-width:1080px){.dec3{grid-template-columns:1fr}}
+.dcol{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:4px 18px 14px}
+.dhead{margin:8px 0 0;font-size:12.5px;color:var(--ink-2)}
+.dlist{list-style:none;margin:8px 0 0;padding:0}
+.dlist li{padding:7px 0;border-top:1px solid var(--rule)}
+.dlist li:first-child{border-top:0}
+.dlist b{display:block;font:400 13.5px/1.6 var(--serif)}
+.dlist small{display:block;font-size:11.5px;color:var(--ink-2);line-height:1.6}
+.dnote{margin:10px 0 0;font-size:12px;color:var(--ink-2);line-height:1.7}
+.dnote.seal{color:var(--seal);background:var(--seal-soft);padding:7px 10px;border-radius:2px}
+.dmaj{list-style:none;margin:8px 0 0;padding:0}
+.dmaj li{display:flex;gap:9px;align-items:baseline;padding:5.5px 0;border-top:1px solid var(--rule);font-size:12.5px}
+.dmaj li:first-child{border-top:0}
+.dmaj i{flex:none;font:500 11px/1 var(--mono);color:var(--seal);font-style:normal;min-width:38px}
+.dmaj b{font:400 12.5px var(--serif)}
+.dmaj span{min-width:0}
+.dmaj em{flex:none;margin-left:auto;font:500 10px/1 var(--sans);letter-spacing:.1em;font-style:normal;
+  color:var(--seal);border:1px solid var(--seal);border-radius:99px;padding:2px 7px}
+
+/* beat-rhythm timeline */
+.chart{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:16px 20px 10px}
+.chart .legend{display:flex;gap:18px;font-size:12px;color:var(--ink-2);margin-bottom:2px}
+.chart .legend i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.dotk{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--seal-2)}
+.dotk.major{width:12px;height:12px;background:var(--seal)}
+.rhythm svg{display:block;width:100%;height:auto}
+.rhythm .axis{stroke:var(--rule-2);stroke-width:1.5}
+.rhythm .tick{font:400 10.5px var(--mono);fill:var(--ink-3);paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.rhythm .stem{stroke:var(--seal-2);stroke-width:1.5}
+.rhythm .stem.major{stroke:var(--seal)}
+.rhythm .bdot{fill:var(--seal-2);stroke:var(--panel);stroke-width:2}
+.rhythm .bdot.major{fill:var(--seal)}
+.rhythm .blabel{font:500 12px var(--sans);fill:var(--ink)}
+.rhythm .bsub{font:400 10.5px var(--sans);fill:var(--ink-2)}
+.rhythm .gapnote{font:400 10.5px var(--sans);fill:var(--ink-3)}
+.rhythm .gapnote.bad{fill:var(--seal);font-weight:500}
+
+/* beat detail table + generic tables */
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--rule);font-size:13px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font:500 11px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:var(--side)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+q{quotes:"「" "」";font-family:var(--serif);border-left:2px solid var(--seal);padding-left:8px;display:inline-block}
+
+/* episode cards */
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:13px}
+.ep{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:14px 16px 12px;position:relative}
+.ep .num{position:absolute;top:10px;right:14px;font:400 30px/1 var(--serif);color:var(--rule-2)}
+.ep header{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-right:44px;flex-wrap:wrap}
+.ep header b{font:500 15px var(--serif);letter-spacing:.04em}
+.bt{font-style:normal;font-size:11px;padding:2px 8px;border:1px solid var(--seal);border-radius:99px;color:var(--seal)}
+.bt.major{background:var(--seal);color:#fff}
+.ep .syn{margin:0 0 8px;font-size:13px;line-height:1.75}
+.hk{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px;font-size:12.5px;padding:6px 0;border-top:1px solid var(--rule)}
+.hk b{font:500 11px/1.8 var(--sans);letter-spacing:.14em;color:var(--seal);white-space:nowrap}
+:root[lang="en"] .hk b,html[lang="en"] .hk b{letter-spacing:.06em}
+.ep .meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.ep .meta i{font-style:normal;font:400 10.5px/1.5 var(--mono);border:1px solid var(--rule-2);
+  border-radius:2px;padding:0 5px;background:var(--paper);color:var(--ink-2)}
+.ep .meta .warn{border-color:var(--seal);color:var(--seal);background:var(--seal-soft)}
+
+/* dispatch matrix */
+.matrix{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:16px 18px;overflow-x:auto}
+.matrix table{border-collapse:separate;border-spacing:3px;font-size:12px;background:none;border:0;width:auto}
+.matrix th,.matrix td{border:0;padding:0}
+.matrix th{font:500 10px/1 var(--sans);letter-spacing:.1em;color:var(--ink-3);background:none;
+  text-align:left;padding:0 8px 5px 0;white-space:nowrap}
+.matrix th.ep-h{text-align:center;padding:0 0 5px;font-family:var(--mono)}
+.matrix td.name{padding-right:10px;white-space:nowrap;font-family:var(--serif);font-size:13px}
+.matrix td.tier{padding-right:10px;color:var(--ink-3);font-size:11px;white-space:nowrap}
+.matrix td.mc{width:var(--cw,26px);min-width:var(--cw,26px);height:22px;border-radius:2px;
+  background:var(--paper);border:1px solid var(--rule)}
+.matrix td.mc.on{background:var(--seal);border-color:var(--seal)}
+.matrix td.mc.on.sc{background:var(--seal-2);border-color:var(--seal-2)}
+.matrix td.mc.on.pp{background:var(--seal-3);border-color:var(--seal-3)}
+.matrix td.n{padding-left:10px;font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+.matrix tr.div td{padding:8px 0 3px;font:500 10px/1 var(--sans);letter-spacing:.18em;color:var(--ink-3)}
+.matrix .mnote{font-size:11px;color:var(--ink-3);margin:10px 0 0}
+
+/* scene overview cards: full-width multi-column grid */
+.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:13px;align-items:start}
+.scard{position:relative;background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:14px 16px}
+.snum{position:absolute;top:10px;right:16px;font:400 26px/1 var(--serif);color:var(--rule-2);letter-spacing:.04em}
+.scard h3{font:400 16px/1.3 var(--serif);letter-spacing:.03em;display:flex;align-items:center;gap:8px;
+  padding-right:90px;flex-wrap:wrap}
+.scard h3 .id{font:400 10.5px var(--mono);color:var(--ink-3)}
+.badge{font:500 10.5px/1 var(--sans);padding:2px 8px;border-radius:99px;border:1px solid var(--seal);color:var(--seal)}
+.badge.once{border-color:var(--seal-2);color:var(--seal-2)}
+.strip{display:flex;flex-wrap:wrap;gap:3px;margin:7px 0 6px}
+.strip i{width:16px;height:10px;border-radius:2px;background:var(--paper);border:1px solid var(--rule)}
+.strip i.on{background:var(--seal);border-color:var(--seal)}
+.strip i.on.lt{background:var(--seal-2);border-color:var(--seal-2)}
+.srow{font-size:11.5px;color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;margin-top:3px}
+.srow b{font:500 10px/1.8 var(--sans);letter-spacing:.12em;color:var(--ink-3);flex:none}
+.srow i{font-style:normal;font:400 10.5px/1.5 var(--mono);border:1px solid var(--rule-2);
+  border-radius:2px;padding:0 5px;background:var(--paper)}
+.srow .reuse{color:var(--seal)}
+
+/* asset conversion */
+.plan{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:16px 18px}
+.plan table{background:none;border:0}
+.plan th{background:none;padding-left:0}
+.plan td{padding-left:0;border-top:1px solid var(--rule);border-bottom:0}
+.plan tr:first-child td{border-top:0}
+.plan td:first-child{font-family:var(--serif);font-size:13px;color:var(--ink)}
+
+/* adaptation notes */
+.core{font:400 17px/1.9 var(--serif);margin:0 0 6px}
+h3.sub{font:500 12px/1 var(--sans);letter-spacing:.18em;color:var(--seal);margin:20px 0 8px}
+
+/* quality gates */
+.gate{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+@media(max-width:900px){.gate{grid-template-columns:1fr}}
+.gate li{display:flex;gap:8px;padding:5px 0;font-size:12.5px;line-height:1.55}
+.gate .m{flex:none;font-weight:700}
+.gate .ok .m,.gate li.ok .m{color:var(--ok)}
+.gate li.bad .m{color:var(--seal)}
+.gate li.bad{background:var(--seal-soft);border-radius:2px;padding-left:6px}
+.gate small{display:block;color:var(--ink-3)}
+.gsum{margin:10px 0 0;font-size:12px;color:var(--ink-2)}
+.gsum b{color:var(--seal)}
+
+.foot{margin-top:40px;font-size:11px;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* print: expand everything — both tab panes, all episode cards */
+@media print{
+  .expo,.tabs,.epsmore{display:none!important}
+  .tabpane{display:block!important;margin-bottom:14px}
+  .epswrap.clip .eps .ep{display:block!important}
+  .epswrap.clip .eps::after{display:none}
+  .page{max-width:none;padding:0}
+  section,.ep,.scard{page-break-inside:avoid}
+  body{background:#fff}
+}
+</style></head><body>
+<div class="page">
+
+<header class="hd">
+  <h1>《六位玩家》第一世界</h1>
+  <span class="sub">短剧改编大纲 · 40 集 × 3 分钟 · 末日生存悬疑 · 忠实改编</span>
+  <span class="right">
+    <span class="gatepill fail">✗ 质量门 9 / 14</span>
+    <button class="expo" data-name="《六位玩家》第一世界-outline.json">导出 JSON</button>
+  </span>
+</header>
+
+<div class="kpis">
+  <div class="kpi accent"><div class="l">总集数</div><div class="v">40 <small>× 3 分钟</small></div><div class="d">正片约 120 分钟</div></div>
+  <div class="kpi"><div class="l">爽点</div><div class="v">40</div><div class="d">16 大爆点 · 最大间隔 1 集</div></div>
+  <div class="kpi"><div class="l">角色</div><div class="v">27</div><div class="d">主角 6 · 配角 14 · 功能 7</div></div>
+  <div class="kpi"><div class="l">主场景</div><div class="v">8 <small>+6</small></div><div class="d">无一次性场景</div></div>
+  <div class="kpi"><div class="l">生成难点</div><div class="v">0</div><div class="d">预警清单为空</div></div>
+  <div class="kpi"><div class="l">改编幅度</div><div class="v mode">忠实</div><div class="d">砍 1 线 · 合 0 组</div></div>
+</div>
+<div class="galert"><b>✗ 5 项未过</b><span>一次性场景已标注规避方案</span><span>第 1 集有钩子</span><span>每集梗概三栏齐全（含【钩子】【悬念】）</span><span>生成难点已进预警清单</span><span>场景/角色引用完整，无失业角色、无空转场景 — 角色 C01 从未在任何一集出现；角色 C02 从未在任何一集出现；角色 C03 从未在任何一集出现；角色 C04 从未在任何一集出现；角色 C05 从未在任何一集出现；角色 C06 从未在任何一集出现；角色 C07 从未在任何一集出现；角色 C08 从未在任何一集出现；角色 C09 从未在任何一集出现；角色 C10 从未在任何一集出现；角色 C11 从未在任何一集出现；角色 C12 从未在任何一集出现；角色 C13 从未在任何一集出现；角色 C14 从未在任何一集出现；角色 C15 从未在任何一集出现；角色 C16 从未在任何一集出现；角色 C17 从未在任何一集出现；角色 C18 从未在任何一集出现；角色 C19 从未在任何一集出现；角色 C20 从未在任何一集出现；角色 C21 从未在任何一集出现；角色 C22 从未在任何一集出现；角色 C23 从未在任何一集出现；角色 C24 从未在任何一集出现；角色 C25 从未在任何一集出现；角色 C26 从未在任何一集出现；角色 C27 从未在任何一集出现；场景 S01 从未被用到；场景 S02 从未被用到；场景 S03 从未被用到；场景 S04 从未被用到；场景 S05 从未被用到；场景 S06 从未被用到；场景 S07 从未被用到；场景 S08 从未被用到；场景 S09 从未被用到；场景 S10 从未被用到；场景 S11 从未被用到；场景 S12 从未被用到；场景 S13 从未被用到；场景 S14 从未被用到</span></div>
+
+<section id="sec-rhythm">
+  <div class="sec-h"><span class="no">01</span><h2>爽点节奏</h2></div>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-pane="pane-timeline">时间轴</button>
+    <button class="tab" data-pane="pane-table">明细表</button>
+  </div>
+  <div class="tabpane on" id="pane-timeline"><div class="chart rhythm">
+  <div class="legend">
+    <i><span class="dotk major"></span>大爆点</i>
+    <i><span class="dotk"></span>常规爽点</i>
+  </div>
+  <svg viewBox="0 0 1520 352" role="img" aria-label="爽点节奏">
+    <line class="axis" x1="30" y1="92" x2="1490" y2="92"/>
+    <line class="axis" x1="66.5" y1="88" x2="66.5" y2="96"/>
+    <line class="axis" x1="139.5" y1="88" x2="139.5" y2="96"/>
+    <line class="axis" x1="212.5" y1="88" x2="212.5" y2="96"/>
+    <line class="axis" x1="285.5" y1="88" x2="285.5" y2="96"/>
+    <line class="axis" x1="358.5" y1="88" x2="358.5" y2="96"/>
+    <line class="axis" x1="431.5" y1="88" x2="431.5" y2="96"/>
+    <line class="axis" x1="504.5" y1="88" x2="504.5" y2="96"/>
+    <line class="axis" x1="577.5" y1="88" x2="577.5" y2="96"/>
+    <line class="axis" x1="650.5" y1="88" x2="650.5" y2="96"/>
+    <line class="axis" x1="723.5" y1="88" x2="723.5" y2="96"/>
+    <line class="axis" x1="796.5" y1="88" x2="796.5" y2="96"/>
+    <line class="axis" x1="869.5" y1="88" x2="869.5" y2="96"/>
+    <line class="axis" x1="942.5" y1="88" x2="942.5" y2="96"/>
+    <line class="axis" x1="1015.5" y1="88" x2="1015.5" y2="96"/>
+    <line class="axis" x1="1088.5" y1="88" x2="1088.5" y2="96"/>
+    <line class="axis" x1="1161.5" y1="88" x2="1161.5" y2="96"/>
+    <line class="axis" x1="1234.5" y1="88" x2="1234.5" y2="96"/>
+    <line class="axis" x1="1307.5" y1="88" x2="1307.5" y2="96"/>
+    <line class="axis" x1="1380.5" y1="88" x2="1380.5" y2="96"/>
+    <line class="axis" x1="1453.5" y1="88" x2="1453.5" y2="96"/>
+    <line class="axis" x1="30" y1="268" x2="1490" y2="268"/>
+    <line class="axis" x1="66.5" y1="264" x2="66.5" y2="272"/>
+    <line class="axis" x1="139.5" y1="264" x2="139.5" y2="272"/>
+    <line class="axis" x1="212.5" y1="264" x2="212.5" y2="272"/>
+    <line class="axis" x1="285.5" y1="264" x2="285.5" y2="272"/>
+    <line class="axis" x1="358.5" y1="264" x2="358.5" y2="272"/>
+    <line class="axis" x1="431.5" y1="264" x2="431.5" y2="272"/>
+    <line class="axis" x1="504.5" y1="264" x2="504.5" y2="272"/>
+    <line class="axis" x1="577.5" y1="264" x2="577.5" y2="272"/>
+    <line class="axis" x1="650.5" y1="264" x2="650.5" y2="272"/>
+    <line class="axis" x1="723.5" y1="264" x2="723.5" y2="272"/>
+    <line class="axis" x1="796.5" y1="264" x2="796.5" y2="272"/>
+    <line class="axis" x1="869.5" y1="264" x2="869.5" y2="272"/>
+    <line class="axis" x1="942.5" y1="264" x2="942.5" y2="272"/>
+    <line class="axis" x1="1015.5" y1="264" x2="1015.5" y2="272"/>
+    <line class="axis" x1="1088.5" y1="264" x2="1088.5" y2="272"/>
+    <line class="axis" x1="1161.5" y1="264" x2="1161.5" y2="272"/>
+    <line class="axis" x1="1234.5" y1="264" x2="1234.5" y2="272"/>
+    <line class="axis" x1="1307.5" y1="264" x2="1307.5" y2="272"/>
+    <line class="axis" x1="1380.5" y1="264" x2="1380.5" y2="272"/>
+    <line class="axis" x1="1453.5" y1="264" x2="1453.5" y2="272"/>
+    <line class="stem" x1="66.5" y1="92" x2="66.5" y2="62"/>
+    <circle class="bdot" cx="66.5" cy="56" r="6"><title>B01 悬疑推进/因果揭示｜食堂出来的六人聊末日，主角赴神秘会面后收到生日邀请 → 生日宴的六杯饮料摆上桌</title></circle>
+    <text class="blabel" x="66.5" y="34" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="66.5" y="20" text-anchor="middle">食堂出来的六人聊末日，主角赴…</text>
+    <line class="stem major" x1="139.5" y1="92" x2="139.5" y2="127"/>
+    <circle class="bdot major" cx="139.5" cy="136" r="9"><title>B02 关键反转/选择代价｜生日聚会失去控制，主角首次死亡，游戏开启与温和男声预言出现 → 回归暂停后他醒在另一时刻</title></circle>
+    <text class="blabel" x="139.5" y="158" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="139.5" y="172" text-anchor="middle">生日聚会失去控制，主角首次死…</text>
+    <line class="stem" x1="212.5" y1="92" x2="212.5" y2="62"/>
+    <circle class="bdot" cx="212.5" cy="56" r="6"><title>B03 悬疑推进/因果揭示｜主角调查病历和手术器械，第二次遇害并再度回退；五人无旧轮记忆 → 同一场生日宴再度开始</title></circle>
+    <text class="blabel" x="212.5" y="34" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="212.5" y="20" text-anchor="middle">主角调查病历和手术器械，第二…</text>
+    <line class="stem major" x1="285.5" y1="92" x2="285.5" y2="127"/>
+    <circle class="bdot major" cx="285.5" cy="136" r="9"><title>B04 关键反转/选择代价｜主角误杀黎汐后揭出右位心、捐心意图及顾岚乔欺骗；保留不同结局信息 → 胜利评价与无法挽回的死亡并列</title></circle>
+    <text class="blabel" x="285.5" y="158" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="285.5" y="172" text-anchor="middle">主角误杀黎汐后揭出右位心、捐…</text>
+    <line class="stem major" x1="358.5" y1="92" x2="358.5" y2="57"/>
+    <circle class="bdot major" cx="358.5" cy="48" r="9"><title>B05 关键反转/选择代价｜匿名演说、观众复出与积分危机规则、个人结算和六人组队依次建立 → 六人被投放到横港市</title></circle>
+    <text class="blabel" x="358.5" y="26" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="358.5" y="12" text-anchor="middle">匿名演说、观众复出与积分危机…</text>
+    <line class="stem" x1="431.5" y1="92" x2="431.5" y2="122"/>
+    <circle class="bdot" cx="431.5" cy="128" r="6"><title>B06 悬疑推进/因果揭示｜主角在研发中心醒来，阿澄与博士身份出现；六人靠实际地标会合 → 商店中的能力必须付出代价</title></circle>
+    <text class="blabel" x="431.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="431.5" y="164" text-anchor="middle">主角在研发中心醒来，阿澄与博…</text>
+    <line class="stem" x1="504.5" y1="92" x2="504.5" y2="62"/>
+    <circle class="bdot" cx="504.5" cy="56" r="6"><title>B07 悬疑推进/因果揭示｜购买分身和泯灭，明确80法力及本体损失三分之一，六人安排有限分工 → 深处的储藏室传来动静</title></circle>
+    <text class="blabel" x="504.5" y="34" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="504.5" y="20" text-anchor="middle">购买分身和泯灭，明确80法力…</text>
+    <line class="stem major" x1="577.5" y1="92" x2="577.5" y2="127"/>
+    <circle class="bdot major" cx="577.5" cy="136" r="9"><title>B08 关键反转/选择代价｜女玩家先袭、伤臂逃离并遗下手电；主角发现菌菇尸体、血迹消退和怕光女孩 → 无色液体与异常血迹成为疑点</title></circle>
+    <text class="blabel" x="577.5" y="158" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="577.5" y="172" text-anchor="middle">女玩家先袭、伤臂逃离并遗下手…</text>
+    <line class="stem" x1="650.5" y1="92" x2="650.5" y2="62"/>
+    <circle class="bdot" cx="650.5" cy="56" r="6"><title>B09 悬疑推进/因果揭示｜老夫妻交易血红抗体；六人面对救援能力有限的现实 → 回程路上的陌生人截断退路</title></circle>
+    <text class="blabel" x="650.5" y="34" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="650.5" y="20" text-anchor="middle">老夫妻交易血红抗体；六人面对…</text>
+    <line class="stem" x1="723.5" y1="92" x2="723.5" y2="122"/>
+    <circle class="bdot" cx="723.5" cy="128" r="6"><title>B10 悬疑推进/因果揭示｜绑架与求救展开；分身与本体能力受限，六人寻找可执行的脱身机会 → 看似安全的出口仍有人守着</title></circle>
+    <text class="blabel" x="723.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="723.5" y="164" text-anchor="middle">绑架与求救展开；分身与本体能…</text>
+    <line class="stem major" x1="796.5" y1="92" x2="796.5" y2="57"/>
+    <circle class="bdot major" cx="796.5" cy="48" r="9"><title>B11 关键反转/选择代价｜主角借技能突围，给被困者选择权；六人协助有限救援而非替所有人决定 → 回家成为老人最后的愿望</title></circle>
+    <text class="blabel" x="796.5" y="26" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="796.5" y="12" text-anchor="middle">主角借技能突围，给被困者选择…</text>
+    <line class="stem" x1="869.5" y1="92" x2="869.5" y2="122"/>
+    <circle class="bdot" cx="869.5" cy="128" r="6"><title>B12 悬疑推进/因果揭示｜老人一家、阿澄的旧识和活下去的托付展开；仅余一发子弹的枪交给主角 → 家的承诺无法阻止异变</title></circle>
+    <text class="blabel" x="869.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="869.5" y="164" text-anchor="middle">老人一家、阿澄的旧识和活下去…</text>
+    <line class="stem" x1="942.5" y1="92" x2="942.5" y2="62"/>
+    <circle class="bdot" cx="942.5" cy="56" r="6"><title>B13 悬疑推进/因果揭示｜普通与变异感染时限、断臂与恢复、追猎升级及宁玥练剑构成推进 → 第五天的医院路线已经查清</title></circle>
+    <text class="blabel" x="942.5" y="34" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="942.5" y="20" text-anchor="middle">普通与变异感染时限、断臂与恢…</text>
+    <line class="stem" x1="1015.5" y1="92" x2="1015.5" y2="122"/>
+    <circle class="bdot" cx="1015.5" cy="128" r="6"><title>B14 悬疑推进/因果揭示｜六人入院，家暴病历、父母尸体与女儿紫血形成冲突证据；分清资料和事实 → 茵茵要求他们回答</title></circle>
+    <text class="blabel" x="1015.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1015.5" y="164" text-anchor="middle">六人入院，家暴病历、父母尸体…</text>
+    <line class="stem major" x1="1088.5" y1="92" x2="1088.5" y2="57"/>
+    <circle class="bdot major" cx="1088.5" cy="48" r="9"><title>B15 关键反转/选择代价｜疫苗与和平病毒证词引向误判；宁玥先被感染，再因答错遭茵茵杀死 → 失败并未给出逃离世界的路</title></circle>
+    <text class="blabel" x="1088.5" y="26" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1088.5" y="12" text-anchor="middle">疫苗与和平病毒证词引向误判；…</text>
+    <line class="stem major" x1="1161.5" y1="92" x2="1161.5" y2="127"/>
+    <circle class="bdot major" cx="1161.5" cy="136" r="9"><title>B16 关键反转/选择代价｜主角以规则公平性逼出完美通关权利与救赎信息，确认主持者不了解回档 → 他必须在不能共享记忆的孤独里选择</title></circle>
+    <text class="blabel" x="1161.5" y="158" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1161.5" y="172" text-anchor="middle">主角以规则公平性逼出完美通关…</text>
+    <line class="stem major" x1="1234.5" y1="92" x2="1234.5" y2="57"/>
+    <circle class="bdot major" cx="1234.5" cy="48" r="9"><title>B17 关键反转/选择代价｜回档立即返回第五天，而非实际被囚十日；五人重新同行，抽象梦境不当作共享记忆 → 阿澄的感染时间正在耗尽</title></circle>
+    <text class="blabel" x="1234.5" y="26" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1234.5" y="12" text-anchor="middle">回档立即返回第五天，而非实际…</text>
+    <line class="stem" x1="1307.5" y1="92" x2="1307.5" y2="122"/>
+    <circle class="bdot" cx="1307.5" cy="128" r="6"><title>B18 悬疑推进/因果揭示｜阿澄说出三日前感染与爱全人类的愿望，识破博士身份并问真名 → 她请求听一首诗</title></circle>
+    <text class="blabel" x="1307.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1307.5" y="164" text-anchor="middle">阿澄说出三日前感染与爱全人类…</text>
+    <line class="stem major" x1="1380.5" y1="92" x2="1380.5" y2="57"/>
+    <circle class="bdot major" cx="1380.5" cy="48" r="9"><title>B19 关键反转/选择代价｜主角应请求朗读，银枪最后一发落下；音乐盒和糖随即安葬，直播观众记住她 → 主角带着药液继续前行</title></circle>
+    <text class="blabel" x="1380.5" y="26" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1380.5" y="12" text-anchor="middle">主角应请求朗读，银枪最后一发…</text>
+    <line class="stem" x1="1453.5" y1="92" x2="1453.5" y2="122"/>
+    <circle class="bdot" cx="1453.5" cy="128" r="6"><title>B20 悬疑推进/因果揭示｜超市中方承岳护人被咬，宁玥杀怪；整瓶药液救人后剩下半瓶 → 有人把对解药的渴望变成刀锋</title></circle>
+    <text class="blabel" x="1453.5" y="150" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1453.5" y="164" text-anchor="middle">超市中方承岳护人被咬，宁玥杀…</text>
+    <line class="stem" x1="66.5" y1="268" x2="66.5" y2="238"/>
+    <circle class="bdot" cx="66.5" cy="232" r="6"><title>B21 悬疑推进/因果揭示｜林曼袭击、宁玥断臂与方承岳制止复仇；六人面对救援与占有的冲突 → 主角的灯塔宣言激起外界回应</title></circle>
+    <text class="blabel" x="66.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="66.5" y="196" text-anchor="middle">林曼袭击、宁玥断臂与方承岳制…</text>
+    <line class="stem" x1="139.5" y1="268" x2="139.5" y2="298"/>
+    <circle class="bdot" cx="139.5" cy="304" r="6"><title>B22 悬疑推进/因果揭示｜区分公开人设与向主办方掩藏回档的真实动机；五人只能依据现有信息质疑和支持 → 监察者林逐盯上主角</title></circle>
+    <text class="blabel" x="139.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="139.5" y="340" text-anchor="middle">区分公开人设与向主办方掩藏回…</text>
+    <line class="stem" x1="212.5" y1="268" x2="212.5" y2="238"/>
+    <circle class="bdot" cx="212.5" cy="232" r="6"><title>B23 悬疑推进/因果揭示｜林逐杀死分身但不触发回档；主角与宁玥前往医院救援，五人依法同行 → 垂直救援的退路断开</title></circle>
+    <text class="blabel" x="212.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="212.5" y="196" text-anchor="middle">林逐杀死分身但不触发回档；主…</text>
+    <line class="stem major" x1="285.5" y1="268" x2="285.5" y2="303"/>
+    <circle class="bdot major" cx="285.5" cy="312" r="9"><title>B24 关键反转/选择代价｜宁玥在医院救援中作出选择，林逐施救；中央医院与棋盘入口衔接 → 六人中只有参赛者能踏入棋盘</title></circle>
+    <text class="blabel" x="285.5" y="334" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="285.5" y="348" text-anchor="middle">宁玥在医院救援中作出选择，林…</text>
+    <line class="stem" x1="358.5" y1="268" x2="358.5" y2="238"/>
+    <circle class="bdot" cx="358.5" cy="232" r="6"><title>B25 悬疑推进/因果揭示｜明确参赛小队与六人组队不同；五室友进入受保护观战席，不得传讯干预 → 阿德里安的优势兵力压来</title></circle>
+    <text class="blabel" x="358.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="358.5" y="196" text-anchor="middle">明确参赛小队与六人组队不同；…</text>
+    <line class="stem" x1="431.5" y1="268" x2="431.5" y2="298"/>
+    <circle class="bdot" cx="431.5" cy="304" r="6"><title>B26 悬疑推进/因果揭示｜两侧兵力与技能展开，分身实力和不可共同攻击目标的限制明确 → 蓝方塔楼发起攻击</title></circle>
+    <text class="blabel" x="431.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="431.5" y="340" text-anchor="middle">两侧兵力与技能展开，分身实力…</text>
+    <line class="stem" x1="504.5" y1="268" x2="504.5" y2="238"/>
+    <circle class="bdot" cx="504.5" cy="232" r="6"><title>B27 悬疑推进/因果揭示｜塔楼攻击、王后介入及断臂逼主角承担伤害，观众看到真实代价 → 对手仍可拖延残局</title></circle>
+    <text class="blabel" x="504.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="504.5" y="196" text-anchor="middle">塔楼攻击、王后介入及断臂逼主…</text>
+    <line class="stem" x1="577.5" y1="268" x2="577.5" y2="298"/>
+    <circle class="bdot" cx="577.5" cy="304" r="6"><title>B28 悬疑推进/因果揭示｜追逐与僵持暴露强弱之外的规则问题；五人只能在席内互相支撑 → 第一玩家身份在赛场揭露</title></circle>
+    <text class="blabel" x="577.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="577.5" y="340" text-anchor="middle">追逐与僵持暴露强弱之外的规则…</text>
+    <line class="stem major" x1="650.5" y1="268" x2="650.5" y2="233"/>
+    <circle class="bdot major" cx="650.5" cy="224" r="9"><title>B29 关键反转/选择代价｜主角与主办方交锋，隐藏牺牲规则公开；此前公开王后增益不得与此混同 → 宁玥面临无法由别人替她决定的选择</title></circle>
+    <text class="blabel" x="650.5" y="202" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="650.5" y="188" text-anchor="middle">主角与主办方交锋，隐藏牺牲规…</text>
+    <line class="stem" x1="723.5" y1="268" x2="723.5" y2="298"/>
+    <circle class="bdot" cx="723.5" cy="304" r="6"><title>B30 悬疑推进/因果揭示｜牺牲触发与随机王后检查点重试呈现，回档痛苦只留在主角身上 → 反复争取仍指向同一道难题</title></circle>
+    <text class="blabel" x="723.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="723.5" y="340" text-anchor="middle">牺牲触发与随机王后检查点重试…</text>
+    <line class="stem major" x1="796.5" y1="268" x2="796.5" y2="233"/>
+    <circle class="bdot major" cx="796.5" cy="224" r="9"><title>B31 关键反转/选择代价｜宁玥的旧日羁绊与主动选择完整落地；五人不能跨越观战限制救她 → 剑将被毁去</title></circle>
+    <text class="blabel" x="796.5" y="202" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="796.5" y="188" text-anchor="middle">宁玥的旧日羁绊与主动选择完整…</text>
+    <line class="stem major" x1="869.5" y1="268" x2="869.5" y2="303"/>
+    <circle class="bdot major" cx="869.5" cy="312" r="9"><title>B32 关键反转/选择代价｜主角以手护剑并赢下对局；完整身体修复、装备奖励、档案及六人回归均保留 → 新的档案把众人带回医院</title></circle>
+    <text class="blabel" x="869.5" y="334" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="869.5" y="348" text-anchor="middle">主角以手护剑并赢下对局；完整…</text>
+    <line class="stem" x1="942.5" y1="268" x2="942.5" y2="238"/>
+    <circle class="bdot" cx="942.5" cy="232" r="6"><title>B33 悬疑推进/因果揭示｜旧半瓶药液交给方承岳；分身清理医院，五人守护本体，余知禾获救 → 茵茵在房间里出现</title></circle>
+    <text class="blabel" x="942.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="942.5" y="196" text-anchor="middle">旧半瓶药液交给方承岳；分身清…</text>
+    <line class="stem" x1="1015.5" y1="268" x2="1015.5" y2="298"/>
+    <circle class="bdot" cx="1015.5" cy="304" r="6"><title>B34 悬疑推进/因果揭示｜主角按已出现的病历、血液、菌菇、药液等证据逐项纠错；室友不代答最终推论 → 茵茵的行为与善恶判断无法简单重合</title></circle>
+    <text class="blabel" x="1015.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1015.5" y="340" text-anchor="middle">主角按已出现的病历、血液、菌…</text>
+    <line class="stem major" x1="1088.5" y1="268" x2="1088.5" y2="233"/>
+    <circle class="bdot major" cx="1088.5" cy="224" r="9"><title>B35 关键反转/选择代价｜最后推理直面伤害与选择，100%推理与TE达成，不能改成全员获救 → 完美疫苗与洋娃娃奖励出现</title></circle>
+    <text class="blabel" x="1088.5" y="202" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1088.5" y="188" text-anchor="middle">最后推理直面伤害与选择，10…</text>
+    <line class="stem" x1="1161.5" y1="268" x2="1161.5" y2="298"/>
+    <circle class="bdot" cx="1161.5" cy="304" r="6"><title>B36 悬疑推进/因果揭示｜交代洋娃娃作用、DNA疫苗及剩余时间；杰哥单侧搀扶余知禾，其他人让出通道 → 完美通关不等于立刻退出世界</title></circle>
+    <text class="blabel" x="1161.5" y="326" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1161.5" y="340" text-anchor="middle">交代洋娃娃作用、DNA疫苗及…</text>
+    <line class="stem" x1="1234.5" y1="268" x2="1234.5" y2="238"/>
+    <circle class="bdot" cx="1234.5" cy="232" r="6"><title>B37 悬疑推进/因果揭示｜余知禾赠枪及学习，说明不同结局；本体由五人和余知禾守护，分身去庇护所 → 新的药液抵达仍未消除猜疑</title></circle>
+    <text class="blabel" x="1234.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1234.5" y="196" text-anchor="middle">余知禾赠枪及学习，说明不同结…</text>
+    <line class="stem major" x1="1307.5" y1="268" x2="1307.5" y2="303"/>
+    <circle class="bdot major" cx="1307.5" cy="312" r="9"><title>B38 关键反转/选择代价｜保留袭击者、伤害测试、老秦与方承岳的道德冲突；主角不把所有细节公开给室友 → 宣称救人者也可能成为被恐惧的人</title></circle>
+    <text class="blabel" x="1307.5" y="334" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1307.5" y="348" text-anchor="middle">保留袭击者、伤害测试、老秦与…</text>
+    <line class="stem" x1="1380.5" y1="268" x2="1380.5" y2="238"/>
+    <circle class="bdot" cx="1380.5" cy="232" r="6"><title>B39 悬疑推进/因果揭示｜林逐放弃监察者任务并赠灵兽蛋；五日追猎与轮流休息交代，众人赴墓前告别 → 十五天期限即将结束</title></circle>
+    <text class="blabel" x="1380.5" y="210" text-anchor="middle">悬疑推进/因…</text>
+    <text class="bsub" x="1380.5" y="196" text-anchor="middle">林逐放弃监察者任务并赠灵兽蛋…</text>
+    <line class="stem major" x1="1453.5" y1="268" x2="1453.5" y2="303"/>
+    <circle class="bdot major" cx="1453.5" cy="312" r="9"><title>B40 关键反转/选择代价｜阿澄墓前、六人约定重逢、各自结算完整收束；主角独享完美通关，突然被带进黑殿 → 主办方质问他何以知道从未公开的秘密</title></circle>
+    <text class="blabel" x="1453.5" y="334" text-anchor="middle">关键反转/选…</text>
+    <text class="bsub" x="1453.5" y="348" text-anchor="middle">阿澄墓前、六人约定重逢、各自…</text>
+    <text class="tick" x="66.5" y="112" text-anchor="middle">1</text>
+    <text class="tick" x="139.5" y="112" text-anchor="middle">2</text>
+    <text class="tick" x="212.5" y="112" text-anchor="middle">3</text>
+    <text class="tick" x="285.5" y="112" text-anchor="middle">4</text>
+    <text class="tick" x="358.5" y="112" text-anchor="middle">5</text>
+    <text class="tick" x="431.5" y="112" text-anchor="middle">6</text>
+    <text class="tick" x="504.5" y="112" text-anchor="middle">7</text>
+    <text class="tick" x="577.5" y="112" text-anchor="middle">8</text>
+    <text class="tick" x="650.5" y="112" text-anchor="middle">9</text>
+    <text class="tick" x="723.5" y="112" text-anchor="middle">10</text>
+    <text class="tick" x="796.5" y="112" text-anchor="middle">11</text>
+    <text class="tick" x="869.5" y="112" text-anchor="middle">12</text>
+    <text class="tick" x="942.5" y="112" text-anchor="middle">13</text>
+    <text class="tick" x="1015.5" y="112" text-anchor="middle">14</text>
+    <text class="tick" x="1088.5" y="112" text-anchor="middle">15</text>
+    <text class="tick" x="1161.5" y="112" text-anchor="middle">16</text>
+    <text class="tick" x="1234.5" y="112" text-anchor="middle">17</text>
+    <text class="tick" x="1307.5" y="112" text-anchor="middle">18</text>
+    <text class="tick" x="1380.5" y="112" text-anchor="middle">19</text>
+    <text class="tick" x="1453.5" y="112" text-anchor="middle">20</text>
+    <text class="tick" x="66.5" y="288" text-anchor="middle">21</text>
+    <text class="tick" x="139.5" y="288" text-anchor="middle">22</text>
+    <text class="tick" x="212.5" y="288" text-anchor="middle">23</text>
+    <text class="tick" x="285.5" y="288" text-anchor="middle">24</text>
+    <text class="tick" x="358.5" y="288" text-anchor="middle">25</text>
+    <text class="tick" x="431.5" y="288" text-anchor="middle">26</text>
+    <text class="tick" x="504.5" y="288" text-anchor="middle">27</text>
+    <text class="tick" x="577.5" y="288" text-anchor="middle">28</text>
+    <text class="tick" x="650.5" y="288" text-anchor="middle">29</text>
+    <text class="tick" x="723.5" y="288" text-anchor="middle">30</text>
+    <text class="tick" x="796.5" y="288" text-anchor="middle">31</text>
+    <text class="tick" x="869.5" y="288" text-anchor="middle">32</text>
+    <text class="tick" x="942.5" y="288" text-anchor="middle">33</text>
+    <text class="tick" x="1015.5" y="288" text-anchor="middle">34</text>
+    <text class="tick" x="1088.5" y="288" text-anchor="middle">35</text>
+    <text class="tick" x="1161.5" y="288" text-anchor="middle">36</text>
+    <text class="tick" x="1234.5" y="288" text-anchor="middle">37</text>
+    <text class="tick" x="1307.5" y="288" text-anchor="middle">38</text>
+    <text class="tick" x="1380.5" y="288" text-anchor="middle">39</text>
+    <text class="tick" x="1453.5" y="288" text-anchor="middle">40</text>
+  </svg>
+</div></div>
+  <div class="tabpane" id="pane-table">
+  <table><thead><tr><th>ID</th><th>类型</th><th>量级</th><th>集</th><th>铺垫</th><th>兑现</th></tr></thead>
+<tbody><tr><td>B01</td><td>悬疑推进/因果揭示</td><td>常规</td><td>1</td><td>食堂出来的六人聊末日，主角赴神秘会面后收到生日邀请</td><td>生日宴的六杯饮料摆上桌</td></tr>
+<tr><td>B02</td><td>关键反转/选择代价</td><td>大爆点</td><td>2</td><td>生日聚会失去控制，主角首次死亡，游戏开启与温和男声预言出现</td><td>回归暂停后他醒在另一时刻</td></tr>
+<tr><td>B03</td><td>悬疑推进/因果揭示</td><td>常规</td><td>3</td><td>主角调查病历和手术器械，第二次遇害并再度回退；五人无旧轮记忆</td><td>同一场生日宴再度开始</td></tr>
+<tr><td>B04</td><td>关键反转/选择代价</td><td>大爆点</td><td>4</td><td>主角误杀黎汐后揭出右位心、捐心意图及顾岚乔欺骗；保留不同结局信息</td><td>胜利评价与无法挽回的死亡并列</td></tr>
+<tr><td>B05</td><td>关键反转/选择代价</td><td>大爆点</td><td>5</td><td>匿名演说、观众复出与积分危机规则、个人结算和六人组队依次建立</td><td>六人被投放到横港市</td></tr>
+<tr><td>B06</td><td>悬疑推进/因果揭示</td><td>常规</td><td>6</td><td>主角在研发中心醒来，阿澄与博士身份出现；六人靠实际地标会合</td><td>商店中的能力必须付出代价</td></tr>
+<tr><td>B07</td><td>悬疑推进/因果揭示</td><td>常规</td><td>7</td><td>购买分身和泯灭，明确80法力及本体损失三分之一，六人安排有限分工</td><td>深处的储藏室传来动静</td></tr>
+<tr><td>B08</td><td>关键反转/选择代价</td><td>大爆点</td><td>8</td><td>女玩家先袭、伤臂逃离并遗下手电；主角发现菌菇尸体、血迹消退和怕光女孩</td><td>无色液体与异常血迹成为疑点</td></tr>
+<tr><td>B09</td><td>悬疑推进/因果揭示</td><td>常规</td><td>9</td><td>老夫妻交易血红抗体；六人面对救援能力有限的现实</td><td>回程路上的陌生人截断退路</td></tr>
+<tr><td>B10</td><td>悬疑推进/因果揭示</td><td>常规</td><td>10</td><td>绑架与求救展开；分身与本体能力受限，六人寻找可执行的脱身机会</td><td>看似安全的出口仍有人守着</td></tr>
+<tr><td>B11</td><td>关键反转/选择代价</td><td>大爆点</td><td>11</td><td>主角借技能突围，给被困者选择权；六人协助有限救援而非替所有人决定</td><td>回家成为老人最后的愿望</td></tr>
+<tr><td>B12</td><td>悬疑推进/因果揭示</td><td>常规</td><td>12</td><td>老人一家、阿澄的旧识和活下去的托付展开；仅余一发子弹的枪交给主角</td><td>家的承诺无法阻止异变</td></tr>
+<tr><td>B13</td><td>悬疑推进/因果揭示</td><td>常规</td><td>13</td><td>普通与变异感染时限、断臂与恢复、追猎升级及宁玥练剑构成推进</td><td>第五天的医院路线已经查清</td></tr>
+<tr><td>B14</td><td>悬疑推进/因果揭示</td><td>常规</td><td>14</td><td>六人入院，家暴病历、父母尸体与女儿紫血形成冲突证据；分清资料和事实</td><td>茵茵要求他们回答</td></tr>
+<tr><td>B15</td><td>关键反转/选择代价</td><td>大爆点</td><td>15</td><td>疫苗与和平病毒证词引向误判；宁玥先被感染，再因答错遭茵茵杀死</td><td>失败并未给出逃离世界的路</td></tr>
+<tr><td>B16</td><td>关键反转/选择代价</td><td>大爆点</td><td>16</td><td>主角以规则公平性逼出完美通关权利与救赎信息，确认主持者不了解回档</td><td>他必须在不能共享记忆的孤独里选择</td></tr>
+<tr><td>B17</td><td>关键反转/选择代价</td><td>大爆点</td><td>17</td><td>回档立即返回第五天，而非实际被囚十日；五人重新同行，抽象梦境不当作共享记忆</td><td>阿澄的感染时间正在耗尽</td></tr>
+<tr><td>B18</td><td>悬疑推进/因果揭示</td><td>常规</td><td>18</td><td>阿澄说出三日前感染与爱全人类的愿望，识破博士身份并问真名</td><td>她请求听一首诗</td></tr>
+<tr><td>B19</td><td>关键反转/选择代价</td><td>大爆点</td><td>19</td><td>主角应请求朗读，银枪最后一发落下；音乐盒和糖随即安葬，直播观众记住她</td><td>主角带着药液继续前行</td></tr>
+<tr><td>B20</td><td>悬疑推进/因果揭示</td><td>常规</td><td>20</td><td>超市中方承岳护人被咬，宁玥杀怪；整瓶药液救人后剩下半瓶</td><td>有人把对解药的渴望变成刀锋</td></tr>
+<tr><td>B21</td><td>悬疑推进/因果揭示</td><td>常规</td><td>21</td><td>林曼袭击、宁玥断臂与方承岳制止复仇；六人面对救援与占有的冲突</td><td>主角的灯塔宣言激起外界回应</td></tr>
+<tr><td>B22</td><td>悬疑推进/因果揭示</td><td>常规</td><td>22</td><td>区分公开人设与向主办方掩藏回档的真实动机；五人只能依据现有信息质疑和支持</td><td>监察者林逐盯上主角</td></tr>
+<tr><td>B23</td><td>悬疑推进/因果揭示</td><td>常规</td><td>23</td><td>林逐杀死分身但不触发回档；主角与宁玥前往医院救援，五人依法同行</td><td>垂直救援的退路断开</td></tr>
+<tr><td>B24</td><td>关键反转/选择代价</td><td>大爆点</td><td>24</td><td>宁玥在医院救援中作出选择，林逐施救；中央医院与棋盘入口衔接</td><td>六人中只有参赛者能踏入棋盘</td></tr>
+<tr><td>B25</td><td>悬疑推进/因果揭示</td><td>常规</td><td>25</td><td>明确参赛小队与六人组队不同；五室友进入受保护观战席，不得传讯干预</td><td>阿德里安的优势兵力压来</td></tr>
+<tr><td>B26</td><td>悬疑推进/因果揭示</td><td>常规</td><td>26</td><td>两侧兵力与技能展开，分身实力和不可共同攻击目标的限制明确</td><td>蓝方塔楼发起攻击</td></tr>
+<tr><td>B27</td><td>悬疑推进/因果揭示</td><td>常规</td><td>27</td><td>塔楼攻击、王后介入及断臂逼主角承担伤害，观众看到真实代价</td><td>对手仍可拖延残局</td></tr>
+<tr><td>B28</td><td>悬疑推进/因果揭示</td><td>常规</td><td>28</td><td>追逐与僵持暴露强弱之外的规则问题；五人只能在席内互相支撑</td><td>第一玩家身份在赛场揭露</td></tr>
+<tr><td>B29</td><td>关键反转/选择代价</td><td>大爆点</td><td>29</td><td>主角与主办方交锋，隐藏牺牲规则公开；此前公开王后增益不得与此混同</td><td>宁玥面临无法由别人替她决定的选择</td></tr>
+<tr><td>B30</td><td>悬疑推进/因果揭示</td><td>常规</td><td>30</td><td>牺牲触发与随机王后检查点重试呈现，回档痛苦只留在主角身上</td><td>反复争取仍指向同一道难题</td></tr>
+<tr><td>B31</td><td>关键反转/选择代价</td><td>大爆点</td><td>31</td><td>宁玥的旧日羁绊与主动选择完整落地；五人不能跨越观战限制救她</td><td>剑将被毁去</td></tr>
+<tr><td>B32</td><td>关键反转/选择代价</td><td>大爆点</td><td>32</td><td>主角以手护剑并赢下对局；完整身体修复、装备奖励、档案及六人回归均保留</td><td>新的档案把众人带回医院</td></tr>
+<tr><td>B33</td><td>悬疑推进/因果揭示</td><td>常规</td><td>33</td><td>旧半瓶药液交给方承岳；分身清理医院，五人守护本体，余知禾获救</td><td>茵茵在房间里出现</td></tr>
+<tr><td>B34</td><td>悬疑推进/因果揭示</td><td>常规</td><td>34</td><td>主角按已出现的病历、血液、菌菇、药液等证据逐项纠错；室友不代答最终推论</td><td>茵茵的行为与善恶判断无法简单重合</td></tr>
+<tr><td>B35</td><td>关键反转/选择代价</td><td>大爆点</td><td>35</td><td>最后推理直面伤害与选择，100%推理与TE达成，不能改成全员获救</td><td>完美疫苗与洋娃娃奖励出现</td></tr>
+<tr><td>B36</td><td>悬疑推进/因果揭示</td><td>常规</td><td>36</td><td>交代洋娃娃作用、DNA疫苗及剩余时间；杰哥单侧搀扶余知禾，其他人让出通道</td><td>完美通关不等于立刻退出世界</td></tr>
+<tr><td>B37</td><td>悬疑推进/因果揭示</td><td>常规</td><td>37</td><td>余知禾赠枪及学习，说明不同结局；本体由五人和余知禾守护，分身去庇护所</td><td>新的药液抵达仍未消除猜疑</td></tr>
+<tr><td>B38</td><td>关键反转/选择代价</td><td>大爆点</td><td>38</td><td>保留袭击者、伤害测试、老秦与方承岳的道德冲突；主角不把所有细节公开给室友</td><td>宣称救人者也可能成为被恐惧的人</td></tr>
+<tr><td>B39</td><td>悬疑推进/因果揭示</td><td>常规</td><td>39</td><td>林逐放弃监察者任务并赠灵兽蛋；五日追猎与轮流休息交代，众人赴墓前告别</td><td>十五天期限即将结束</td></tr>
+<tr><td>B40</td><td>关键反转/选择代价</td><td>大爆点</td><td>40</td><td>阿澄墓前、六人约定重逢、各自结算完整收束；主角独享完美通关，突然被带进黑殿</td><td>主办方质问他何以知道从未公开的秘密</td></tr></tbody></table>
+  </div>
+</section>
+
+<section id="sec-episodes">
+  <div class="sec-h"><span class="no">02</span><h2>分集概览</h2><span class="note">核心交付 · 每集三栏齐全</span></div>
+  <div class="epswrap">
+    <div class="eps">
+
+    </div>
+    
+  </div>
+</section>
+
+<section id="sec-scenes">
+  <div class="sec-h"><span class="no">03</span><h2>场景概览</h2><span class="note">右上 = 出现集</span></div>
+  <div class="scenes">
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S01</span>黎汐家<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S02</span>玩家广场及个人空间<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S03</span>疫苗研发中心<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S04</span>横港街道与救援区域<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S05</span>老夫妻住处及囚禁建筑<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S06</span>酒馆<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S07</span>中央医院<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S08</span>世界棋盘<span class="badge">主场景</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S09</span>学校食堂门口<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S10</span>咖啡厅<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S11</span>超市<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S12</span>庇护所<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S13</span>公园与墓地<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+<article class="scard">
+  <span class="snum">—</span>
+  <h3><span class="id">S14</span>黑殿<span class="badge once">一次性</span></h3>
+  <div class="strip"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+  <div class="srow"><b>承载爽点</b><span>—</span></div>
+  <div class="srow"><b>复用方案</b><span class="reuse">当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。</span></div>
+</article>
+  </div>
+</section>
+
+<section id="sec-decisions">
+  <div class="sec-h"><span class="no">04</span><h2>关键决策</h2><span class="note">拍板过的三件事，落进纸面</span></div>
+  <div class="dec3">
+  <div class="dcol">
+    <h3 class="sub">砍了哪条线</h3>
+    <ul class="dlist"><li><b>重复弹幕、重复机制说明和不增加信息的同义内心</b><small>转为必要画外音或可见行动；不删除事件因果与首次规则解释</small></li></ul>
+    <p class="dnote seal">不砍关键故事线。只压重复表达；终点保留至黑殿质询，不在TE提前结束。</p>
+  </div>
+  <div class="dcol">
+    <h3 class="sub">合了哪些人</h3>
+    <p class="dhead">27 个角色位（主角组 6 · 重要配角 14 · 功能性 7）</p>
+    <p class="dhead">主角组：本群最帅之人、森巴、x坤、y坤、邓布利多、AAA建材批发杰哥</p>
+    
+    <p class="dnote seal">六位室友全部为主角组，不合并。关键配角不合并；功能群组尚需细纲逐人细化，不视为批准合人。</p>
+  </div>
+  <div class="dcol">
+    <h3 class="sub">大爆点落在第几集</h3>
+    <ul class="dmaj"><li><i>ep2</i><span><b>关键反转/选择代价</b> 回归暂停后他醒在另一时刻</span><em>首个</em></li><li><i>ep4</i><span><b>关键反转/选择代价</b> 胜利评价与无法挽回的死亡并列</span></li><li><i>ep5</i><span><b>关键反转/选择代价</b> 六人被投放到横港市</span></li><li><i>ep8</i><span><b>关键反转/选择代价</b> 无色液体与异常血迹成为疑点</span></li><li><i>ep11</i><span><b>关键反转/选择代价</b> 回家成为老人最后的愿望</span></li><li><i>ep15</i><span><b>关键反转/选择代价</b> 失败并未给出逃离世界的路</span></li><li><i>ep16</i><span><b>关键反转/选择代价</b> 他必须在不能共享记忆的孤独里选择</span></li><li><i>ep17</i><span><b>关键反转/选择代价</b> 阿澄的感染时间正在耗尽</span></li><li><i>ep19</i><span><b>关键反转/选择代价</b> 主角带着药液继续前行</span></li><li><i>ep24</i><span><b>关键反转/选择代价</b> 六人中只有参赛者能踏入棋盘</span></li><li><i>ep29</i><span><b>关键反转/选择代价</b> 宁玥面临无法由别人替她决定的选择</span></li><li><i>ep31</i><span><b>关键反转/选择代价</b> 剑将被毁去</span></li><li><i>ep32</i><span><b>关键反转/选择代价</b> 新的档案把众人带回医院</span></li><li><i>ep35</i><span><b>关键反转/选择代价</b> 完美疫苗与洋娃娃奖励出现</span></li><li><i>ep38</i><span><b>关键反转/选择代价</b> 宣称救人者也可能成为被恐惧的人</span></li><li><i>ep40</i><span><b>关键反转/选择代价</b> 主办方质问他何以知道从未公开的秘密</span><em>终局</em></li></ul>
+  </div>
+</div>
+</section>
+
+<section id="sec-matrix">
+  <div class="sec-h"><span class="no">05</span><h2>每集调度矩阵</h2><span class="note">一列 = 这一集要谁、在哪拍</span></div>
+  <div class="matrix" style="--cw:20px">
+  <table>
+    <tr><th>角色 / 场景 / 道具</th><th>层级</th><th class="ep-h">1</th><th class="ep-h">2</th><th class="ep-h">3</th><th class="ep-h">4</th><th class="ep-h">5</th><th class="ep-h">6</th><th class="ep-h">7</th><th class="ep-h">8</th><th class="ep-h">9</th><th class="ep-h">10</th><th class="ep-h">11</th><th class="ep-h">12</th><th class="ep-h">13</th><th class="ep-h">14</th><th class="ep-h">15</th><th class="ep-h">16</th><th class="ep-h">17</th><th class="ep-h">18</th><th class="ep-h">19</th><th class="ep-h">20</th><th class="ep-h">21</th><th class="ep-h">22</th><th class="ep-h">23</th><th class="ep-h">24</th><th class="ep-h">25</th><th class="ep-h">26</th><th class="ep-h">27</th><th class="ep-h">28</th><th class="ep-h">29</th><th class="ep-h">30</th><th class="ep-h">31</th><th class="ep-h">32</th><th class="ep-h">33</th><th class="ep-h">34</th><th class="ep-h">35</th><th class="ep-h">36</th><th class="ep-h">37</th><th class="ep-h">38</th><th class="ep-h">39</th><th class="ep-h">40</th><th>合计</th></tr>
+    <tr><td class="name">本群最帅之人</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">森巴</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">x坤</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">y坤</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">邓布利多</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">AAA建材批发杰哥</td><td class="tier">主角组</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">黎汐</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">顾岚乔</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">兔先生</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">阿澄</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">宁玥</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">茵茵</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">方承岳</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">林逐</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">余知禾</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">阿德里安</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">朱莉娅</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">蓝遥</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">林曼</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">老秦</td><td class="tier">重要配角</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">老先生</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">老妇人</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">神秘女人</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">温和男声</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">黑殿主办者</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">蓝方队员组</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">庇护所袭击者组</td><td class="tier">功能性角色</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr class="div"><td colspan="43">场　景</td></tr>
+<tr><td class="name">黎汐家</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">玩家广场及个人空间</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">疫苗研发中心</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">横港街道与救援区域</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">老夫妻住处及囚禁建筑</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">酒馆</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">中央医院</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">世界棋盘</td><td class="tier">主场景</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">学校食堂门口</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">咖啡厅</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">超市</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">庇护所</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">公园与墓地</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+<tr><td class="name">黑殿</td><td class="tier">一次性</td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="mc"></td><td class="n">0</td></tr>
+  </table>
+  
+</div>
+</section>
+
+<section id="sec-plan">
+  <div class="sec-h"><span class="no">06</span><h2>资产量折算</h2><span class="note">按档自动折算 · 不让模型写</span></div>
+  <div class="plan">
+  <table><thead><tr><th>层级</th><th>人数</th><th>角色</th><th>资产量</th></tr></thead>
+<tbody><tr><td>主角组</td><td>6</td><td>本群最帅之人、森巴、x坤、y坤、邓布利多、AAA建材批发杰哥</td><td>全套角色设定图 + 逐镜一致性核对</td></tr>
+<tr><td>重要配角</td><td>14</td><td>黎汐、顾岚乔、兔先生、阿澄、宁玥、茵茵、方承岳、林逐、余知禾、阿德里安、朱莉娅、蓝遥、林曼、老秦</td><td>半身参考图，关键戏核对</td></tr>
+<tr><td>功能性角色</td><td>7</td><td>老先生、老妇人、神秘女人、温和男声、黑殿主办者、蓝方队员组、庇护所袭击者组</td><td>提示词直出，松散一致即可</td></tr>
+<tr><td>场景环境</td><td>8</td><td>黎汐家、玩家广场及个人空间、疫苗研发中心、横港街道与救援区域、老夫妻住处及囚禁建筑、酒馆、中央医院、世界棋盘</td><td>主场景各一套环境参考 + 光照基调</td></tr>
+<tr><td>生成难点</td><td>0</td><td>—</td><td>拍摄前逐条过预警清单</td></tr></tbody></table>
+  </div>
+</section>
+
+<section id="sec-characters">
+  <div class="sec-h"><span class="no">07</span><h2>人物表</h2></div>
+  <table><thead><tr><th>ID</th><th>角色</th><th>层级</th><th>定位</th><th>人物弧</th><th>← 改动记录</th></tr></thead>
+<tbody><tr><td>C01</td><td>本群最帅之人</td><td>主角组</td><td>唯一保留回档记忆的主角</td><td>从独自试错到承受选择代价，仍不向室友虚构共有记忆</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C02</td><td>森巴</td><td>主角组</td><td>寝室长、二次元室友</td><td>从玩梗到面对真实伤亡，不能靠动漫经验破解系统</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C03</td><td>x坤</td><td>主角组</td><td>熟悉计算机技术的室友</td><td>以记录核对信息，不获得黑客或医疗特权</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C04</td><td>y坤</td><td>主角组</td><td>滑板社室友</td><td>用交流参与生存，开场不携带滑板</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C05</td><td>邓布利多</td><td>主角组</td><td>军训团成员室友</td><td>协调分歧而非军人或魔法师</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C06</td><td>AAA建材批发杰哥</td><td>主角组</td><td>热心室友</td><td>照料同伴但不能消除感染与死亡</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C07</td><td>黎汐</td><td>重要配角</td><td>生日局的愿望与误杀核心</td><td>保持现稿关键选择与结局，不与六人合并。生日局的愿望与误杀核心</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C08</td><td>顾岚乔</td><td>重要配角</td><td>新手关欺骗与手术因果</td><td>保持现稿关键选择与结局，不与六人合并。新手关欺骗与手术因果</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C09</td><td>兔先生</td><td>重要配角</td><td>游戏主持与规则对手</td><td>保持现稿关键选择与结局，不与六人合并。游戏主持与规则对手</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C10</td><td>阿澄</td><td>重要配角</td><td>博士身份见证者与告别核心</td><td>保持现稿关键选择与结局，不与六人合并。博士身份见证者与告别核心</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C11</td><td>宁玥</td><td>重要配角</td><td>同路者与棋盘自主选择核心</td><td>保持现稿关键选择与结局，不与六人合并。同路者与棋盘自主选择核心</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C12</td><td>茵茵</td><td>重要配角</td><td>医院谜题与最终推理核心</td><td>保持现稿关键选择与结局，不与六人合并。医院谜题与最终推理核心</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C13</td><td>方承岳</td><td>重要配角</td><td>庇护所责任与道德冲突核心</td><td>保持现稿关键选择与结局，不与六人合并。庇护所责任与道德冲突核心</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C14</td><td>林逐</td><td>重要配角</td><td>由监察走向追随</td><td>保持现稿关键选择与结局，不与六人合并。由监察走向追随</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C15</td><td>余知禾</td><td>重要配角</td><td>获救者、赠枪者与后续同行者</td><td>保持现稿关键选择与结局，不与六人合并。获救者、赠枪者与后续同行者</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C16</td><td>阿德里安</td><td>重要配角</td><td>棋盘对手</td><td>保持现稿关键选择与结局，不与六人合并。棋盘对手</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C17</td><td>朱莉娅</td><td>重要配角</td><td>敌方王后</td><td>保持现稿关键选择与结局，不与六人合并。敌方王后</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C18</td><td>蓝遥</td><td>重要配角</td><td>早期救援关系与死亡代价</td><td>保持现稿关键选择与结局，不与六人合并。早期救援关系与死亡代价</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C19</td><td>林曼</td><td>重要配角</td><td>药液争夺袭击者</td><td>保持现稿关键选择与结局，不与六人合并。药液争夺袭击者</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C20</td><td>老秦</td><td>重要配角</td><td>庇护所冲突见证者</td><td>保持现稿关键选择与结局，不与六人合并。庇护所冲突见证者</td><td>《六位玩家》第一世界现稿同名人物</td></tr>
+<tr><td>C21</td><td>老先生</td><td>功能性角色</td><td>抗体交易与最后归家</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C22</td><td>老妇人</td><td>功能性角色</td><td>老夫妻家庭线</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C23</td><td>神秘女人</td><td>功能性角色</td><td>咖啡厅邀请者</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C24</td><td>温和男声</td><td>功能性角色</td><td>预言与权柄提示</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C25</td><td>黑殿主办者</td><td>功能性角色</td><td>终局质询</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C26</td><td>蓝方队员组</td><td>功能性角色</td><td>棋盘其余参赛者，后续按现稿逐人细分，不改变五人队伍人数</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr>
+<tr><td>C27</td><td>庇护所袭击者组</td><td>功能性角色</td><td>庇护所冲突者，后续逐场分配，不合并行为责任</td><td>—</td><td>现稿对应人物；群组为待细化标记而非已批准合人</td></tr></tbody></table>
+</section>
+
+<section id="sec-adaptation">
+  <div class="sec-h"><span class="no">08</span><h2>改编说明</h2><span class="note">为什么这么改 · 附原文依据</span></div>
+  <p class="core">六位室友进入末日游戏，只有一人记得失败；他们在无法共同记住的牺牲中寻找真相与生路。</p>
+  <h3 class="sub">保留</h3><table><thead><tr><th>内容</th><th>理由</th><th>原文依据</th></tr></thead>
+<tbody><tr><td>共享新手关与右位心因果</td><td>保留首次误判及不同结局</td><td><q>他的心脏，长在右边。</q></td></tr>
+<tr><td>人物能力边界</td><td>六人不能因爱好获得超能力</td><td><q>他对计算机技术比较熟悉。</q></td></tr>
+<tr><td>完整预言与主办方隐秘</td><td>开幕与黑殿的长线悬疑不可删除</td><td><q>【「——但，你会选择这条无法回头的拯救之路的……对吧？」】</q></td></tr>
+<tr><td>阿澄告别、宁玥选择、棋盘修复、TE后庇护所与结算</td><td>保留重要人物自主性及事件后果</td><td>—</td></tr></tbody></table>
+  <h3 class="sub">砍掉</h3><table><thead><tr><th>内容</th><th>理由</th></tr></thead>
+<tbody><tr><td>重复弹幕、重复机制说明和不增加信息的同义内心</td><td>转为必要画外音或可见行动；不删除事件因果与首次规则解释</td></tr></tbody></table>
+  
+  <h3 class="sub">风险与对策</h3><table><thead><tr><th>内容</th><th>对策</th></tr></thead>
+<tbody><tr><td>40集仍有信息密度压力</td><td>先审骨架，细纲及剧本逐批核验；超时优先压重复表达，关键剧情删改另报用户。</td></tr>
+<tr><td>回档及五人知情边界</td><td>每次回档标明锚点、仅主角保留的信息及重做行动。</td></tr>
+<tr><td>棋盘群像与AI多人物生成</td><td>同一场保持角色名单；以单人和双人反应组呈现，不假定消失或离场。</td></tr></tbody></table>
+</section>
+
+<section id="sec-gates">
+  <div class="sec-h"><span class="no">09</span><h2>质量门</h2></div>
+  <ul class="gate">
+  <li class="ok"><span class="m">✓</span><span>主角组 1–6 人</span></li>
+  <li class="ok"><span class="m">✓</span><span>重要配角 ≤ 14 人</span></li>
+  <li class="ok"><span class="m">✓</span><span>功能性角色 ≤ 10 人</span></li>
+  <li class="ok"><span class="m">✓</span><span>主场景 ≤ 8</span></li>
+  <li class="ok"><span class="m">✓</span><span>叙事道具 ≤ 8 件</span></li>
+  <li class="bad"><span class="m">✗</span><span>一次性场景已标注规避方案</span></li>
+  <li class="ok"><span class="m">✓</span><span>爽点间隔 ≤ 3 集，无真空区</span></li>
+  <li class="bad"><span class="m">✗</span><span>第 1 集有钩子</span></li>
+  <li class="ok"><span class="m">✓</span><span>大爆点不在最后一集才首次出现</span></li>
+  <li class="bad"><span class="m">✗</span><span>每集梗概三栏齐全（含【钩子】【悬念】）</span></li>
+  <li class="ok"><span class="m">✓</span><span>三人以上同框已标注拆解方案</span></li>
+  <li class="bad"><span class="m">✗</span><span>生成难点已进预警清单</span></li>
+  <li class="bad"><span class="m">✗</span><span>场景/角色引用完整，无失业角色、无空转场景<small>角色 C01 从未在任何一集出现；角色 C02 从未在任何一集出现；角色 C03 从未在任何一集出现；角色 C04 从未在任何一集出现；角色 C05 从未在任何一集出现；角色 C06 从未在任何一集出现；角色 C07 从未在任何一集出现；角色 C08 从未在任何一集出现；角色 C09 从未在任何一集出现；角色 C10 从未在任何一集出现；角色 C11 从未在任何一集出现；角色 C12 从未在任何一集出现；角色 C13 从未在任何一集出现；角色 C14 从未在任何一集出现；角色 C15 从未在任何一集出现；角色 C16 从未在任何一集出现；角色 C17 从未在任何一集出现；角色 C18 从未在任何一集出现；角色 C19 从未在任何一集出现；角色 C20 从未在任何一集出现；角色 C21 从未在任何一集出现；角色 C22 从未在任何一集出现；角色 C23 从未在任何一集出现；角色 C24 从未在任何一集出现；角色 C25 从未在任何一集出现；角色 C26 从未在任何一集出现；角色 C27 从未在任何一集出现；场景 S01 从未被用到；场景 S02 从未被用到；场景 S03 从未被用到；场景 S04 从未被用到；场景 S05 从未被用到；场景 S06 从未被用到；场景 S07 从未被用到；场景 S08 从未被用到；场景 S09 从未被用到；场景 S10 从未被用到；场景 S11 从未被用到；场景 S12 从未被用到；场景 S13 从未被用到；场景 S14 从未被用到</small></span></li>
+  <li class="ok"><span class="m">✓</span><span>梗概是叙述体，无引号对白</span></li>
+</ul>
+  <p class="gsum"><b>5 项未过</b></p>
+</section>
+
+<p class="foot">大纲由模型依据原文生成，质量门由脚本确定性检查。</p>
+</div>
+
+<script type="application/json" id="outline-data">{"source":"《六位玩家》第一世界","lang":"zh","status":"骨架待用户拍板；未进入分集梗概与剧本","sourceVersion":{"git":"67db6e319d8797e621a51e890cf5d6811e09364f","sha256":"00ae42ef88de03e606f7081dfaa7c646f4d0255026c94e85aa08a1ad1f816d0d"},"params":{"episodes":40,"minutesPerEpisode":3,"genre":"末日生存悬疑","adaptMode":"忠实","preferences":["六人全部保留","重要情节、信息、台词尽量保留","只有主角保留回档记忆","横屏16:9","按最新食堂开场，不恢复宿舍场景或滑板动作"],"thresholds":{"maxLeads":6,"maxSupport":14}},"adaptation":{"core":"六位室友进入末日游戏，只有一人记得失败；他们在无法共同记住的牺牲中寻找真相与生路。","keep":[{"what":"共享新手关与右位心因果","why":"保留首次误判及不同结局","evidence":"他的心脏，长在右边。"},{"what":"人物能力边界","why":"六人不能因爱好获得超能力","evidence":"他对计算机技术比较熟悉。"},{"what":"完整预言与主办方隐秘","why":"开幕与黑殿的长线悬疑不可删除","evidence":"【「——但，你会选择这条无法回头的拯救之路的……对吧？」】"},{"what":"阿澄告别、宁玥选择、棋盘修复、TE后庇护所与结算","why":"保留重要人物自主性及事件后果"}],"cut":[{"what":"重复弹幕、重复机制说明和不增加信息的同义内心","why":"转为必要画外音或可见行动；不删除事件因果与首次规则解释"}],"merge":[],"cutNote":"不砍关键故事线。只压重复表达；终点保留至黑殿质询，不在TE提前结束。","mergeNote":"六位室友全部为主角组，不合并。关键配角不合并；功能群组尚需细纲逐人细化，不视为批准合人。","risks":[{"what":"40集仍有信息密度压力","plan":"先审骨架，细纲及剧本逐批核验；超时优先压重复表达，关键剧情删改另报用户。"},{"what":"回档及五人知情边界","plan":"每次回档标明锚点、仅主角保留的信息及重做行动。"},{"what":"棋盘群像与AI多人物生成","plan":"同一场保持角色名单；以单人和双人反应组呈现，不假定消失或离场。"}]},"characters":[{"id":"C01","name":"本群最帅之人","tier":"lead","role":"唯一保留回档记忆的主角","arc":"从独自试错到承受选择代价，仍不向室友虚构共有记忆","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C02","name":"森巴","tier":"lead","role":"寝室长、二次元室友","arc":"从玩梗到面对真实伤亡，不能靠动漫经验破解系统","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C03","name":"x坤","tier":"lead","role":"熟悉计算机技术的室友","arc":"以记录核对信息，不获得黑客或医疗特权","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C04","name":"y坤","tier":"lead","role":"滑板社室友","arc":"用交流参与生存，开场不携带滑板","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C05","name":"邓布利多","tier":"lead","role":"军训团成员室友","arc":"协调分歧而非军人或魔法师","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C06","name":"AAA建材批发杰哥","tier":"lead","role":"热心室友","arc":"照料同伴但不能消除感染与死亡","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C07","name":"黎汐","tier":"support","role":"生日局的愿望与误杀核心","arc":"保持现稿关键选择与结局，不与六人合并。生日局的愿望与误杀核心","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C08","name":"顾岚乔","tier":"support","role":"新手关欺骗与手术因果","arc":"保持现稿关键选择与结局，不与六人合并。新手关欺骗与手术因果","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C09","name":"兔先生","tier":"support","role":"游戏主持与规则对手","arc":"保持现稿关键选择与结局，不与六人合并。游戏主持与规则对手","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C10","name":"阿澄","tier":"support","role":"博士身份见证者与告别核心","arc":"保持现稿关键选择与结局，不与六人合并。博士身份见证者与告别核心","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C11","name":"宁玥","tier":"support","role":"同路者与棋盘自主选择核心","arc":"保持现稿关键选择与结局，不与六人合并。同路者与棋盘自主选择核心","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C12","name":"茵茵","tier":"support","role":"医院谜题与最终推理核心","arc":"保持现稿关键选择与结局，不与六人合并。医院谜题与最终推理核心","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C13","name":"方承岳","tier":"support","role":"庇护所责任与道德冲突核心","arc":"保持现稿关键选择与结局，不与六人合并。庇护所责任与道德冲突核心","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C14","name":"林逐","tier":"support","role":"由监察走向追随","arc":"保持现稿关键选择与结局，不与六人合并。由监察走向追随","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C15","name":"余知禾","tier":"support","role":"获救者、赠枪者与后续同行者","arc":"保持现稿关键选择与结局，不与六人合并。获救者、赠枪者与后续同行者","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C16","name":"阿德里安","tier":"support","role":"棋盘对手","arc":"保持现稿关键选择与结局，不与六人合并。棋盘对手","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C17","name":"朱莉娅","tier":"support","role":"敌方王后","arc":"保持现稿关键选择与结局，不与六人合并。敌方王后","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C18","name":"蓝遥","tier":"support","role":"早期救援关系与死亡代价","arc":"保持现稿关键选择与结局，不与六人合并。早期救援关系与死亡代价","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C19","name":"林曼","tier":"support","role":"药液争夺袭击者","arc":"保持现稿关键选择与结局，不与六人合并。药液争夺袭击者","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C20","name":"老秦","tier":"support","role":"庇护所冲突见证者","arc":"保持现稿关键选择与结局，不与六人合并。庇护所冲突见证者","from":["《六位玩家》第一世界现稿同名人物"]},{"id":"C21","name":"老先生","tier":"functional","role":"抗体交易与最后归家","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C22","name":"老妇人","tier":"functional","role":"老夫妻家庭线","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C23","name":"神秘女人","tier":"functional","role":"咖啡厅邀请者","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C24","name":"温和男声","tier":"functional","role":"预言与权柄提示","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C25","name":"黑殿主办者","tier":"functional","role":"终局质询","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C26","name":"蓝方队员组","tier":"functional","role":"棋盘其余参赛者，后续按现稿逐人细分，不改变五人队伍人数","from":["现稿对应人物；群组为待细化标记而非已批准合人"]},{"id":"C27","name":"庇护所袭击者组","tier":"functional","role":"庇护所冲突者，后续逐场分配，不合并行为责任","from":["现稿对应人物；群组为待细化标记而非已批准合人"]}],"scenes":[{"id":"S01","name":"黎汐家","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S02","name":"玩家广场及个人空间","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S03","name":"疫苗研发中心","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S04","name":"横港街道与救援区域","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S05","name":"老夫妻住处及囚禁建筑","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S06","name":"酒馆","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S07","name":"中央医院","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S08","name":"世界棋盘","primary":true,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S09","name":"学校食堂门口","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S10","name":"咖啡厅","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S11","name":"超市","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S12","name":"庇护所","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S13","name":"公园与墓地","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"},{"id":"S14","name":"黑殿","primary":false,"reusePlan":"当前只定叙事地点；细分楼层与空间须据正文，不凭复用改变交通因果。可复用同类环境基础资产，但保留明确地点标识。"}],"beats":[{"id":"B01","type":"悬疑推进/因果揭示","weight":"minor","episode":1,"setup":"食堂出来的六人聊末日，主角赴神秘会面后收到生日邀请","payoff":"生日宴的六杯饮料摆上桌"},{"id":"B02","type":"关键反转/选择代价","weight":"major","episode":2,"setup":"生日聚会失去控制，主角首次死亡，游戏开启与温和男声预言出现","payoff":"回归暂停后他醒在另一时刻"},{"id":"B03","type":"悬疑推进/因果揭示","weight":"minor","episode":3,"setup":"主角调查病历和手术器械，第二次遇害并再度回退；五人无旧轮记忆","payoff":"同一场生日宴再度开始"},{"id":"B04","type":"关键反转/选择代价","weight":"major","episode":4,"setup":"主角误杀黎汐后揭出右位心、捐心意图及顾岚乔欺骗；保留不同结局信息","payoff":"胜利评价与无法挽回的死亡并列"},{"id":"B05","type":"关键反转/选择代价","weight":"major","episode":5,"setup":"匿名演说、观众复出与积分危机规则、个人结算和六人组队依次建立","payoff":"六人被投放到横港市"},{"id":"B06","type":"悬疑推进/因果揭示","weight":"minor","episode":6,"setup":"主角在研发中心醒来，阿澄与博士身份出现；六人靠实际地标会合","payoff":"商店中的能力必须付出代价"},{"id":"B07","type":"悬疑推进/因果揭示","weight":"minor","episode":7,"setup":"购买分身和泯灭，明确80法力及本体损失三分之一，六人安排有限分工","payoff":"深处的储藏室传来动静"},{"id":"B08","type":"关键反转/选择代价","weight":"major","episode":8,"setup":"女玩家先袭、伤臂逃离并遗下手电；主角发现菌菇尸体、血迹消退和怕光女孩","payoff":"无色液体与异常血迹成为疑点"},{"id":"B09","type":"悬疑推进/因果揭示","weight":"minor","episode":9,"setup":"老夫妻交易血红抗体；六人面对救援能力有限的现实","payoff":"回程路上的陌生人截断退路"},{"id":"B10","type":"悬疑推进/因果揭示","weight":"minor","episode":10,"setup":"绑架与求救展开；分身与本体能力受限，六人寻找可执行的脱身机会","payoff":"看似安全的出口仍有人守着"},{"id":"B11","type":"关键反转/选择代价","weight":"major","episode":11,"setup":"主角借技能突围，给被困者选择权；六人协助有限救援而非替所有人决定","payoff":"回家成为老人最后的愿望"},{"id":"B12","type":"悬疑推进/因果揭示","weight":"minor","episode":12,"setup":"老人一家、阿澄的旧识和活下去的托付展开；仅余一发子弹的枪交给主角","payoff":"家的承诺无法阻止异变"},{"id":"B13","type":"悬疑推进/因果揭示","weight":"minor","episode":13,"setup":"普通与变异感染时限、断臂与恢复、追猎升级及宁玥练剑构成推进","payoff":"第五天的医院路线已经查清"},{"id":"B14","type":"悬疑推进/因果揭示","weight":"minor","episode":14,"setup":"六人入院，家暴病历、父母尸体与女儿紫血形成冲突证据；分清资料和事实","payoff":"茵茵要求他们回答"},{"id":"B15","type":"关键反转/选择代价","weight":"major","episode":15,"setup":"疫苗与和平病毒证词引向误判；宁玥先被感染，再因答错遭茵茵杀死","payoff":"失败并未给出逃离世界的路"},{"id":"B16","type":"关键反转/选择代价","weight":"major","episode":16,"setup":"主角以规则公平性逼出完美通关权利与救赎信息，确认主持者不了解回档","payoff":"他必须在不能共享记忆的孤独里选择"},{"id":"B17","type":"关键反转/选择代价","weight":"major","episode":17,"setup":"回档立即返回第五天，而非实际被囚十日；五人重新同行，抽象梦境不当作共享记忆","payoff":"阿澄的感染时间正在耗尽"},{"id":"B18","type":"悬疑推进/因果揭示","weight":"minor","episode":18,"setup":"阿澄说出三日前感染与爱全人类的愿望，识破博士身份并问真名","payoff":"她请求听一首诗"},{"id":"B19","type":"关键反转/选择代价","weight":"major","episode":19,"setup":"主角应请求朗读，银枪最后一发落下；音乐盒和糖随即安葬，直播观众记住她","payoff":"主角带着药液继续前行"},{"id":"B20","type":"悬疑推进/因果揭示","weight":"minor","episode":20,"setup":"超市中方承岳护人被咬，宁玥杀怪；整瓶药液救人后剩下半瓶","payoff":"有人把对解药的渴望变成刀锋"},{"id":"B21","type":"悬疑推进/因果揭示","weight":"minor","episode":21,"setup":"林曼袭击、宁玥断臂与方承岳制止复仇；六人面对救援与占有的冲突","payoff":"主角的灯塔宣言激起外界回应"},{"id":"B22","type":"悬疑推进/因果揭示","weight":"minor","episode":22,"setup":"区分公开人设与向主办方掩藏回档的真实动机；五人只能依据现有信息质疑和支持","payoff":"监察者林逐盯上主角"},{"id":"B23","type":"悬疑推进/因果揭示","weight":"minor","episode":23,"setup":"林逐杀死分身但不触发回档；主角与宁玥前往医院救援，五人依法同行","payoff":"垂直救援的退路断开"},{"id":"B24","type":"关键反转/选择代价","weight":"major","episode":24,"setup":"宁玥在医院救援中作出选择，林逐施救；中央医院与棋盘入口衔接","payoff":"六人中只有参赛者能踏入棋盘"},{"id":"B25","type":"悬疑推进/因果揭示","weight":"minor","episode":25,"setup":"明确参赛小队与六人组队不同；五室友进入受保护观战席，不得传讯干预","payoff":"阿德里安的优势兵力压来"},{"id":"B26","type":"悬疑推进/因果揭示","weight":"minor","episode":26,"setup":"两侧兵力与技能展开，分身实力和不可共同攻击目标的限制明确","payoff":"蓝方塔楼发起攻击"},{"id":"B27","type":"悬疑推进/因果揭示","weight":"minor","episode":27,"setup":"塔楼攻击、王后介入及断臂逼主角承担伤害，观众看到真实代价","payoff":"对手仍可拖延残局"},{"id":"B28","type":"悬疑推进/因果揭示","weight":"minor","episode":28,"setup":"追逐与僵持暴露强弱之外的规则问题；五人只能在席内互相支撑","payoff":"第一玩家身份在赛场揭露"},{"id":"B29","type":"关键反转/选择代价","weight":"major","episode":29,"setup":"主角与主办方交锋，隐藏牺牲规则公开；此前公开王后增益不得与此混同","payoff":"宁玥面临无法由别人替她决定的选择"},{"id":"B30","type":"悬疑推进/因果揭示","weight":"minor","episode":30,"setup":"牺牲触发与随机王后检查点重试呈现，回档痛苦只留在主角身上","payoff":"反复争取仍指向同一道难题"},{"id":"B31","type":"关键反转/选择代价","weight":"major","episode":31,"setup":"宁玥的旧日羁绊与主动选择完整落地；五人不能跨越观战限制救她","payoff":"剑将被毁去"},{"id":"B32","type":"关键反转/选择代价","weight":"major","episode":32,"setup":"主角以手护剑并赢下对局；完整身体修复、装备奖励、档案及六人回归均保留","payoff":"新的档案把众人带回医院"},{"id":"B33","type":"悬疑推进/因果揭示","weight":"minor","episode":33,"setup":"旧半瓶药液交给方承岳；分身清理医院，五人守护本体，余知禾获救","payoff":"茵茵在房间里出现"},{"id":"B34","type":"悬疑推进/因果揭示","weight":"minor","episode":34,"setup":"主角按已出现的病历、血液、菌菇、药液等证据逐项纠错；室友不代答最终推论","payoff":"茵茵的行为与善恶判断无法简单重合"},{"id":"B35","type":"关键反转/选择代价","weight":"major","episode":35,"setup":"最后推理直面伤害与选择，100%推理与TE达成，不能改成全员获救","payoff":"完美疫苗与洋娃娃奖励出现"},{"id":"B36","type":"悬疑推进/因果揭示","weight":"minor","episode":36,"setup":"交代洋娃娃作用、DNA疫苗及剩余时间；杰哥单侧搀扶余知禾，其他人让出通道","payoff":"完美通关不等于立刻退出世界"},{"id":"B37","type":"悬疑推进/因果揭示","weight":"minor","episode":37,"setup":"余知禾赠枪及学习，说明不同结局；本体由五人和余知禾守护，分身去庇护所","payoff":"新的药液抵达仍未消除猜疑"},{"id":"B38","type":"关键反转/选择代价","weight":"major","episode":38,"setup":"保留袭击者、伤害测试、老秦与方承岳的道德冲突；主角不把所有细节公开给室友","payoff":"宣称救人者也可能成为被恐惧的人"},{"id":"B39","type":"悬疑推进/因果揭示","weight":"minor","episode":39,"setup":"林逐放弃监察者任务并赠灵兽蛋；五日追猎与轮流休息交代，众人赴墓前告别","payoff":"十五天期限即将结束"},{"id":"B40","type":"关键反转/选择代价","weight":"major","episode":40,"setup":"阿澄墓前、六人约定重逢、各自结算完整收束；主角独享完美通关，突然被带进黑殿","payoff":"主办方质问他何以知道从未公开的秘密"}],"episodeSkeleton":[{"ep":1,"title":"雨后邀约","event":"食堂出来的六人聊末日，主角赴神秘会面后收到生日邀请","endQuestion":"生日宴的六杯饮料摆上桌","sourceChapters":"001"},{"ep":2,"title":"世界开幕","event":"生日聚会失去控制，主角首次死亡，游戏开启与温和男声预言出现","endQuestion":"回归暂停后他醒在另一时刻","sourceChapters":"001"},{"ep":3,"title":"被覆盖的一夜","event":"主角调查病历和手术器械，第二次遇害并再度回退；五人无旧轮记忆","endQuestion":"同一场生日宴再度开始","sourceChapters":"001"},{"ep":4,"title":"消失的她","event":"主角误杀黎汐后揭出右位心、捐心意图及顾岚乔欺骗；保留不同结局信息","endQuestion":"胜利评价与无法挽回的死亡并列","sourceChapters":"001"},{"ep":5,"title":"六人入局","event":"匿名演说、观众复出与积分危机规则、个人结算和六人组队依次建立","endQuestion":"六人被投放到横港市","sourceChapters":"001"},{"ep":6,"title":"博士醒来","event":"主角在研发中心醒来，阿澄与博士身份出现；六人靠实际地标会合","endQuestion":"商店中的能力必须付出代价","sourceChapters":"002"},{"ep":7,"title":"另一个自己","event":"购买分身和泯灭，明确80法力及本体损失三分之一，六人安排有限分工","endQuestion":"深处的储藏室传来动静","sourceChapters":"002"},{"ep":8,"title":"灯亮之前","event":"女玩家先袭、伤臂逃离并遗下手电；主角发现菌菇尸体、血迹消退和怕光女孩","endQuestion":"无色液体与异常血迹成为疑点","sourceChapters":"002"},{"ep":9,"title":"抗体交易","event":"老夫妻交易血红抗体；六人面对救援能力有限的现实","endQuestion":"回程路上的陌生人截断退路","sourceChapters":"003"},{"ep":10,"title":"被劫持的人","event":"绑架与求救展开；分身与本体能力受限，六人寻找可执行的脱身机会","endQuestion":"看似安全的出口仍有人守着","sourceChapters":"003—004"},{"ep":11,"title":"门开了","event":"主角借技能突围，给被困者选择权；六人协助有限救援而非替所有人决定","endQuestion":"回家成为老人最后的愿望","sourceChapters":"004"},{"ep":12,"title":"最后一顿面","event":"老人一家、阿澄的旧识和活下去的托付展开；仅余一发子弹的枪交给主角","endQuestion":"家的承诺无法阻止异变","sourceChapters":"004—005"},{"ep":13,"title":"第四夜","event":"普通与变异感染时限、断臂与恢复、追猎升级及宁玥练剑构成推进","endQuestion":"第五天的医院路线已经查清","sourceChapters":"005—006"},{"ep":14,"title":"医院的档案","event":"六人入院，家暴病历、父母尸体与女儿紫血形成冲突证据；分清资料和事实","endQuestion":"茵茵要求他们回答","sourceChapters":"007"},{"ep":15,"title":"错误答案","event":"疫苗与和平病毒证词引向误判；宁玥先被感染，再因答错遭茵茵杀死","endQuestion":"失败并未给出逃离世界的路","sourceChapters":"007"},{"ep":16,"title":"与规则争辩","event":"主角以规则公平性逼出完美通关权利与救赎信息，确认主持者不了解回档","endQuestion":"他必须在不能共享记忆的孤独里选择","sourceChapters":"008"},{"ep":17,"title":"第五天重来","event":"回档立即返回第五天，而非实际被囚十日；五人重新同行，抽象梦境不当作共享记忆","endQuestion":"阿澄的感染时间正在耗尽","sourceChapters":"008"},{"ep":18,"title":"她想去的地方","event":"阿澄说出三日前感染与爱全人类的愿望，识破博士身份并问真名","endQuestion":"她请求听一首诗","sourceChapters":"008"},{"ep":19,"title":"最后一发","event":"主角应请求朗读，银枪最后一发落下；音乐盒和糖随即安葬，直播观众记住她","endQuestion":"主角带着药液继续前行","sourceChapters":"008—009"},{"ep":20,"title":"半瓶紫液","event":"超市中方承岳护人被咬，宁玥杀怪；整瓶药液救人后剩下半瓶","endQuestion":"有人把对解药的渴望变成刀锋","sourceChapters":"009—010"},{"ep":21,"title":"药留给谁","event":"林曼袭击、宁玥断臂与方承岳制止复仇；六人面对救援与占有的冲突","endQuestion":"主角的灯塔宣言激起外界回应","sourceChapters":"010"},{"ep":22,"title":"灯塔背面","event":"区分公开人设与向主办方掩藏回档的真实动机；五人只能依据现有信息质疑和支持","endQuestion":"监察者林逐盯上主角","sourceChapters":"011"},{"ep":23,"title":"监察者","event":"林逐杀死分身但不触发回档；主角与宁玥前往医院救援，五人依法同行","endQuestion":"垂直救援的退路断开","sourceChapters":"011—012"},{"ep":24,"title":"活下去","event":"宁玥在医院救援中作出选择，林逐施救；中央医院与棋盘入口衔接","endQuestion":"六人中只有参赛者能踏入棋盘","sourceChapters":"012"},{"ep":25,"title":"两人对五人","event":"明确参赛小队与六人组队不同；五室友进入受保护观战席，不得传讯干预","endQuestion":"阿德里安的优势兵力压来","sourceChapters":"012"},{"ep":26,"title":"红方分身","event":"两侧兵力与技能展开，分身实力和不可共同攻击目标的限制明确","endQuestion":"蓝方塔楼发起攻击","sourceChapters":"012—013"},{"ep":27,"title":"王的手臂","event":"塔楼攻击、王后介入及断臂逼主角承担伤害，观众看到真实代价","endQuestion":"对手仍可拖延残局","sourceChapters":"013"},{"ep":28,"title":"僵局","event":"追逐与僵持暴露强弱之外的规则问题；五人只能在席内互相支撑","endQuestion":"第一玩家身份在赛场揭露","sourceChapters":"013"},{"ep":29,"title":"被隐藏的规则","event":"主角与主办方交锋，隐藏牺牲规则公开；此前公开王后增益不得与此混同","endQuestion":"宁玥面临无法由别人替她决定的选择","sourceChapters":"013—014"},{"ep":30,"title":"一次次抵达","event":"牺牲触发与随机王后检查点重试呈现，回档痛苦只留在主角身上","endQuestion":"反复争取仍指向同一道难题","sourceChapters":"014"},{"ep":31,"title":"她自己的决定","event":"宁玥的旧日羁绊与主动选择完整落地；五人不能跨越观战限制救她","endQuestion":"剑将被毁去","sourceChapters":"014"},{"ep":32,"title":"护住那把剑","event":"主角以手护剑并赢下对局；完整身体修复、装备奖励、档案及六人回归均保留","endQuestion":"新的档案把众人带回医院","sourceChapters":"014"},{"ep":33,"title":"重返医院","event":"旧半瓶药液交给方承岳；分身清理医院，五人守护本体，余知禾获救","endQuestion":"茵茵在房间里出现","sourceChapters":"015"},{"ep":34,"title":"五项证据","event":"主角按已出现的病历、血液、菌菇、药液等证据逐项纠错；室友不代答最终推论","endQuestion":"茵茵的行为与善恶判断无法简单重合","sourceChapters":"015—016"},{"ep":35,"title":"无法拯救","event":"最后推理直面伤害与选择，100%推理与TE达成，不能改成全员获救","endQuestion":"完美疫苗与洋娃娃奖励出现","sourceChapters":"016"},{"ep":36,"title":"还剩一百二十六小时","event":"交代洋娃娃作用、DNA疫苗及剩余时间；杰哥单侧搀扶余知禾，其他人让出通道","endQuestion":"完美通关不等于立刻退出世界","sourceChapters":"016"},{"ep":37,"title":"一把枪","event":"余知禾赠枪及学习，说明不同结局；本体由五人和余知禾守护，分身去庇护所","endQuestion":"新的药液抵达仍未消除猜疑","sourceChapters":"017"},{"ep":38,"title":"庇护所的裂痕","event":"保留袭击者、伤害测试、老秦与方承岳的道德冲突；主角不把所有细节公开给室友","endQuestion":"宣称救人者也可能成为被恐惧的人","sourceChapters":"017"},{"ep":39,"title":"不再监察","event":"林逐放弃监察者任务并赠灵兽蛋；五日追猎与轮流休息交代，众人赴墓前告别","endQuestion":"十五天期限即将结束","sourceChapters":"017"},{"ep":40,"title":"出去之后","event":"阿澄墓前、六人约定重逢、各自结算完整收束；主角独享完美通关，突然被带进黑殿","endQuestion":"主办方质问他何以知道从未公开的秘密","sourceChapters":"017"}],"episodes":[]}</script>
+<script>
+// beat rhythm: chart / table toggle
+document.querySelectorAll('.tab').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach((b) => b.classList.toggle('on', b === btn));
+    document.querySelectorAll('.tabpane').forEach((p) => p.classList.toggle('on', p.id === btn.dataset.pane));
+  });
+});
+
+// episode overview: first three by default, one click expands for good
+const epsMore = document.querySelector('.epsmore');
+if (epsMore) {
+  epsMore.addEventListener('click', () => {
+    document.querySelector('.epswrap').classList.remove('clip');
+    epsMore.remove();
+  });
+}
+
+// export: the report carries outline.json verbatim; the download is byte-identical
+document.querySelector('.expo').addEventListener('click', (e) => {
+  const btn = e.currentTarget;
+  const url = URL.createObjectURL(
+    new Blob([document.getElementById('outline-data').textContent], { type: 'application/json' }),
+  );
+  const a = Object.assign(document.createElement('a'), { href: url, download: btn.dataset.name });
+  a.click();
+  // don't revoke immediately — Safari may kill the blob before the download finishes reading
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+</script>
+</body></html>
